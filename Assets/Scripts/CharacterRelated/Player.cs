@@ -642,6 +642,17 @@ public class Player : Character
     public void GetPath(Vector3 goal)
     {
         MyPath = astar.Algorithm(transform.position, goal);
+
+        // Algorithm() returns null when no path exists (e.g. clicking a
+        // blocked/out-of-bounds tile), and returns a single-node path when
+        // the goal is the tile we're already standing on. Either way there
+        // is nothing to Pop() twice, so bail out instead of crashing.
+        if (MyPath == null || MyPath.Count < 2)
+        {
+            MyPath = null;
+            return;
+        }
+
         current = MyPath.Pop();
         destination = MyPath.Pop();
         this.goal = goal;

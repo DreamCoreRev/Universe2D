@@ -39,7 +39,13 @@ class FollowState : IState
             //Find the target's direction
             parent.Direction = ((parent.MyTarget.transform.position+ offset) - parent.transform.position).normalized;
 
-            float distance = Vector2.Distance(parent.MyTarget.transform.position+offset, parent.transform.position);
+            // AttackState and PathState both measure range off the wrapper
+            // transform (transform.parent), not the Rigidbody-driven child
+            // transform used above for Direction. Measuring it differently
+            // here let the two states disagree on whether we were actually
+            // in range, which could make an enemy flicker between
+            // Follow/Attack right at the edge of its attack range.
+            float distance = Vector2.Distance(parent.MyTarget.transform.parent.position, parent.transform.parent.position);
 
             string animName = parent.MySpriteRenderer.sprite.name;
 

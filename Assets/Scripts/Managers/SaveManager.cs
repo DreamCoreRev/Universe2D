@@ -101,15 +101,30 @@ public class SaveManager : MonoBehaviour
 
     private void LoadScene(SavedGame savedGame)
     {
-        if (File.Exists(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat"))
+        string path = Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat";
+
+        if (!File.Exists(path))
         {
+            return;
+        }
+
+        try
+        {
+            SaveData data;
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Open);
-            SaveData data = (SaveData)bf.Deserialize(file);
-            file.Close();
+            using (FileStream file = File.Open(path, FileMode.Open))
+            {
+                data = (SaveData)bf.Deserialize(file);
+            }
 
             PlayerPrefs.SetInt("Load", savedGame.MyIndex);
             SceneManager.LoadScene(data.MyScene);
+        }
+        catch (System.Exception e)
+        {
+            // A corrupt/unreadable save file should never crash the main
+            // menu -- just report it and leave the file alone.
+            Debug.LogError("Impossible de lire la sauvegarde (" + savedGame.gameObject.name + ") : " + e);
         }
     }
 
@@ -126,14 +141,28 @@ public class SaveManager : MonoBehaviour
 
     private void ShowSavedFiles(SavedGame savedGame)
     {
-   
-        if (File.Exists(Application.persistentDataPath + "/"+savedGame.gameObject.name+".dat"))
+        string path = Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat";
+
+        if (!File.Exists(path))
         {
+            return;
+        }
+
+        try
+        {
+            SaveData data;
             BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Open);
-            SaveData data = (SaveData)bf.Deserialize(file);
-            file.Close();
+            using (FileStream file = File.Open(path, FileMode.Open))
+            {
+                data = (SaveData)bf.Deserialize(file);
+            }
             savedGame.ShowInfo(data);
+        }
+        catch (System.Exception e)
+        {
+            // Called from Awake() for every save slot -- a corrupt file
+            // here must not crash the game on startup.
+            Debug.LogError("Impossible de lire la sauvegarde (" + savedGame.gameObject.name + ") : " + e);
         }
     }
 
@@ -141,10 +170,6 @@ public class SaveManager : MonoBehaviour
     {
         try
         {
-            BinaryFormatter bf = new BinaryFormatter();
-
-            FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name+".dat", FileMode.Create);
-
             SaveData data = new SaveData();
 
             data.MyScene = SceneManager.GetActiveScene().name;
@@ -165,18 +190,26 @@ public class SaveManager : MonoBehaviour
 
             SaveQuestGivers(data);
 
-            bf.Serialize(file, data);
+            // Serialize to memory first. If building/serializing the save
+            // data throws partway through, the .dat file already on disk
+            // is never touched, so a failed save can no longer wipe out a
+            // previously good one.
+            BinaryFormatter bf = new BinaryFormatter();
+            using (MemoryStream memory = new MemoryStream())
+            {
+                bf.Serialize(memory, data);
 
-            file.Close();
+                using (FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Create))
+                {
+                    memory.WriteTo(file);
+                }
+            }
 
             ShowSavedFiles(savedGame);
-
-
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
-            Delete(savedGame);
-            PlayerPrefs.DeleteKey("Load");
+            Debug.LogError("Echec de la sauvegarde (" + savedGame.gameObject.name + ") : " + e);
         }
     }
 
@@ -283,13 +316,12 @@ public class SaveManager : MonoBehaviour
     {
         try
         {
+            SaveData data;
             BinaryFormatter bf = new BinaryFormatter();
-
-            FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Open);
-
-            SaveData data = (SaveData)bf.Deserialize(file);
-
-            file.Close();
+            using (FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Open))
+            {
+                data = (SaveData)bf.Deserialize(file);
+            }
 
             LoadEquipment(data);
 
@@ -308,10 +340,13 @@ public class SaveManager : MonoBehaviour
             LoadQuestGiver(data);
 
         }
-        catch (System.Exception)
+        catch (System.Exception e)
         {
-            //This is for handling errors
-            Delete(savedGame);
+            // A failed load must never delete the save file: the data on
+            // disk is almost certainly fine, the problem is in applying it
+            // to the current scene. Just report it and bail back to the
+            // main menu instead of silently destroying the player's save.
+            Debug.LogError("Echec du chargement (" + savedGame.gameObject.name + ") : " + e);
             PlayerPrefs.DeleteKey("Load");
             SceneManager.LoadScene(0);
         }
