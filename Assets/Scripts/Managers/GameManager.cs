@@ -119,9 +119,14 @@ public class GameManager : MonoBehaviour {
         {
             //Makes a raycast from the pointer position into the game world
             Vector3 pointerPos = TouchInput.GetPointerPosition();
-            RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(pointerPos),Vector2.zero,Mathf.Infinity,512);
+            Vector3 worldPos = mainCamera.ScreenToWorldPoint(pointerPos);
+            RaycastHit2D hit = Physics2D.Raycast(worldPos,Vector2.zero,Mathf.Infinity,512);
 
-            DebugLine2 = string.Format("tap@{0:F0},{1:F0} hit={2}", pointerPos.x, pointerPos.y, hit.collider != null ? hit.collider.name + "/" + hit.collider.tag : "AUCUN");
+            DebugLine2 = string.Format("scr={0:F0},{1:F0} ({2}x{3}) world={4:F1},{5:F1} cam={6:F1},{7:F1} oSize={8:F1} hit={9}",
+                pointerPos.x, pointerPos.y, Screen.width, Screen.height,
+                worldPos.x, worldPos.y,
+                mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.orthographicSize,
+                hit.collider != null ? hit.collider.name + "/" + hit.collider.tag : "AUCUN");
 
             if (hit.collider != null && hit.collider.tag == "Enemy")//If we hit something
             {
