@@ -54,20 +54,41 @@ public class HandScript : MonoBehaviour
         icon.transform.position = Input.mousePosition+offset;
 	}
 
-    // LateUpdate s'exécute après l'Update() de l'EventSystem, donc
-    // IsPointerOverGameObject() reflète bien l'état du frame en cours --
-    // en le testant depuis Update() (comme avant), sur tactile il arrivait
-    // qu'il renvoie encore "pas sur une UI" au moment même où on tape sur un
-    // bouton valide (ex: la barre d'action), ce qui supprimait l'objet en
-    // main au lieu de le placer. On ne teste aussi qu'au moment précis où le
-    // doigt touche l'écran (GetMouseButtonDown), plutôt qu'à chaque frame
-    // tant qu'il reste posé.
+    // EventSystem.IsPointerOverGameObject() SANS argument ne regarde que le
+    // pointeur "souris" (id -1). Sur un vrai doigt tactile, Unity utilise
+    // l'id du doigt (0, 1, 2...) et ne touche jamais l'id -1 -- du coup cet
+    // appel répondait presque toujours "pas sur une UI", même en tapant
+    // pile sur la barre d'action, et l'objet en main se faisait supprimer à
+    // chaque tap. Il faut vérifier l'id du doigt qui a réellement touché
+    // l'écran pour que ça marche correctement sur téléphone.
     void LateUpdate()
     {
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && MyInstance.MyMoveable != null)
+        bool justPressed = Input.touchCount > 0
+            ? Input.GetTouch(0).phase == TouchPhase.Began
+            : Input.GetMouseButtonDown(0);
+
+        if (justPressed && !IsPointerOverUI() && MyInstance.MyMoveable != null)
         {
             DeleteItem();
         }
+    }
+
+    private static bool IsPointerOverUI()
+    {
+        if (Input.touchCount > 0)
+        {
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(i).fingerId))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        return EventSystem.current.IsPointerOverGameObject();
     }
 
     /// <summary>
