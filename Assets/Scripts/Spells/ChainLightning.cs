@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows.Speech;
+// using UnityEngine.Windows.Speech; -- retiré : rien dans ce fichier ne s'en
+// sert (sort de ChainLightning, pas de reconnaissance vocale), et cette
+// bibliothèque n'existe que sur Windows -- elle faisait échouer la
+// compilation dès qu'on bascule sur une autre plateforme comme Android.
 
 public class ChainLightning : SpellScript
 {
