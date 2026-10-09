@@ -112,11 +112,27 @@ public class GameManager : MonoBehaviour {
             Vector3 worldPos = mainCamera.ScreenToWorldPoint(pointerPos);
             RaycastHit2D hit = Physics2D.Raycast(worldPos,Vector2.zero,Mathf.Infinity,clickableLayer);
 
-            if (hit.collider != null && hit.collider.tag == "Enemy")//If we hit an enemy, select it as target
+            if (hit.collider != null && hit.collider.tag == "Enemy")//If we hit an enemy
             {
-                DeSelectTarget();
+                Enemy enemy = hit.collider.GetComponent<Enemy>();
 
-                SelectTarget(hit.collider.GetComponent<Enemy>());
+                if (enemy != null && !enemy.IsAlive)
+                {
+                    // Une créature morte ne se cible pas (il n'y a plus rien à
+                    // attaquer) : un tap dessus la loot directement, comme le
+                    // ferait un clic droit sur PC (Enemy.Interact() gère le loot
+                    // quand IsAlive est faux).
+                    if (player.MyInteractables.Contains(enemy))
+                    {
+                        enemy.Interact();
+                    }
+                }
+                else
+                {
+                    DeSelectTarget();
+
+                    SelectTarget(enemy);
+                }
             }
             else if (hit.collider != null && hit.collider.tag == "Interactable")//If we hit a neutral NPC or object, interact with it directly
             {
