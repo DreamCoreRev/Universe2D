@@ -79,7 +79,20 @@ public class GameManager : MonoBehaviour {
         // bouger le personnage sans qu'on l'ait demandé. On utilise aussi la
         // position du doigt qui a vraiment tapé plutôt que la souris simulée,
         // qui peut se mélanger si deux doigts touchent l'écran en même temps.
-        if (Input.GetMouseButtonDown(0) && !TouchInput.IsPointerOverUI())//If we click the left mouse button
+        //
+        // Input.GetMouseButtonDown(0) tout seul ne suffit pas non plus : sur
+        // certains appareils/réglages, la simulation "souris depuis le
+        // tactile" ne déclenche jamais ce bouton pour un vrai appui du
+        // doigt (contrairement aux clics UI, qui passent par un autre
+        // système, l'EventSystem, et marchaient déjà). D'où le fait de
+        // sélectionner une créature marchait à la souris sur PC mais pas du
+        // tout au doigt sur téléphone. On détecte donc aussi directement le
+        // tout premier instant où le doigt touche l'écran.
+        bool leftPressed = Input.touchCount > 0
+            ? Input.GetTouch(0).phase == TouchPhase.Began
+            : Input.GetMouseButtonDown(0);
+
+        if (leftPressed && !TouchInput.IsPointerOverUI())//If we click the left mouse button
         {
             //Makes a raycast from the pointer position into the game world
             RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()),Vector2.zero,Mathf.Infinity,512);
