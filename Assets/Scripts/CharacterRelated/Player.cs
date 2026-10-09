@@ -309,6 +309,13 @@ public class Player : Character
             }
 
         }
+        // Joystick tactile (TouchJoystick.cs) : s'ajoute à la direction du
+        // clavier au lieu de la remplacer, donc le clavier marche toujours
+        // pareil sur PC, et le joystick marche en plus sur téléphone/tablette
+        // (ou à la souris dans l'éditeur). Vector2.zero quand rien n'est
+        // touché, donc ça ne change rien quand on n'y touche pas.
+        Direction += TouchJoystick.Direction;
+
         if (IsMoving)
         {
             StopAction();

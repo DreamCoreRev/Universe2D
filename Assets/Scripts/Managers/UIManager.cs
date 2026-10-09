@@ -238,6 +238,17 @@ public class UIManager : MonoBehaviour
         canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
     }
 
+    // Permet d'ouvrir/fermer un panneau de "menus" depuis un bouton (voir
+    // TouchMenuButtons.cs) sans lui donner un accès direct au tableau privé
+    // menus[]. Les index sont les mêmes que ceux utilisés juste au-dessus
+    // dans Update() pour les raccourcis clavier : 0=MainMenu (Echap),
+    // 1=SpellBook (Sorts), 2=CharacterPanel (Personnage), 3=Questlog
+    // (Quêtes), 6=Profession (Métiers).
+    public void ToggleMenu(int index)
+    {
+        OpenClose(menus[index]);
+    }
+
     public void OpenSingle(CanvasGroup canvasGroup)
     {
         foreach (CanvasGroup canvas in menus)

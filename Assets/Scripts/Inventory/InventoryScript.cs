@@ -127,31 +127,57 @@ public class InventoryScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.M))
         {
-            HealthPotion potion = (HealthPotion)Instantiate(items[9]);
-            AddItem(potion);
+            GivePotion();
         }
         if (Input.GetKeyDown(KeyCode.U))
         {
-            GoldNugget nugget = (GoldNugget)Instantiate(items[11]);
-            AddItem(nugget);
-            AddItem((HealthPotion)Instantiate(items[9]));
+            GivePotionAndGold();
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-
-            AddItem((Armor)Instantiate(items[0]));
-            AddItem((Armor)Instantiate(items[1]));
-            AddItem((Armor)Instantiate(items[2]));
-            AddItem((Armor)Instantiate(items[3]));
-            AddItem((Armor)Instantiate(items[4]));
-            AddItem((Armor)Instantiate(items[5]));
-            AddItem((Armor)Instantiate(items[6]));
-            AddItem((Armor)Instantiate(items[7]));
-            AddItem((Armor)Instantiate(items[10]));
-           
-
+            GiveEquipment();
         }
 
+    }
+
+    // Les 3 méthodes ci-dessous sont le contenu exact des raccourcis de
+    // debug M / U / H ci-dessus, sortis dans leurs propres méthodes pour
+    // que TouchDebugButtons.cs (boutons tactiles) puisse déclencher la
+    // même chose qu'une pression clavier, sans dupliquer la logique.
+
+    /// <summary>
+    /// Raccourci M : donne une potion de soin
+    /// </summary>
+    public void GivePotion()
+    {
+        HealthPotion potion = (HealthPotion)Instantiate(items[9]);
+        AddItem(potion);
+    }
+
+    /// <summary>
+    /// Raccourci U : donne une pépite d'or + une potion de soin
+    /// </summary>
+    public void GivePotionAndGold()
+    {
+        GoldNugget nugget = (GoldNugget)Instantiate(items[11]);
+        AddItem(nugget);
+        AddItem((HealthPotion)Instantiate(items[9]));
+    }
+
+    /// <summary>
+    /// Raccourci H : donne un jeu complet d'équipement
+    /// </summary>
+    public void GiveEquipment()
+    {
+        AddItem((Armor)Instantiate(items[0]));
+        AddItem((Armor)Instantiate(items[1]));
+        AddItem((Armor)Instantiate(items[2]));
+        AddItem((Armor)Instantiate(items[3]));
+        AddItem((Armor)Instantiate(items[4]));
+        AddItem((Armor)Instantiate(items[5]));
+        AddItem((Armor)Instantiate(items[6]));
+        AddItem((Armor)Instantiate(items[7]));
+        AddItem((Armor)Instantiate(items[10]));
     }
 
     /// <summary>
