@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -265,6 +266,15 @@ public class UIManager : MonoBehaviour
         canvasGroup.alpha  = 0;
         canvasGroup.blocksRaycasts = false;
 
+    }
+
+    // Appele par le bouton "Deconnexion" du menu Echap (voir Demo.unity,
+    // panneau MainMenu). Recharge simplement l'ecran de connexion -- pas
+    // besoin de prevenir le serveur, le token/la session cote jeu ne vit
+    // que dans cette scene, qui va etre detruite au chargement de Login.
+    public void Logout()
+    {
+        SceneManager.LoadScene("Login");
     }
 
     /// <summary>
