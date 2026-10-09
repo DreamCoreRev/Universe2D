@@ -641,7 +641,13 @@ public class Player : Character
 
     public void GetPath(Vector3 goal)
     {
-        MyPath = astar.Algorithm(transform.position, goal);
+        // ClickToMove() drives movement through transform.parent (see
+        // initPos/destination below), not through this script's own
+        // transform -- so the search has to start from transform.parent
+        // too, or it can plan a path from the wrong tile whenever the two
+        // have drifted apart (see the velocity reset right below for why
+        // that happens).
+        MyPath = astar.Algorithm(transform.parent.position, goal);
 
         // Algorithm() returns null when no path exists (e.g. clicking a
         // blocked/out-of-bounds tile), and returns a single-node path when
@@ -652,6 +658,14 @@ public class Player : Character
             MyPath = null;
             return;
         }
+
+        // Move() only drives MyRigidbody while MyPath is null (regular
+        // WASD movement) and never clears it again, so any velocity still
+        // left over from walking with the keyboard kept being applied by
+        // the physics engine on top of ClickToMove's own positioning --
+        // compounding into the character accelerating with every click,
+        // and eventually drifting into a wall/off the path entirely.
+        MyRigidbody.velocity = Vector2.zero;
 
         current = MyPath.Pop();
         destination = MyPath.Pop();

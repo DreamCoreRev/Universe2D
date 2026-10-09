@@ -48,6 +48,23 @@ public class AStar : MonoBehaviour
         startPos = MyTilemap.WorldToCell(start);
         goalPos = MyTilemap.WorldToCell(goal);
 
+        // Reset every node left over from the previous search BEFORE
+        // fetching the start node below. GetNode() returns a cached Node
+        // instance when one already exists at that position, so fetching
+        // it first (as this used to do) could hand back a node that still
+        // had its G/H/F costs from wherever it ended up in the LAST
+        // pathfind -- meaning this search could start from a non-zero
+        // cost instead of 0, and skew every distance comparison from
+        // there on. Over repeated clicks this can make the search settle
+        // on a worse path, or (with the openList ordered by that skewed
+        // F score) end up stuck never finding the real goal.
+        foreach (KeyValuePair<Vector3Int, Node> node in allNodes)
+        {
+            node.Value.Parent = null;
+        }
+
+        allNodes.Clear();
+
         current = GetNode(startPos);
 
         //Creates an open list for nodes that we might want to look at later
@@ -55,13 +72,6 @@ public class AStar : MonoBehaviour
 
         //Creates a closed list for nodes that we have examined
         closedList = new HashSet<Node>();
-
-        foreach (KeyValuePair<Vector3Int, Node> node in allNodes)
-        {
-            node.Value.Parent = null;
-        }
-
-        allNodes.Clear();
 
         //Adds the current node to the open list (we have examined it)
         openList.Add(current);
