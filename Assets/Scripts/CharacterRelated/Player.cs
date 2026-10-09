@@ -406,18 +406,10 @@ public class Player : Character
     /// <summary>
     /// Casts a spell
     /// </summary>
-    // --- DIAGNOSTIC TEMPORAIRE ---------------------------------------
-    // Affiché à l'écran par DebugOverlay.cs le temps de comprendre pourquoi
-    // taper sur un sort (bouton action) n'attaque pas la cible sur mobile.
-    // À retirer une fois le bug trouvé.
-    public static string DebugCast = "";
-    // --------------------------------------------------------------------
-
     public void CastSpell(Spell spell)
     {
         if (spell.OnCooldown)
         {
-            DebugCast = string.Format("Cast {0} ANNULE: en recharge", spell.MyTitle);
             return;
         }
 
@@ -430,9 +422,8 @@ public class Player : Character
         // sort, donc exitIndex pointait déjà au bon endroit. Sur mobile, on
         // sélectionne la cible d'un tap sans bouger, donc exitIndex restait
         // sur une ancienne direction et le mur anti-dos-tourné se
-        // retrouvait entre le joueur et la cible -> InLineOfSight() voyait
-        // toujours "bloqué". On réoriente donc le joueur vers sa cible
-        // juste avant d'activer les blocks.
+        // retrouvait entre le joueur et la cible. On réoriente donc le
+        // joueur vers sa cible juste avant d'activer les blocks.
         if (MyTarget != null)
         {
             exitIndex = GetExitIndexTowards(MyTarget.transform.position);
@@ -442,7 +433,6 @@ public class Player : Character
 
         if (spell.ManaCost > mana.MyCurrentValue)
         {
-            DebugCast = string.Format("Cast {0} ANNULE: mana {1}/{2} (cout {3})", spell.MyTitle, mana.MyCurrentValue, mana.MyMaxValue, spell.ManaCost);
             return;
         }
 
@@ -460,20 +450,9 @@ public class Player : Character
             Destroy(unusedSpell);
         }
 
-        bool hasTarget = MyTarget != null;
-        bool targetAlive = hasTarget && MyTarget.GetComponentInParent<Character>().IsAlive;
-        bool los = hasTarget && InLineOfSight();
-        bool inRange = hasTarget && InRange(spell, MyTarget.transform.position);
-
-        if (hasTarget && targetAlive && !IsAttacking && !IsMoving && los && inRange) //Chcks if we are able to attack
+        if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !IsAttacking && !IsMoving && InLineOfSight() && InRange(spell, MyTarget.transform.position)) //Chcks if we are able to attack
         {
-            DebugCast = string.Format("Cast {0} OK -> attaque lancee", spell.MyTitle);
             MyInitRoutine = StartCoroutine(AttackRoutine(spell));
-        }
-        else
-        {
-            DebugCast = string.Format("Cast {0} ANNULE: target={1} alive={2} attacking={3} moving={4} los={5} range={6} | LOS: {7}",
-                spell.MyTitle, hasTarget, targetAlive, IsAttacking, IsMoving, los, inRange, DebugLOS);
         }
     }
 
@@ -527,12 +506,6 @@ public class Player : Character
         }
     }
 
-    // --- DIAGNOSTIC TEMPORAIRE -------------------------------------
-    // Nom/tag/layer de ce qui bloque la ligne de vue, pour comprendre
-    // pourquoi InLineOfSight() renvoie false. A retirer avec DebugCast.
-    public static string DebugLOS = "";
-    // -----------------------------------------------------------------
-
     /// <summary>
     /// Checks if the target is in line of sight
     /// </summary>
@@ -550,13 +523,7 @@ public class Player : Character
             //If we didn't hit the block, then we can cast a spell
             if (hit.collider == null)
             {
-                DebugLOS = "";
                 return true;
-            }
-            else
-            {
-                DebugLOS = string.Format("bloque par {0} (tag={1} layer={2}) a dist={3:F2}",
-                    hit.collider.name, hit.collider.tag, LayerMask.LayerToName(hit.collider.gameObject.layer), hit.distance);
             }
 
         }

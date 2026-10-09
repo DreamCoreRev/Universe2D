@@ -79,13 +79,6 @@ public class GameManager : MonoBehaviour {
         ClickTarget();
     }
 
-    // --- DIAGNOSTIC TEMPORAIRE ---------------------------------------
-    // Trace la dernière fois qu'une cible a été choisie ou perdue, pour
-    // voir si un tap "raté" (à côté de l'ennemi) désélectionne la cible
-    // juste avant qu'on appuie sur le sort. A retirer avec DebugCast.
-    public static string DebugLastTarget = "";
-    // --------------------------------------------------------------------
-
     private void ClickTarget()
     {
         // Voir TouchInput.cs : EventSystem.IsPointerOverGameObject() sans
@@ -117,15 +110,25 @@ public class GameManager : MonoBehaviour {
             //Makes a raycast from the pointer position into the game world
             Vector3 pointerPos = TouchInput.GetPointerPosition();
             Vector3 worldPos = mainCamera.ScreenToWorldPoint(pointerPos);
-            RaycastHit2D hit = Physics2D.Raycast(worldPos,Vector2.zero,Mathf.Infinity,512);
+            RaycastHit2D hit = Physics2D.Raycast(worldPos,Vector2.zero,Mathf.Infinity,clickableLayer);
 
-            if (hit.collider != null && hit.collider.tag == "Enemy")//If we hit something
+            if (hit.collider != null && hit.collider.tag == "Enemy")//If we hit an enemy, select it as target
             {
                 DeSelectTarget();
 
                 SelectTarget(hit.collider.GetComponent<Enemy>());
-
-                DebugLastTarget = string.Format("Cible SELECTIONNEE: {0}", hit.collider.name);
+            }
+            else if (hit.collider != null && hit.collider.tag == "Interactable")//If we hit a neutral NPC or object, interact with it directly
+            {
+                // Il n'y a pas de clic droit au tactile : un simple tap sur un PNJ
+                // neutre ou un objet interactable (marchand, coffre, etc.)
+                // déclenche directement l'interaction, comme le ferait un clic
+                // droit sur PC (voir la branche Input.GetMouseButtonDown(1) ci-dessous).
+                IInteractable entity = hit.collider.gameObject.GetComponent<IInteractable>();
+                if (entity != null && player.MyInteractables.Contains(entity))
+                {
+                    entity.Interact();
+                }
             }
             else//Deselect the target
             {
@@ -136,8 +139,6 @@ public class GameManager : MonoBehaviour {
                 //We remove the references to the target
                 currentTarget = null;
                 player.MyTarget = null;
-
-                DebugLastTarget = string.Format("Cible PERDUE: tap a cote (hit={0})", hit.collider != null ? hit.collider.name + "/" + hit.collider.tag : "rien");
             }
         }
         else if (Input.GetMouseButtonDown(1) && !TouchInput.IsPointerOverUI())
