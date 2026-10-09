@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CharacterPanel : MonoBehaviour {
+public class CharacterPanel : MonoBehaviour, IPointerClickHandler {
 
     private static CharacterPanel instance;
 
@@ -69,6 +70,18 @@ public class CharacterPanel : MonoBehaviour {
             case ArmorType.Offhand:
                 off.EquipArmor(armor);
                 break;
+        }
+    }
+
+    // Tape n'importe où sur le fond du panneau Personnage (pas forcément sur
+    // le bon petit emplacement d'équipement) pour équiper l'objet qu'on a en
+    // main -- EquipArmor() sait déjà retrouver le bon emplacement tout seul
+    // via armor.MyArmorType, donc pas besoin de viser précisément au tactile.
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left && HandScript.MyInstance.MyMoveable is Armor)
+        {
+            (HandScript.MyInstance.MyMoveable as Armor).Equip();
         }
     }
 }
