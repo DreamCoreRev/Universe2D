@@ -52,14 +52,23 @@ public class HandScript : MonoBehaviour
     {
         //Makes sure that the icon follows the hand
         icon.transform.position = Input.mousePosition+offset;
+	}
 
-        if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject() && MyInstance.MyMoveable != null)
+    // LateUpdate s'exécute après l'Update() de l'EventSystem, donc
+    // IsPointerOverGameObject() reflète bien l'état du frame en cours --
+    // en le testant depuis Update() (comme avant), sur tactile il arrivait
+    // qu'il renvoie encore "pas sur une UI" au moment même où on tape sur un
+    // bouton valide (ex: la barre d'action), ce qui supprimait l'objet en
+    // main au lieu de le placer. On ne teste aussi qu'au moment précis où le
+    // doigt touche l'écran (GetMouseButtonDown), plutôt qu'à chaque frame
+    // tant qu'il reste posé.
+    void LateUpdate()
+    {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject() && MyInstance.MyMoveable != null)
         {
             DeleteItem();
         }
-
-      
-	}
+    }
 
     /// <summary>
     /// Take a moveable in the hand, so that we can move it around
