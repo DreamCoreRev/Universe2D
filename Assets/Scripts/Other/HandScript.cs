@@ -54,41 +54,20 @@ public class HandScript : MonoBehaviour
         icon.transform.position = Input.mousePosition+offset;
 	}
 
-    // EventSystem.IsPointerOverGameObject() SANS argument ne regarde que le
-    // pointeur "souris" (id -1). Sur un vrai doigt tactile, Unity utilise
-    // l'id du doigt (0, 1, 2...) et ne touche jamais l'id -1 -- du coup cet
-    // appel répondait presque toujours "pas sur une UI", même en tapant
-    // pile sur la barre d'action, et l'objet en main se faisait supprimer à
-    // chaque tap. Il faut vérifier l'id du doigt qui a réellement touché
-    // l'écran pour que ça marche correctement sur téléphone.
+    // Voir TouchInput.cs : EventSystem.IsPointerOverGameObject() sans
+    // argument ne reconnaît pas les vrais doigts tactiles, donc sans cet
+    // utilitaire l'objet en main se faisait supprimer à chaque tap, même en
+    // tapant pile sur un bouton valide.
     void LateUpdate()
     {
         bool justPressed = Input.touchCount > 0
             ? Input.GetTouch(0).phase == TouchPhase.Began
             : Input.GetMouseButtonDown(0);
 
-        if (justPressed && !IsPointerOverUI() && MyInstance.MyMoveable != null)
+        if (justPressed && !TouchInput.IsPointerOverUI() && MyInstance.MyMoveable != null)
         {
             DeleteItem();
         }
-    }
-
-    private static bool IsPointerOverUI()
-    {
-        if (Input.touchCount > 0)
-        {
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                if (EventSystem.current.IsPointerOverGameObject(Input.GetTouch(i).fingerId))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        return EventSystem.current.IsPointerOverGameObject();
     }
 
     /// <summary>

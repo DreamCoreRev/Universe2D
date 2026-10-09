@@ -70,10 +70,19 @@ public class GameManager : MonoBehaviour {
 
     private void ClickTarget()
     {
-        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())//If we click the left mouse button
+        // Voir TouchInput.cs : EventSystem.IsPointerOverGameObject() sans
+        // argument ne reconnaît que le pointeur souris (id -1), jamais un
+        // vrai doigt tactile -- du coup sur téléphone cette vérification
+        // répondait presque toujours "pas sur une UI", même en tapant sur
+        // un bouton, ce qui pouvait désélectionner la cible ou (si un doigt
+        // traînait ailleurs en même temps, ex: le joystick tactile) faire
+        // bouger le personnage sans qu'on l'ait demandé. On utilise aussi la
+        // position du doigt qui a vraiment tapé plutôt que la souris simulée,
+        // qui peut se mélanger si deux doigts touchent l'écran en même temps.
+        if (Input.GetMouseButtonDown(0) && !TouchInput.IsPointerOverUI())//If we click the left mouse button
         {
-            //Makes a raycast from the mouse position into the game world
-            RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition),Vector2.zero,Mathf.Infinity,512);
+            //Makes a raycast from the pointer position into the game world
+            RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()),Vector2.zero,Mathf.Infinity,512);
 
             if (hit.collider != null && hit.collider.tag == "Enemy")//If we hit something
             {
@@ -92,10 +101,10 @@ public class GameManager : MonoBehaviour {
                 player.MyTarget = null;
             }
         }
-        else if (Input.GetMouseButtonDown(1) && !EventSystem.current.IsPointerOverGameObject())
+        else if (Input.GetMouseButtonDown(1) && !TouchInput.IsPointerOverUI())
         {
-            //Makes a raycast from the mouse position into the game world
-            RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, clickableLayer);
+            //Makes a raycast from the pointer position into the game world
+            RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()), Vector2.zero, Mathf.Infinity, clickableLayer);
 
             if (hit.collider != null)
             {
@@ -107,11 +116,11 @@ public class GameManager : MonoBehaviour {
             }
             else
             {
-                hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, groundLayer);
+                hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()), Vector2.zero, Mathf.Infinity, groundLayer);
 
                 if (hit.collider != null)
                 {
-                    player.GetPath(mainCamera.ScreenToWorldPoint(Input.mousePosition));
+                    player.GetPath(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()));
                 }
             }
         }
