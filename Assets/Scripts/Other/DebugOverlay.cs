@@ -49,7 +49,7 @@ public class DebugOverlay : MonoBehaviour
         rect.anchorMax = new Vector2(1f, 1f);
         rect.pivot = new Vector2(0f, 1f);
         rect.anchoredPosition = new Vector2(16f, -140f);
-        rect.sizeDelta = new Vector2(-32f, 280f);
+        rect.sizeDelta = new Vector2(-32f, 340f);
 
         DebugOverlay overlay = canvasGO.AddComponent<DebugOverlay>();
         overlay.text = text;
@@ -59,7 +59,7 @@ public class DebugOverlay : MonoBehaviour
     {
         if (text != null)
         {
-            text.text = Player.DebugCast;
+            text.text = Player.DebugCast + "\n" + GameManager.DebugLastTarget;
         }
     }
 }

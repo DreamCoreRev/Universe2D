@@ -79,6 +79,13 @@ public class GameManager : MonoBehaviour {
         ClickTarget();
     }
 
+    // --- DIAGNOSTIC TEMPORAIRE ---------------------------------------
+    // Trace la dernière fois qu'une cible a été choisie ou perdue, pour
+    // voir si un tap "raté" (à côté de l'ennemi) désélectionne la cible
+    // juste avant qu'on appuie sur le sort. A retirer avec DebugCast.
+    public static string DebugLastTarget = "";
+    // --------------------------------------------------------------------
+
     private void ClickTarget()
     {
         // Voir TouchInput.cs : EventSystem.IsPointerOverGameObject() sans
@@ -117,6 +124,8 @@ public class GameManager : MonoBehaviour {
                 DeSelectTarget();
 
                 SelectTarget(hit.collider.GetComponent<Enemy>());
+
+                DebugLastTarget = string.Format("Cible SELECTIONNEE: {0}", hit.collider.name);
             }
             else//Deselect the target
             {
@@ -127,6 +136,8 @@ public class GameManager : MonoBehaviour {
                 //We remove the references to the target
                 currentTarget = null;
                 player.MyTarget = null;
+
+                DebugLastTarget = string.Format("Cible PERDUE: tap a cote (hit={0})", hit.collider != null ? hit.collider.name + "/" + hit.collider.tag : "rien");
             }
         }
         else if (Input.GetMouseButtonDown(1) && !TouchInput.IsPointerOverUI())
