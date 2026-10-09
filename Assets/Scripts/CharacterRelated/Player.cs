@@ -295,6 +295,33 @@ public class Player : Character
         {
             profession = FindObjectOfType<Profession>();
         }
+
+        if (health == null)
+        {
+            GameObject hp = GameObject.Find("UICanvas/Frame/HealthBackground/Health");
+            if (hp != null)
+            {
+                health = hp.GetComponent<Stat>();
+            }
+        }
+
+        if (mana == null)
+        {
+            GameObject mp = GameObject.Find("UICanvas/Frame/ManaBackground/Mana");
+            if (mp != null)
+            {
+                mana = mp.GetComponent<Stat>();
+            }
+        }
+
+        if (xpStat == null)
+        {
+            GameObject xp = GameObject.Find("UICanvas/Frame/XPBackground/XP");
+            if (xp != null)
+            {
+                xpStat = xp.GetComponent<Stat>();
+            }
+        }
     }
 
     /// <summary>

@@ -16126,6 +16126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 675758673}
   - component: {fileID: 675758674}
+  - component: {fileID: 1714666580}
   m_Layer: 0
   m_Name: PlayerParent
   m_TagString: Untagged
@@ -60778,3 +60779,15 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Déconnexion
+--- !u!114 &1714666580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675758672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f84591ce72545258ea98cb7518d8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
