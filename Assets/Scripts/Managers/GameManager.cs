@@ -62,11 +62,22 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        //Executes click target
-        ClickTarget();
-
         NextTarget();
 	}
+
+    // En LateUpdate (pas Update) : l'EventSystem traite les nouveaux
+    // doigts/touches pendant son propre Update(), donc si on vérifie
+    // TouchInput.IsPointerOverUI() depuis Update() comme avant, ça peut
+    // tomber sur le tout premier frame d'un nouveau doigt, avant que
+    // l'EventSystem ait fini de le traiter -- et IsPointerOverGameObject()
+    // répond alors "oui, sur une UI" par défaut pour ce doigt-là, même en
+    // tapant en plein sur une créature à découvert. En LateUpdate, ce frame
+    // est déjà résolu.
+    void LateUpdate()
+    {
+        //Executes click target
+        ClickTarget();
+    }
 
     private void ClickTarget()
     {
