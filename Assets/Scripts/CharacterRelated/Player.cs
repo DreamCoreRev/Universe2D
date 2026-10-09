@@ -421,6 +421,23 @@ public class Player : Character
             return;
         }
 
+        // exitIndex (la direction "face à") ne vient normalement que des
+        // touches/du joystick tactile (voir GetInput()). Block() s'en sert
+        // pour activer 2 des 4 colliders "Blocks" du joueur et bloquer la
+        // ligne de vue DERRIERE lui -- ça empêche de lancer un sort sur une
+        // cible qu'on ne "regarde" pas. Sur PC ça passait inaperçu car on
+        // marche généralement vers ce qu'on attaque avant de lancer un
+        // sort, donc exitIndex pointait déjà au bon endroit. Sur mobile, on
+        // sélectionne la cible d'un tap sans bouger, donc exitIndex restait
+        // sur une ancienne direction et le mur anti-dos-tourné se
+        // retrouvait entre le joueur et la cible -> InLineOfSight() voyait
+        // toujours "bloqué". On réoriente donc le joueur vers sa cible
+        // juste avant d'activer les blocks.
+        if (MyTarget != null)
+        {
+            exitIndex = GetExitIndexTowards(MyTarget.transform.position);
+        }
+
         Block();
 
         if (spell.ManaCost > mana.MyCurrentValue)
@@ -546,6 +563,25 @@ public class Player : Character
 
         //If we hit the block we can't cast a spell
         return false;
+    }
+
+    /// <summary>
+    /// Convertit une direction vers un point en le meme index que exitIndex
+    /// (0=haut, 1=droite, 2=bas, 3=gauche -- voir GetInput()), pour pouvoir
+    /// orienter le joueur vers sa cible au moment de lancer un sort.
+    /// </summary>
+    private int GetExitIndexTowards(Vector3 targetPos)
+    {
+        Vector2 dir = targetPos - transform.position;
+
+        if (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+        {
+            return dir.x > 0 ? 1 : 3; // droite : gauche
+        }
+        else
+        {
+            return dir.y > 0 ? 0 : 2; // haut : bas
+        }
     }
 
     /// <summary>
