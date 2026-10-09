@@ -406,30 +406,57 @@ public class Player : Character
     /// <summary>
     /// Casts a spell
     /// </summary>
+    // --- DIAGNOSTIC TEMPORAIRE ---------------------------------------
+    // Affiché à l'écran par DebugOverlay.cs le temps de comprendre pourquoi
+    // taper sur un sort (bouton action) n'attaque pas la cible sur mobile.
+    // À retirer une fois le bug trouvé.
+    public static string DebugCast = "";
+    // --------------------------------------------------------------------
+
     public void CastSpell(Spell spell)
     {
-        if (!spell.OnCooldown)
+        if (spell.OnCooldown)
         {
-            Block();
+            DebugCast = string.Format("Cast {0} ANNULE: en recharge", spell.MyTitle);
+            return;
+        }
 
-            if (spell.ManaCost <= mana.MyCurrentValue)
-            {
-                if (!spell.NeedsTarget && unusedSpell == null)
-                {
-                    unusedSpell = Instantiate(spell.MySpellPrefab, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);
-                    unusedSpell.transform.position = new Vector3(unusedSpell.transform.position.x, unusedSpell.transform.position.y, 0);
-                    aoeSpell = spell;
-                }
-                else
-                {
-                    Destroy(unusedSpell);
-                }
+        Block();
 
-                if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !IsAttacking && !IsMoving && InLineOfSight() && InRange(spell, MyTarget.transform.position)) //Chcks if we are able to attack
-                {
-                    MyInitRoutine = StartCoroutine(AttackRoutine(spell));
-                }
-            }
+        if (spell.ManaCost > mana.MyCurrentValue)
+        {
+            DebugCast = string.Format("Cast {0} ANNULE: mana {1}/{2} (cout {3})", spell.MyTitle, mana.MyCurrentValue, mana.MyMaxValue, spell.ManaCost);
+            return;
+        }
+
+        if (!spell.NeedsTarget && unusedSpell == null)
+        {
+            // Utilise la position du doigt/souris réelle (voir TouchInput.cs) plutot
+            // que Input.mousePosition, qui n'est pas fiable pour un vrai tactile.
+            Vector3 castPos = Camera.main.ScreenToWorldPoint(TouchInput.GetPointerPosition());
+            unusedSpell = Instantiate(spell.MySpellPrefab, castPos, Quaternion.identity);
+            unusedSpell.transform.position = new Vector3(unusedSpell.transform.position.x, unusedSpell.transform.position.y, 0);
+            aoeSpell = spell;
+        }
+        else
+        {
+            Destroy(unusedSpell);
+        }
+
+        bool hasTarget = MyTarget != null;
+        bool targetAlive = hasTarget && MyTarget.GetComponentInParent<Character>().IsAlive;
+        bool los = hasTarget && InLineOfSight();
+        bool inRange = hasTarget && InRange(spell, MyTarget.transform.position);
+
+        if (hasTarget && targetAlive && !IsAttacking && !IsMoving && los && inRange) //Chcks if we are able to attack
+        {
+            DebugCast = string.Format("Cast {0} OK -> attaque lancee", spell.MyTitle);
+            MyInitRoutine = StartCoroutine(AttackRoutine(spell));
+        }
+        else
+        {
+            DebugCast = string.Format("Cast {0} ANNULE: target={1} alive={2} attacking={3} moving={4} los={5} range={6}",
+                spell.MyTitle, hasTarget, targetAlive, IsAttacking, IsMoving, los, inRange);
         }
     }
 

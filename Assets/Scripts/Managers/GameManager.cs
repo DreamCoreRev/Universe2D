@@ -79,13 +79,6 @@ public class GameManager : MonoBehaviour {
         ClickTarget();
     }
 
-    // --- DIAGNOSTIC TEMPORAIRE ---------------------------------------
-    // Affiché à l'écran par DebugOverlay.cs le temps de comprendre pourquoi
-    // le ciblage tactile ne marche pas. À retirer une fois le bug trouvé.
-    public static string DebugLine1 = "";
-    public static string DebugLine2 = "";
-    // --------------------------------------------------------------------
-
     private void ClickTarget()
     {
         // Voir TouchInput.cs : EventSystem.IsPointerOverGameObject() sans
@@ -112,21 +105,12 @@ public class GameManager : MonoBehaviour {
 
         bool overUI = TouchInput.IsPointerOverUI();
 
-        string touchPhase = Input.touchCount > 0 ? Input.GetTouch(0).phase.ToString() : "-";
-        DebugLine1 = string.Format("touches={0} phase={1} overUI={2}", Input.touchCount, touchPhase, overUI);
-
         if (leftPressed && !overUI)//If we click the left mouse button
         {
             //Makes a raycast from the pointer position into the game world
             Vector3 pointerPos = TouchInput.GetPointerPosition();
             Vector3 worldPos = mainCamera.ScreenToWorldPoint(pointerPos);
             RaycastHit2D hit = Physics2D.Raycast(worldPos,Vector2.zero,Mathf.Infinity,512);
-
-            DebugLine2 = string.Format("scr={0:F0},{1:F0} ({2}x{3}) world={4:F1},{5:F1} cam={6:F1},{7:F1} oSize={8:F1} hit={9}",
-                pointerPos.x, pointerPos.y, Screen.width, Screen.height,
-                worldPos.x, worldPos.y,
-                mainCamera.transform.position.x, mainCamera.transform.position.y, mainCamera.orthographicSize,
-                hit.collider != null ? hit.collider.name + "/" + hit.collider.tag : "AUCUN");
 
             if (hit.collider != null && hit.collider.tag == "Enemy")//If we hit something
             {
@@ -144,10 +128,6 @@ public class GameManager : MonoBehaviour {
                 currentTarget = null;
                 player.MyTarget = null;
             }
-        }
-        else if (leftPressed && overUI)
-        {
-            DebugLine2 = "tap IGNORÉ (overUI=true)";
         }
         else if (Input.GetMouseButtonDown(1) && !TouchInput.IsPointerOverUI())
         {

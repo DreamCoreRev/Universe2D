@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-// DIAGNOSTIC TEMPORAIRE : affiche en haut de l'écran les infos de
-// GameManager.DebugLine1/2 (voir GameManager.ClickTarget()) pour comprendre
-// pourquoi le ciblage tactile des ennemis ne marche pas sur téléphone. Ce
-// fichier est à supprimer une fois le bug trouvé.
+// DIAGNOSTIC TEMPORAIRE : affiche en haut de l'écran Player.DebugCast (voir
+// Player.CastSpell()) pour comprendre pourquoi taper sur un sort n'attaque
+// pas la cible sur téléphone. Ce fichier est à supprimer une fois le bug trouvé.
 public class DebugOverlay : MonoBehaviour
 {
     private Text text;
@@ -60,7 +59,7 @@ public class DebugOverlay : MonoBehaviour
     {
         if (text != null)
         {
-            text.text = GameManager.DebugLine1 + "\n" + GameManager.DebugLine2;
+            text.text = Player.DebugCast;
         }
     }
 }
