@@ -36,7 +36,7 @@ public class DebugOverlay : MonoBehaviour
         {
             text.font = Font.CreateDynamicFontFromOSFont("Arial", 22);
         }
-        text.fontSize = 18;
+        text.fontSize = 15;
         text.color = Color.yellow;
         text.alignment = TextAnchor.UpperLeft;
         text.raycastTarget = false;
@@ -49,7 +49,7 @@ public class DebugOverlay : MonoBehaviour
         rect.anchorMax = new Vector2(1f, 1f);
         rect.pivot = new Vector2(0f, 1f);
         rect.anchoredPosition = new Vector2(16f, -140f);
-        rect.sizeDelta = new Vector2(-32f, 220f);
+        rect.sizeDelta = new Vector2(-32f, 280f);
 
         DebugOverlay overlay = canvasGO.AddComponent<DebugOverlay>();
         overlay.text = text;

@@ -455,8 +455,8 @@ public class Player : Character
         }
         else
         {
-            DebugCast = string.Format("Cast {0} ANNULE: target={1} alive={2} attacking={3} moving={4} los={5} range={6}",
-                spell.MyTitle, hasTarget, targetAlive, IsAttacking, IsMoving, los, inRange);
+            DebugCast = string.Format("Cast {0} ANNULE: target={1} alive={2} attacking={3} moving={4} los={5} range={6} | LOS: {7}",
+                spell.MyTitle, hasTarget, targetAlive, IsAttacking, IsMoving, los, inRange, DebugLOS);
         }
     }
 
@@ -510,6 +510,12 @@ public class Player : Character
         }
     }
 
+    // --- DIAGNOSTIC TEMPORAIRE -------------------------------------
+    // Nom/tag/layer de ce qui bloque la ligne de vue, pour comprendre
+    // pourquoi InLineOfSight() renvoie false. A retirer avec DebugCast.
+    public static string DebugLOS = "";
+    // -----------------------------------------------------------------
+
     /// <summary>
     /// Checks if the target is in line of sight
     /// </summary>
@@ -527,7 +533,13 @@ public class Player : Character
             //If we didn't hit the block, then we can cast a spell
             if (hit.collider == null)
             {
+                DebugLOS = "";
                 return true;
+            }
+            else
+            {
+                DebugLOS = string.Format("bloque par {0} (tag={1} layer={2}) a dist={3:F2}",
+                    hit.collider.name, hit.collider.tag, LayerMask.LayerToName(hit.collider.gameObject.layer), hit.distance);
             }
 
         }
