@@ -111,7 +111,20 @@ public class AStar : MonoBehaviour
                 {
                     Vector3Int neighbourPosition = new Vector3Int(parentPosition.x - x, parentPosition.y - y, parentPosition.z);
 
-                    if (neighbourPosition != startPos && !GameManager.MyInstance.Blocked.Contains(neighbourPosition))
+                    // Nothing here stopped the search from wandering outside the
+                    // tilemap's own painted area -- only explicit obstacles
+                    // (GameManager.Blocked) were excluded. A click on a tile that
+                    // has a ground collider but is cut off from the rest of the
+                    // level (no obstacle marking it, just nothing walkable beyond
+                    // it) let the search keep creating new Nodes outward forever,
+                    // since openList never ran out and the loop in Algorithm()
+                    // never saw path or an empty openList -- a true infinite loop,
+                    // which is what froze the game hard enough to need Task
+                    // Manager instead of just logging an error. Restricting
+                    // neighbours to cellBounds caps the search to the map's
+                    // actual size, so it always finishes (and returns null if the
+                    // goal truly can't be reached) instead of running away.
+                    if (neighbourPosition != startPos && MyTilemap.cellBounds.Contains(neighbourPosition) && !GameManager.MyInstance.Blocked.Contains(neighbourPosition))
                     {
                         Node neighbour = GetNode(neighbourPosition);
                         neighbours.Add(neighbour);
