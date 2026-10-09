@@ -124,7 +124,10 @@ public abstract class Character : MonoBehaviour
     {
         get
         {
-          return  health.MyCurrentValue > 0;
+            // health peut etre vide pour un Character reseau dont on ne
+            // simule pas le combat localement (voir Player.IsLocallyControlled) --
+            // dans ce cas on le considere simplement vivant plutot que de planter.
+            return health == null || health.MyCurrentValue > 0;
         }
     }
 
@@ -155,6 +158,16 @@ public abstract class Character : MonoBehaviour
         {
             return myRigidbody;
         }
+    }
+
+    /// <summary>
+    /// Permet aux sous-classes (voir Player.EnsurePlayerParent) de brancher
+    /// un Rigidbody2D different de celui du prefab -- myRigidbody est prive
+    /// donc inaccessible directement depuis Player.cs.
+    /// </summary>
+    protected void SetRigidbody(Rigidbody2D rb)
+    {
+        myRigidbody = rb;
     }
 
     public Transform MyHitbox

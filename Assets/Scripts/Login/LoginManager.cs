@@ -83,7 +83,21 @@ public class LoginManager : MonoBehaviour
         // Petite pause pour laisser le temps de lire le message "Connecte"
         // avant que la scene change.
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene(gameSceneName);
+
+        if (Mirror.NetworkManager.singleton != null)
+        {
+            // Le NetworkManager (objet "NetworkManager" dans cette scene,
+            // persiste via DontDestroyOnLoad) se connecte au serveur dedie
+            // et charge lui-meme la scene de jeu une fois connecte -- plus
+            // besoin de SceneManager.LoadScene ici.
+            Mirror.NetworkManager.singleton.StartClient();
+        }
+        else
+        {
+            // Filet de securite si le NetworkManager n'est pas present dans
+            // la scene (ex: test solo rapide) -- comportement d'avant.
+            SceneManager.LoadScene(gameSceneName);
+        }
     }
 
     private void SetBusy(bool busy)

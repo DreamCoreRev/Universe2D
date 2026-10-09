@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,34 @@ public class Player : Character
             }
 
             return instance;
+        }
+    }
+
+    private NetworkIdentity netIdentity;
+
+    /// <summary>
+    /// Vrai si c'est NOUS qui controlons ce Player (clavier/joystick/UI) :
+    /// - en solo (pas de session Mirror active, ex: Play direct sur Demo.unity
+    ///   sans passer par le login), on se comporte exactement comme avant ;
+    /// - en reseau, seul le Player possede par notre connexion l'est.
+    /// L'avatar d'un autre joueur connecte ne doit JAMAIS lire nos touches
+    /// ni toucher a notre UI (minimap, barres de vie, camera...).
+    /// </summary>
+    public bool IsLocallyControlled
+    {
+        get
+        {
+            if (netIdentity == null)
+            {
+                netIdentity = GetComponent<NetworkIdentity>();
+            }
+
+            if (netIdentity == null || !NetworkClient.active)
+            {
+                return true;
+            }
+
+            return netIdentity.isLocalPlayer;
         }
     }
 
@@ -167,7 +196,105 @@ public class Player : Character
     protected override void Start()
     {
         base.Start();
-        StartCoroutine(Regen());
+
+        EnsurePlayerParent();
+
+        if (IsLocallyControlled)
+        {
+            instance = this;
+            ResolveLocalReferences();
+            StartCoroutine(Regen());
+        }
+    }
+
+    /// <summary>
+    /// ClickToMove/SetDefaultValues/Respawn deplacent transform.parent, pas
+    /// ce transform directement -- en solo ce parent ("PlayerParent") existe
+    /// deja dans la scene. Un Player cree dynamiquement par Mirror n'a pas
+    /// de parent du tout : on s'en recree un identique ici (meme config que
+    /// PlayerParent dans Demo.unity) pour que le reste du script marche sans
+    /// aucun changement, que ce soit notre joueur ou celui d'un autre.
+    /// </summary>
+    private void EnsurePlayerParent()
+    {
+        if (transform.parent != null)
+        {
+            return;
+        }
+
+        GameObject parentGO = new GameObject("PlayerParent");
+        parentGO.transform.position = transform.position;
+
+        Rigidbody2D parentRb = parentGO.AddComponent<Rigidbody2D>();
+        parentRb.gravityScale = 0;
+        parentRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        // Le prefab a son propre Rigidbody2D (visible dans l'editeur de
+        // prefab), mais la scene solo le retire et utilise a la place celui
+        // du parent -- sinon on a 2 corps physiques empiles qui se genent.
+        // On reproduit ca ici.
+        Rigidbody2D ownRb = GetComponent<Rigidbody2D>();
+        if (ownRb != null)
+        {
+            Destroy(ownRb);
+        }
+
+        SetRigidbody(parentRb);
+
+        transform.SetParent(parentGO.transform, true);
+    }
+
+    /// <summary>
+    /// mainCam/astar/minimapIcon/levelText/ding/profession sont branches a
+    /// la main dans Demo.unity sur l'UNIQUE Player de la scene -- un Player
+    /// cree dynamiquement par Mirror (nous y compris, une fois connecte en
+    /// reseau) n'a aucune de ces references. On les retrouve nous-memes ici.
+    /// Seulement pour le joueur qu'on controle : l'UI (minimap, texte de
+    /// niveau...) est la notre, pas celle d'un autre joueur connecte.
+    /// </summary>
+    private void ResolveLocalReferences()
+    {
+        if (mainCam == null)
+        {
+            mainCam = Camera.main;
+        }
+
+        if (astar == null)
+        {
+            astar = FindObjectOfType<AStar>();
+        }
+
+        if (minimapIcon == null)
+        {
+            GameObject icon = GameObject.Find("MinimapIcon");
+            if (icon != null)
+            {
+                minimapIcon = icon.transform;
+            }
+        }
+
+        if (levelText == null)
+        {
+            GameObject text = GameObject.Find("UICanvas/Frame/LevelFrame/Text");
+            if (text != null)
+            {
+                levelText = text.GetComponent<Text>();
+            }
+        }
+
+        if (ding == null)
+        {
+            GameObject dingGO = GameObject.Find("Ding");
+            if (dingGO != null)
+            {
+                ding = dingGO.GetComponent<Animator>();
+            }
+        }
+
+        if (profession == null)
+        {
+            profession = FindObjectOfType<Profession>();
+        }
     }
 
     /// <summary>
@@ -175,39 +302,47 @@ public class Player : Character
     /// </summary>
     protected override void Update()
     {
-        //Executes the GetInput function
-        GetInput();
-        ClickToMove();
-
-        //Clamps the player inside the tilemap
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x),
-            Mathf.Clamp(transform.position.y, min.y, max.y),
-            transform.position.z);
-
-        if (unusedSpell != null)
+        // Tout ce bloc (clavier/joystick/clic, limites de la map, ciblage
+        // de sort AOE) ne doit s'executer QUE pour le joueur qu'on controle
+        // reellement -- voir IsLocallyControlled. L'avatar d'un autre
+        // joueur connecte continue de s'animer (base.Update() plus bas)
+        // mais ne lit jamais nos entrees ni ne touche a notre UI.
+        if (IsLocallyControlled)
         {
-            Vector3 mouseScreenPostion = mainCam.ScreenToWorldPoint(Input.mousePosition);
-            unusedSpell.transform.position = new Vector3(mouseScreenPostion.x, mouseScreenPostion.y, 0);
+            //Executes the GetInput function
+            GetInput();
+            ClickToMove();
 
-            float distance = Vector2.Distance(transform.position, mainCam.ScreenToWorldPoint(Input.mousePosition));
+            //Clamps the player inside the tilemap
+            transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x),
+                Mathf.Clamp(transform.position.y, min.y, max.y),
+                transform.position.z);
 
-            if (distance >= aoeSpell.MyRange)
+            if (unusedSpell != null)
             {
-                unusedSpell.GetComponent<AOESpell>().OutOfRange();
-            }
-            else
-            {
-                unusedSpell.GetComponent<AOESpell>().InRange();
-            }
+                Vector3 mouseScreenPostion = mainCam.ScreenToWorldPoint(Input.mousePosition);
+                unusedSpell.transform.position = new Vector3(mouseScreenPostion.x, mouseScreenPostion.y, 0);
 
-            if (Input.GetMouseButtonDown(0) && distance <= aoeSpell.MyRange)
-            {
-                AOESpell s = Instantiate(aoeSpell.MySpellPrefab, unusedSpell.transform.position, Quaternion.identity).GetComponent<AOESpell>();
-                Destroy(unusedSpell);
-                unusedSpell = null;
-                s.Initialize(aoeSpell.MyDamage, aoeSpell.MyDuration);
-                mana.MyCurrentValue -= aoeSpell.ManaCost;
-                StartCoroutine(SpellBook.MyInstance.CastCooldown(aoeSpell));
+                float distance = Vector2.Distance(transform.position, mainCam.ScreenToWorldPoint(Input.mousePosition));
+
+                if (distance >= aoeSpell.MyRange)
+                {
+                    unusedSpell.GetComponent<AOESpell>().OutOfRange();
+                }
+                else
+                {
+                    unusedSpell.GetComponent<AOESpell>().InRange();
+                }
+
+                if (Input.GetMouseButtonDown(0) && distance <= aoeSpell.MyRange)
+                {
+                    AOESpell s = Instantiate(aoeSpell.MySpellPrefab, unusedSpell.transform.position, Quaternion.identity).GetComponent<AOESpell>();
+                    Destroy(unusedSpell);
+                    unusedSpell = null;
+                    s.Initialize(aoeSpell.MyDamage, aoeSpell.MyDuration);
+                    mana.MyCurrentValue -= aoeSpell.ManaCost;
+                    StartCoroutine(SpellBook.MyInstance.CastCooldown(aoeSpell));
+                }
             }
         }
 
@@ -222,7 +357,10 @@ public class Player : Character
         strength = 0;
         ResetStats();
         MyXp.Initialize(0, Mathf.Floor(100 * MyLevel * Mathf.Pow(MyLevel, 0.5f)));
-        levelText.text = MyLevel.ToString();
+        if (levelText != null)
+        {
+            levelText.text = MyLevel.ToString();
+        }
         initPos = transform.parent.position;
         UIManager.MyInstance.UpdateStatsText(intellect, stamina, strength);
     }
@@ -280,7 +418,7 @@ public class Player : Character
         {
             exitIndex = 0;
             Direction += Vector2.up;
-            minimapIcon.eulerAngles = new Vector3(0, 0, 0);
+            if (minimapIcon != null) { minimapIcon.eulerAngles = new Vector3(0, 0, 0); }
         }
         if (Input.GetKey(KeybindManager.MyInstance.Keybinds["LEFT"])) //Moves left
         {
@@ -288,7 +426,7 @@ public class Player : Character
             Direction += Vector2.left;
             if (Direction.y == 0)
             {
-                minimapIcon.eulerAngles = new Vector3(0, 0, 90);
+                if (minimapIcon != null) { minimapIcon.eulerAngles = new Vector3(0, 0, 90); }
             }
 
         }
@@ -297,7 +435,7 @@ public class Player : Character
             exitIndex = 2;
             Direction += Vector2.down;
 
-            minimapIcon.eulerAngles = new Vector3(0, 0, 180);
+            if (minimapIcon != null) { minimapIcon.eulerAngles = new Vector3(0, 0, 180); }
         }
         if (Input.GetKey(KeybindManager.MyInstance.Keybinds["RIGHT"])) //Moves right
         {
@@ -305,7 +443,7 @@ public class Player : Character
             Direction += Vector2.right;
             if (Direction.y == 0)
             {
-                minimapIcon.eulerAngles = new Vector3(0, 0, 270);
+                if (minimapIcon != null) { minimapIcon.eulerAngles = new Vector3(0, 0, 270); }
             }
 
         }
@@ -639,8 +777,14 @@ public class Player : Character
         }
 
         MyLevel++;
-        ding.SetTrigger("Ding");
-        levelText.text = MyLevel.ToString();
+        if (ding != null)
+        {
+            ding.SetTrigger("Ding");
+        }
+        if (levelText != null)
+        {
+            levelText.text = MyLevel.ToString();
+        }
         MyXp.MyMaxValue = 100 * MyLevel * Mathf.Pow(MyLevel, 0.5f);
         MyXp.MyMaxValue = Mathf.Floor(MyXp.MyMaxValue);
         MyXp.MyCurrentValue = MyXp.MyOverflow;
@@ -685,11 +829,22 @@ public class Player : Character
 
     public void UpdateLevel()
     {
-        levelText.text = MyLevel.ToString();
+        if (levelText != null)
+        {
+            levelText.text = MyLevel.ToString();
+        }
     }
 
     public void GetPath(Vector3 goal)
     {
+        // astar n'existe que pour le joueur qu'on controle (voir
+        // ResolveLocalReferences) -- sans lui, pas de clic-pour-se-deplacer,
+        // mais le reste (clavier/joystick) continue de marcher normalement.
+        if (astar == null)
+        {
+            return;
+        }
+
         // ClickToMove() drives movement through transform.parent (see
         // initPos/destination below), not through this script's own
         // transform -- so the search has to start from transform.parent
