@@ -1,0 +1,12 @@
+{
+  "MySql": {
+    "Host": "localhost",
+    "Port": 3306,
+    "Database": "universe2d",
+    "User": "universe2d_auth",
+    "Password": "CHANGE_ME"
+  },
+  "Http": {
+    "Prefix": "http://localhost:8080/"
+  }
+}

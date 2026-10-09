@@ -1,0 +1,8 @@
+bin/
+obj/
+config.json
+
+# Le .gitignore racine du projet Unity ignore *.csproj (fichiers generes
+# par Unity pour l'edition de script) -- mais celui-ci est ecrit a la main,
+# il doit etre suivi par Git.
+!AuthServer.csproj
