@@ -204,6 +204,17 @@ public class Player : Character
             instance = this;
             ResolveLocalReferences();
             StartCoroutine(Regen());
+
+            // En reseau, SaveManager.Start() s'est deja execute avant que ce
+            // Player existe (voir SaveManager.cs) -- on le rappelle ici pour
+            // qu'il initialise nos stats maintenant qu'on existe vraiment.
+            // Sans ca la vie reste a 0 et le personnage est considere mort
+            // des le depart (IsAlive == false).
+            SaveManager saveManager = FindObjectOfType<SaveManager>();
+            if (saveManager != null)
+            {
+                saveManager.TryInitializePlayer();
+            }
         }
     }
 

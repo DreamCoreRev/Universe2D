@@ -46,8 +46,30 @@ public class SaveManager : MonoBehaviour
 
     }
 
+    private bool playerInitialized = false;
+
     private void Start()
     {
+        TryInitializePlayer();
+    }
+
+    /// <summary>
+    /// En solo, Player.MyInstance existe deja au chargement de Demo (place
+    /// a la main dans la scene), donc ca marche directement depuis Start().
+    /// En reseau, le Player local n'existe pas encore a cet instant (Mirror
+    /// le cree juste apres la connexion) -- Player.cs nous rappelle alors
+    /// lui-meme des qu'il est pret. Le flag evite de tout initialiser 2 fois
+    /// si les deux appels finissent par arriver (cas solo).
+    /// </summary>
+    public void TryInitializePlayer()
+    {
+        if (playerInitialized || Player.MyInstance == null)
+        {
+            return;
+        }
+
+        playerInitialized = true;
+
         if (PlayerPrefs.HasKey("Load"))
         {
             Load(saveSlots[PlayerPrefs.GetInt("Load")]);
