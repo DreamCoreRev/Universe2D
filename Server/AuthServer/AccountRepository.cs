@@ -58,26 +58,38 @@ public sealed class AccountRepository
             using var conn = new MySqlConnection(connectionString);
             await conn.OpenAsync();
 
-            using var cmd = conn.CreateCommand();
-            cmd.CommandText = @"
-                SELECT password_hash, password_salt, password_iterations, is_banned
-                FROM accounts
-                WHERE username = @username
-                LIMIT 1;";
-            cmd.Parameters.AddWithValue("@username", username);
+            byte[] hash;
+            byte[] salt;
+            int iterations;
+            bool isBanned;
 
-            using var reader = await cmd.ExecuteReaderAsync();
-            if (!await reader.ReadAsync())
+            // Le lecteur (reader) et sa commande sont dans leur propre bloc
+            // using, pour etre bien fermes avant qu'on essaie d'executer la
+            // commande UPDATE plus bas sur la meme connexion -- MySqlConnector
+            // refuse une 2e commande tant qu'un reader est encore ouvert
+            // dessus ("There is already an open DataReader...").
+            using (var cmd = conn.CreateCommand())
             {
-                // Compte inexistant : meme resultat qu'un mauvais mot de
-                // passe, pour ne pas reveler quels noms d'utilisateur existent.
-                return LoginResult.InvalidCredentials;
-            }
+                cmd.CommandText = @"
+                    SELECT password_hash, password_salt, password_iterations, is_banned
+                    FROM accounts
+                    WHERE username = @username
+                    LIMIT 1;";
+                cmd.Parameters.AddWithValue("@username", username);
 
-            byte[] hash = (byte[])reader["password_hash"];
-            byte[] salt = (byte[])reader["password_salt"];
-            int iterations = (int)reader["password_iterations"];
-            bool isBanned = Convert.ToBoolean(reader["is_banned"]);
+                using var reader = await cmd.ExecuteReaderAsync();
+                if (!await reader.ReadAsync())
+                {
+                    // Compte inexistant : meme resultat qu'un mauvais mot de
+                    // passe, pour ne pas reveler quels noms d'utilisateur existent.
+                    return LoginResult.InvalidCredentials;
+                }
+
+                hash = (byte[])reader["password_hash"];
+                salt = (byte[])reader["password_salt"];
+                iterations = (int)reader["password_iterations"];
+                isBanned = Convert.ToBoolean(reader["is_banned"]);
+            }
 
             if (isBanned)
             {
