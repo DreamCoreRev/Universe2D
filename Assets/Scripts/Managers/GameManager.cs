@@ -13,11 +13,16 @@ public class GameManager : MonoBehaviour {
 
     private static GameManager instance;
 
-    /// <summary>
-    /// A reference to the player object
-    /// </summary>
-    [SerializeField]
-    private Player player;
+    // Avant, une reference scene-wired vers l'UNIQUE Player de Demo.unity
+    // (voir [SerializeField] private Player player). En reseau, Mirror
+    // instancie un nouveau Player a chaque connexion -- cette reference
+    // figee pointait donc vers l'ancienne instance desactivee, jamais vers
+    // celui qu'on controle reellement. player.MyTarget = ... ecrivait donc
+    // sur le mauvais objet : le ciblage semblait marcher (barre de vie du
+    // monstre affichee par Enemy.Select(), independant de ca) mais
+    // Player.MyInstance.MyTarget restait toujours null, empechant tout
+    // sort necessitant une cible de partir. On utilise donc partout
+    // Player.MyInstance, comme le reste du projet.
 
     [SerializeField]
     private LayerMask clickableLayer, groundLayer;
@@ -122,7 +127,7 @@ public class GameManager : MonoBehaviour {
                     // attaquer) : un tap dessus la loot directement, comme le
                     // ferait un clic droit sur PC (Enemy.Interact() gère le loot
                     // quand IsAlive est faux).
-                    if (player.MyInteractables.Contains(enemy))
+                    if (Player.MyInstance.MyInteractables.Contains(enemy))
                     {
                         enemy.Interact();
                     }
@@ -141,7 +146,7 @@ public class GameManager : MonoBehaviour {
                 // déclenche directement l'interaction, comme le ferait un clic
                 // droit sur PC (voir la branche Input.GetMouseButtonDown(1) ci-dessous).
                 IInteractable entity = hit.collider.gameObject.GetComponent<IInteractable>();
-                if (entity != null && player.MyInteractables.Contains(entity))
+                if (entity != null && Player.MyInstance.MyInteractables.Contains(entity))
                 {
                     entity.Interact();
                 }
@@ -154,7 +159,7 @@ public class GameManager : MonoBehaviour {
 
                 //We remove the references to the target
                 currentTarget = null;
-                player.MyTarget = null;
+                Player.MyInstance.MyTarget = null;
             }
         }
         else if (Input.GetMouseButtonDown(1) && !TouchInput.IsPointerOverUI())
@@ -165,7 +170,7 @@ public class GameManager : MonoBehaviour {
             if (hit.collider != null)
             {
                 IInteractable entity = hit.collider.gameObject.GetComponent<IInteractable>();
-                if (hit.collider != null && (hit.collider.tag == "Enemy" || hit.collider.tag == "Interactable") && player.MyInteractables.Contains(entity))
+                if (hit.collider != null && (hit.collider.tag == "Enemy" || hit.collider.tag == "Interactable") && Player.MyInstance.MyInteractables.Contains(entity))
                 {
                     entity.Interact();
                 }
@@ -176,7 +181,7 @@ public class GameManager : MonoBehaviour {
 
                 if (hit.collider != null)
                 {
-                    player.GetPath(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()));
+                    Player.MyInstance.GetPath(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()));
                 }
             }
         }
@@ -223,7 +228,7 @@ public class GameManager : MonoBehaviour {
     private void SelectTarget(Enemy enemy)
     {
         currentTarget = enemy;
-        player.MyTarget = currentTarget.Select();
+        Player.MyInstance.MyTarget = currentTarget.Select();
         UIManager.MyInstance.ShowTargetFrame(currentTarget);
 
 
