@@ -65,15 +65,15 @@ public class TouchMenuButtons : MonoBehaviour
 	// les cases de sacs juste a cote.
 	private const float BUTTON_SIZE = 26f;
 	private const float SPACING = 4f;
-	// Repoussee de 20px vers la droite par rapport au reglage precedent
-	// (30 - 20 = 10).
-	private const float MARGIN_RIGHT = 10f;
+	// Repoussee de 12px vers la gauche par rapport au reglage precedent
+	// (10 + 12 = 22).
+	private const float MARGIN_RIGHT = 22f;
 	// Hauteur au-dessus du coin bas-droit a laquelle la rangee est ancree,
 	// pour la placer juste au-dessus des cases de sacs (voir BagBar dans
 	// Demo.unity, ancree pareil en bas a droite) -- comme le "micro menu"
-	// de Wow, juste au-dessus de la barre de sacs. Remontee de 6px par
-	// rapport au reglage precedent (0 -> 6).
-	private const float MARGIN_BOTTOM = 6f;
+	// de Wow, juste au-dessus de la barre de sacs. Redescendue de 3px par
+	// rapport au reglage precedent (6 -> 3).
+	private const float MARGIN_BOTTOM = 3f;
 	private const float TOOLTIP_SHOW_SECONDS = 1.2f;
 
 	// Seule la scene de jeu (Demo.unity) doit afficher cette barre -- pas

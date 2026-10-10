@@ -11,23 +11,23 @@ Direct3D:
     VRAM:     8150 MB
     Driver:   32.0.31041.1004
 Begin MonoManager ReloadAssembly
-- Completed reload, in  0.103 seconds
+- Completed reload, in  0.102 seconds
 <RI> Initializing input.
-D3D11 device created for Microsoft Media Foundation video decoding.
 <RI> Input initialized.
+D3D11 device created for Microsoft Media Foundation video decoding.
 <RI> Initialized touch support.
-UnloadTime: 0.976700 ms
+UnloadTime: 0.810000 ms
 ThreadLog initialized.
 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.069800 ms
+UnloadTime: 2.070600 ms
 Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 2160.
-Total: 0.683300 ms (FindLiveObjects: 0.094600 ms CreateObjectMapping: 0.029200 ms MarkObjects: 0.540600 ms  DeleteObjects: 0.018700 ms)
+Total: 0.758900 ms (FindLiveObjects: 0.096600 ms CreateObjectMapping: 0.055400 ms MarkObjects: 0.586500 ms  DeleteObjects: 0.019900 ms)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.660500 ms
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 11385.
-Total: 2.298500 ms (FindLiveObjects: 0.655500 ms CreateObjectMapping: 0.133500 ms MarkObjects: 1.489500 ms  DeleteObjects: 0.019600 ms)
+UnloadTime: 0.707200 ms
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 11396.
+Total: 5.198100 ms (FindLiveObjects: 0.818400 ms CreateObjectMapping: 0.208500 ms MarkObjects: 4.136300 ms  DeleteObjects: 0.034400 ms)
 
