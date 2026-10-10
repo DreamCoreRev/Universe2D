@@ -288,6 +288,20 @@ public class UIManager : MonoBehaviour
     // logout de compte, qui lui revient a Login).
     public void Logout()
     {
+        // Sauvegarde la progression du personnage avant de partir -- sans
+        // ca, seule la sauvegarde automatique periodique (voir
+        // SaveManager.AutoSaveLoop) ou la fermeture complete du jeu
+        // (OnApplicationQuit) l'aurait fait, ce qui pouvait perdre jusqu'a
+        // plusieurs minutes de jeu sur une simple deconnexion volontaire.
+        if (Session.HasSelectedCharacter)
+        {
+            SaveManager saveManager = FindObjectOfType<SaveManager>();
+            if (saveManager != null)
+            {
+                saveManager.SaveCharacter(Session.SelectedCharacterId);
+            }
+        }
+
         if (Mirror.NetworkManager.singleton != null && Mirror.NetworkClient.active)
         {
             Mirror.NetworkManager.singleton.StopClient();

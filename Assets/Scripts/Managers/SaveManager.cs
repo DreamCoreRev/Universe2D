@@ -32,6 +32,18 @@ public class SaveManager : MonoBehaviour
 
     private string action;
 
+    /// <summary>
+    /// Sauvegarde automatique periodique (comme sur Wow) pendant qu'on
+    /// joue un personnage du nouveau systeme compte -> personnages (voir
+    /// CharacterSelectManager) -- avant ca, la seule sauvegarde avait lieu
+    /// a la fermeture du jeu (OnApplicationQuit), donc tout etait perdu en
+    /// cas de crash/coupure reseau/alt-tab mobile entre-temps.
+    /// </summary>
+    [SerializeField]
+    private float autoSaveIntervalSeconds = 120f;
+
+    private Coroutine autoSaveCoroutine;
+
     // Use this for initialization
     void Awake()
     {
@@ -87,6 +99,8 @@ public class SaveManager : MonoBehaviour
                 SaveCharacter(Session.SelectedCharacterId);
             }
 
+            StartAutoSave();
+
             return;
         }
 
@@ -112,6 +126,46 @@ public class SaveManager : MonoBehaviour
         if (Session.HasSelectedCharacter && Player.MyInstance != null)
         {
             SaveCharacter(Session.SelectedCharacterId);
+        }
+    }
+
+    /// <summary>
+    /// Filet de securite mobile : sur Android/iOS, l'app passe en pause
+    /// (bouton Accueil, appel, changement d'app) bien plus souvent qu'elle
+    /// ne quitte vraiment -- OnApplicationQuit n'est alors pas garanti
+    /// d'etre appele a temps. On sauvegarde donc aussi des qu'on part en
+    /// pause (pauseStatus == true), pas quand on revient (false).
+    /// </summary>
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if (pauseStatus && Session.HasSelectedCharacter && Player.MyInstance != null)
+        {
+            SaveCharacter(Session.SelectedCharacterId);
+        }
+    }
+
+    private void StartAutoSave()
+    {
+        if (autoSaveCoroutine != null)
+        {
+            StopCoroutine(autoSaveCoroutine);
+        }
+
+        autoSaveCoroutine = StartCoroutine(AutoSaveLoop());
+    }
+
+    private IEnumerator AutoSaveLoop()
+    {
+        WaitForSeconds wait = new WaitForSeconds(autoSaveIntervalSeconds);
+
+        while (true)
+        {
+            yield return wait;
+
+            if (Session.HasSelectedCharacter && Player.MyInstance != null)
+            {
+                SaveCharacter(Session.SelectedCharacterId);
+            }
         }
     }
 
