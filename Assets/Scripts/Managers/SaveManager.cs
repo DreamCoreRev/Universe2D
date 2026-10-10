@@ -70,6 +70,26 @@ public class SaveManager : MonoBehaviour
 
         playerInitialized = true;
 
+        // Nouveau systeme (compte -> personnages, voir CharacterSelectManager)
+        // : prioritaire sur l'ancien systeme de slots locaux ci-dessous, qui
+        // reste utilise si jamais cette scene est chargee sans passer par
+        // l'ecran de selection (le menu principal solo historique, par ex).
+        if (Session.HasSelectedCharacter)
+        {
+            if (Session.IsNewCharacter || !LoadCharacter(Session.SelectedCharacterId))
+            {
+                // Personnage tout juste cree (ou sauvegarde introuvable,
+                // ce qui ne devrait arriver que si la creation a echoue a
+                // sauvegarder) : on part sur des valeurs par defaut et on
+                // sauvegarde tout de suite, pour que la prochaine
+                // reconnexion retrouve bien ce personnage.
+                Player.MyInstance.SetDefaultValues();
+                SaveCharacter(Session.SelectedCharacterId);
+            }
+
+            return;
+        }
+
         if (PlayerPrefs.HasKey("Load"))
         {
             Load(saveSlots[PlayerPrefs.GetInt("Load")]);
@@ -78,6 +98,20 @@ public class SaveManager : MonoBehaviour
         else
         {
             Player.MyInstance.SetDefaultValues();
+        }
+    }
+
+    /// <summary>
+    /// Sauvegarde automatique a la fermeture du jeu, pour le personnage
+    /// choisi sur l'ecran de selection (voir CharacterSelectManager). Les
+    /// anciens slots locaux (saveSlots) ne sont eux sauvegardes qu'a la
+    /// demande, via ShowDialogue/ExecuteAction -- comportement inchange.
+    /// </summary>
+    private void OnApplicationQuit()
+    {
+        if (Session.HasSelectedCharacter && Player.MyInstance != null)
+        {
+            SaveCharacter(Session.SelectedCharacterId);
         }
     }
 
@@ -192,46 +226,81 @@ public class SaveManager : MonoBehaviour
     {
         try
         {
-            SaveData data = new SaveData();
-
-            data.MyScene = SceneManager.GetActiveScene().name;
-
-            SaveEquipment(data);
-
-            SaveBags(data);
-
-            SaveInventory(data);
-
-            SavePlayer(data);
-
-            SaveChests(data);
-
-            SaveActionButtons(data);
-
-            SaveQuests(data);
-
-            SaveQuestGivers(data);
-
-            // Serialize to memory first. If building/serializing the save
-            // data throws partway through, the .dat file already on disk
-            // is never touched, so a failed save can no longer wipe out a
-            // previously good one.
-            BinaryFormatter bf = new BinaryFormatter();
-            using (MemoryStream memory = new MemoryStream())
-            {
-                bf.Serialize(memory, data);
-
-                using (FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Create))
-                {
-                    memory.WriteTo(file);
-                }
-            }
-
+            SaveData data = BuildSaveData();
+            WriteSaveFile(savedGame.gameObject.name, data);
             ShowSavedFiles(savedGame);
         }
         catch (System.Exception e)
         {
             Debug.LogError("Echec de la sauvegarde (" + savedGame.gameObject.name + ") : " + e);
+        }
+    }
+
+    /// <summary>
+    /// Equivalent de Save(SavedGame) pour un personnage du nouveau systeme
+    /// compte -> personnages (voir CharacterSelectManager) : meme format de
+    /// sauvegarde (SaveData/BinaryFormatter), mais le fichier est nomme
+    /// directement d'apres l'id du personnage cote serveur (AuthServer),
+    /// sans passer par les GameObject saveSlots de l'ancien menu solo.
+    /// </summary>
+    public void SaveCharacter(int characterId)
+    {
+        try
+        {
+            SaveData data = BuildSaveData();
+            WriteSaveFile(CharacterFileBaseName(characterId), data);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Echec de la sauvegarde du personnage " + characterId + " : " + e);
+        }
+    }
+
+    private static string CharacterFileBaseName(int characterId)
+    {
+        return "character_" + characterId;
+    }
+
+    private SaveData BuildSaveData()
+    {
+        SaveData data = new SaveData();
+
+        data.MyScene = SceneManager.GetActiveScene().name;
+
+        SaveEquipment(data);
+
+        SaveBags(data);
+
+        SaveInventory(data);
+
+        SavePlayer(data);
+
+        SaveChests(data);
+
+        SaveActionButtons(data);
+
+        SaveQuests(data);
+
+        SaveQuestGivers(data);
+
+        return data;
+    }
+
+    private static void WriteSaveFile(string fileBaseName, SaveData data)
+    {
+        // Serialize to memory first. If building/serializing the save
+        // data throws partway through, the .dat file already on disk
+        // is never touched, so a failed save can no longer wipe out a
+        // previously good one.
+        BinaryFormatter bf = new BinaryFormatter();
+        using (MemoryStream memory = new MemoryStream())
+        {
+            bf.Serialize(memory, data);
+
+            using (FileStream file = File.Open(Application.persistentDataPath + "/" + fileBaseName + ".dat", FileMode.Create))
+            {
+                memory.WriteTo(file);
+            }
         }
     }
 
@@ -338,29 +407,8 @@ public class SaveManager : MonoBehaviour
     {
         try
         {
-            SaveData data;
-            BinaryFormatter bf = new BinaryFormatter();
-            using (FileStream file = File.Open(Application.persistentDataPath + "/" + savedGame.gameObject.name + ".dat", FileMode.Open))
-            {
-                data = (SaveData)bf.Deserialize(file);
-            }
-
-            LoadEquipment(data);
-
-            LoadBags(data);
-
-            LoadInventory(data);
-
-            LoadPlayer(data);
-
-            LoadChests(data);
-
-            LoadActionButtons(data);
-
-            LoadQuests(data);
-
-            LoadQuestGiver(data);
-
+            SaveData data = ReadSaveFile(savedGame.gameObject.name);
+            ApplySaveData(data);
         }
         catch (System.Exception e)
         {
@@ -372,6 +420,65 @@ public class SaveManager : MonoBehaviour
             PlayerPrefs.DeleteKey("Load");
             SceneManager.LoadScene(0);
         }
+    }
+
+    /// <summary>
+    /// Equivalent de Load(SavedGame) pour un personnage du nouveau systeme
+    /// compte -> personnages -- voir SaveCharacter. Renvoie false si aucune
+    /// sauvegarde n'existe encore pour ce personnage (TryInitializePlayer
+    /// retombe alors sur SetDefaultValues()) plutot que de lancer une
+    /// erreur, puisque ce cas est normal pour un personnage jamais encore
+    /// sauvegarde.
+    /// </summary>
+    public bool LoadCharacter(int characterId)
+    {
+        string fileBaseName = CharacterFileBaseName(characterId);
+        string path = Application.persistentDataPath + "/" + fileBaseName + ".dat";
+
+        if (!File.Exists(path))
+        {
+            return false;
+        }
+
+        try
+        {
+            SaveData data = ReadSaveFile(fileBaseName);
+            ApplySaveData(data);
+            return true;
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError("Echec du chargement du personnage " + characterId + " : " + e);
+            return false;
+        }
+    }
+
+    private static SaveData ReadSaveFile(string fileBaseName)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        using (FileStream file = File.Open(Application.persistentDataPath + "/" + fileBaseName + ".dat", FileMode.Open))
+        {
+            return (SaveData)bf.Deserialize(file);
+        }
+    }
+
+    private void ApplySaveData(SaveData data)
+    {
+        LoadEquipment(data);
+
+        LoadBags(data);
+
+        LoadInventory(data);
+
+        LoadPlayer(data);
+
+        LoadChests(data);
+
+        LoadActionButtons(data);
+
+        LoadQuests(data);
+
+        LoadQuestGiver(data);
     }
 
     private void LoadPlayer(SaveData data)

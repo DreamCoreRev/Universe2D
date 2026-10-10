@@ -34,6 +34,9 @@ public class LoginManager : MonoBehaviour
     [SerializeField]
     private string gameSceneName = "Demo";
 
+    [SerializeField]
+    private string characterSelectSceneName = "CharacterSelect";
+
     // Called by UI element LoginButton.OnClick
     public void OnLoginClicked()
     {
@@ -93,16 +96,18 @@ public class LoginManager : MonoBehaviour
 
         if (Mirror.NetworkManager.singleton != null)
         {
-            // Le NetworkManager (objet "NetworkManager" dans cette scene,
-            // persiste via DontDestroyOnLoad) se connecte au serveur dedie
-            // et charge lui-meme la scene de jeu une fois connecte -- plus
-            // besoin de SceneManager.LoadScene ici.
-            Mirror.NetworkManager.singleton.StartClient();
+            // Avant d'entrer en jeu : ecran de selection de personnage (voir
+            // CharacterSelectManager), qui appellera lui-meme StartClient()
+            // une fois un personnage choisi -- le NetworkManager (objet
+            // "NetworkManager" dans cette scene, persiste via
+            // DontDestroyOnLoad) chargera alors lui-meme Demo.unity.
+            SceneManager.LoadScene(characterSelectSceneName);
         }
         else
         {
             // Filet de securite si le NetworkManager n'est pas present dans
-            // la scene (ex: test solo rapide) -- comportement d'avant.
+            // la scene (ex: test solo rapide) -- comportement d'avant,
+            // sans ecran de selection (pas de compte/personnages en solo).
             SceneManager.LoadScene(gameSceneName);
         }
     }

@@ -105,6 +105,15 @@ public class PlayerChatSync : NetworkBehaviour
 
     private static string SoloOrSessionName()
     {
+        // Le nom affiche doit etre celui du PERSONNAGE choisi a l'ecran de
+        // selection (voir CharacterSelectManager), pas celui du COMPTE
+        // (Session.Username) -- un meme compte peut avoir jusqu'a 5
+        // personnages avec des noms differents.
+        if (!string.IsNullOrWhiteSpace(Session.SelectedCharacterName))
+        {
+            return Session.SelectedCharacterName.Trim();
+        }
+
         return string.IsNullOrWhiteSpace(Session.Username) ? "Joueur" : Session.Username.Trim();
     }
 
