@@ -135,8 +135,17 @@ public class Enemy : Character, IInteractable
         MyAnimator.SetFloat("y", -1);
     }
 
+    private float debugLogTimer;
+
     protected override void Update()
     {
+        debugLogTimer += Time.deltaTime;
+        if (debugLogTimer >= 2f)
+        {
+            debugLogTimer = 0f;
+            Debug.Log($"[DEBUG-ENEMY] {name} IsAlive={IsAlive} ShouldRunAI={ShouldRunAI} state={currentState?.GetType().Name} MyTarget={MyTarget}");
+        }
+
         if (IsAlive && ShouldRunAI)
         {
 

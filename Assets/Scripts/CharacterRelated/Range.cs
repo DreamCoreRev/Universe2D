@@ -14,9 +14,12 @@ public class Range : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log($"[DEBUG-RANGE] OnTriggerEnter2D on {parent?.name} with tag={collision.tag} ShouldRunAI={parent?.ShouldRunAI}");
+
         if (collision.tag == "Player")
         {
             parent.SetTarget(collision.GetComponent<Character>());
+            Debug.Log($"[DEBUG-RANGE] SetTarget called, MyTarget now={parent.MyTarget}");
         }
     }
 }
