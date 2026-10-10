@@ -67,6 +67,14 @@ public class GameManager : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        if (ChatManager.MyInstance != null && ChatManager.MyInstance.IsTyping)
+        {
+            // Meme garde-fou que Player.GetInput()/UIManager.Update() :
+            // Tab (NextTarget) ne doit pas agir pendant qu'on tape dans
+            // le chat.
+            return;
+        }
+
         NextTarget();
 	}
 

@@ -112,6 +112,15 @@ public class InventoryScript : MonoBehaviour
 
     private void Update()
     {
+        if (ChatManager.MyInstance != null && ChatManager.MyInstance.IsTyping)
+        {
+            // Raccourcis de debug (J/K/M/U/H) : memes raisons que dans
+            // Player.GetInput()/UIManager.Update(), on ne doit pas donner
+            // d'objets juste parce qu'une de ces lettres apparait dans un
+            // message de chat.
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.J))
         {
             Bag bag = (Bag)Instantiate(items[8]);

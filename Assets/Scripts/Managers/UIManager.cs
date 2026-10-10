@@ -87,6 +87,16 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (ChatManager.MyInstance != null && ChatManager.MyInstance.IsTyping)
+        {
+            // On tape dans le chat (voir ChatManager.IsTyping) : les
+            // raccourcis clavier de menus (I/B/C/L/P/N, Echap...) ne
+            // doivent pas reagir, sinon ecrire un message qui contient ces
+            // lettres ouvre/ferme des fenetres en meme temps (voir aussi
+            // le meme garde-fou dans Player.GetInput()).
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             OpenClose(menus[0]);
