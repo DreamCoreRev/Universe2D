@@ -118,7 +118,7 @@ MonoBehaviour:
   type: 
   level: 1
   myRigidbody: {fileID: 0}
-  hitBox: {fileID: 0}
+  hitBox: {fileID: 854949520064969681}
   health: {fileID: 0}
   initHealth: 100
   mana: {fileID: 0}
