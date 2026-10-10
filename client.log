@@ -11,103 +11,18 @@ Direct3D:
     VRAM:     8150 MB
     Driver:   32.0.31041.1004
 Begin MonoManager ReloadAssembly
-- Completed reload, in  0.100 seconds
-<RI> Initializing input.
+- Completed reload, in  0.103 seconds
 D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.919100 ms
+UnloadTime: 0.805500 ms
 ThreadLog initialized.
 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.420800 ms
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 11018.
-Total: 2.302100 ms (FindLiveObjects: 0.666800 ms CreateObjectMapping: 0.120000 ms MarkObjects: 1.498800 ms  DeleteObjects: 0.016100 ms)
+UnloadTime: 3.299000 ms
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 11024.
+Total: 2.300300 ms (FindLiveObjects: 0.650700 ms CreateObjectMapping: 0.120300 ms MarkObjects: 1.508000 ms  DeleteObjects: 0.021000 ms)
 
-[DEBUG-CHAT] OnStartLocalPlayer: Session.Username='Aurora' nameToSend='Aurora'
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='Hello'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: Hello' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8846)
-[DEBUG-CHAT] Avant layout: text.Length=13 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=13 characterCountVisible=13 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -9.78)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 242.00, 0.00) haut-droit=(529.20, 270.00, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='A'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: A' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8856)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=9 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -27.33)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 210.40, 0.00) haut-droit=(529.20, 238.40, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='V'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: V' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8866)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=9 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -44.89)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 178.80, 0.00) haut-droit=(529.20, 206.80, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='D'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: D' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8876)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=9 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -62.44)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 147.20, 0.00) haut-droit=(529.20, 175.20, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='F'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: F' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8886)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=9 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -80.00)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 115.60, 0.00) haut-droit=(529.20, 143.60, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='G'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: G' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8896)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=9 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -97.56)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 86.40, 0.00) haut-droit=(529.20, 114.40, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='E'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: E' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8906)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=9 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -115.11)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 86.40, 0.00) haut-droit=(529.20, 114.40, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='d'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: d' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8916)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=-1 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -132.67)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 86.40, 0.00) haut-droit=(529.20, 114.40, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='D'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: D' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8926)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=-1 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -150.22)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 86.40, 0.00) haut-droit=(529.20, 114.40, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='F'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: F' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8936)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=9 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -167.78)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 86.40, 0.00) haut-droit=(529.20, 114.40, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='F'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: F' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8946)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=9 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -185.33)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 86.40, 0.00) haut-droit=(529.20, 114.40, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)
-[DEBUG-CHAT] AddMessage recu: senderName='Aurora' message='G'
-[DEBUG-CHAT] Text.text assigne = 'Aurora: G' (go.name=ChatMessage(Clone), t.GetInstanceID()=-8956)
-[DEBUG-CHAT] Avant layout: text.Length=9 rect=(x:0.00, y:0.00, width:0.00, height:0.00) anchoredPos=(0.00, 0.00) font=Arial
-[DEBUG-CHAT] Apres layout: text.Length=9 characterCountVisible=9 rect=(x:-165.00, y:-7.78, width:330.00, height:15.56) anchoredPos=(167.00, -202.89)
-[DEBUG-CHAT] Largeurs: ChatWindow=260 viewport=234 content=334
-[DEBUG-CHAT] Coins monde texte: bas-gauche=(-64.80, 86.40, 0.00) haut-droit=(529.20, 114.40, 0.00)
-[DEBUG-CHAT] Coins monde viewport: bas-gauche=(21.60, 82.80, 0.00) haut-droit=(442.80, 273.60, 0.00)

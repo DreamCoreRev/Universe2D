@@ -56,7 +56,6 @@ public class ChatManager : MonoBehaviour
     private InputField inputField;
 
     private RectTransform content;
-    private RectTransform viewportRectRef;
     private ScrollRect scrollRect;
     private readonly List<GameObject> activeMessages = new List<GameObject>();
 
@@ -149,7 +148,6 @@ public class ChatManager : MonoBehaviour
         viewportRect.offsetMin = new Vector2(2f, 2f);
         viewportRect.offsetMax = new Vector2(-ArrowColumnWidth, -2f);
         viewportGO.AddComponent<RectMask2D>();
-        viewportRectRef = viewportRect;
 
         GameObject contentGO = new GameObject("Content", typeof(RectTransform));
         contentGO.transform.SetParent(viewportRect, false);
@@ -158,6 +156,17 @@ public class ChatManager : MonoBehaviour
         content.anchorMax = new Vector2(1f, 1f);
         content.pivot = new Vector2(0.5f, 1f);
         content.anchoredPosition = Vector2.zero;
+
+        // BUG TROUVE le 10/10 via les logs [DEBUG-CHAT] : sizeDelta garde
+        // sa valeur par defaut (100, 100) tant qu'on ne la remet pas a zero
+        // explicitement. Sur un axe etire (anchorMin.x=0, anchorMax.x=1),
+        // sizeDelta.x s'AJOUTE a la largeur du parent au lieu de la
+        // remplacer -- le conteneur se retrouvait donc 100px plus large que
+        // le viewport (334 au lieu de 234), decale de 50px de chaque cote.
+        // C'est ce decalage vers la gauche qui faisait sortir "Aurora: "
+        // du cadre visible (RectMask2D du viewport), tout en laissant
+        // visible la fin du message : d'ou le nom systematiquement coupe.
+        content.sizeDelta = Vector2.zero;
 
         VerticalLayoutGroup layout = contentGO.AddComponent<VerticalLayoutGroup>();
         layout.childAlignment = TextAnchor.UpperLeft;
@@ -328,8 +337,6 @@ public class ChatManager : MonoBehaviour
     /// </summary>
     public void AddMessage(string senderName, string message)
     {
-        Debug.Log($"[DEBUG-CHAT] AddMessage recu: senderName='{senderName}' message='{message}'");
-
         if (messagePrefab == null || content == null)
         {
             return;
@@ -341,12 +348,6 @@ public class ChatManager : MonoBehaviour
         if (t != null)
         {
             t.text = string.IsNullOrEmpty(senderName) ? message : string.Format("{0}: {1}", senderName, message);
-            Debug.Log($"[DEBUG-CHAT] Text.text assigne = '{t.text}' (go.name={go.name}, t.GetInstanceID()={t.GetInstanceID()})");
-            Debug.Log($"[DEBUG-CHAT] Avant layout: text.Length={t.text.Length} rect={t.rectTransform.rect} anchoredPos={t.rectTransform.anchoredPosition} font={(t.font == null ? "NULL" : t.font.name)}");
-        }
-        else
-        {
-            Debug.Log("[DEBUG-CHAT] AddMessage: go.GetComponent<Text>() == null !");
         }
 
         activeMessages.Add(go);
@@ -366,30 +367,6 @@ public class ChatManager : MonoBehaviour
             // hauteur d'AVANT ce message.
             Canvas.ForceUpdateCanvases();
             scrollRect.verticalNormalizedPosition = 0f;
-
-            if (t != null)
-            {
-                int visible = t.cachedTextGenerator != null ? t.cachedTextGenerator.characterCountVisible : -1;
-                Debug.Log($"[DEBUG-CHAT] Apres layout: text.Length={t.text.Length} characterCountVisible={visible} rect={t.rectTransform.rect} anchoredPos={t.rectTransform.anchoredPosition}");
-
-                RectTransform root = (RectTransform)transform;
-                Vector3[] textCorners = new Vector3[4];
-                t.rectTransform.GetWorldCorners(textCorners);
-                Vector3[] viewportCorners = new Vector3[4];
-
-                if (viewportRectRef != null)
-                {
-                    viewportRectRef.GetWorldCorners(viewportCorners);
-                }
-
-                Debug.Log($"[DEBUG-CHAT] Largeurs: ChatWindow={root.rect.width} viewport={(viewportRectRef != null ? viewportRectRef.rect.width.ToString() : "NULL")} content={(content != null ? content.rect.width.ToString() : "NULL")}");
-                Debug.Log($"[DEBUG-CHAT] Coins monde texte: bas-gauche={textCorners[0]} haut-droit={textCorners[2]}");
-
-                if (viewportRectRef != null)
-                {
-                    Debug.Log($"[DEBUG-CHAT] Coins monde viewport: bas-gauche={viewportCorners[0]} haut-droit={viewportCorners[2]}");
-                }
-            }
         }
     }
 }

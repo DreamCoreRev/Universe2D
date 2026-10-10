@@ -26,9 +26,7 @@ public class PlayerChatSync : NetworkBehaviour
     {
         base.OnStartLocalPlayer();
 
-        string nameToSend = SoloOrSessionName();
-        Debug.Log($"[DEBUG-CHAT] OnStartLocalPlayer: Session.Username='{Session.Username}' nameToSend='{nameToSend}'");
-        CmdSetPlayerName(nameToSend);
+        CmdSetPlayerName(SoloOrSessionName());
     }
 
     [Command]
@@ -40,8 +38,6 @@ public class PlayerChatSync : NetworkBehaviour
         {
             playerName = "Joueur";
         }
-
-        Debug.Log($"[DEBUG-CHAT] CmdSetPlayerName: name recu='{name}' -> playerName='{playerName}' (netId={netId})");
     }
 
     /// <summary>
@@ -89,7 +85,6 @@ public class PlayerChatSync : NetworkBehaviour
             return;
         }
 
-        Debug.Log($"[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='{playerName}' (netId={netId}) message='{message}'");
         RpcReceiveChatMessage(playerName, message);
     }
 
