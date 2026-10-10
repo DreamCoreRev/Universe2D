@@ -56,6 +56,7 @@ public class ChatManager : MonoBehaviour
     private InputField inputField;
 
     private RectTransform content;
+    private RectTransform viewportRectRef;
     private ScrollRect scrollRect;
     private readonly List<GameObject> activeMessages = new List<GameObject>();
 
@@ -148,6 +149,7 @@ public class ChatManager : MonoBehaviour
         viewportRect.offsetMin = new Vector2(2f, 2f);
         viewportRect.offsetMax = new Vector2(-ArrowColumnWidth, -2f);
         viewportGO.AddComponent<RectMask2D>();
+        viewportRectRef = viewportRect;
 
         GameObject contentGO = new GameObject("Content", typeof(RectTransform));
         contentGO.transform.SetParent(viewportRect, false);
@@ -369,6 +371,24 @@ public class ChatManager : MonoBehaviour
             {
                 int visible = t.cachedTextGenerator != null ? t.cachedTextGenerator.characterCountVisible : -1;
                 Debug.Log($"[DEBUG-CHAT] Apres layout: text.Length={t.text.Length} characterCountVisible={visible} rect={t.rectTransform.rect} anchoredPos={t.rectTransform.anchoredPosition}");
+
+                RectTransform root = (RectTransform)transform;
+                Vector3[] textCorners = new Vector3[4];
+                t.rectTransform.GetWorldCorners(textCorners);
+                Vector3[] viewportCorners = new Vector3[4];
+
+                if (viewportRectRef != null)
+                {
+                    viewportRectRef.GetWorldCorners(viewportCorners);
+                }
+
+                Debug.Log($"[DEBUG-CHAT] Largeurs: ChatWindow={root.rect.width} viewport={(viewportRectRef != null ? viewportRectRef.rect.width.ToString() : "NULL")} content={(content != null ? content.rect.width.ToString() : "NULL")}");
+                Debug.Log($"[DEBUG-CHAT] Coins monde texte: bas-gauche={textCorners[0]} haut-droit={textCorners[2]}");
+
+                if (viewportRectRef != null)
+                {
+                    Debug.Log($"[DEBUG-CHAT] Coins monde viewport: bas-gauche={viewportCorners[0]} haut-droit={viewportCorners[2]}");
+                }
             }
         }
     }

@@ -10,12 +10,12 @@ NullGfxDevice:
     Renderer: Null Device
     Vendor:   Unity Technologies
 Begin MonoManager ReloadAssembly
-- Completed reload, in  0.159 seconds
+- Completed reload, in  0.101 seconds
 ERROR: Shader Sprites/Default shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
 Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
 ERROR: Shader Sprites/Mask shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
 ERROR: Shader GUI/Text Shader shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-UnloadTime: 0.542800 ms
+UnloadTime: 0.642600 ms
 ThreadLog initialized.
 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
@@ -39,11 +39,21 @@ ERROR: Shader TextMeshPro/Distance Field shader is not supported on this GPU (no
 WARNING: Shader Unsupported: 'TextMeshPro/Distance Field' - All subshaders removed
 WARNING: Shader Did you use #pragma only_renderers and omit this platform?
 WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-UnloadTime: 3.567100 ms
+UnloadTime: 3.435400 ms
 ERROR: Shader TextMeshPro/Sprite shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 11003.
-Total: 1.979900 ms (FindLiveObjects: 0.545900 ms CreateObjectMapping: 0.108800 ms MarkObjects: 1.305500 ms  DeleteObjects: 0.019000 ms)
+Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 11024.
+Total: 1.944300 ms (FindLiveObjects: 0.510000 ms CreateObjectMapping: 0.101700 ms MarkObjects: 1.315700 ms  DeleteObjects: 0.016800 ms)
 
 [DEBUG-CHAT] CmdSetPlayerName: name recu='Aurora' -> playerName='Aurora' (netId=11)
 [DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='Hello'
-[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='Toujours pas de nom de joueur'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='A'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='V'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='D'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='F'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='G'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='E'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='d'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='D'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='F'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='F'
+[DEBUG-CHAT] CmdSendChatMessage: playerName actuel='Aurora' (netId=11) message='G'
