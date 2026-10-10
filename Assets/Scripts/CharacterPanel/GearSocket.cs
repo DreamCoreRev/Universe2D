@@ -43,6 +43,7 @@ public class GearSocket : MonoBehaviour
 
     public void Equip(AnimationClip[] animations)
     {
+        Debug.Log("[GearSocket] Equip() sur " + gameObject.name + " spriteRenderer=" + (spriteRenderer == null ? "NULL" : "ok") + " animatorOverrideController=" + (animatorOverrideController == null ? "NULL" : "ok") + " animations[5]=" + (animations != null && animations.Length > 5 ? (animations[5] == null ? "null clip" : animations[5].name) : "hors limites"));
         spriteRenderer.color = Color.white;
         animatorOverrideController["Wizard_Attack_Back"] = animations[0];
         animatorOverrideController["Wizard_Attack_Front"] = animations[1];

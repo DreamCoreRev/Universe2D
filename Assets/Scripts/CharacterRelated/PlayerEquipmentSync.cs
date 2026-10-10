@@ -58,6 +58,7 @@ public class PlayerEquipmentSync : NetworkBehaviour
     [Command]
     public void CmdSetEquippedArmor(int socketIndex, int armorId)
     {
+        Debug.Log("[PlayerEquipmentSync] CmdSetEquippedArmor (sur le serveur) socketIndex=" + socketIndex + " armorId=" + armorId);
         switch (socketIndex)
         {
             case 0: headArmorId = armorId; break;
@@ -84,6 +85,7 @@ public class PlayerEquipmentSync : NetworkBehaviour
         }
 
         GearSocket socket = player != null ? player.GetGearSocket(socketIndex) : null;
+        Debug.Log("[PlayerEquipmentSync] Apply socketIndex=" + socketIndex + " armorId=" + armorId + " socket=" + (socket == null ? "NULL" : socket.gameObject.name) + " isLocalPlayer=" + isLocalPlayer);
         if (socket == null)
         {
             return;
