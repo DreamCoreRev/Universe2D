@@ -102,21 +102,25 @@ public class ChatManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Appele par l'InputField des que son edition se termine -- que ce
-    /// soit par Entree (envoi voulu) ou par perte de focus autrement (clic
-    /// ailleurs dans le jeu, Tab...). On ne distingue les deux qu'en
-    /// verifiant si Entree vient d'etre pressee CETTE frame : c'est la
-    /// meme frame que celle ou l'InputField declenche cet evenement.
+    /// Appele par l'InputField des que son edition se termine -- par
+    /// Entree sur PC, par le bouton "Retour"/"OK" du clavier virtuel sur
+    /// telephone, ou par perte de focus autrement (clic ailleurs dans le
+    /// jeu...).
+    ///
+    /// On a d'abord essaye de ne declencher l'envoi que si Entree venait
+    /// d'etre pressee CETTE frame (Input.GetKeyDown(KeyCode.Return)), pour
+    /// ne pas envoyer un message a moitie tape en cliquant ailleurs. Ca
+    /// marche sur PC, mais le clavier virtuel Android/iOS ne genere jamais
+    /// cette touche : InputField envoie directement l'evenement de
+    /// soumission depuis TouchScreenKeyboard sans jamais passer par
+    /// Input.GetKeyDown -- resultat, impossible d'envoyer un message au
+    /// clavier tactile (voir le signalement du 2026-10-10). On envoie donc
+    /// desormais chaque fois que le champ n'est pas vide, sur PC comme sur
+    /// mobile ; la contrepartie est qu'un message en cours de redaction
+    /// part aussi si on clique ailleurs avant de l'avoir termine.
     /// </summary>
     private void OnInputEndEdit(string text)
     {
-        bool submitted = Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter);
-
-        if (!submitted)
-        {
-            return;
-        }
-
         string message = text == null ? "" : text.Trim();
         inputField.text = "";
 
@@ -132,7 +136,7 @@ public class ChatManager : MonoBehaviour
         }
 
         // On garde le focus pour enchainer plusieurs messages sans avoir a
-        // re-appuyer sur Entree a chaque fois.
+        // rouvrir le champ a chaque fois.
         FocusInput();
     }
 
