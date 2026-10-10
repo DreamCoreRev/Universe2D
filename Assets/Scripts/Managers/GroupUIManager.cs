@@ -49,8 +49,12 @@ public class GroupUIManager : MonoBehaviour
 
     private RectTransform playerTargetFrameRect;
     private GameObject playerTargetFrameGO;
-    private Text playerTargetFrameText;
+    private Text playerTargetNameText;
+    private Stat playerTargetHealthStat;
+    private Stat playerTargetManaStat;
+    private Text playerTargetLevelText;
     private Player currentPlayerTarget;
+    private PlayerVitalsSync currentPlayerTargetVitals;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Install()
@@ -88,7 +92,22 @@ public class GroupUIManager : MonoBehaviour
 
         BuildContextMenu(canvasRect);
         BuildInvitePopup(canvasRect);
-        BuildPlayerTargetFrame(canvasRect);
+
+        // PAS d'appel a BuildPlayerTargetFrame ici : contrairement au menu
+        // contextuel et au popup d'invitation (construits de toutes pieces
+        // par code, sans dependance de scene), BuildPlayerTargetFrame CLONE
+        // "UICanvas/Frame", qui vit dans Demo.unity -- et Install() (voir
+        // [RuntimeInitializeOnLoadMethod]) s'execute UNE SEULE FOIS, juste
+        // apres le chargement de la PREMIERE scene au demarrage du jeu,
+        // c'est a dire Login.unity (voir EditorBuildSettings), bien avant
+        // que Demo.unity (et donc "UICanvas/Frame") n'existe. GameObject.
+        // Find echouait donc silencieusement a ce moment-la, et comme ce
+        // GroupUIManager persiste ensuite (DontDestroyOnLoad) sans jamais
+        // reessayer, le portrait de cible-joueur ne se construisait plus
+        // JAMAIS -- d'ou le clic gauche sur un joueur qui ne montrait plus
+        // rien. On construit donc ce cadre paresseusement, au premier
+        // ShowPlayerTargetFrame (forcement appele une fois dans Demo.unity,
+        // le seul endroit d'ou on peut cliquer sur un joueur).
     }
 
     private void BuildContextMenu(RectTransform parent)
@@ -172,14 +191,26 @@ public class GroupUIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Portrait de la cible-joueur (style WoW) : affiche a cote de notre
-    /// propre portrait, au clic GAUCHE sur un autre joueur (voir
-    /// GameManager.ClickTarget -- branche "PlayerClickable"). Meme
-    /// emplacement ecran que le TargetFrame des monstres dans Demo.unity
-    /// (ancre coin haut-gauche, {376.7, -30.6}) : les deux cadres sont
-    /// mutuellement exclusifs (un seul affiche a la fois), donc partager
-    /// la meme case ecran est coherent visuellement et evite d'avoir a
-    /// choisir un nouvel emplacement au hasard.
+    /// Portrait de la cible-joueur (style WoW) : affiche au clic GAUCHE sur
+    /// un autre joueur (voir GameManager.ClickTarget -- branche
+    /// "PlayerClickable"). Meme emplacement ecran que l'ancien TargetFrame
+    /// des monstres dans Demo.unity (ancre coin haut-gauche, {376.7,
+    /// -30.6}) : les deux cadres sont mutuellement exclusifs (un seul
+    /// affiche a la fois), donc partager la meme case ecran est coherent
+    /// visuellement.
+    ///
+    /// Pour que ca ressemble vraiment a notre propre cadre (meme portrait,
+    /// meme cadre rond, memes barres vie/mana) sans avoir a recopier a la
+    /// main des guids de sprites qu'on ne peut pas resoudre depuis du code
+    /// pur a l'execution (pas d'AssetDatabase en dehors de l'Editeur), on
+    /// CLONE a l'execution le "Frame" deja present dans Demo.unity (voir
+    /// Player.ResolveLocalReferences -- c'est exactement l'objet que
+    /// "UICanvas/Frame/HealthBackground/Health" etc. designent). Le clone
+    /// recupere donc automatiquement le meme portrait, le meme cadre rond,
+    /// et des barres de vie/mana en etat de marche (composants Stat
+    /// inclus) -- il ne reste plus qu'a leur donner les bonnes valeurs
+    /// (voir RefreshPlayerTargetVitals) et a retirer la barre d'XP, qui n'a
+    /// pas de sens pour une cible.
     ///
     /// Le clic DROIT sur ce portrait (et uniquement sur lui) reaffiche le
     /// menu "Inviter au groupe" deja existant (voir Update() plus bas) --
@@ -188,40 +219,83 @@ public class GroupUIManager : MonoBehaviour
     /// </summary>
     private void BuildPlayerTargetFrame(RectTransform parent)
     {
-        playerTargetFrameGO = new GameObject("PlayerTargetFrame", typeof(RectTransform));
+        GameObject sourceFrame = GameObject.Find("UICanvas/Frame");
+
+        if (sourceFrame == null)
+        {
+            // Ne devrait jamais arriver (Demo.unity contient toujours ce
+            // HUD), mais on evite un crash silencieux si jamais la scene
+            // change un jour.
+            Debug.LogWarning("GroupUIManager: 'UICanvas/Frame' introuvable, impossible de construire le portrait de cible-joueur.");
+            return;
+        }
+
+        playerTargetFrameGO = Instantiate(sourceFrame);
+        playerTargetFrameGO.name = "PlayerTargetFrame";
         playerTargetFrameGO.transform.SetParent(parent, false);
 
         playerTargetFrameRect = playerTargetFrameGO.GetComponent<RectTransform>();
         playerTargetFrameRect.anchorMin = new Vector2(0f, 1f);
         playerTargetFrameRect.anchorMax = new Vector2(0f, 1f);
         playerTargetFrameRect.pivot = new Vector2(0.5f, 0.5f);
-        playerTargetFrameRect.sizeDelta = new Vector2(140f, 44f);
         playerTargetFrameRect.anchoredPosition = new Vector2(376.7f, -30.599976f);
 
-        Image bg = playerTargetFrameGO.AddComponent<Image>();
-        bg.color = new Color(0f, 0f, 0f, 0.75f);
-        // m_RaycastTarget reste a true (valeur par defaut d'Image) : c'est ce
-        // qui fait que survoler ce portrait compte comme "sur de l'UI" pour
-        // TouchInput.IsPointerOverUI(), empechant GameManager de traiter en
-        // plus un clic droit ici comme un clic droit sur la map.
+        // La barre d'XP n'a pas sa place sur une cible (comme sur WoW).
+        Transform xpBackground = playerTargetFrameGO.transform.Find("XPBackground");
+        if (xpBackground != null)
+        {
+            Destroy(xpBackground.gameObject);
+        }
 
-        GameObject textGO = new GameObject("Text", typeof(RectTransform));
-        textGO.transform.SetParent(playerTargetFrameGO.transform, false);
-        RectTransform textRect = textGO.GetComponent<RectTransform>();
-        textRect.anchorMin = Vector2.zero;
-        textRect.anchorMax = Vector2.one;
-        textRect.offsetMin = new Vector2(6f, 2f);
-        textRect.offsetMax = new Vector2(-6f, -2f);
+        Transform healthBackground = playerTargetFrameGO.transform.Find("HealthBackground");
+        playerTargetHealthStat = healthBackground != null ? healthBackground.GetComponentInChildren<Stat>() : null;
 
-        playerTargetFrameText = textGO.AddComponent<Text>();
-        playerTargetFrameText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        playerTargetFrameText.fontSize = 14;
-        playerTargetFrameText.color = Color.white;
-        playerTargetFrameText.alignment = TextAnchor.MiddleCenter;
-        playerTargetFrameText.horizontalOverflow = HorizontalWrapMode.Overflow;
-        playerTargetFrameText.verticalOverflow = VerticalWrapMode.Overflow;
-        playerTargetFrameText.raycastTarget = false;
-        playerTargetFrameText.text = "";
+        Transform manaBackground = playerTargetFrameGO.transform.Find("ManaBackground");
+        playerTargetManaStat = manaBackground != null ? manaBackground.GetComponentInChildren<Stat>() : null;
+
+        Transform levelFrame = playerTargetFrameGO.transform.Find("LevelFrame");
+        playerTargetLevelText = levelFrame != null ? levelFrame.GetComponentInChildren<Text>() : null;
+
+        // Petite etiquette avec le nom du joueur, au-dessus du cadre clone
+        // (le HUD d'origine n'affiche jamais notre propre nom, il n'a donc
+        // pas cet element -- on l'ajoute nous-memes).
+        GameObject nameGO = new GameObject("NameLabel", typeof(RectTransform));
+        nameGO.transform.SetParent(playerTargetFrameGO.transform, false);
+        RectTransform nameRect = nameGO.GetComponent<RectTransform>();
+        nameRect.anchorMin = new Vector2(0.5f, 1f);
+        nameRect.anchorMax = new Vector2(0.5f, 1f);
+        nameRect.pivot = new Vector2(0.5f, 0f);
+        nameRect.sizeDelta = new Vector2(170f, 20f);
+        // 55.5 ~ centre visuel du cadre + barres (le portrait est a gauche,
+        // les barres s'etendent vers la droite -- voir HealthBackground/
+        // ManaBackground dans Demo.unity), 4 ~ petit espace au-dessus.
+        nameRect.anchoredPosition = new Vector2(55.5f, 4f);
+
+        Image nameBg = nameGO.AddComponent<Image>();
+        nameBg.color = new Color(0f, 0f, 0f, 0.75f);
+        // m_RaycastTarget reste a true (valeur par defaut d'Image), comme
+        // pour le reste du cadre clone : c'est ce qui fait que survoler ce
+        // portrait compte comme "sur de l'UI" pour TouchInput.
+        // IsPointerOverUI(), empechant GameManager de traiter en plus un
+        // clic droit ici comme un clic droit sur la map.
+
+        GameObject nameTextGO = new GameObject("Text", typeof(RectTransform));
+        nameTextGO.transform.SetParent(nameGO.transform, false);
+        RectTransform nameTextRect = nameTextGO.GetComponent<RectTransform>();
+        nameTextRect.anchorMin = Vector2.zero;
+        nameTextRect.anchorMax = Vector2.one;
+        nameTextRect.offsetMin = new Vector2(4f, 1f);
+        nameTextRect.offsetMax = new Vector2(-4f, -1f);
+
+        playerTargetNameText = nameTextGO.AddComponent<Text>();
+        playerTargetNameText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        playerTargetNameText.fontSize = 13;
+        playerTargetNameText.color = Color.white;
+        playerTargetNameText.alignment = TextAnchor.MiddleCenter;
+        playerTargetNameText.horizontalOverflow = HorizontalWrapMode.Overflow;
+        playerTargetNameText.verticalOverflow = VerticalWrapMode.Overflow;
+        playerTargetNameText.raycastTarget = false;
+        playerTargetNameText.text = "";
 
         playerTargetFrameGO.SetActive(false);
     }
@@ -232,15 +306,26 @@ public class GroupUIManager : MonoBehaviour
     /// </summary>
     public void ShowPlayerTargetFrame(Player target)
     {
+        if (playerTargetFrameGO == null)
+        {
+            BuildPlayerTargetFrame(canvasRect);
+        }
+
         if (target == null || playerTargetFrameGO == null)
         {
             return;
         }
 
         currentPlayerTarget = target;
+        currentPlayerTargetVitals = target.GetComponent<PlayerVitalsSync>();
 
         PlayerChatSync chatSync = target.GetComponent<PlayerChatSync>();
-        playerTargetFrameText.text = chatSync != null ? chatSync.PlayerName : "Joueur";
+        if (playerTargetNameText != null)
+        {
+            playerTargetNameText.text = chatSync != null ? chatSync.PlayerName : "Joueur";
+        }
+
+        RefreshPlayerTargetVitals(true);
 
         playerTargetFrameGO.SetActive(true);
     }
@@ -253,13 +338,67 @@ public class GroupUIManager : MonoBehaviour
         }
 
         currentPlayerTarget = null;
+        currentPlayerTargetVitals = null;
+    }
+
+    /// <summary>
+    /// Vie/mana/niveau de la cible-joueur, lus depuis sa PlayerVitalsSync
+    /// (voir ce script -- seul le client du joueur concerne connait ses
+    /// propres valeurs, PlayerVitalsSync les diffuse aux autres). Appele une
+    /// fois en "snap" (instantane, pas de lerp) a la selection, puis chaque
+    /// frame tant que le cadre est affiche pour rester a jour (meme
+    /// principe que Stat.Update(), qui lisse deja l'animation des barres).
+    /// </summary>
+    private void RefreshPlayerTargetVitals(bool snap)
+    {
+        if (currentPlayerTargetVitals == null)
+        {
+            return;
+        }
+
+        float hpCur = currentPlayerTargetVitals.CurrentHealth;
+        float hpMax = Mathf.Max(currentPlayerTargetVitals.MaxHealth, 1f);
+        float mpCur = currentPlayerTargetVitals.CurrentMana;
+        float mpMax = Mathf.Max(currentPlayerTargetVitals.MaxMana, 1f);
+
+        if (playerTargetHealthStat != null)
+        {
+            if (snap)
+            {
+                playerTargetHealthStat.Initialize(hpCur, hpMax);
+            }
+            else
+            {
+                playerTargetHealthStat.MyMaxValue = hpMax;
+                playerTargetHealthStat.MyCurrentValue = hpCur;
+            }
+        }
+
+        if (playerTargetManaStat != null)
+        {
+            if (snap)
+            {
+                playerTargetManaStat.Initialize(mpCur, mpMax);
+            }
+            else
+            {
+                playerTargetManaStat.MyMaxValue = mpMax;
+                playerTargetManaStat.MyCurrentValue = mpCur;
+            }
+        }
+
+        if (playerTargetLevelText != null)
+        {
+            playerTargetLevelText.text = currentPlayerTargetVitals.Level.ToString();
+        }
     }
 
     /// <summary>
     /// Seul point d'entree restant pour "Inviter au groupe" depuis le
     /// monde : un clic droit sur le portrait de la cible-joueur (et non
     /// plus sur son personnage). On reutilise ShowContextMenu tel quel --
-    /// seul l'endroit d'ou il est declenche change.
+    /// seul l'endroit d'ou il est declenche change. On en profite aussi
+    /// pour rafraichir les barres vie/mana tant que le cadre est affiche.
     /// </summary>
     private void Update()
     {
@@ -267,6 +406,8 @@ public class GroupUIManager : MonoBehaviour
         {
             return;
         }
+
+        RefreshPlayerTargetVitals(false);
 
         if (!Input.GetMouseButtonDown(1))
         {
