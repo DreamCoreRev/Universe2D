@@ -30588,6 +30588,9 @@ MonoBehaviour:
   - {fileID: 129035952}
   - {fileID: 544386571}
   - {fileID: 1478598523}
+  - {fileID: 137501685}
+  - {fileID: 115696793}
+  - {fileID: 386103064}
   saveSlots:
   - {fileID: 349800863}
   - {fileID: 654783567}
