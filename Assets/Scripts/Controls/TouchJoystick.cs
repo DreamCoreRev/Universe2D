@@ -18,6 +18,37 @@ public class TouchJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 {
 	private static TouchJoystick instance;
 
+	private static GameObject canvasGO;
+
+	// Permet de desactiver le joystick depuis le Main Menu (voir
+	// UIManager.ToggleTouchControls) pour les joueurs sur PC/clavier, qui le
+	// trouvaient genant au-dessus du chat -- persiste via PlayerPrefs pour
+	// retrouver le meme choix a la prochaine connexion.
+	private const string EnabledPrefKey = "TouchControlsEnabled";
+
+	/// <summary>
+	/// Vrai si le joystick tactile doit s'afficher. Active par defaut (comme
+	/// avant ce reglage), desactivable depuis le Main Menu.
+	/// </summary>
+	public static bool IsEnabled
+	{
+		get { return PlayerPrefs.GetInt(EnabledPrefKey, 1) == 1; }
+	}
+
+	/// <summary>
+	/// Active/desactive le joystick tactile tout de suite (si deja installe)
+	/// et retient le choix pour la prochaine connexion.
+	/// </summary>
+	public static void SetEnabled(bool isEnabled)
+	{
+		PlayerPrefs.SetInt(EnabledPrefKey, isEnabled ? 1 : 0);
+
+		if (canvasGO != null)
+		{
+			canvasGO.SetActive(isEnabled);
+		}
+	}
+
 	/// <summary>
 	/// Direction actuelle du joystick, de (0,0) (relâché) à une longueur de 1
 	/// (bâton poussé jusqu'au bord). Vector2.zero si le joystick n'existe pas
@@ -49,7 +80,7 @@ public class TouchJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 			return;
 		}
 
-		GameObject canvasGO = new GameObject("TouchJoystickCanvas");
+		canvasGO = new GameObject("TouchJoystickCanvas");
 		Canvas canvas = canvasGO.AddComponent<Canvas>();
 		canvas.renderMode = RenderMode.ScreenSpaceOverlay;
 		canvas.sortingOrder = 1000; // par-dessus le reste de l'interface
@@ -99,6 +130,11 @@ public class TouchJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		joystick.background = bgRect;
 		joystick.handle = handleRect;
 		instance = joystick;
+
+		// Respecte le choix fait dans le Main Menu lors d'une session
+		// precedente (voir UIManager.ToggleTouchControls) -- actif par
+		// defaut, comme avant ce reglage.
+		canvasGO.SetActive(IsEnabled);
 	}
 
 	// Unity a un sprite rond tout prêt ("Knob") fourni avec l'éditeur -- pas

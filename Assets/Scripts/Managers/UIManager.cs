@@ -82,6 +82,12 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         healthStat = targetFrame.GetComponentInChildren<Stat>();
+
+        // Le texte du bouton "Tactile" du Main Menu est fige dans la scene --
+        // on le met a jour ici pour qu'il reflete bien le choix sauvegarde
+        // (voir ToggleTouchControls) des l'ouverture du menu, meme si on n'a
+        // encore jamais touche au bouton cette session-ci.
+        UpdateTouchControlsButtonText(TouchJoystick.IsEnabled);
     }
 
     // Update is called once per frame
@@ -308,6 +314,34 @@ public class UIManager : MonoBehaviour
         }
 
         SceneManager.LoadScene("CharacterSelect");
+    }
+
+    // Appele par le bouton "Tactile" du Main Menu (voir Demo.unity, panneau
+    // MainMenu, a cote de Deconnexion) : permet de masquer le joystick
+    // tactile (voir TouchJoystick.cs) pour les joueurs au clavier/souris sur
+    // PC, qui le trouvaient genant au-dessus du chat. Le choix est retenu
+    // (PlayerPrefs, voir TouchJoystick.SetEnabled) pour la prochaine
+    // connexion.
+    public void ToggleTouchControls()
+    {
+        bool isEnabled = !TouchJoystick.IsEnabled;
+        TouchJoystick.SetEnabled(isEnabled);
+        UpdateTouchControlsButtonText(isEnabled);
+    }
+
+    private void UpdateTouchControlsButtonText(bool isEnabled)
+    {
+        GameObject buttonGO = GameObject.Find("ToggleTouchControls");
+        if (buttonGO == null)
+        {
+            return;
+        }
+
+        Text text = buttonGO.GetComponentInChildren<Text>();
+        if (text != null)
+        {
+            text.text = isEnabled ? "Tactile : ON" : "Tactile : OFF";
+        }
     }
 
     /// <summary>
