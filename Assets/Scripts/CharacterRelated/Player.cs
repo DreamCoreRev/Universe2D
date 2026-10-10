@@ -219,8 +219,12 @@ public class Player : Character
             // Meme probleme que SaveManager : CameraFollow.Start() s'execute
             // avant que ce Player (reseau) existe, donc sa camera ne nous
             // suit jamais -- on la branche nous-meme une fois pret.
-            CameraFollow cameraFollow = FindObjectOfType<CameraFollow>();
-            if (cameraFollow != null)
+            // Important : il y a DEUX CameraFollow dans Demo.unity (Main
+            // Camera pour l'ecran + MinimapCamera pour la minimap) --
+            // FindObjectOfType<T>() n'en renvoie qu'une seule au hasard, il
+            // faut donc les initialiser TOUTES les deux avec ce Player.
+            CameraFollow[] cameraFollows = FindObjectsOfType<CameraFollow>();
+            foreach (CameraFollow cameraFollow in cameraFollows)
             {
                 cameraFollow.Initialize(this);
             }

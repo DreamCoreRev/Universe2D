@@ -57,6 +57,8 @@ public class CameraFollow : MonoBehaviour {
     /// </summary>
     public void Initialize(Player targetPlayer)
     {
+        Debug.Log("[CameraFollow] Initialize() appele. initialized=" + initialized + " targetPlayer=" + (targetPlayer == null ? "null" : targetPlayer.name) + " tilemap=" + (tilemap == null ? "NULL" : "ok") + " this.enabled=" + enabled + " gameObject.activeInHierarchy=" + gameObject.activeInHierarchy);
+
         if (initialized || targetPlayer == null)
         {
             return;
@@ -76,6 +78,8 @@ public class CameraFollow : MonoBehaviour {
 
         //Sets the limits of the player
         player.SetLimits(minTile, maxTile);
+
+        Debug.Log("[CameraFollow] Initialize() termine. target=" + target.name + " position=" + target.position);
     }
 
     private void LateUpdate()
