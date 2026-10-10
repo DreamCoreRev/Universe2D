@@ -90,18 +90,17 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
             HandScript.MyInstance.Drop();
         }
 
-        if (gearSocket != null && MyEquippedArmor.MyAnimationClips != null)
-        {
-            gearSocket.Equip(MyEquippedArmor.MyAnimationClips);
-        }
+        // ATTENTION : gearSocket (champ serialise ci-dessous) pointe vers
+        // les objets GearSocket de l'ancien personnage solo, desormais
+        // desactive (voir Player.prefab, m_IsActive: 0) -- un objet
+        // desactive n'execute jamais son Awake(), donc son spriteRenderer
+        // n'est jamais assigne et gearSocket.Equip() plante (NullRef) des
+        // le premier clic, ce qui arretait tout le reste de la methode
+        // avant meme d'atteindre le code ci-dessous. On n'appelle donc
+        // plus ce champ du tout -- seul le vrai socket (sur le Player
+        // effectivement actif) est utilise desormais.
 
         Player.MyInstance.EquipGear(armor);
-
-        // gearSocket (ci-dessus) est cable en dur dans la scene sur l'ancien
-        // personnage solo -- desormais desactive (voir Player.prefab) --
-        // donc n'a plus d'effet visuel reel. Le vrai socket vit sur le
-        // Player effectivement actif (reseau ou solo) : on l'applique la
-        // en plus, et on previent les autres joueurs via le reseau.
         int socketIndex = Player.SocketIndexForArmorType((int)armoryType);
         Debug.Log("[CharButton] EquipArmor armoryType=" + armoryType + " socketIndex=" + socketIndex + " animClips=" + (MyEquippedArmor.MyAnimationClips == null ? "NULL" : MyEquippedArmor.MyAnimationClips.Length.ToString()));
         if (socketIndex >= 0 && MyEquippedArmor.MyAnimationClips != null)
@@ -141,19 +140,14 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         }
 
        
-        if (gearSocket != null && MyEquippedArmor.MyAnimationClips != null)
+        // Meme remarque que dans EquipArmor() : gearSocket (champ serialise
+        // ci-dessous) pointe vers un objet desactive et son Dequip() plante
+        // (NullRef sur spriteRenderer) -- on ne l'appelle plus du tout,
+        // seul le vrai socket (ci-dessous) est utilise.
+        if (MyEquippedArmor != null)
         {
             Player.MyInstance.DequipGear(MyEquippedArmor);
-            gearSocket.Dequip();
         }
-        else if (MyEquippedArmor != null)
-        {
-            Player.MyInstance.DequipGear(MyEquippedArmor);
-        }
-
-        // Meme remarque que dans EquipArmor() : gearSocket ci-dessus ne
-        // pointe plus vers un personnage actif, donc on applique en plus
-        // sur le vrai socket et on previent les autres joueurs.
         int socketIndex = Player.SocketIndexForArmorType((int)armoryType);
         if (socketIndex >= 0)
         {
