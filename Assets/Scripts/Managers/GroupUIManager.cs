@@ -238,7 +238,10 @@ public class GroupUIManager : MonoBehaviour
         playerTargetFrameRect.anchorMin = new Vector2(0f, 1f);
         playerTargetFrameRect.anchorMax = new Vector2(0f, 1f);
         playerTargetFrameRect.pivot = new Vector2(0.5f, 0.5f);
-        playerTargetFrameRect.anchoredPosition = new Vector2(376.7f, -30.599976f);
+        // Decale de 150px vers la gauche par rapport a l'ancien emplacement
+        // (qui reutilisait tel quel la case ecran de l'ex TargetFrame des
+        // monstres) pour rapprocher ce portrait du notre, en haut a gauche.
+        playerTargetFrameRect.anchoredPosition = new Vector2(226.7f, -30.599976f);
 
         // La barre d'XP n'a pas sa place sur une cible (comme sur WoW).
         Transform xpBackground = playerTargetFrameGO.transform.Find("XPBackground");
