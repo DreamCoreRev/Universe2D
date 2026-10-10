@@ -11,18 +11,18 @@ Direct3D:
     VRAM:     8150 MB
     Driver:   32.0.31041.1004
 Begin MonoManager ReloadAssembly
-- Completed reload, in  0.102 seconds
+- Completed reload, in  0.108 seconds
 <RI> Initializing input.
 D3D11 device created for Microsoft Media Foundation video decoding.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.908100 ms
+UnloadTime: 0.927000 ms
 ThreadLog initialized.
 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.414200 ms
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 10964.
-Total: 2.440400 ms (FindLiveObjects: 0.660900 ms CreateObjectMapping: 0.162500 ms MarkObjects: 1.579500 ms  DeleteObjects: 0.037100 ms)
+UnloadTime: 3.669100 ms
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 10961.
+Total: 2.354700 ms (FindLiveObjects: 0.654900 ms CreateObjectMapping: 0.152600 ms MarkObjects: 1.520500 ms  DeleteObjects: 0.026600 ms)
 
