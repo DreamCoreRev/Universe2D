@@ -215,6 +215,15 @@ public class Player : Character
             {
                 saveManager.TryInitializePlayer();
             }
+
+            // Meme probleme que SaveManager : CameraFollow.Start() s'execute
+            // avant que ce Player (reseau) existe, donc sa camera ne nous
+            // suit jamais -- on la branche nous-meme une fois pret.
+            CameraFollow cameraFollow = FindObjectOfType<CameraFollow>();
+            if (cameraFollow != null)
+            {
+                cameraFollow.Initialize(this);
+            }
         }
     }
 

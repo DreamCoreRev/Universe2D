@@ -26,14 +26,46 @@ public class CameraFollow : MonoBehaviour {
     /// </summary>
     private Player player;
 
+    private bool initialized = false;
+
 	// Use this for initialization
 	void Start ()
     {
-        //Creates a reference to the target
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        // En solo, le Player tague "Player" existe deja (place a la main
+        // dans la scene) -- on peut initialiser tout de suite comme avant.
+        // En reseau, il n'existe pas encore a cet instant (Mirror le cree
+        // juste apres la connexion), donc FindGameObjectWithTag renverrait
+        // null et plantait ici -- dans ce cas on attend que Player.cs nous
+        // appelle lui-meme (voir Initialize ci-dessous) des qu'il est pret.
+        GameObject tagged = GameObject.FindGameObjectWithTag("Player");
+        if (tagged != null)
+        {
+            Player taggedPlayer = tagged.GetComponent<Player>();
+            if (taggedPlayer != null)
+            {
+                Initialize(taggedPlayer);
+            }
+        }
+	}
 
-        //Creates a reference to the player's script
-        player = target.GetComponent<Player>();
+    /// <summary>
+    /// Branche la camera sur ce joueur et calcule les limites de la carte.
+    /// Appele automatiquement en solo (voir Start ci-dessus), et par
+    /// Player.cs des que notre joueur reseau est pret. Protege par
+    /// "initialized" pour ne jamais faire le travail deux fois si les deux
+    /// chemins finissent par se declencher (cas solo).
+    /// </summary>
+    public void Initialize(Player targetPlayer)
+    {
+        if (initialized || targetPlayer == null)
+        {
+            return;
+        }
+
+        initialized = true;
+
+        player = targetPlayer;
+        target = targetPlayer.transform;
 
         //Calculates the min and max postion
         Vector3 minTile = tilemap.CellToWorld(tilemap.cellBounds.min);
@@ -44,11 +76,15 @@ public class CameraFollow : MonoBehaviour {
 
         //Sets the limits of the player
         player.SetLimits(minTile, maxTile);
-
-	}
+    }
 
     private void LateUpdate()
     {
+        if (target == null)
+        {
+            return;
+        }
+
         //Makes sure the camera doesn't go further than our world
         transform.position = new Vector3(Mathf.Clamp(target.position.x, xMin, xMax), Mathf.Clamp(target.position.y, yMin, yMax), -10);
     }
