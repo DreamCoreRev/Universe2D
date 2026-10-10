@@ -91,8 +91,19 @@ public class GroupUIManager : MonoBehaviour
         contextMenuGO.transform.SetParent(parent, false);
 
         contextMenuRect = contextMenuGO.GetComponent<RectTransform>();
-        contextMenuRect.anchorMin = new Vector2(0f, 1f);
-        contextMenuRect.anchorMax = new Vector2(0f, 1f);
+        // BUG trouve le 10/10 : l'ancre doit etre au CENTRE du canvas
+        // (0.5, 0.5), pas a son coin (0, 1). RectTransformUtility.
+        // ScreenPointToLocalPointInRectangle (voir ShowContextMenu) donne
+        // un point relatif au CENTRE du canvas -- avec une ancre au coin,
+        // anchoredPosition s'additionnait a un point deja decale au coin
+        // superieur gauche, donc le menu restait colle pres du portrait
+        // (coin superieur gauche de l'ecran) quel que soit l'endroit
+        // reellement clique. Le pivot (0, 1), lui, reste au coin
+        // superieur gauche DU MENU -- c'est ce qui fait que le menu
+        // s'etend vers la droite et le bas a partir du point clique,
+        // comme un vrai menu contextuel.
+        contextMenuRect.anchorMin = new Vector2(0.5f, 0.5f);
+        contextMenuRect.anchorMax = new Vector2(0.5f, 0.5f);
         contextMenuRect.pivot = new Vector2(0f, 1f);
         contextMenuRect.sizeDelta = new Vector2(150f, 34f);
 
