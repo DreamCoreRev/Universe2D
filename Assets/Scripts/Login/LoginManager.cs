@@ -37,6 +37,76 @@ public class LoginManager : MonoBehaviour
     [SerializeField]
     private string characterSelectSceneName = "CharacterSelect";
 
+    private void Start()
+    {
+        CreateQuitButton();
+    }
+
+    // Bouton "Quitter" facon WoW, ajoute au runtime (comme pour
+    // CharacterSelectManager) plutot qu'a la main dans Login.unity, pour ne
+    // pas risquer la scene existante -- se greffe sous le meme Canvas que
+    // les boutons deja presents (via loginButton.transform.parent), coin
+    // inferieur gauche.
+    private void CreateQuitButton()
+    {
+        if (loginButton == null)
+        {
+            return;
+        }
+
+        Transform parent = loginButton.transform.parent;
+
+        GameObject go = new GameObject("QuitButton");
+        RectTransform rect = go.AddComponent<RectTransform>();
+        rect.SetParent(parent, false);
+        rect.anchorMin = new Vector2(0f, 0f);
+        rect.anchorMax = new Vector2(0f, 0f);
+        rect.pivot = new Vector2(0f, 0f);
+        rect.sizeDelta = new Vector2(120, 34);
+        rect.anchoredPosition = new Vector2(24, 24);
+
+        Image image = go.AddComponent<Image>();
+        image.color = new Color(0.82f, 0.62f, 0.16f, 1f);
+
+        Outline outline = go.AddComponent<Outline>();
+        outline.effectColor = new Color(0.22f, 0.14f, 0.03f, 0.95f);
+        outline.effectDistance = new Vector2(1.5f, -1.5f);
+
+        Button quitButton = go.AddComponent<Button>();
+        quitButton.targetGraphic = image;
+
+        GameObject textGO = new GameObject("Text");
+        RectTransform textRect = textGO.AddComponent<RectTransform>();
+        textRect.SetParent(rect, false);
+        textRect.anchorMin = Vector2.zero;
+        textRect.anchorMax = Vector2.one;
+        textRect.offsetMin = Vector2.zero;
+        textRect.offsetMax = Vector2.zero;
+
+        Text text = textGO.AddComponent<Text>();
+        text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        text.text = "QUITTER";
+        text.fontSize = 13;
+        text.fontStyle = FontStyle.Bold;
+        text.color = new Color(0.20f, 0.11f, 0.02f, 1f);
+        text.alignment = TextAnchor.MiddleCenter;
+        text.raycastTarget = false;
+
+        quitButton.onClick.AddListener(OnQuitClicked);
+    }
+
+    // Appele par le QuitButton cree dans CreateQuitButton.
+    private void OnQuitClicked()
+    {
+        Debug.Log("[LoginManager] Quitter clique -- fermeture de l'application.");
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
     // Called by UI element LoginButton.OnClick
     public void OnLoginClicked()
     {

@@ -41,4 +41,17 @@ public static class Session
         SelectedSaveSlotIndex = -1;
         IsNewCharacter = false;
     }
+
+    /// <summary>
+    /// Deconnexion complete du COMPTE (voir CharacterSelectManager, bouton
+    /// "Deconnexion" -- retour a Login). Efface aussi le pseudo, en plus du
+    /// personnage selectionne (contrairement a ClearSelectedCharacter()
+    /// seule, utilisee elle pour un simple retour a la selection depuis le
+    /// jeu, compte toujours connecte -- voir UIManager.Logout).
+    /// </summary>
+    public static void ClearAll()
+    {
+        Username = null;
+        ClearSelectedCharacter();
+    }
 }

@@ -168,6 +168,7 @@ public class CharacterSelectManager : MonoBehaviour
         BuildActionButtons(canvasRect);
         BuildCreatePanel(canvasRect);
         BuildDeleteConfirmPanel(canvasRect);
+        BuildLogoutButton(canvasRect);
 
         statusText = CreateText("StatusText", canvasRect, "", 16, ErrorTextColor, FontStyle.Normal, TextAnchor.MiddleCenter);
         SetAnchoredRect(statusText.rectTransform, new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0, 40), new Vector2(700, 30));
@@ -271,6 +272,37 @@ public class CharacterSelectManager : MonoBehaviour
         cancelButton.onClick.AddListener(CloseCreatePanel);
 
         SelectCreateClass(MageClass);
+    }
+
+    private void BuildLogoutButton(RectTransform parent)
+    {
+        // Bouton "Deconnexion" facon WoW, coin superieur droit : termine la
+        // session du COMPTE (retour a Login) -- a ne pas confondre avec le
+        // bouton "Deconnexion" du menu Echap en jeu (voir UIManager.Logout),
+        // qui lui ne fait que revenir a CET ecran, compte toujours connecte.
+        Button logoutButton = CreateThemedButton(parent, "DECONNEXION", Vector2.zero, new Vector2(140, 34));
+        SetAnchoredRect(logoutButton.GetComponent<RectTransform>(), new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-82, -24), new Vector2(140, 34));
+
+        Text label = logoutButton.GetComponentInChildren<Text>();
+        label.fontSize = 12;
+
+        logoutButton.onClick.AddListener(OnLogoutClicked);
+    }
+
+    private void OnLogoutClicked()
+    {
+        if (busy)
+        {
+            return;
+        }
+
+        if (Mirror.NetworkManager.singleton != null && Mirror.NetworkClient.active)
+        {
+            Mirror.NetworkManager.singleton.StopClient();
+        }
+
+        Session.ClearAll();
+        SceneManager.LoadScene("Login");
     }
 
     private void BuildDeleteConfirmPanel(RectTransform parent)

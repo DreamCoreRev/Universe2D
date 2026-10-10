@@ -279,12 +279,21 @@ public class UIManager : MonoBehaviour
     }
 
     // Appele par le bouton "Deconnexion" du menu Echap (voir Demo.unity,
-    // panneau MainMenu). Recharge simplement l'ecran de connexion -- pas
-    // besoin de prevenir le serveur, le token/la session cote jeu ne vit
-    // que dans cette scene, qui va etre detruite au chargement de Login.
+    // panneau MainMenu). Avant (solo), rechargeait juste Login -- depuis
+    // Mirror, il faut explicitement arreter le client reseau d'abord (sinon
+    // la connexion reste active en arriere-plan : StartClient() ne fait
+    // plus rien tant qu'on n'a pas vraiment quitte et relance le jeu), puis
+    // revenir a l'ecran de SELECTION de personnage (pas au login -- le
+    // compte reste connecte, voir CharacterSelectManager pour le vrai
+    // logout de compte, qui lui revient a Login).
     public void Logout()
     {
-        SceneManager.LoadScene("Login");
+        if (Mirror.NetworkManager.singleton != null && Mirror.NetworkClient.active)
+        {
+            Mirror.NetworkManager.singleton.StopClient();
+        }
+
+        SceneManager.LoadScene("CharacterSelect");
     }
 
     /// <summary>
