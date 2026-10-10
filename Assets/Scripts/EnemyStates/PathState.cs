@@ -26,6 +26,17 @@ public class PathState : IState
         // connecte, pas forcement Player.MyInstance) qui est entre dans la
         // Range du monstre -- voir Range.cs/Enemy.SetTarget. En reseau,
         // seul le serveur execute cet etat (voir Enemy.ShouldRunAI).
+        //
+        // MyCurrentTile n'est rempli qu'au premier contact physique avec une
+        // tuile (voir CurrentTileScript) : un joueur tout juste connecte/
+        // spawn (ou le monstre lui-meme) peut donc encore valoir null ici,
+        // le temps d'un ou deux FixedUpdate. On evite plutot que de planter.
+        if (parent.MyTarget == null || parent.MyTarget.MyCurrentTile == null || parent.MyCurrentTile == null)
+        {
+            parent.ChangeState(new EvadeState());
+            return;
+        }
+
         targetPos = parent.MyTarget.MyCurrentTile.position;
 
         if (targetPos != parent.MyCurrentTile.position)
