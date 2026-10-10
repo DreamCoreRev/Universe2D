@@ -11,32 +11,173 @@ Direct3D:
     VRAM:     8150 MB
     Driver:   32.0.31041.1004
 Begin MonoManager ReloadAssembly
-- Completed reload, in  0.101 seconds
+- Completed reload, in  0.102 seconds
 <RI> Initializing input.
-<RI> Input initialized.
 D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.881200 ms
+UnloadTime: 0.959200 ms
 ThreadLog initialized.
 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.481100 ms
-Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 10949.
-Total: 2.429700 ms (FindLiveObjects: 0.719200 ms CreateObjectMapping: 0.150600 ms MarkObjects: 1.525100 ms  DeleteObjects: 0.034400 ms)
+UnloadTime: 3.416300 ms
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 10965.
+Total: 2.421100 ms (FindLiveObjects: 0.669300 ms CreateObjectMapping: 0.149200 ms MarkObjects: 1.564300 ms  DeleteObjects: 0.037900 ms)
 
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 14.040100 ms
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Enemy.SetTarget (Character target) [0x0002b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.TakeDamage (System.Single damage, Character source) [0x00015] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Assets.Scripts.Debuffs.IgniteDebuff.Update () [0x00033] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.HandleDebuffs () [0x00023] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Character.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at Enemy.Update () [0x0005b] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at RangedEnemy.Update () [0x00006] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Player+<AttackRoutine>d__67.MoveNext () [0x000c9] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at UnityEngine.SetupCoroutine.InvokeMoveNext (System.Collections.IEnumerator enumerator, System.IntPtr returnValueAddress) [0x00026] in <806021f955ec43bb97cd1adca41e00da>:0 
+
+ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+  at System.Collections.Generic.List`1[T].get_Item (System.Int32 index) [0x00009] in <34c8028f8a3946349d8f0d77e409a1ae>:0 
+  at ChainLightning.PickTarget (UnityEngine.Collider2D collision) [0x00017] in <a060b479e514413f8bcc8a4e5c655571>:0 
+  at ChainLightning.OnTriggerEnter2D (UnityEngine.Collider2D collision) [0x000ed] in <a060b479e514413f8bcc8a4e5c655571>:0 
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 13.598900 ms
+Unloading 28 unused Assets to reduce memory usage. Loaded Objects now: 10965.
+Total: 2.418400 ms (FindLiveObjects: 0.466700 ms CreateObjectMapping: 0.101800 ms MarkObjects: 1.826300 ms  DeleteObjects: 0.023400 ms)
+
+Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 6.260200 ms
 Multiple NetworkManagers detected in the scene. Only one NetworkManager can exist at a time. The duplicate NetworkManager will be destroyed.
-Unloading 1009 unused Assets to reduce memory usage. Loaded Objects now: 3230.
-Total: 3.152500 ms (FindLiveObjects: 0.192600 ms CreateObjectMapping: 0.067800 ms MarkObjects: 2.031700 ms  DeleteObjects: 0.860400 ms)
+Unloading 1010 unused Assets to reduce memory usage. Loaded Objects now: 3230.
+Total: 3.156000 ms (FindLiveObjects: 0.185000 ms CreateObjectMapping: 0.075200 ms MarkObjects: 1.977500 ms  DeleteObjects: 0.918200 ms)
 
 Memory Statistics:
 [ALLOC_TEMP_TLS] TLS Allocator
   StackAllocators : 
     [ALLOC_TEMP_MAIN]
-      Peak usage frame count: [0-1.0 KB]: 543 frames, [1.0 KB-2.0 KB]: 6 frames, [2.0 KB-4.0 KB]: 1 frames, [4.0 KB-8.0 KB]: 1225 frames, [8.0 KB-16.0 KB]: 360 frames, [16.0 KB-32.0 KB]: 7883 frames, [32.0 KB-64.0 KB]: 47 frames, [64.0 KB-128.0 KB]: 1 frames, [256.0 KB-0.5 MB]: 1 frames, [0.5 MB-1.0 MB]: 1 frames, [1.0 MB-2.0 MB]: 1 frames, [4.0 MB-8.0 MB]: 1 frames
+      Peak usage frame count: [0-1.0 KB]: 512 frames, [1.0 KB-2.0 KB]: 4 frames, [2.0 KB-4.0 KB]: 1 frames, [4.0 KB-8.0 KB]: 1283 frames, [8.0 KB-16.0 KB]: 705 frames, [16.0 KB-32.0 KB]: 4050 frames, [32.0 KB-64.0 KB]: 4607 frames, [64.0 KB-128.0 KB]: 36 frames, [256.0 KB-0.5 MB]: 1 frames, [0.5 MB-1.0 MB]: 1 frames, [1.0 MB-2.0 MB]: 2 frames, [4.0 MB-8.0 MB]: 1 frames
       Initial Block Size 4.0 MB
       Current Block Size 6.6 MB
       Peak Allocated Bytes 6.6 MB
@@ -50,7 +191,7 @@ Memory Statistics:
       Initial Block Size 256.0 KB
       Current Block Size 500.0 KB
       Peak Allocated Bytes 433.3 KB
-      Overflow Count 40
+      Overflow Count 44
     [ALLOC_TEMP_Background Job.Worker 8]
       Initial Block Size 32.0 KB
       Current Block Size 32.0 KB
@@ -59,12 +200,12 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 6]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 33.0 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 0]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 33.1 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 10]
       Initial Block Size 32.0 KB
@@ -79,7 +220,7 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 5]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 33.1 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 14]
       Initial Block Size 32.0 KB
@@ -89,27 +230,27 @@ Memory Statistics:
     [ALLOC_TEMP_Background Job.Worker 6]
       Initial Block Size 32.0 KB
       Current Block Size 32.0 KB
-      Peak Allocated Bytes 65 B
+      Peak Allocated Bytes 54 B
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 4]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 33.1 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 14]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 33.1 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 3]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 33.0 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 13]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 32.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 12]
       Initial Block Size 32.0 KB
@@ -144,7 +285,7 @@ Memory Statistics:
     [ALLOC_TEMP_UnityGfxDeviceWorker]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 5.2 KB
+      Peak Allocated Bytes 6.0 KB
       Overflow Count 0
     [ALLOC_TEMP_AssetGarbageCollectorHelper] x 15
       Initial Block Size 64.0 KB
@@ -159,7 +300,7 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 9]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 32.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 13]
       Initial Block Size 32.0 KB
@@ -169,22 +310,22 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 8]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 33.1 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 7]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 33.0 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 1]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 32.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 2]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 33.1 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 3]
       Initial Block Size 32.0 KB
@@ -199,22 +340,22 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 10]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 33.0 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 0]
       Initial Block Size 32.0 KB
       Current Block Size 32.0 KB
-      Peak Allocated Bytes 54 B
+      Peak Allocated Bytes 65 B
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 11]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 32.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 12]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 44.0 KB
+      Peak Allocated Bytes 32.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 4]
       Initial Block Size 32.0 KB
@@ -227,22 +368,22 @@ Memory Statistics:
       Peak Allocated Bytes 54 B
       Overflow Count 0
 [ALLOC_DEFAULT] Dual Thread Allocator
-  Peak main deferred allocation count 927
+  Peak main deferred allocation count 1714
     [ALLOC_BUCKET]
       Large Block size 4.0 MB
       Used Block count 1
-      Peak Allocated bytes 3.0 MB
+      Peak Allocated bytes 3.7 MB
     [ALLOC_DEFAULT_MAIN]
-      Peak usage frame count: [8.0 MB-16.0 MB]: 552 frames, [16.0 MB-32.0 MB]: 9518 frames
+      Peak usage frame count: [8.0 MB-16.0 MB]: 519 frames, [16.0 MB-32.0 MB]: 10684 frames
       Requested Block Size 16.0 MB
       Peak Block count 2
       Peak Allocated memory 20.7 MB
       Peak Large allocation bytes 0 B
     [ALLOC_DEFAULT_THREAD]
-      Peak usage frame count: [4.0 MB-8.0 MB]: 489 frames, [8.0 MB-16.0 MB]: 9581 frames
+      Peak usage frame count: [4.0 MB-8.0 MB]: 456 frames, [8.0 MB-16.0 MB]: 10747 frames
       Requested Block Size 16.0 MB
       Peak Block count 1
-      Peak Allocated memory 8.8 MB
+      Peak Allocated memory 8.9 MB
       Peak Large allocation bytes 0 B
 [ALLOC_TEMP_JOB_1_FRAME]
   Initial Block Size 2.0 MB
@@ -269,15 +410,15 @@ Memory Statistics:
     [ALLOC_BUCKET]
       Large Block size 4.0 MB
       Used Block count 1
-      Peak Allocated bytes 3.0 MB
+      Peak Allocated bytes 3.7 MB
     [ALLOC_GFX_MAIN]
-      Peak usage frame count: [64.0 KB-128.0 KB]: 551 frames, [128.0 KB-256.0 KB]: 1 frames, [0.5 MB-1.0 MB]: 1158 frames, [1.0 MB-2.0 MB]: 8359 frames, [2.0 MB-4.0 MB]: 1 frames
+      Peak usage frame count: [64.0 KB-128.0 KB]: 518 frames, [128.0 KB-256.0 KB]: 1 frames, [0.5 MB-1.0 MB]: 2330 frames, [1.0 MB-2.0 MB]: 8353 frames, [2.0 MB-4.0 MB]: 1 frames
       Requested Block Size 16.0 MB
       Peak Block count 1
       Peak Allocated memory 2.7 MB
       Peak Large allocation bytes 0 B
     [ALLOC_GFX_THREAD]
-      Peak usage frame count: [32.0 KB-64.0 KB]: 388 frames, [1.0 MB-2.0 MB]: 43 frames, [2.0 MB-4.0 MB]: 9639 frames
+      Peak usage frame count: [32.0 KB-64.0 KB]: 265 frames, [1.0 MB-2.0 MB]: 133 frames, [2.0 MB-4.0 MB]: 10805 frames
       Requested Block Size 16.0 MB
       Peak Block count 1
       Peak Allocated memory 2.8 MB
@@ -287,33 +428,33 @@ Memory Statistics:
     [ALLOC_BUCKET]
       Large Block size 4.0 MB
       Used Block count 1
-      Peak Allocated bytes 3.0 MB
+      Peak Allocated bytes 3.7 MB
     [ALLOC_CACHEOBJECTS_MAIN]
-      Peak usage frame count: [0.5 MB-1.0 MB]: 119 frames, [1.0 MB-2.0 MB]: 9951 frames
+      Peak usage frame count: [0.5 MB-1.0 MB]: 119 frames, [1.0 MB-2.0 MB]: 11084 frames
       Requested Block Size 4.0 MB
       Peak Block count 1
       Peak Allocated memory 1.7 MB
       Peak Large allocation bytes 0 B
     [ALLOC_CACHEOBJECTS_THREAD]
-      Peak usage frame count: [256.0 KB-0.5 MB]: 386 frames, [0.5 MB-1.0 MB]: 2 frames, [1.0 MB-2.0 MB]: 43 frames, [2.0 MB-4.0 MB]: 9518 frames, [4.0 MB-8.0 MB]: 121 frames
+      Peak usage frame count: [256.0 KB-0.5 MB]: 263 frames, [0.5 MB-1.0 MB]: 2 frames, [1.0 MB-2.0 MB]: 133 frames, [2.0 MB-4.0 MB]: 10683 frames, [4.0 MB-8.0 MB]: 122 frames
       Requested Block Size 4.0 MB
       Peak Block count 2
-      Peak Allocated memory 4.8 MB
+      Peak Allocated memory 5.1 MB
       Peak Large allocation bytes 0 B
 [ALLOC_TYPETREE] Dual Thread Allocator
   Peak main deferred allocation count 0
     [ALLOC_BUCKET]
       Large Block size 4.0 MB
       Used Block count 1
-      Peak Allocated bytes 3.0 MB
+      Peak Allocated bytes 3.7 MB
     [ALLOC_TYPETREE_MAIN]
-      Peak usage frame count: [0-1.0 KB]: 510 frames, [4.0 KB-8.0 KB]: 9560 frames
+      Peak usage frame count: [0-1.0 KB]: 387 frames, [4.0 KB-8.0 KB]: 10816 frames
       Requested Block Size 2.0 MB
       Peak Block count 1
       Peak Allocated memory 4.7 KB
       Peak Large allocation bytes 0 B
     [ALLOC_TYPETREE_THREAD]
-      Peak usage frame count: [1.0 KB-2.0 KB]: 388 frames, [4.0 KB-8.0 KB]: 1 frames, [8.0 KB-16.0 KB]: 9681 frames
+      Peak usage frame count: [1.0 KB-2.0 KB]: 265 frames, [4.0 KB-8.0 KB]: 2 frames, [8.0 KB-16.0 KB]: 10936 frames
       Requested Block Size 2.0 MB
       Peak Block count 1
       Peak Allocated memory 14.5 KB
