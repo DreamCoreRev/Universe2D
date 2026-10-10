@@ -28,9 +28,9 @@ public class TouchJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		get { return instance != null ? instance.currentDirection : Vector2.zero; }
 	}
 
-	// Rayon, en pixels à la résolution de référence (1920x1080), que le
-	// bâton peut parcourir autour du centre avant d'être bloqué.
-	private const float RADIUS = 100f;
+	// Rayon, en pixels à la résolution de référence (800x600, voir Install),
+	// que le bâton peut parcourir autour du centre avant d'être bloqué.
+	private const float RADIUS = 50f;
 
 	private RectTransform background;
 	private RectTransform handle;
@@ -56,8 +56,13 @@ public class TouchJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
 		CanvasScaler scaler = canvasGO.AddComponent<CanvasScaler>();
 		scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-		scaler.referenceResolution = new Vector2(1920, 1080);
-		scaler.matchWidthOrHeight = 0.5f;
+		// Meme reference (800x600, match height) que UICanvas (voir Demo.unity) :
+		// comme ca un pixel ici correspond exactement a un pixel du reste de
+		// l'interface (chat, actionbar...), ce qui evite tout chevauchement
+		// impossible a calculer entre deux canvas qui ne seraient pas a la
+		// meme echelle.
+		scaler.referenceResolution = new Vector2(800, 600);
+		scaler.matchWidthOrHeight = 1f;
 
 		canvasGO.AddComponent<GraphicRaycaster>();
 		Object.DontDestroyOnLoad(canvasGO);
@@ -73,8 +78,11 @@ public class TouchJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		bgRect.anchorMin = new Vector2(0f, 0f);
 		bgRect.anchorMax = new Vector2(0f, 0f);
 		bgRect.pivot = new Vector2(0.5f, 0.5f);
-		bgRect.sizeDelta = new Vector2(220f, 220f);
-		bgRect.anchoredPosition = new Vector2(180f, 180f);
+		bgRect.sizeDelta = new Vector2(120f, 120f);
+		// Au-dessus du chat (voir ChatWindow/ChatInput dans Demo.unity, qui
+		// occupent x:[10,270] y:[10,154] a cette meme echelle) plutot que
+		// dans le coin lui-meme, pour ne plus se superposer avec.
+		bgRect.anchoredPosition = new Vector2(70f, 230f);
 
 		GameObject handleGO = new GameObject("JoystickHandle", typeof(RectTransform));
 		handleGO.transform.SetParent(bgGO.transform, false);
@@ -84,7 +92,7 @@ public class TouchJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		handleImage.color = new Color(1f, 1f, 1f, 0.6f);
 
 		RectTransform handleRect = handleGO.GetComponent<RectTransform>();
-		handleRect.sizeDelta = new Vector2(100f, 100f);
+		handleRect.sizeDelta = new Vector2(56f, 56f);
 		handleRect.anchoredPosition = Vector2.zero;
 
 		TouchJoystick joystick = bgGO.AddComponent<TouchJoystick>();
