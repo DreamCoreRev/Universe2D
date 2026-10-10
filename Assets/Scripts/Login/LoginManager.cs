@@ -57,6 +57,13 @@ public class LoginManager : MonoBehaviour
             return;
         }
 
+        // Garde le pseudo tape ici pour le reste de la session (voir
+        // Session.cs) -- utilise ensuite en jeu, par exemple par le chat
+        // (voir PlayerChatSync). Aucun risque a le faire aussi pour une
+        // tentative d'inscription : il ne sert jamais avant qu'on entre
+        // effectivement en jeu.
+        Session.Username = username;
+
         SetBusy(true);
         StartCoroutine(SendRequest(path, username, password, onDone));
     }

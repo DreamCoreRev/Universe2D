@@ -31,6 +31,8 @@ public class Player : Character
 
     private PlayerCombatSync combatSync;
 
+    private PlayerChatSync chatSync;
+
     /// <summary>
     /// Vrai si c'est NOUS qui controlons ce Player (clavier/joystick/UI) :
     /// - en solo (pas de session Mirror active, ex: Play direct sur Demo.unity
@@ -487,6 +489,16 @@ public class Player : Character
     {
         Direction = Vector2.zero;
 
+        if (ChatManager.MyInstance != null && ChatManager.MyInstance.IsTyping)
+        {
+            // On tape dans le chat (voir ChatManager.IsTyping) : aucune
+            // touche de deplacement/debug/sort ne doit agir sur le perso
+            // pendant ce temps, sinon taper une lettre comme "z" ou un
+            // chiffre comme "1" deplacerait le perso ou lancerait un sort
+            // de la barre d'action.
+            return;
+        }
+
         ///THIS IS USED FOR DEBUGGING ONLY
         if (Input.GetKeyDown(KeyCode.KeypadMinus))
         {
@@ -748,6 +760,32 @@ public class Player : Character
         }
 
         combatSync.BroadcastAOESpell(spell.MyTitle, position);
+    }
+
+    /// <summary>
+    /// Envoie un message de chat tape par CE joueur. Gere elle-meme le cas
+    /// solo (aucune session Mirror active, voir IsLocallyControlled) en
+    /// l'affichant directement, et le cas reseau en passant par
+    /// PlayerChatSync (meme convention que combatSync/equipmentSync).
+    /// </summary>
+    public void SendChatMessage(string message)
+    {
+        if (!IsLocallyControlled)
+        {
+            return;
+        }
+
+        if (chatSync == null)
+        {
+            chatSync = GetComponent<PlayerChatSync>();
+        }
+
+        if (chatSync == null)
+        {
+            return;
+        }
+
+        chatSync.SendChatMessage(message);
     }
 
     private IEnumerator Regen()
