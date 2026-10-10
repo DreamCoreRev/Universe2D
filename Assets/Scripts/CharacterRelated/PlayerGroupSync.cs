@@ -14,16 +14,26 @@ using UnityEngine;
 /// cote SERVEUR via un simple dictionnaire statique, partage par toutes
 /// les instances de ce composant puisque le serveur dedie est un unique
 /// processus (voir le meme principe que PlayerCombatSync pour la
-/// resolution des degats). Pas de SyncVar pour l'instant : chaque
-/// changement declenche juste un message systeme dans le chat de chaque
-/// membre concerne (on reutilise ChatManager.AddMessage avec un nom
-/// d'expediteur vide -- voir ChatManager.AddMessage, deja prevu pour ce
-/// cas). Si un panneau "membres du groupe" visible en permanence est
-/// ajoute plus tard, on pourra completer ca avec un SyncList&lt;string&gt;
-/// sans toucher au reste du flux d'invitation.
+/// resolution des degats). Chaque changement declenche un message systeme
+/// dans le chat de chaque membre concerne (on reutilise ChatManager.
+/// AddMessage avec un nom d'expediteur vide -- voir ChatManager.
+/// AddMessage, deja prevu pour ce cas).
+///
+/// MyGroupMembers (SyncList&lt;uint&gt;) donne a CHAQUE client la liste des
+/// netId de SON PROPRE groupe (lui y compris) -- c'est ce que lit
+/// GroupUIManager.RefreshPartyFrames pour afficher les cadres des membres
+/// du groupe sous notre portrait, comme sur WoW. Mise a jour par le
+/// serveur a chaque changement de composition (voir RefreshGroupMemberLists),
+/// jamais ecrite directement par un client.
 /// </summary>
 public class PlayerGroupSync : NetworkBehaviour
 {
+    // Un groupe ne peut jamais depasser ce nombre de membres -- comme sur
+    // WoW (groupe "classique" de 5). Doit rester identique a
+    // GroupUIManager.MaxGroupSize (voir ce fichier), qui s'en sert pour
+    // savoir combien d'emplacements de cadres de groupe preparer.
+    private const int MaxGroupSize = 5;
+
     // netId du joueur -> id de groupe (0/absent = pas de groupe). Remis a
     // zero a chaque lancement du serveur -- pas de persistance de groupe
     // entre deux sessions serveur, ce qui est voulu.
@@ -33,6 +43,11 @@ public class PlayerGroupSync : NetworkBehaviour
     private static readonly Dictionary<int, List<uint>> groupMembers = new Dictionary<int, List<uint>>();
 
     private static int nextGroupId = 1;
+
+    // Voir le commentaire de classe : la liste complete du groupe de CE
+    // joueur (lui inclus), synchronisee par le serveur. C'est au lecteur
+    // (GroupUIManager) de filtrer son propre netId pour l'affichage.
+    public readonly SyncList<uint> MyGroupMembers = new SyncList<uint>();
 
     private PlayerChatSync chatSync;
 
@@ -81,6 +96,12 @@ public class PlayerGroupSync : NetworkBehaviour
         if (AreInSameGroup(netId, targetIdentity.netId))
         {
             SendSystemMessageTo(connectionToClient, "Vous etes deja dans le meme groupe.");
+            return;
+        }
+
+        if (IsGroupFull(netId))
+        {
+            SendSystemMessageTo(connectionToClient, "Le groupe est complet (" + MaxGroupSize + "/" + MaxGroupSize + ").");
             return;
         }
 
@@ -140,6 +161,12 @@ public class PlayerGroupSync : NetworkBehaviour
             return;
         }
 
+        if (IsGroupFull(inviterIdentity.netId))
+        {
+            SendSystemMessageTo(connectionToClient, "Le groupe est complet (" + MaxGroupSize + "/" + MaxGroupSize + ").");
+            return;
+        }
+
         JoinOrCreateGroup(inviterIdentity.netId, netId);
     }
 
@@ -147,6 +174,18 @@ public class PlayerGroupSync : NetworkBehaviour
     {
         return playerGroupId.TryGetValue(a, out int groupA) && groupA != 0 &&
             playerGroupId.TryGetValue(b, out int groupB) && groupA == groupB;
+    }
+
+    /// <summary>
+    /// Vrai si le groupe AUQUEL APPARTIENT DEJA memberNetId est plein. Un
+    /// joueur qui n'est dans aucun groupe n'a jamais ce probleme : inviter
+    /// quelqu'un alors qu'on est seul cree toujours un groupe de 2, donc
+    /// toujours en dessous du maximum.
+    /// </summary>
+    private static bool IsGroupFull(uint memberNetId)
+    {
+        return playerGroupId.TryGetValue(memberNetId, out int groupId) && groupId != 0 &&
+            groupMembers.TryGetValue(groupId, out List<uint> members) && members.Count >= MaxGroupSize;
     }
 
     /// <summary>
@@ -188,6 +227,8 @@ public class PlayerGroupSync : NetworkBehaviour
 
             SendSystemMessageTo(memberIdentity.connectionToClient, message);
         }
+
+        RefreshGroupMemberLists(groupId);
     }
 
     private void RemoveFromGroup(uint playerNetId)
@@ -206,6 +247,62 @@ public class PlayerGroupSync : NetworkBehaviour
             if (members.Count == 0)
             {
                 groupMembers.Remove(groupId);
+            }
+            else
+            {
+                RefreshGroupMemberLists(groupId);
+            }
+        }
+
+        // Le joueur qui part (ou se deconnecte, voir OnStopServer) ne doit
+        // plus voir personne dans son propre groupe -- meme s'il a deja
+        // quitte la partie, ResolvePlayerGroupSync renverra simplement null
+        // et ce sera un no-op.
+        PlayerGroupSync leavingSync = ResolvePlayerGroupSync(playerNetId);
+        if (leavingSync != null)
+        {
+            leavingSync.MyGroupMembers.Clear();
+        }
+    }
+
+    private static PlayerGroupSync ResolvePlayerGroupSync(uint playerNetId)
+    {
+        if (NetworkServer.spawned.TryGetValue(playerNetId, out NetworkIdentity identity) && identity != null)
+        {
+            return identity.GetComponent<PlayerGroupSync>();
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Remet a jour la SyncList MyGroupMembers de CHAQUE membre du groupe
+    /// (la liste complete, soi-meme inclus -- c'est au client de filtrer
+    /// son propre netId pour l'affichage, voir GroupUIManager.
+    /// RefreshPartyFrames) apres un changement de composition (arrivee ou
+    /// depart d'un membre).
+    /// </summary>
+    private static void RefreshGroupMemberLists(int groupId)
+    {
+        if (!groupMembers.TryGetValue(groupId, out List<uint> members))
+        {
+            return;
+        }
+
+        foreach (uint memberNetId in members)
+        {
+            PlayerGroupSync memberSync = ResolvePlayerGroupSync(memberNetId);
+
+            if (memberSync == null)
+            {
+                continue;
+            }
+
+            memberSync.MyGroupMembers.Clear();
+
+            foreach (uint otherNetId in members)
+            {
+                memberSync.MyGroupMembers.Add(otherNetId);
             }
         }
     }
