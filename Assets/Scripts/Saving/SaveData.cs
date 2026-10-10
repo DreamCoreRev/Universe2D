@@ -19,6 +19,8 @@ public class SaveData
 
     public List<QuestGiverData> MyQuestGiverData { get; set; }
 
+    public List<TalentData> MyTalentData { get; set; }
+
     public DateTime MyDateTime { get; set; }
 
     public string MyScene { get; set; }
@@ -31,6 +33,7 @@ public class SaveData
         MyEquipmentData = new List<EquipmentData>();
         MyQuestData = new List<QuestData>();
         MyQuestGiverData = new List<QuestGiverData>();
+        MyTalentData = new List<TalentData>();
         MyDateTime = DateTime.Now;
     }
 }
@@ -204,5 +207,22 @@ public class QuestGiverData
     {
         this.MyQuestGiverID = questGiverID;
         MyCompletedQuests = completedQuests;
+    }
+}
+
+[Serializable]
+public class TalentData
+{
+    // Identifie le talent par le nom de son GameObject (ex: "Fire_1",
+    // "Ice_3", voir Demo.unity/TalentTree) puisque Talent.cs n'a pas de
+    // champ titre comme Item -- voir TalentTree.GetSaveData/ApplySavedTalents.
+    public string MyName { get; set; }
+
+    public int MyCount { get; set; }
+
+    public TalentData(string name, int count)
+    {
+        MyName = name;
+        MyCount = count;
     }
 }

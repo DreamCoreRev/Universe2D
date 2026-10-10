@@ -16,6 +16,10 @@ public class SaveManager : MonoBehaviour
 
     private CharButton[] equipment;
 
+    // Panneau des talents (Demo.unity/TalentTree) -- un seul par joueur, pas
+    // besoin d'un champ serialise, voir SaveTalents/LoadTalents.
+    private TalentTree talentTree;
+
     [SerializeField]
     private ActionButton[] actionButtons;
 
@@ -49,6 +53,7 @@ public class SaveManager : MonoBehaviour
     {
         chests = FindObjectsOfType<Chest>();
         equipment = FindObjectsOfType<CharButton>();
+        talentTree = FindObjectOfType<TalentTree>(true);
 
         foreach (SavedGame saved in saveSlots)
         {
@@ -337,6 +342,8 @@ public class SaveManager : MonoBehaviour
 
         SaveQuestGivers(data);
 
+        SaveTalents(data);
+
         return data;
     }
 
@@ -456,6 +463,19 @@ public class SaveManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Talents appris (voir TalentTree.GetSaveData) -- jusqu'ici non
+    /// sauvegardes du tout, ce qui remettait tout l'arbre a zero a chaque
+    /// deco/reco (TalentTree.Start appelle toujours ResetTalents).
+    /// </summary>
+    private void SaveTalents(SaveData data)
+    {
+        if (talentTree != null)
+        {
+            data.MyTalentData = talentTree.GetSaveData();
+        }
+    }
+
 
     private void Load(SavedGame savedGame)
     {
@@ -530,6 +550,8 @@ public class SaveManager : MonoBehaviour
 
         LoadActionButtons(data);
 
+        LoadTalents(data);
+
         LoadQuests(data);
 
         LoadQuestGiver(data);
@@ -596,6 +618,14 @@ public class SaveManager : MonoBehaviour
             {
                 actionButtons[buttonData.MyIndex].SetUseable(SpellBook.MyInstance.GetSpell(buttonData.MyAction));
             }
+        }
+    }
+
+    private void LoadTalents(SaveData data)
+    {
+        if (talentTree != null)
+        {
+            talentTree.ApplySavedTalents(data.MyTalentData);
         }
     }
 
