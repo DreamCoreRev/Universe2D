@@ -78,8 +78,6 @@ public class AttackState : IState
     /// <returns></returns>
     public IEnumerator Attack()
     {
-        Debug.Log($"[DEBUG-ATTACK] {parent.name} Attack() coroutine started, animLayer2Length={parent.MyAnimator.GetCurrentAnimatorStateInfo(2).length:F2}");
-
         parent.IsAttacking = true;
 
         parent.MyAnimator.SetTrigger("attack");
@@ -87,8 +85,6 @@ public class AttackState : IState
         yield return new WaitForSeconds(parent.MyAnimator.GetCurrentAnimatorStateInfo(2).length);
 
         parent.IsAttacking = false;
-
-        Debug.Log($"[DEBUG-ATTACK] {parent.name} Attack() coroutine finished");
     }
 
 }

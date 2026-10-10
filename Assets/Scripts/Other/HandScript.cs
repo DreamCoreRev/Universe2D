@@ -76,6 +76,8 @@ public class HandScript : MonoBehaviour
     /// <param name="moveable">The moveable to pick up</param>
     public void TakeMoveable(IMoveable moveable)
     {
+        Debug.Log($"[DEBUG-HAND] TakeMoveable called, instance={(instance != null)}, this.icon={(icon != null)}, moveable={(moveable != null)}, gameObject.activeInHierarchy={gameObject.activeInHierarchy}");
+
         this.MyMoveable = moveable;
         icon.sprite = moveable.MyIcon;
         icon.enabled = true;

@@ -31,8 +31,6 @@ public class Player : Character
 
     private PlayerCombatSync combatSync;
 
-    private float debugWrapperLogTimer;
-
     /// <summary>
     /// Vrai si c'est NOUS qui controlons ce Player (clavier/joystick/UI) :
     /// - en solo (pas de session Mirror active, ex: Play direct sur Demo.unity
@@ -421,16 +419,6 @@ public class Player : Character
                 }
             }
         }
-        else
-        {
-            debugWrapperLogTimer += Time.deltaTime;
-            if (debugWrapperLogTimer >= 2f)
-            {
-                debugWrapperLogTimer = 0f;
-                Debug.Log($"[DEBUG-PLAYERPARENT] {name} hasParent={transform.parent != null} pos={transform.position} parentPos={(transform.parent != null ? transform.parent.position.ToString() : "N/A")}");
-            }
-        }
-
         if (!IsLocallyControlled && transform.parent != null)
         {
             // Ce Player n'est pas le notre (voir IsLocallyControlled) : rien
