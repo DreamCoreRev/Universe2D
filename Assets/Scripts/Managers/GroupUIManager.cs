@@ -65,7 +65,15 @@ public class GroupUIManager : MonoBehaviour
     private readonly System.Collections.Generic.List<PartyFrameSlot> partyFrameSlots = new System.Collections.Generic.List<PartyFrameSlot>();
 
     private GameObject cachedHudFrameSource;
+    private RectTransform ownHudFrameRect;
     private bool sceneUIBuilt;
+
+    // Le bouton du menu contextuel ("Inviter au groupe" / "Quitter le
+    // groupe", voir ShowContextMenu/ShowLeaveGroupMenu) est un seul et
+    // meme objet reutilise pour les deux actions -- son libelle et son
+    // action changent dynamiquement au lieu de dupliquer tout le menu.
+    private Text contextMenuButtonText;
+    private System.Action pendingContextMenuAction;
 
     /// <summary>
     /// Un emplacement de cadre de groupe (voir BuildPartyFrames) : memes
@@ -166,8 +174,9 @@ public class GroupUIManager : MonoBehaviour
         border.color = new Color(0.22f, 0.14f, 0.03f, 0.95f);
 
         GameObject buttonGO = BuildThemedButton(contextMenuRect, "Inviter au groupe", Vector2.zero, new Vector2(154f, 30f));
+        contextMenuButtonText = buttonGO.GetComponentInChildren<Text>();
         Button button = buttonGO.GetComponent<Button>();
-        button.onClick.AddListener(OnInviteButtonClicked);
+        button.onClick.AddListener(OnContextMenuButtonClicked);
 
         contextMenuGO.SetActive(false);
     }
@@ -181,11 +190,26 @@ public class GroupUIManager : MonoBehaviour
         rect.anchorMin = new Vector2(0.5f, 0.5f);
         rect.anchorMax = new Vector2(0.5f, 0.5f);
         rect.pivot = new Vector2(0.5f, 0.5f);
-        rect.sizeDelta = new Vector2(260f, 110f);
+        rect.sizeDelta = new Vector2(268f, 120f);
         rect.anchoredPosition = new Vector2(0f, 80f);
 
-        Image bg = invitePopupGO.AddComponent<Image>();
-        bg.color = new Color(0f, 0f, 0f, 0.85f);
+        // Meme esprit que le menu "Inviter au groupe" (voir
+        // BuildContextMenu) : une bordure bronze/doree autour d'un panneau
+        // fonce, au lieu du simple encart noir plat d'avant -- pour rester
+        // dans le meme theme que le reste du HUD de groupe.
+        Image border = invitePopupGO.AddComponent<Image>();
+        border.color = new Color(0.22f, 0.14f, 0.03f, 0.95f);
+
+        GameObject innerGO = new GameObject("InnerPanel", typeof(RectTransform));
+        innerGO.transform.SetParent(invitePopupGO.transform, false);
+        RectTransform innerRect = innerGO.GetComponent<RectTransform>();
+        innerRect.anchorMin = Vector2.zero;
+        innerRect.anchorMax = Vector2.one;
+        innerRect.offsetMin = new Vector2(4f, 4f);
+        innerRect.offsetMax = new Vector2(-4f, -4f);
+
+        Image innerBg = innerGO.AddComponent<Image>();
+        innerBg.color = new Color(0.07f, 0.07f, 0.09f, 0.95f);
 
         GameObject textGO = new GameObject("Text", typeof(RectTransform));
         textGO.transform.SetParent(invitePopupGO.transform, false);
@@ -193,60 +217,53 @@ public class GroupUIManager : MonoBehaviour
         textRect.anchorMin = new Vector2(0f, 1f);
         textRect.anchorMax = new Vector2(1f, 1f);
         textRect.pivot = new Vector2(0.5f, 1f);
-        textRect.anchoredPosition = new Vector2(0f, -8f);
-        textRect.sizeDelta = new Vector2(-16f, 56f);
+        textRect.anchoredPosition = new Vector2(0f, -10f);
+        textRect.sizeDelta = new Vector2(-20f, 56f);
 
         invitePopupText = textGO.AddComponent<Text>();
         invitePopupText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
         invitePopupText.fontSize = 14;
-        invitePopupText.color = Color.white;
+        invitePopupText.fontStyle = FontStyle.Bold;
+        // Dore clair, assorti a la bordure/au bouton "Inviter au groupe"
+        // et a la barre de nom (voir BuildThemedButton/
+        // RepurposeXpBarAsNameLabel), plutot que du blanc neutre.
+        invitePopupText.color = new Color(0.95f, 0.82f, 0.45f, 1f);
         invitePopupText.alignment = TextAnchor.UpperCenter;
         invitePopupText.horizontalOverflow = HorizontalWrapMode.Wrap;
         invitePopupText.verticalOverflow = VerticalWrapMode.Overflow;
         invitePopupText.text = "";
 
-        GameObject acceptGO = BuildButton(invitePopupGO.GetComponent<RectTransform>(), "Accepter", new Vector2(-62f, 12f), new Vector2(110f, 30f), new Color(0.25f, 0.65f, 0.25f, 0.9f));
+        // Fine ligne doree sous le titre, comme separateur -- petite
+        // touche "en-tete" qui reprend la teinte bronze de la bordure.
+        GameObject dividerGO = new GameObject("Divider", typeof(RectTransform));
+        dividerGO.transform.SetParent(invitePopupGO.transform, false);
+        RectTransform dividerRect = dividerGO.GetComponent<RectTransform>();
+        dividerRect.anchorMin = new Vector2(0f, 1f);
+        dividerRect.anchorMax = new Vector2(1f, 1f);
+        dividerRect.pivot = new Vector2(0.5f, 1f);
+        dividerRect.anchoredPosition = new Vector2(0f, -48f);
+        dividerRect.sizeDelta = new Vector2(-24f, 2f);
+
+        Image dividerImg = dividerGO.AddComponent<Image>();
+        dividerImg.color = new Color(0.6f, 0.45f, 0.15f, 0.8f);
+
+        GameObject acceptGO = BuildButton(invitePopupGO.GetComponent<RectTransform>(), "Accepter", new Vector2(-62f, 14f), new Vector2(112f, 32f), new Color(0.2f, 0.55f, 0.22f, 1f));
         acceptGO.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0f);
         acceptGO.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0f);
         acceptGO.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0f);
+        acceptGO.GetComponentInChildren<Text>().fontStyle = FontStyle.Bold;
         acceptGO.GetComponent<Button>().onClick.AddListener(OnAcceptButtonClicked);
 
-        GameObject declineGO = BuildButton(invitePopupGO.GetComponent<RectTransform>(), "Refuser", new Vector2(62f, 12f), new Vector2(110f, 30f), new Color(0.65f, 0.25f, 0.25f, 0.9f));
+        GameObject declineGO = BuildButton(invitePopupGO.GetComponent<RectTransform>(), "Refuser", new Vector2(62f, 14f), new Vector2(112f, 32f), new Color(0.58f, 0.2f, 0.2f, 1f));
         declineGO.GetComponent<RectTransform>().anchorMin = new Vector2(0.5f, 0f);
         declineGO.GetComponent<RectTransform>().anchorMax = new Vector2(0.5f, 0f);
         declineGO.GetComponent<RectTransform>().pivot = new Vector2(0.5f, 0f);
+        declineGO.GetComponentInChildren<Text>().fontStyle = FontStyle.Bold;
         declineGO.GetComponent<Button>().onClick.AddListener(OnDeclineButtonClicked);
 
         invitePopupGO.SetActive(false);
     }
 
-    /// <summary>
-    /// Portrait de la cible-joueur (style WoW) : affiche au clic GAUCHE sur
-    /// un autre joueur (voir GameManager.ClickTarget -- branche
-    /// "PlayerClickable"). Meme emplacement ecran que l'ancien TargetFrame
-    /// des monstres dans Demo.unity (ancre coin haut-gauche, {376.7,
-    /// -30.6}) : les deux cadres sont mutuellement exclusifs (un seul
-    /// affiche a la fois), donc partager la meme case ecran est coherent
-    /// visuellement.
-    ///
-    /// Pour que ca ressemble vraiment a notre propre cadre (meme portrait,
-    /// meme cadre rond, memes barres vie/mana) sans avoir a recopier a la
-    /// main des guids de sprites qu'on ne peut pas resoudre depuis du code
-    /// pur a l'execution (pas d'AssetDatabase en dehors de l'Editeur), on
-    /// CLONE a l'execution le "Frame" deja present dans Demo.unity (voir
-    /// Player.ResolveLocalReferences -- c'est exactement l'objet que
-    /// "UICanvas/Frame/HealthBackground/Health" etc. designent). Le clone
-    /// recupere donc automatiquement le meme portrait, le meme cadre rond,
-    /// et des barres de vie/mana en etat de marche (composants Stat
-    /// inclus) -- il ne reste plus qu'a leur donner les bonnes valeurs
-    /// (voir RefreshPlayerTargetVitals) et a retirer la barre d'XP, qui n'a
-    /// pas de sens pour une cible.
-    ///
-    /// Le clic DROIT sur ce portrait (et uniquement sur lui) reaffiche le
-    /// menu "Inviter au groupe" deja existant (voir Update() plus bas) --
-    /// c'est ce qui remplace l'ancien clic droit sur le personnage dans le
-    /// monde, qui entrait en conflit avec le deplacement.
-    /// </summary>
     /// <summary>
     /// Essaie, chaque frame tant que ce n'est pas fait, de construire tout
     /// ce qui depend de "UICanvas/Frame" (portrait de cible-joueur, cadres
@@ -265,6 +282,7 @@ public class GroupUIManager : MonoBehaviour
         }
 
         cachedHudFrameSource = sourceFrame;
+        ownHudFrameRect = sourceFrame.GetComponent<RectTransform>();
 
         BuildPlayerTargetFrame(canvasRect);
         BuildPartyFrames(canvasRect);
@@ -664,11 +682,11 @@ public class GroupUIManager : MonoBehaviour
     /// <summary>
     /// Construit paresseusement le portrait de cible-joueur et les cadres
     /// de groupe des que possible (voir TryBuildSceneDependentUI), tient a
-    /// jour les cadres de groupe en continu, et reste le seul point
-    /// d'entree pour "Inviter au groupe" depuis le monde : un clic droit
-    /// sur le portrait de la cible-joueur (et non plus sur son personnage)
-    /// reaffiche le menu contextuel deja existant (ShowContextMenu), seul
-    /// l'endroit d'ou il est declenche a change.
+    /// jour les cadres de groupe en continu, et gere les deux points
+    /// d'entree du menu contextuel partage (voir ShowContextMenu/
+    /// ShowLeaveGroupMenu) : un clic droit sur le portrait de la cible-
+    /// joueur affiche "Inviter au groupe", un clic droit sur NOTRE PROPRE
+    /// portrait (si on est deja en groupe) affiche "Quitter le groupe".
     /// </summary>
     private void Update()
     {
@@ -679,12 +697,12 @@ public class GroupUIManager : MonoBehaviour
 
         RefreshPartyFrames();
 
-        if (currentPlayerTarget == null || playerTargetFrameGO == null || !playerTargetFrameGO.activeSelf)
-        {
-            return;
-        }
+        bool targetFrameShown = currentPlayerTarget != null && playerTargetFrameGO != null && playerTargetFrameGO.activeSelf;
 
-        RefreshPlayerTargetVitals(false);
+        if (targetFrameShown)
+        {
+            RefreshPlayerTargetVitals(false);
+        }
 
         if (!Input.GetMouseButtonDown(1))
         {
@@ -692,9 +710,26 @@ public class GroupUIManager : MonoBehaviour
         }
 
         Vector3 pointerPos = TouchInput.GetPointerPosition();
-        if (RectTransformUtility.RectangleContainsScreenPoint(playerTargetFrameRect, pointerPos, null))
+
+        if (targetFrameShown && RectTransformUtility.RectangleContainsScreenPoint(playerTargetFrameRect, pointerPos, null))
         {
             ShowContextMenu(currentPlayerTarget, playerTargetFrameRect);
+            return;
+        }
+
+        if (ownHudFrameRect != null && Player.MyInstance != null &&
+            RectTransformUtility.RectangleContainsScreenPoint(ownHudFrameRect, pointerPos, null))
+        {
+            PlayerGroupSync mySync = Player.MyInstance.GetComponent<PlayerGroupSync>();
+
+            // MyGroupMembers inclut toujours notre propre netId (voir
+            // PlayerGroupSync) : Count > 1 signifie donc qu'on est dans un
+            // groupe avec au moins un autre membre. Pas de menu sinon --
+            // rien a quitter.
+            if (mySync != null && mySync.MyGroupMembers.Count > 1)
+            {
+                ShowLeaveGroupMenu(ownHudFrameRect);
+            }
         }
     }
 
@@ -779,29 +814,18 @@ public class GroupUIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Appele par Update() des qu'un clic droit touche le cadre-portrait
-    /// d'un autre joueur (voir playerTargetFrameRect). Positionne le menu
-    /// juste EN DESSOUS de ce cadre, centre horizontalement, au lieu du
-    /// point de clic brut : le clic se fait forcement SUR le portrait
-    /// (c'est lui qu'on vient de cliquer), donc ancrer au point de clic
-    /// faisait apparaitre le menu par-dessus/derriere le portrait au lieu
-    /// d'a cote. SetAsLastSibling() par securite, pour qu'il passe
-    /// toujours au-dessus du reste de ce canvas (portrait, cadres de
-    /// groupe) quel que soit l'ordre dans lequel ils ont ete construits.
+    /// Place le menu contextuel juste EN DESSOUS du cadre donne, centre
+    /// horizontalement, au lieu du point de clic brut : le clic se fait
+    /// forcement SUR le cadre clique (portrait de cible ou notre propre
+    /// portrait), donc ancrer au point de clic faisait apparaitre le menu
+    /// par-dessus/derriere ce cadre au lieu d'a cote. Reutilise par
+    /// ShowContextMenu et ShowLeaveGroupMenu -- seul ce qui determine le
+    /// cadre-ancre change entre les deux.
     /// </summary>
-    public void ShowContextMenu(Player target, RectTransform anchorRect)
+    private void PositionContextMenuBelow(RectTransform anchorRect)
     {
-        if (target == null || canvasRect == null || anchorRect == null)
-        {
-            return;
-        }
-
-        contextMenuTarget = target;
-
         // Point juste sous le bas du cadre (6px d'espace), converti du
-        // monde vers l'ecran puis vers l'espace local du canvas -- meme
-        // logique que l'ancien ancrage au clic brut, seule la SOURCE du
-        // point change.
+        // monde vers l'ecran puis vers l'espace local du canvas.
         Vector3 anchorWorldPoint = anchorRect.TransformPoint(new Vector3(0f, -anchorRect.rect.height / 2f - 6f, 0f));
         Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(null, anchorWorldPoint);
 
@@ -821,9 +845,82 @@ public class GroupUIManager : MonoBehaviour
         localPoint.y = Mathf.Clamp(localPoint.y, minY, maxY);
 
         contextMenuRect.anchoredPosition = localPoint;
+    }
+
+    /// <summary>
+    /// Appele par Update() des qu'un clic droit touche le cadre-portrait
+    /// d'un autre joueur (voir playerTargetFrameRect) : affiche "Inviter au
+    /// groupe". Le bouton (contextMenuButtonText/pendingContextMenuAction)
+    /// est partage avec ShowLeaveGroupMenu -- un seul menu, dont le libelle
+    /// et l'action changent selon d'ou il a ete ouvert.
+    /// </summary>
+    public void ShowContextMenu(Player target, RectTransform anchorRect)
+    {
+        if (target == null || canvasRect == null || anchorRect == null)
+        {
+            return;
+        }
+
+        contextMenuTarget = target;
+
+        if (contextMenuButtonText != null)
+        {
+            contextMenuButtonText.text = "Inviter au groupe";
+        }
+
+        pendingContextMenuAction = InviteContextMenuTarget;
+
+        PositionContextMenuBelow(anchorRect);
 
         contextMenuGO.transform.SetAsLastSibling();
         contextMenuGO.SetActive(true);
+    }
+
+    private void InviteContextMenuTarget()
+    {
+        if (contextMenuTarget != null && Player.MyInstance != null)
+        {
+            Player.MyInstance.InviteToGroup(contextMenuTarget);
+        }
+    }
+
+    /// <summary>
+    /// Appele par Update() des qu'un clic droit touche NOTRE PROPRE
+    /// portrait (voir ownHudFrameRect) alors qu'on est dans un groupe :
+    /// affiche "Quitter le groupe", au meme endroit et dans le meme style
+    /// que "Inviter au groupe" (voir ShowContextMenu) -- seuls le libelle
+    /// et l'action du bouton changent.
+    /// </summary>
+    public void ShowLeaveGroupMenu(RectTransform anchorRect)
+    {
+        if (canvasRect == null || anchorRect == null)
+        {
+            return;
+        }
+
+        // Pas de cible-joueur pour cette action (voir contextMenuTarget,
+        // utilise seulement par InviteContextMenuTarget).
+        contextMenuTarget = null;
+
+        if (contextMenuButtonText != null)
+        {
+            contextMenuButtonText.text = "Quitter le groupe";
+        }
+
+        pendingContextMenuAction = LeaveGroupFromContextMenu;
+
+        PositionContextMenuBelow(anchorRect);
+
+        contextMenuGO.transform.SetAsLastSibling();
+        contextMenuGO.SetActive(true);
+    }
+
+    private static void LeaveGroupFromContextMenu()
+    {
+        if (Player.MyInstance != null)
+        {
+            Player.MyInstance.LeaveGroup();
+        }
     }
 
     public void HideContextMenu()
@@ -834,14 +931,12 @@ public class GroupUIManager : MonoBehaviour
         }
 
         contextMenuTarget = null;
+        pendingContextMenuAction = null;
     }
 
-    private void OnInviteButtonClicked()
+    private void OnContextMenuButtonClicked()
     {
-        if (contextMenuTarget != null && Player.MyInstance != null)
-        {
-            Player.MyInstance.InviteToGroup(contextMenuTarget);
-        }
+        pendingContextMenuAction?.Invoke();
 
         HideContextMenu();
     }

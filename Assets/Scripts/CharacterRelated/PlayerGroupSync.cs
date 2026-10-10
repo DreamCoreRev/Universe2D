@@ -120,6 +120,28 @@ public class PlayerGroupSync : NetworkBehaviour
     }
 
     /// <summary>
+    /// Point d'entree utilise par GroupUIManager (menu "Quitter le groupe",
+    /// ouvert par un clic droit sur notre propre portrait). Meme
+    /// convention que les autres : on verifie l'autorite avant d'appeler le
+    /// Command.
+    /// </summary>
+    public void LeaveGroup()
+    {
+        if (netIdentity == null || !netIdentity.isLocalPlayer)
+        {
+            return;
+        }
+
+        CmdLeaveGroup();
+    }
+
+    [Command]
+    private void CmdLeaveGroup()
+    {
+        RemoveFromGroup(netId);
+    }
+
+    /// <summary>
     /// Point d'entree utilise par GroupUIManager (boutons Accepter/Refuser
     /// de la popup d'invitation).
     /// </summary>
@@ -231,6 +253,18 @@ public class PlayerGroupSync : NetworkBehaviour
         RefreshGroupMemberLists(groupId);
     }
 
+    /// <summary>
+    /// Retire playerNetId de son groupe (depart volontaire via
+    /// CmdLeaveGroup, ou deconnexion via OnStopServer). Previent les
+    /// membres restants par un message systeme, et le joueur qui part lui-
+    /// meme si sa connexion est encore valide (pas le cas lors d'une
+    /// deconnexion, la connexion est deja en train de se fermer -- voir le
+    /// garde-fou connectionToClient != null plus bas).
+    ///
+    /// Appele uniquement avec SON PROPRE netId (voir CmdLeaveGroup/
+    /// OnStopServer) : chatSync, utilise pour le nom dans les messages,
+    /// designe donc toujours le joueur qui part.
+    /// </summary>
     private void RemoveFromGroup(uint playerNetId)
     {
         if (!playerGroupId.TryGetValue(playerNetId, out int groupId) || groupId == 0)
@@ -239,6 +273,8 @@ public class PlayerGroupSync : NetworkBehaviour
         }
 
         playerGroupId.Remove(playerNetId);
+
+        string leavingName = chatSync != null ? chatSync.PlayerName : "Joueur";
 
         if (groupMembers.TryGetValue(groupId, out List<uint> members))
         {
@@ -251,6 +287,17 @@ public class PlayerGroupSync : NetworkBehaviour
             else
             {
                 RefreshGroupMemberLists(groupId);
+
+                foreach (uint remainingNetId in members)
+                {
+                    if (!NetworkServer.spawned.TryGetValue(remainingNetId, out NetworkIdentity remainingIdentity) ||
+                        remainingIdentity.connectionToClient == null)
+                    {
+                        continue;
+                    }
+
+                    SendSystemMessageTo(remainingIdentity.connectionToClient, leavingName + " a quitte le groupe.");
+                }
             }
         }
 
@@ -262,6 +309,12 @@ public class PlayerGroupSync : NetworkBehaviour
         if (leavingSync != null)
         {
             leavingSync.MyGroupMembers.Clear();
+        }
+
+        if (NetworkServer.spawned.TryGetValue(playerNetId, out NetworkIdentity leavingIdentity) &&
+            leavingIdentity.connectionToClient != null)
+        {
+            SendSystemMessageTo(leavingIdentity.connectionToClient, "Vous avez quitte le groupe.");
         }
     }
 

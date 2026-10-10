@@ -847,6 +847,31 @@ public class Player : Character
         groupSync.RespondToInvite(inviterIdentity, accepted);
     }
 
+    /// <summary>
+    /// Appele par GroupUIManager (menu "Quitter le groupe", ouvert par un
+    /// clic droit sur notre propre portrait). Meme convention que
+    /// InviteToGroup/RespondToGroupInvite.
+    /// </summary>
+    public void LeaveGroup()
+    {
+        if (!IsLocallyControlled)
+        {
+            return;
+        }
+
+        if (groupSync == null)
+        {
+            groupSync = GetComponent<PlayerGroupSync>();
+        }
+
+        if (groupSync == null)
+        {
+            return;
+        }
+
+        groupSync.LeaveGroup();
+    }
+
     private IEnumerator Regen()
     {
         while (true)
