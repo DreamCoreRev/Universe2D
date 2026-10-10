@@ -41,6 +41,16 @@ public class KeybindManager : MonoBehaviour
     /// </summary>
     private string bindName;
 
+    /// <summary>
+    /// Prefixe des cles PlayerPrefs utilisees pour sauvegarder les
+    /// keybinds -- une preference d'appareil (AZERTY/QWERTY, gout du
+    /// joueur...), independante du personnage/compte, donc jamais
+    /// remise a zero par une deconnexion/reconnexion (contrairement a
+    /// avant : les touches redevenaient WASD/Alpha1-3 par defaut a
+    /// chaque chargement de scene, rien n'etait jamais sauvegarde).
+    /// </summary>
+    private const string KeybindPrefPrefix = "Keybind_";
+
     // Use this for initialization
     void Start ()
     {
@@ -48,15 +58,32 @@ public class KeybindManager : MonoBehaviour
 
         ActionBinds = new Dictionary<string, KeyCode>();
 
-        //Generates the default keybinds
-        BindKey("UP", KeyCode.W);
-        BindKey("LEFT", KeyCode.A);
-        BindKey("DOWN", KeyCode.S);
-        BindKey("RIGHT", KeyCode.D);
+        //Generates the default keybinds (ou la touche sauvegardee par le joueur)
+        BindKey("UP", LoadKeyOrDefault("UP", KeyCode.W));
+        BindKey("LEFT", LoadKeyOrDefault("LEFT", KeyCode.A));
+        BindKey("DOWN", LoadKeyOrDefault("DOWN", KeyCode.S));
+        BindKey("RIGHT", LoadKeyOrDefault("RIGHT", KeyCode.D));
 
-        BindKey("ACT1", KeyCode.Alpha1);
-        BindKey("ACT2", KeyCode.Alpha2);
-        BindKey("ACT3", KeyCode.Alpha3);
+        // 6 sorts dans la barre d'action (ACT1 a ACT6, voir Demo.unity) :
+        // il faut donc 6 touches, pas seulement 3.
+        BindKey("ACT1", LoadKeyOrDefault("ACT1", KeyCode.Alpha1));
+        BindKey("ACT2", LoadKeyOrDefault("ACT2", KeyCode.Alpha2));
+        BindKey("ACT3", LoadKeyOrDefault("ACT3", KeyCode.Alpha3));
+        BindKey("ACT4", LoadKeyOrDefault("ACT4", KeyCode.Alpha4));
+        BindKey("ACT5", LoadKeyOrDefault("ACT5", KeyCode.Alpha5));
+        BindKey("ACT6", LoadKeyOrDefault("ACT6", KeyCode.Alpha6));
+    }
+
+    private static KeyCode LoadKeyOrDefault(string key, KeyCode defaultValue)
+    {
+        string prefName = KeybindPrefPrefix + key;
+        return PlayerPrefs.HasKey(prefName) ? (KeyCode)PlayerPrefs.GetInt(prefName) : defaultValue;
+    }
+
+    private static void SaveKeyPref(string key, KeyCode keyBind)
+    {
+        PlayerPrefs.SetInt(KeybindPrefPrefix + key, (int)keyBind);
+        PlayerPrefs.Save();
     }
 
     /// <summary>
@@ -88,12 +115,19 @@ public class KeybindManager : MonoBehaviour
 
             //Unassigns the old keybind
             currentDictionary[myKey] = KeyCode.None;
-            UIManager.MyInstance.UpdateKeyText(key, KeyCode.None);
+            // Corrige : c'est le bouton de l'ANCIENNE touche (myKey) qu'il
+            // faut remettre a None a l'ecran, pas celui qu'on est en train
+            // d'assigner (key) -- avant, le bouton de l'ancienne touche
+            // restait affiche avec la touche qu'on venait juste de
+            // reassigner ailleurs.
+            UIManager.MyInstance.UpdateKeyText(myKey, KeyCode.None);
+            SaveKeyPref(myKey, KeyCode.None);
         }
 
         //Makes sure the new key is bound
         currentDictionary[key] = keyBind;
         UIManager.MyInstance.UpdateKeyText(key, keyBind);
+        SaveKeyPref(key, keyBind);
         bindName = string.Empty;
     }
 
