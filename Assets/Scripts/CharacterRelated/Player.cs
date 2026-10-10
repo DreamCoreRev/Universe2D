@@ -693,6 +693,14 @@ public class Player : Character
             Destroy(unusedSpell);
         }
 
+        bool debugHasTarget = MyTarget != null;
+        bool debugTargetAlive = debugHasTarget && MyTarget.GetComponentInParent<Character>() != null && MyTarget.GetComponentInParent<Character>().IsAlive;
+        bool debugNotAttacking = !IsAttacking;
+        bool debugNotMoving = !IsMoving;
+        bool debugLineOfSight = InLineOfSight();
+        bool debugInRange = debugHasTarget && InRange(spell, MyTarget.transform.position);
+        Debug.Log($"[DEBUG-CAST] CastSpell('{spell.MyTitle}') hasTarget={debugHasTarget} targetAlive={debugTargetAlive} notAttacking={debugNotAttacking} notMoving={debugNotMoving} lineOfSight={debugLineOfSight} inRange={debugInRange} manaCost={spell.ManaCost} mana={mana.MyCurrentValue}");
+
         if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !IsAttacking && !IsMoving && InLineOfSight() && InRange(spell, MyTarget.transform.position)) //Chcks if we are able to attack
         {
             MyInitRoutine = StartCoroutine(AttackRoutine(spell));
