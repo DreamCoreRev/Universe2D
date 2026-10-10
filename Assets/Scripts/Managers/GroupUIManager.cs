@@ -47,6 +47,11 @@ public class GroupUIManager : MonoBehaviour
     private Text invitePopupText;
     private NetworkIdentity pendingInviterIdentity;
 
+    private RectTransform playerTargetFrameRect;
+    private GameObject playerTargetFrameGO;
+    private Text playerTargetFrameText;
+    private Player currentPlayerTarget;
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void Install()
     {
@@ -83,6 +88,7 @@ public class GroupUIManager : MonoBehaviour
 
         BuildContextMenu(canvasRect);
         BuildInvitePopup(canvasRect);
+        BuildPlayerTargetFrame(canvasRect);
     }
 
     private void BuildContextMenu(RectTransform parent)
@@ -163,6 +169,115 @@ public class GroupUIManager : MonoBehaviour
         declineGO.GetComponent<Button>().onClick.AddListener(OnDeclineButtonClicked);
 
         invitePopupGO.SetActive(false);
+    }
+
+    /// <summary>
+    /// Portrait de la cible-joueur (style WoW) : affiche a cote de notre
+    /// propre portrait, au clic GAUCHE sur un autre joueur (voir
+    /// GameManager.ClickTarget -- branche "PlayerClickable"). Meme
+    /// emplacement ecran que le TargetFrame des monstres dans Demo.unity
+    /// (ancre coin haut-gauche, {376.7, -30.6}) : les deux cadres sont
+    /// mutuellement exclusifs (un seul affiche a la fois), donc partager
+    /// la meme case ecran est coherent visuellement et evite d'avoir a
+    /// choisir un nouvel emplacement au hasard.
+    ///
+    /// Le clic DROIT sur ce portrait (et uniquement sur lui) reaffiche le
+    /// menu "Inviter au groupe" deja existant (voir Update() plus bas) --
+    /// c'est ce qui remplace l'ancien clic droit sur le personnage dans le
+    /// monde, qui entrait en conflit avec le deplacement.
+    /// </summary>
+    private void BuildPlayerTargetFrame(RectTransform parent)
+    {
+        playerTargetFrameGO = new GameObject("PlayerTargetFrame", typeof(RectTransform));
+        playerTargetFrameGO.transform.SetParent(parent, false);
+
+        playerTargetFrameRect = playerTargetFrameGO.GetComponent<RectTransform>();
+        playerTargetFrameRect.anchorMin = new Vector2(0f, 1f);
+        playerTargetFrameRect.anchorMax = new Vector2(0f, 1f);
+        playerTargetFrameRect.pivot = new Vector2(0.5f, 0.5f);
+        playerTargetFrameRect.sizeDelta = new Vector2(140f, 44f);
+        playerTargetFrameRect.anchoredPosition = new Vector2(376.7f, -30.599976f);
+
+        Image bg = playerTargetFrameGO.AddComponent<Image>();
+        bg.color = new Color(0f, 0f, 0f, 0.75f);
+        // m_RaycastTarget reste a true (valeur par defaut d'Image) : c'est ce
+        // qui fait que survoler ce portrait compte comme "sur de l'UI" pour
+        // TouchInput.IsPointerOverUI(), empechant GameManager de traiter en
+        // plus un clic droit ici comme un clic droit sur la map.
+
+        GameObject textGO = new GameObject("Text", typeof(RectTransform));
+        textGO.transform.SetParent(playerTargetFrameGO.transform, false);
+        RectTransform textRect = textGO.GetComponent<RectTransform>();
+        textRect.anchorMin = Vector2.zero;
+        textRect.anchorMax = Vector2.one;
+        textRect.offsetMin = new Vector2(6f, 2f);
+        textRect.offsetMax = new Vector2(-6f, -2f);
+
+        playerTargetFrameText = textGO.AddComponent<Text>();
+        playerTargetFrameText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        playerTargetFrameText.fontSize = 14;
+        playerTargetFrameText.color = Color.white;
+        playerTargetFrameText.alignment = TextAnchor.MiddleCenter;
+        playerTargetFrameText.horizontalOverflow = HorizontalWrapMode.Overflow;
+        playerTargetFrameText.verticalOverflow = VerticalWrapMode.Overflow;
+        playerTargetFrameText.raycastTarget = false;
+        playerTargetFrameText.text = "";
+
+        playerTargetFrameGO.SetActive(false);
+    }
+
+    /// <summary>
+    /// Appele par GameManager.ClickTarget quand on clique GAUCHE sur un
+    /// autre joueur (collider "PlayerClickable").
+    /// </summary>
+    public void ShowPlayerTargetFrame(Player target)
+    {
+        if (target == null || playerTargetFrameGO == null)
+        {
+            return;
+        }
+
+        currentPlayerTarget = target;
+
+        PlayerChatSync chatSync = target.GetComponent<PlayerChatSync>();
+        playerTargetFrameText.text = chatSync != null ? chatSync.PlayerName : "Joueur";
+
+        playerTargetFrameGO.SetActive(true);
+    }
+
+    public void HidePlayerTargetFrame()
+    {
+        if (playerTargetFrameGO != null)
+        {
+            playerTargetFrameGO.SetActive(false);
+        }
+
+        currentPlayerTarget = null;
+    }
+
+    /// <summary>
+    /// Seul point d'entree restant pour "Inviter au groupe" depuis le
+    /// monde : un clic droit sur le portrait de la cible-joueur (et non
+    /// plus sur son personnage). On reutilise ShowContextMenu tel quel --
+    /// seul l'endroit d'ou il est declenche change.
+    /// </summary>
+    private void Update()
+    {
+        if (currentPlayerTarget == null || playerTargetFrameGO == null || !playerTargetFrameGO.activeSelf)
+        {
+            return;
+        }
+
+        if (!Input.GetMouseButtonDown(1))
+        {
+            return;
+        }
+
+        Vector3 pointerPos = TouchInput.GetPointerPosition();
+        if (RectTransformUtility.RectangleContainsScreenPoint(playerTargetFrameRect, pointerPos, null))
+        {
+            ShowContextMenu(currentPlayerTarget, pointerPos);
+        }
     }
 
     private GameObject BuildButton(RectTransform parent, string label, Vector2 anchoredPosition, Vector2 size, Color color)

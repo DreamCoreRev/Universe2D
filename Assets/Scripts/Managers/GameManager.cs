@@ -124,8 +124,11 @@ public class GameManager : MonoBehaviour {
             // au groupe" s'il etait ouvert (voir GroupUIManager) -- comme
             // dans la plupart des jeux, cliquer ailleurs l'annule. Sans
             // incidence si rien n'est ouvert (HideContextMenu ne fait rien
-            // dans ce cas).
+            // dans ce cas). Idem pour le portrait de cible-joueur : un clic
+            // gauche ailleurs le referme, il sera re-affiche plus bas si on
+            // vient justement de cliquer sur un autre joueur.
             GroupUIManager.MyInstance?.HideContextMenu();
+            GroupUIManager.MyInstance?.HidePlayerTargetFrame();
 
             //Makes a raycast from the pointer position into the game world
             Vector3 pointerPos = TouchInput.GetPointerPosition();
@@ -152,6 +155,29 @@ public class GameManager : MonoBehaviour {
                     DeSelectTarget();
 
                     SelectTarget(enemy);
+                }
+            }
+            else if (hit.collider != null && hit.collider.tag == "PlayerClickable")//If we hit another player : show their portrait next to ours (style WoW), like SelectTarget does for an Enemy
+            {
+                // Collider dedie, separe du collider "Player" deja utilise par
+                // l'aggro des monstres (voir Range.cs) -- voir Player.prefab.
+                // Le script Player/Character vit sur le GameObject parent.
+                Player targetPlayer = hit.collider.GetComponentInParent<Player>();
+
+                if (targetPlayer != null && targetPlayer != Player.MyInstance)
+                {
+                    // Cibler un joueur et cibler un monstre sont mutuellement
+                    // exclusifs (meme emplacement d'ecran pour les deux cadres) :
+                    // on efface toute cible-monstre en cours avant d'afficher le
+                    // portrait du joueur clique.
+                    UIManager.MyInstance.HideTargetFrame();
+
+                    DeSelectTarget();
+
+                    currentTarget = null;
+                    Player.MyInstance.MyTarget = null;
+
+                    GroupUIManager.MyInstance?.ShowPlayerTargetFrame(targetPlayer);
                 }
             }
             else if (hit.collider != null && hit.collider.tag == "Interactable")//If we hit a neutral NPC or object, interact with it directly
@@ -182,24 +208,17 @@ public class GameManager : MonoBehaviour {
             //Makes a raycast from the pointer position into the game world
             RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()), Vector2.zero, Mathf.Infinity, clickableLayer);
 
-            if (hit.collider != null && hit.collider.tag == "PlayerClickable")
-            {
-                // Collider dedie, separe du collider "Player" deja utilise par
-                // l'aggro des monstres (voir Range.cs) -- voir Player.prefab.
-                // Le script Player/Character vit sur le GameObject parent.
-                Player targetPlayer = hit.collider.GetComponentInParent<Player>();
-
-                if (targetPlayer != null && targetPlayer != Player.MyInstance)
-                {
-                    GroupUIManager.MyInstance?.ShowContextMenu(targetPlayer, TouchInput.GetPointerPosition());
-                }
-                else
-                {
-                    // Clic droit sur nous-memes : rien a proposer.
-                    GroupUIManager.MyInstance?.HideContextMenu();
-                }
-            }
-            else if (hit.collider != null)
+            // Le clic droit DIRECTEMENT sur le personnage d'un autre joueur
+            // dans le monde n'ouvre plus de menu ici -- ça entrait en conflit
+            // avec le clic droit sur la map (deplacement), le personnage
+            // marchant vers le joueur clique au lieu d'afficher le menu.
+            // "Inviter au groupe" se declenche maintenant uniquement via un
+            // clic droit sur le PORTRAIT du joueur cible (voir GroupUIManager,
+            // affiche par un clic GAUCHE sur le joueur -- comme sur WoW). Un
+            // clic droit sur le collider "PlayerClickable" est donc traite
+            // exactement comme un clic droit sur le sol : ça deplace le
+            // personnage vers ce point, comme n'importe quel autre terrain.
+            if (hit.collider != null && hit.collider.tag != "PlayerClickable")
             {
                 GroupUIManager.MyInstance?.HideContextMenu();
 
