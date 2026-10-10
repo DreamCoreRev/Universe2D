@@ -13,26 +13,21 @@ Direct3D:
 Begin MonoManager ReloadAssembly
 - Completed reload, in  0.103 seconds
 <RI> Initializing input.
-<RI> Input initialized.
 D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.822000 ms
+UnloadTime: 0.976700 ms
 ThreadLog initialized.
 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.995200 ms
+UnloadTime: 2.069800 ms
 Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 2160.
-Total: 0.749800 ms (FindLiveObjects: 0.108000 ms CreateObjectMapping: 0.087600 ms MarkObjects: 0.534400 ms  DeleteObjects: 0.019600 ms)
+Total: 0.683300 ms (FindLiveObjects: 0.094600 ms CreateObjectMapping: 0.029200 ms MarkObjects: 0.540600 ms  DeleteObjects: 0.018700 ms)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.636800 ms
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 11377.
-Total: 2.309900 ms (FindLiveObjects: 0.649900 ms CreateObjectMapping: 0.126100 ms MarkObjects: 1.515300 ms  DeleteObjects: 0.018300 ms)
+UnloadTime: 0.660500 ms
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 11385.
+Total: 2.298500 ms (FindLiveObjects: 0.655500 ms CreateObjectMapping: 0.133500 ms MarkObjects: 1.489500 ms  DeleteObjects: 0.019600 ms)
 
-Echec du chargement du personnage 1 : System.ArgumentException: The Object you want to instantiate is null.
-  at UnityEngine.Object.Instantiate[T] (T original) [0x0003d] in <806021f955ec43bb97cd1adca41e00da>:0 
-  at SaveManager.LoadInventory (SaveData data) [0x0003d] in <e56b0d2218ba4d9cb0c4135b58dd6234>:0 
-  at SaveManager.ApplySaveData (SaveData data) [0x0000e] in <e56b0d2218ba4d9cb0c4135b58dd6234>:0 
-  at SaveManager.LoadCharacter (System.Int32 characterId) [0x0002d] in <e56b0d2218ba4d9cb0c4135b58dd6234>:0 
