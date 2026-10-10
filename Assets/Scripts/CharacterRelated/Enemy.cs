@@ -93,6 +93,16 @@ public class Enemy : Character, IInteractable
     {
         get
         {
+            // MyTarget peut pointer vers un Player deconnecte/detruit entre
+            // temps (reconnexion, fermeture du client...) : MyTarget == null
+            // detecte aussi ce cas (objet Unity "detruit mais reference"),
+            // mais seulement si on verifie AVANT de toucher MyTarget.transform,
+            // sinon ca plante en boucle et bloque l'IA du monstre pour de bon.
+            if (MyTarget == null)
+            {
+                return false;
+            }
+
             return Vector2.Distance(transform.position, MyTarget.transform.position) < MyAggroRange;
         }
     }
