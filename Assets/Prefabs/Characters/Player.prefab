@@ -151,6 +151,7 @@ MonoBehaviour:
   - {fileID: 4324650800838686}
   ding: {fileID: 0}
   minimapIcon: {fileID: 0}
+  minimapIconSprite: {fileID: 21300000, guid: d5c0fc1a8dfada24587cad458b2f7234, type: 3}
   mainCam: {fileID: 0}
   astar: {fileID: 0}
   gearSockets:

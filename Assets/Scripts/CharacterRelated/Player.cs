@@ -137,6 +137,16 @@ public class Player : Character
     [SerializeField]
     private Transform minimapIcon;
 
+    /// <summary>
+    /// Sprite utilise pour creer NOTRE PROPRE icone de minimap quand aucune
+    /// n'a pu etre trouvee (voir ResolveLocalReferences/CreateMinimapIcon) --
+    /// branche directement sur Player.prefab (meme sprite que l'unique
+    /// "MinimapIcon" place a la main dans Demo.unity, voir
+    /// Assets/Sprites/Minimap/player.png).
+    /// </summary>
+    [SerializeField]
+    private Sprite minimapIconSprite;
+
     [SerializeField]
     private Camera mainCam;
 
@@ -321,6 +331,19 @@ public class Player : Character
             }
         }
 
+        // Ce Find() ne retrouve RIEN si l'unique "MinimapIcon" place a la
+        // main dans Demo.unity n'existe plus/n'est plus actif pour cette
+        // session (et GameObject.Find ne voit jamais un objet desactive) --
+        // c'est ce qui faisait disparaitre le curseur de minimap de tout le
+        // monde d'un coup, puisque TOUS les joueurs dependaient du meme
+        // objet unique. A la place, chacun cree maintenant sa propre icone
+        // s'il n'en a trouve aucune : plus robuste, et chaque joueur a enfin
+        // la sienne plutot que de se disputer un seul curseur partage.
+        if (minimapIcon == null)
+        {
+            minimapIcon = CreateMinimapIcon();
+        }
+
         if (levelText == null)
         {
             GameObject text = GameObject.Find("UICanvas/Frame/LevelFrame/Text");
@@ -370,6 +393,34 @@ public class Player : Character
                 xpStat = xp.GetComponent<Stat>();
             }
         }
+    }
+
+    /// <summary>
+    /// Cree une icone de minimap propre a CE joueur (enfant de son propre
+    /// transform, donc elle le suit automatiquement) -- voir
+    /// ResolveLocalReferences. Meme reglages (layer "Minimap", ordre de tri,
+    /// echelle, decalage vertical) que l'icone placee a la main dans
+    /// Demo.unity, pour un rendu identique sur la minimap.
+    /// </summary>
+    private Transform CreateMinimapIcon()
+    {
+        if (minimapIconSprite == null)
+        {
+            return null;
+        }
+
+        GameObject iconGO = new GameObject("MinimapIcon");
+        int minimapLayer = LayerMask.NameToLayer("Minimap");
+        iconGO.layer = minimapLayer >= 0 ? minimapLayer : gameObject.layer;
+        iconGO.transform.SetParent(transform, false);
+        iconGO.transform.localPosition = new Vector3(0f, 0.575f, 0f);
+        iconGO.transform.localScale = new Vector3(5f, 5f, 1f);
+
+        SpriteRenderer iconRenderer = iconGO.AddComponent<SpriteRenderer>();
+        iconRenderer.sprite = minimapIconSprite;
+        iconRenderer.sortingOrder = 10;
+
+        return iconGO.transform;
     }
 
     /// <summary>
