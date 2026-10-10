@@ -162,6 +162,47 @@ public class EnemyNetworkSync : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// Appele par RangedEnemy.Shoot() (uniquement la ou ShouldRunAI est
+    /// vrai, donc le serveur dedie en reseau) pour que les autres clients
+    /// voient aussi partir la fleche, meme si seul le tireur "reel" (le
+    /// serveur) resout les degats.
+    /// </summary>
+    public void BroadcastArrowVisual(int exitIndex, NetworkIdentity targetIdentity)
+    {
+        if (!isServer || targetIdentity == null)
+        {
+            return;
+        }
+
+        RpcPlayArrowVisual(exitIndex, targetIdentity);
+    }
+
+    [ClientRpc]
+    private void RpcPlayArrowVisual(int exitIndex, NetworkIdentity targetIdentity)
+    {
+        if (isServer)
+        {
+            // Le serveur a deja instancie la vraie fleche dans RangedEnemy.Shoot() --
+            // on evite d'en afficher une deuxieme, purement cosmetique, en double.
+            return;
+        }
+
+        if (!(enemy is RangedEnemy rangedEnemy) || targetIdentity == null)
+        {
+            return;
+        }
+
+        Character targetCharacter = targetIdentity.GetComponent<Character>();
+
+        if (targetCharacter == null)
+        {
+            return;
+        }
+
+        rangedEnemy.ShootVisual(exitIndex, targetCharacter.MyHitbox);
+    }
+
     private void OnHealthChanged(float oldValue, float newValue)
     {
         if (enemy == null || enemy.MyHealth == null || isServer)

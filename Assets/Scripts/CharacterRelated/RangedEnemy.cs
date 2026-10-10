@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class RangedEnemy : Enemy
 {
@@ -25,11 +26,46 @@ public class RangedEnemy : Enemy
         UpdateDirection();
     }
 
+    /// <summary>
+    /// Appele par un Animation Event sur le clip d'attaque. Comme pour
+    /// DoDamage(), ce clip joue visuellement sur TOUS les clients (voir
+    /// EnemyNetworkSync.OnAttackingChanged) -- seul celui qui fait tourner
+    /// l'IA (ShouldRunAI) doit instancier la vraie fleche qui inflige des
+    /// degats. Les autres clients recoivent une fleche purement visuelle
+    /// via EnemyNetworkSync.BroadcastArrowVisual, pour pouvoir la voir
+    /// partir sans la resoudre une deuxieme fois.
+    /// </summary>
     public void Shoot(int exitIndex)
     {
+        if (!ShouldRunAI || MyTarget == null)
+        {
+            return;
+        }
+
         SpellScript s = Instantiate(arrowPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
 
         s.Initialize(MyTarget.MyHitbox, damage, this);
+
+        EnemyNetworkSync sync = GetComponent<EnemyNetworkSync>();
+
+        if (sync != null)
+        {
+            NetworkIdentity targetIdentity = MyTarget.GetComponent<NetworkIdentity>();
+            sync.BroadcastArrowVisual(exitIndex, targetIdentity);
+        }
+    }
+
+    /// <summary>
+    /// Instancie une fleche purement cosmetique (voir SpellScript.VisualOnly)
+    /// sur un client qui n'est pas aux commandes de l'IA, pour que le tir
+    /// reste visible meme si les degats sont resolus ailleurs.
+    /// </summary>
+    public void ShootVisual(int exitIndex, Transform target)
+    {
+        SpellScript s = Instantiate(arrowPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();
+
+        s.VisualOnly = true;
+        s.Initialize(target, damage, this);
     }
 
     private void UpdateDirection()

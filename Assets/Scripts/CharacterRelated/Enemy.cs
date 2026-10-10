@@ -143,7 +143,8 @@ public class Enemy : Character, IInteractable
         if (debugLogTimer >= 2f)
         {
             debugLogTimer = 0f;
-            Debug.Log($"[DEBUG-ENEMY] {name} IsAlive={IsAlive} ShouldRunAI={ShouldRunAI} state={currentState?.GetType().Name} MyTarget={MyTarget}");
+            float debugDistance = MyTarget != null ? Vector2.Distance(MyTarget.transform.parent.position, transform.parent.position) : -1f;
+            Debug.Log($"[DEBUG-ENEMY] {name} IsAlive={IsAlive} ShouldRunAI={ShouldRunAI} state={currentState?.GetType().Name} MyTarget={MyTarget} MyAttackTime={MyAttackTime:F2} IsAttacking={IsAttacking} AttackRange={MyAttackRange} dist={debugDistance:F2}");
         }
 
         if (IsAlive && ShouldRunAI)
@@ -227,8 +228,20 @@ public class Enemy : Character, IInteractable
 
     }
 
+    /// <summary>
+    /// Appele par un Animation Event sur le clip d'attaque. Ce clip joue
+    /// visuellement sur TOUS les clients (voir EnemyNetworkSync.OnAttackingChanged),
+    /// mais seul celui qui fait reellement tourner l'IA (ShouldRunAI -- solo
+    /// ou serveur dedie) doit resoudre les degats, sinon CombatNetworking
+    /// ferait ce travail en double (ou pour rien, sur un simple client).
+    /// </summary>
     public void DoDamage()
     {
+        if (!ShouldRunAI)
+        {
+            return;
+        }
+
         if (canDoDamage)
         {
             CombatNetworking.DealDamage(MyTarget, damage, this);
