@@ -88,11 +88,45 @@ public class ChatManager : MonoBehaviour
         instance = this;
 
         BuildScrollArea();
+        WarmUpFontAtlas();
 
         if (inputField != null)
         {
             inputField.onEndEdit.AddListener(OnInputEndEdit);
         }
+    }
+
+    /// <summary>
+    /// Bug trouve via les logs [DEBUG-CHAT] : le nom du joueur (ex.
+    /// "Aurora: ") disparaissait du texte affiche alors que Text.text
+    /// contenait bien la chaine complete (confirme par characterCountVisible
+    /// == text.Length, donc pas une troncature du TextGenerator). La police
+    /// "Arial.ttf" integree a Unity est une police dynamique : chaque
+    /// caractere est rasterise a la demande dans une texture partagee
+    /// (Font.RequestCharactersInTexture). Quand un message utilise pour la
+    /// premiere fois des caracteres jamais affiches ailleurs dans l'UI
+    /// (majuscules, ":", etc.), le maillage du texte peut se generer avant
+    /// que la texture ne soit reconstruite avec ces caracteres -- ils
+    /// restent alors invisibles (glyphes vides) meme si le texte est
+    /// correct. On force ici, une seule fois au demarrage et bien avant le
+    /// premier message, le chargement de tout le jeu de caracteres probable
+    /// (alphabet, chiffres, ponctuation, accents francais) pour eliminer ce
+    /// decalage.
+    /// </summary>
+    private void WarmUpFontAtlas()
+    {
+        Font font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+
+        if (font == null)
+        {
+            return;
+        }
+
+        const string charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 " +
+            ".,!?;:'\"-_()[]/\\+=*@#&%" +
+            "\u00e0\u00e2\u00e4\u00e7\u00e8\u00e9\u00ea\u00eb\u00ee\u00ef\u00f4\u00f6\u00f9\u00fb\u00fc\u00c0\u00c7\u00c9\u00c8\u00ca";
+
+        font.RequestCharactersInTexture(charset, 14, FontStyle.Normal);
     }
 
     /// <summary>
@@ -306,6 +340,7 @@ public class ChatManager : MonoBehaviour
         {
             t.text = string.IsNullOrEmpty(senderName) ? message : string.Format("{0}: {1}", senderName, message);
             Debug.Log($"[DEBUG-CHAT] Text.text assigne = '{t.text}' (go.name={go.name}, t.GetInstanceID()={t.GetInstanceID()})");
+            Debug.Log($"[DEBUG-CHAT] Avant layout: text.Length={t.text.Length} rect={t.rectTransform.rect} anchoredPos={t.rectTransform.anchoredPosition} font={(t.font == null ? "NULL" : t.font.name)}");
         }
         else
         {
@@ -329,6 +364,12 @@ public class ChatManager : MonoBehaviour
             // hauteur d'AVANT ce message.
             Canvas.ForceUpdateCanvases();
             scrollRect.verticalNormalizedPosition = 0f;
+
+            if (t != null)
+            {
+                int visible = t.cachedTextGenerator != null ? t.cachedTextGenerator.characterCountVisible : -1;
+                Debug.Log($"[DEBUG-CHAT] Apres layout: text.Length={t.text.Length} characterCountVisible={visible} rect={t.rectTransform.rect} anchoredPos={t.rectTransform.anchoredPosition}");
+            }
         }
     }
 }
