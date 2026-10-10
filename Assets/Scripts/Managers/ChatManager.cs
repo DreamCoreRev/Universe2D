@@ -305,6 +305,11 @@ public class ChatManager : MonoBehaviour
         if (t != null)
         {
             t.text = string.IsNullOrEmpty(senderName) ? message : string.Format("{0}: {1}", senderName, message);
+            Debug.Log($"[DEBUG-CHAT] Text.text assigne = '{t.text}' (go.name={go.name}, t.GetInstanceID()={t.GetInstanceID()})");
+        }
+        else
+        {
+            Debug.Log("[DEBUG-CHAT] AddMessage: go.GetComponent<Text>() == null !");
         }
 
         activeMessages.Add(go);
