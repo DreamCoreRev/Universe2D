@@ -145,26 +145,27 @@ public class GroupUIManager : MonoBehaviour
         contextMenuGO.transform.SetParent(parent, false);
 
         contextMenuRect = contextMenuGO.GetComponent<RectTransform>();
-        // BUG trouve le 10/10 : l'ancre doit etre au CENTRE du canvas
-        // (0.5, 0.5), pas a son coin (0, 1). RectTransformUtility.
-        // ScreenPointToLocalPointInRectangle (voir ShowContextMenu) donne
-        // un point relatif au CENTRE du canvas -- avec une ancre au coin,
-        // anchoredPosition s'additionnait a un point deja decale au coin
-        // superieur gauche, donc le menu restait colle pres du portrait
-        // (coin superieur gauche de l'ecran) quel que soit l'endroit
-        // reellement clique. Le pivot (0, 1), lui, reste au coin
-        // superieur gauche DU MENU -- c'est ce qui fait que le menu
-        // s'etend vers la droite et le bas a partir du point clique,
-        // comme un vrai menu contextuel.
         contextMenuRect.anchorMin = new Vector2(0.5f, 0.5f);
         contextMenuRect.anchorMax = new Vector2(0.5f, 0.5f);
-        contextMenuRect.pivot = new Vector2(0f, 1f);
-        contextMenuRect.sizeDelta = new Vector2(150f, 34f);
+        // Pivot en haut-centre : le point donne a ShowContextMenu est
+        // desormais le bas du cadre-portrait qui a declenche l'ouverture
+        // (voir ShowContextMenu), donc le menu doit s'etendre vers le bas
+        // en restant centre horizontalement sous ce cadre -- avant, le
+        // pivot (0,1) etendait le menu depuis le point de clic brut, qui
+        // tombait forcement SUR le portrait lui-meme (puisque c'est lui
+        // qu'on vient de cliquer), faisant apparaitre le menu par-dessus/
+        // derriere le portrait au lieu d'a cote.
+        contextMenuRect.pivot = new Vector2(0.5f, 1f);
+        contextMenuRect.sizeDelta = new Vector2(162f, 38f);
 
-        Image bg = contextMenuGO.AddComponent<Image>();
-        bg.color = new Color(0f, 0f, 0f, 0.85f);
+        // Bordure bronze/doree -- meme famille de teinte que la barre de
+        // nom (voir RepurposeXpBarAsNameLabel, qui reutilise la barre d'XP
+        // orange/or), pour rester dans le theme du HUD plutot qu'un simple
+        // encart gris plat.
+        Image border = contextMenuGO.AddComponent<Image>();
+        border.color = new Color(0.22f, 0.14f, 0.03f, 0.95f);
 
-        GameObject buttonGO = BuildButton(contextMenuRect, "Inviter au groupe", Vector2.zero, new Vector2(150f, 34f), new Color(1f, 1f, 1f, 0.12f));
+        GameObject buttonGO = BuildThemedButton(contextMenuRect, "Inviter au groupe", Vector2.zero, new Vector2(154f, 30f));
         Button button = buttonGO.GetComponent<Button>();
         button.onClick.AddListener(OnInviteButtonClicked);
 
@@ -693,7 +694,7 @@ public class GroupUIManager : MonoBehaviour
         Vector3 pointerPos = TouchInput.GetPointerPosition();
         if (RectTransformUtility.RectangleContainsScreenPoint(playerTargetFrameRect, pointerPos, null))
         {
-            ShowContextMenu(currentPlayerTarget, pointerPos);
+            ShowContextMenu(currentPlayerTarget, playerTargetFrameRect);
         }
     }
 
@@ -732,28 +733,87 @@ public class GroupUIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Appele par GameManager des qu'un clic droit touche le collider
-    /// "PlayerClickable" d'un autre joueur (voir Player.prefab -- un enfant
-    /// dedie sur le layer Clickable, separe du collider "Player" deja
-    /// utilise par l'aggro des monstres (voir Range.cs) et le ciblage de
-    /// combat, pour ne jamais interferer avec eux).
+    /// Variante doree/bronze de BuildButton, utilisee par "Inviter au
+    /// groupe" (voir BuildContextMenu) pour rester dans le meme theme que
+    /// les barres du HUD (vie verte, mana bleue, nom orange/or -- voir
+    /// RepurposeXpBarAsNameLabel) plutot que le gris neutre de BuildButton.
     /// </summary>
-    public void ShowContextMenu(Player target, Vector3 screenPosition)
+    private GameObject BuildThemedButton(RectTransform parent, string label, Vector2 anchoredPosition, Vector2 size)
     {
-        if (target == null || canvasRect == null)
+        GameObject go = new GameObject(label + "Button", typeof(RectTransform));
+        go.transform.SetParent(parent, false);
+
+        RectTransform rect = go.GetComponent<RectTransform>();
+        rect.sizeDelta = size;
+        rect.anchoredPosition = anchoredPosition;
+
+        Image image = go.AddComponent<Image>();
+        image.color = new Color(0.82f, 0.62f, 0.16f, 1f);
+
+        Button button = go.AddComponent<Button>();
+        button.targetGraphic = image;
+
+        ColorBlock colors = button.colors;
+        colors.highlightedColor = new Color(0.92f, 0.74f, 0.28f, 1f);
+        colors.pressedColor = new Color(0.68f, 0.5f, 0.1f, 1f);
+        button.colors = colors;
+
+        GameObject textGO = new GameObject("Label", typeof(RectTransform));
+        textGO.transform.SetParent(go.transform, false);
+        RectTransform textRect = textGO.GetComponent<RectTransform>();
+        textRect.anchorMin = Vector2.zero;
+        textRect.anchorMax = Vector2.one;
+        textRect.offsetMin = Vector2.zero;
+        textRect.offsetMax = Vector2.zero;
+
+        Text text = textGO.AddComponent<Text>();
+        text.text = label;
+        text.alignment = TextAnchor.MiddleCenter;
+        text.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        text.fontSize = 13;
+        text.fontStyle = FontStyle.Bold;
+        text.color = new Color(0.22f, 0.12f, 0.02f, 1f);
+        text.raycastTarget = false;
+
+        return go;
+    }
+
+    /// <summary>
+    /// Appele par Update() des qu'un clic droit touche le cadre-portrait
+    /// d'un autre joueur (voir playerTargetFrameRect). Positionne le menu
+    /// juste EN DESSOUS de ce cadre, centre horizontalement, au lieu du
+    /// point de clic brut : le clic se fait forcement SUR le portrait
+    /// (c'est lui qu'on vient de cliquer), donc ancrer au point de clic
+    /// faisait apparaitre le menu par-dessus/derriere le portrait au lieu
+    /// d'a cote. SetAsLastSibling() par securite, pour qu'il passe
+    /// toujours au-dessus du reste de ce canvas (portrait, cadres de
+    /// groupe) quel que soit l'ordre dans lequel ils ont ete construits.
+    /// </summary>
+    public void ShowContextMenu(Player target, RectTransform anchorRect)
+    {
+        if (target == null || canvasRect == null || anchorRect == null)
         {
             return;
         }
 
         contextMenuTarget = target;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPosition, null, out Vector2 localPoint);
+        // Point juste sous le bas du cadre (6px d'espace), converti du
+        // monde vers l'ecran puis vers l'espace local du canvas -- meme
+        // logique que l'ancien ancrage au clic brut, seule la SOURCE du
+        // point change.
+        Vector3 anchorWorldPoint = anchorRect.TransformPoint(new Vector3(0f, -anchorRect.rect.height / 2f - 6f, 0f));
+        Vector2 screenPoint = RectTransformUtility.WorldToScreenPoint(null, anchorWorldPoint);
 
-        // On garde le menu entierement visible meme si on clique pres d'un bord d'ecran.
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPoint, null, out Vector2 localPoint);
+
+        // On garde le menu entierement visible meme pres d'un bord d'ecran.
+        // Pivot du menu en haut-centre (voir BuildContextMenu) : il s'etend
+        // symetriquement en largeur, d'ou le demi-largeur de chaque cote.
         Vector2 canvasSize = canvasRect.rect.size;
         Vector2 menuSize = contextMenuRect.sizeDelta;
-        float minX = -canvasSize.x / 2f;
-        float maxX = canvasSize.x / 2f - menuSize.x;
+        float minX = -canvasSize.x / 2f + menuSize.x / 2f;
+        float maxX = canvasSize.x / 2f - menuSize.x / 2f;
         float minY = -canvasSize.y / 2f + menuSize.y;
         float maxY = canvasSize.y / 2f;
 
@@ -761,6 +821,8 @@ public class GroupUIManager : MonoBehaviour
         localPoint.y = Mathf.Clamp(localPoint.y, minY, maxY);
 
         contextMenuRect.anchoredPosition = localPoint;
+
+        contextMenuGO.transform.SetAsLastSibling();
         contextMenuGO.SetActive(true);
     }
 
