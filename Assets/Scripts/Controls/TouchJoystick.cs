@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Joystick virtuel tactile, pour pouvoir tester le jeu sur téléphone/tablette
@@ -19,6 +20,11 @@ public class TouchJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 	private static TouchJoystick instance;
 
 	private static GameObject canvasGO;
+
+	// Seule la scene de jeu (Demo.unity) doit afficher le joystick -- pas
+	// Login ni CharacterSelect, qui n'ont pas de personnage a deplacer
+	// (meme raison que TouchMenuButtons.cs, voir UpdateVisibility).
+	private const string GameSceneName = "Demo";
 
 	// Permet de desactiver le joystick depuis le Main Menu (voir
 	// UIManager.ToggleTouchControls) pour les joueurs sur PC/clavier, qui le
@@ -42,11 +48,25 @@ public class TouchJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 	public static void SetEnabled(bool isEnabled)
 	{
 		PlayerPrefs.SetInt(EnabledPrefKey, isEnabled ? 1 : 0);
+		ApplyVisibility(SceneManager.GetActiveScene().name);
+	}
 
+	/// <summary>
+	/// Recalcule si le joystick doit etre visible a partir des DEUX
+	/// conditions a la fois : le choix du joueur (IsEnabled) ET la scene
+	/// actuelle (GameSceneName) -- les deux doivent etre vrais.
+	/// </summary>
+	private static void ApplyVisibility(string sceneName)
+	{
 		if (canvasGO != null)
 		{
-			canvasGO.SetActive(isEnabled);
+			canvasGO.SetActive(IsEnabled && sceneName == GameSceneName);
 		}
+	}
+
+	private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+	{
+		ApplyVisibility(scene.name);
 	}
 
 	/// <summary>
@@ -131,10 +151,11 @@ public class TouchJoystick : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 		joystick.handle = handleRect;
 		instance = joystick;
 
-		// Respecte le choix fait dans le Main Menu lors d'une session
-		// precedente (voir UIManager.ToggleTouchControls) -- actif par
-		// defaut, comme avant ce reglage.
-		canvasGO.SetActive(IsEnabled);
+		// N'afficher le joystick que dans la scene de jeu (voir
+		// GameSceneName), et seulement si le joueur ne l'a pas desactive
+		// depuis le Main Menu (voir UIManager.ToggleTouchControls).
+		SceneManager.sceneLoaded += OnSceneLoaded;
+		ApplyVisibility(SceneManager.GetActiveScene().name);
 	}
 
 	// Unity a un sprite rond tout prêt ("Knob") fourni avec l'éditeur -- pas
