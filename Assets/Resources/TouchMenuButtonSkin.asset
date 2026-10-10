@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d60cbaf1da4489abb7f5e878959900, type: 3}
+  m_Name: TouchMenuButtonSkin
+  m_EditorClassIdentifier:
+  characterIcon: {fileID: 21300000, guid: 540a59b543fd2fc40ac681d61b328d55, type: 3}
+  spellsIcon: {fileID: 21300000, guid: c395270526e1d0748b6ca6b03a2e642a, type: 3}
+  questIcon: {fileID: 21300000, guid: 125ae7d3ffee5e64aadecbe0be0204d9, type: 3}
+  talentIcon: {fileID: 21300000, guid: db29f74e9d57a884cbe665596d5b850f, type: 3}
+  professionIcon: {fileID: 21300000, guid: a0f29b7364b46db45aa6dc533eec4878, type: 3}
