@@ -35,6 +35,14 @@ public class Player : Character
 
     private PlayerGroupSync groupSync;
 
+    private PlayerClassSync classSync;
+
+    [SerializeField]
+    private RuntimeAnimatorController mageController;
+
+    [SerializeField]
+    private RuntimeAnimatorController warriorController;
+
     /// <summary>
     /// Vrai si c'est NOUS qui controlons ce Player (clavier/joystick/UI) :
     /// - en solo (pas de session Mirror active, ex: Play direct sur Demo.unity
@@ -238,6 +246,13 @@ public class Player : Character
             instance = this;
             ResolveLocalReferences();
             StartCoroutine(Regen());
+
+            // Applique tout de suite le bon controleur d'animation (Mage ou
+            // Guerrier, voir Session.SelectedCharacterClass) pour NOUS, puis
+            // previent le serveur pour que les AUTRES clients voient aussi
+            // la bonne classe sur notre personnage (voir PlayerClassSync).
+            ApplyClassVisuals(Session.SelectedCharacterClass);
+            SyncCharacterClass();
 
             // En reseau, SaveManager.Start() s'est deja execute avant que ce
             // Player existe (voir SaveManager.cs) -- on le rappelle ici pour
@@ -1183,6 +1198,59 @@ public class Player : Character
             case 8: return 3; // TwoHand
             default: return -1; // Hands, Offhand
         }
+    }
+
+    /// <summary>
+    /// Change les sprites/animations de ce Player selon sa classe (Mage ou
+    /// Guerrier) en remplacant le controleur d'animation utilise par
+    /// MyAnimator -- toute la logique de MyAnimator.SetLayerWeight/
+    /// GetLayerIndex (voir Character.cs) continue de marcher a l'identique
+    /// puisque WarriorController.controller reprend exactement les memes
+    /// layers (Idle/Walk/Attack/Death) que PlayerController.controller, juste
+    /// avec d'autres clips. Appelee localement (Start) et via le hook SyncVar
+    /// de PlayerClassSync pour les autres clients.
+    /// Par defaut (classe vide/inconnue, ex: anciennes sauvegardes ou partie
+    /// solo sans passer par le login) on garde le Mage, comportement d'origine.
+    /// </summary>
+    public void ApplyClassVisuals(string characterClass)
+    {
+        if (MyAnimator == null)
+        {
+            return;
+        }
+
+        RuntimeAnimatorController controller = characterClass == "Guerrier" ? warriorController : mageController;
+
+        if (controller != null)
+        {
+            MyAnimator.runtimeAnimatorController = controller;
+        }
+    }
+
+    /// <summary>
+    /// Previent le serveur (via PlayerClassSync, meme logique que
+    /// SyncEquippedArmor) de la classe choisie a la creation du personnage
+    /// (Session.SelectedCharacterClass), pour que les autres clients
+    /// appliquent eux aussi le bon controleur d'animation sur notre avatar.
+    /// </summary>
+    private void SyncCharacterClass()
+    {
+        if (classSync == null)
+        {
+            classSync = GetComponent<PlayerClassSync>();
+        }
+
+        if (netIdentity == null)
+        {
+            netIdentity = GetComponent<NetworkIdentity>();
+        }
+
+        if (classSync == null || netIdentity == null || !NetworkClient.active || !netIdentity.isLocalPlayer)
+        {
+            return;
+        }
+
+        classSync.CmdSetClass(Session.SelectedCharacterClass);
     }
 
     /// <summary>

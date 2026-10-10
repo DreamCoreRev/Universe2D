@@ -10,9 +10,9 @@ AppConfig config = AppConfig.Load(configPath);
 var repository = new AccountRepository(config.MySql.ToConnectionString());
 var characterRepository = new CharacterRepository(config.MySql.ToConnectionString());
 
-// Classes jouables disponibles aujourd'hui. Le Guerrier n'est pas encore
-// dans cette liste : ses assets ne sont pas encore dans le projet Unity.
-string[] availableClasses = { "Mage" };
+// Classes jouables disponibles aujourd'hui cote serveur (Mage et
+// Guerrier -- ses assets sont maintenant dans le projet Unity).
+string[] availableClasses = { "Mage", "Guerrier" };
 
 using var listener = new HttpListener();
 listener.Prefixes.Add(config.Http.Prefix);

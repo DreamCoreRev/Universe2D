@@ -24,10 +24,7 @@ public class CharacterSelectManager : MonoBehaviour
     private const string ServerUrl = "http://192.168.42.90:8080";
     private const int MaxCharacters = 5;
 
-    // Classes jouables aujourd'hui cote client. Le Guerrier n'a pas encore
-    // ses assets dans le projet -- bouton visible mais grise, pas d'appel
-    // serveur possible pour cette classe (le serveur la refuserait de toute
-    // facon, voir AuthServer/Program.cs availableClasses).
+    // Classes jouables aujourd'hui cote client.
     private const string MageClass = "Mage";
     private const string WarriorClass = "Guerrier";
 
@@ -37,6 +34,10 @@ public class CharacterSelectManager : MonoBehaviour
     // prefab, impossible de charger un sprite par guid hors de l'Editeur).
     [SerializeField]
     private Sprite magePortraitSprite;
+
+    // Meme chose pour le Guerrier (voir RPG_assets/Knight_animations).
+    [SerializeField]
+    private Sprite warriorPortraitSprite;
 
     // Meme palette bronze/or que GroupUIManager, pour un theme coherent.
     private static readonly Color BorderColor = new Color(0.22f, 0.14f, 0.03f, 0.95f);
@@ -130,6 +131,8 @@ public class CharacterSelectManager : MonoBehaviour
     private InputField nameInput;
     private Button mageClassButton;
     private Image mageClassBackground;
+    private Button warriorClassButton;
+    private Image warriorClassBackground;
     private Button confirmCreateButton;
     private Text createStatusText;
 
@@ -263,19 +266,14 @@ public class CharacterSelectManager : MonoBehaviour
 
         nameInput = CreateInputField(panelRect, new Vector2(0, 55), new Vector2(300, 36), "Nom du personnage");
 
-        // Choix de la classe : Mage cliquable, Guerrier visible mais grise
-        // (pas encore d'assets dans le projet -- voir CharacterRelated).
+        // Choix de la classe : Mage et Guerrier tous les deux cliquables.
         mageClassButton = CreateThemedButton(panelRect, "MAGE", new Vector2(-75, 0), new Vector2(130, 40));
         mageClassBackground = mageClassButton.GetComponent<Image>();
         mageClassButton.onClick.AddListener(() => SelectCreateClass(MageClass));
 
-        Button warriorButton = CreateThemedButton(panelRect, "GUERRIER\n(bientot)", new Vector2(75, 0), new Vector2(130, 40));
-        Image warriorBg = warriorButton.GetComponent<Image>();
-        warriorBg.color = DisabledGray;
-        warriorButton.interactable = false;
-        Text warriorLabel = warriorButton.GetComponentInChildren<Text>();
-        warriorLabel.fontSize = 11;
-        warriorLabel.color = new Color(0.7f, 0.7f, 0.7f, 1f);
+        warriorClassButton = CreateThemedButton(panelRect, "GUERRIER", new Vector2(75, 0), new Vector2(130, 40));
+        warriorClassBackground = warriorClassButton.GetComponent<Image>();
+        warriorClassButton.onClick.AddListener(() => SelectCreateClass(WarriorClass));
 
         createStatusText = CreateText("CreateStatus", panelRect, "", 13, ErrorTextColor, FontStyle.Normal, TextAnchor.MiddleCenter);
         SetAnchoredRect(createStatusText.rectTransform, new Vector2(0.5f, 0f), new Vector2(0.5f, 0f), new Vector2(0, 56), new Vector2(320, 24));
@@ -377,6 +375,7 @@ public class CharacterSelectManager : MonoBehaviour
     {
         pendingCreateClass = characterClass;
         mageClassBackground.color = characterClass == MageClass ? GoldFillPressed : GoldFill;
+        warriorClassBackground.color = characterClass == WarriorClass ? GoldFillPressed : GoldFill;
     }
 
     private void OnPlayClicked()
@@ -447,7 +446,9 @@ public class CharacterSelectManager : MonoBehaviour
                 slot.NameText.text = character.name;
                 slot.ClassText.text = character.characterClass;
 
-                Sprite portraitSprite = character.characterClass == MageClass ? magePortraitSprite : null;
+                Sprite portraitSprite = character.characterClass == MageClass
+                    ? magePortraitSprite
+                    : character.characterClass == WarriorClass ? warriorPortraitSprite : null;
                 slot.Portrait.sprite = portraitSprite;
                 slot.Portrait.enabled = portraitSprite != null;
             }

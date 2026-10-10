@@ -1,0 +1,12 @@
+idle_front 9 3
+walk_front 11 4
+attack_front 8 3
+idle_back 9 3
+walk_back 11 4
+attack_back 8 3
+idle_left 9 3
+walk_left 13 5
+attack_left 8 3
+idle_right 9 3
+walk_right 13 5
+attack_right 8 3

@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 102757938}
   - component: {fileID: 102757939}
   - component: {fileID: 102757940}
+  - component: {fileID: 657432015069394}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -162,6 +163,8 @@ MonoBehaviour:
   - {fileID: 9472299039720418}
   - {fileID: 2985519145230730}
   profession: {fileID: 0}
+  mageController: {fileID: 9100000, guid: f6d77302cef8cd14f97184d3d7e5839c, type: 2}
+  warriorController: {fileID: 9100000, guid: aaabadebf8bf40d48bab231616de67e4, type: 2}
 --- !u!95 &95452963605033478
 Animator:
   serializedVersion: 5
@@ -1641,6 +1644,18 @@ MonoBehaviour:
   mainHandArmorId: -1
   legArmorId: -1
   feetArmorId: -1
+--- !u!114 &657432015069394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063633968645812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519fbc578cb2482e8a57d8cf6d88db1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &880693412673302319
 MonoBehaviour:
   m_ObjectHideFlags: 0
