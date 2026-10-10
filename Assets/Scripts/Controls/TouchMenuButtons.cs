@@ -218,7 +218,7 @@ public class TouchMenuButtons : MonoBehaviour
 
 		Outline outline = tooltipGO.AddComponent<Outline>();
 		outline.effectColor = BorderColor;
-		outline.effectDistance = new Vector2(1.2f, -1.2f);
+		outline.effectDistance = new Vector2(1f, -1f);
 
 		// Pivot en bas (0.5, 0) : la bulle s'etend vers le HAUT depuis la
 		// position qu'on lui donne (voir TooltipTrigger.OnPointerDown),
@@ -227,21 +227,50 @@ public class TouchMenuButtons : MonoBehaviour
 		rect.anchorMin = new Vector2(0.5f, 0f);
 		rect.anchorMax = new Vector2(0.5f, 0f);
 		rect.pivot = new Vector2(0.5f, 0f);
-		rect.sizeDelta = new Vector2(240f, 44f);
+
+		// La bulle epouse maintenant la largeur du texte (au lieu d'une
+		// largeur fixe de 240px, beaucoup trop large pour un mot comme
+		// "Menu") -- HorizontalLayoutGroup centre le texte avec une marge
+		// interne, ContentSizeFitter ajuste la taille de la bulle dessus.
+		HorizontalLayoutGroup layout = tooltipGO.AddComponent<HorizontalLayoutGroup>();
+		layout.padding = new RectOffset(9, 9, 4, 4);
+		layout.childAlignment = TextAnchor.MiddleCenter;
+		layout.childForceExpandWidth = false;
+		layout.childForceExpandHeight = false;
+		layout.childControlWidth = true;
+		layout.childControlHeight = true;
+
+		ContentSizeFitter fitter = tooltipGO.AddComponent<ContentSizeFitter>();
+		fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
+		fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+
+		// Petit liseré doré en haut de la bulle, pour un rendu plus "jeu"
+		// qu'un simple rectangle plat -- ignoreLayout=true pour qu'il reste
+		// une bande fine en haut plutôt que d'être traité comme un élément
+		// de la rangée par le HorizontalLayoutGroup.
+		GameObject accentGO = new GameObject("Accent", typeof(RectTransform));
+		accentGO.transform.SetParent(tooltipGO.transform, false);
+		LayoutElement accentLayoutElement = accentGO.AddComponent<LayoutElement>();
+		accentLayoutElement.ignoreLayout = true;
+		Image accent = accentGO.AddComponent<Image>();
+		accent.color = GoldTextColor;
+		accent.raycastTarget = false;
+		RectTransform accentRect = accentGO.GetComponent<RectTransform>();
+		accentRect.anchorMin = new Vector2(0f, 1f);
+		accentRect.anchorMax = new Vector2(1f, 1f);
+		accentRect.pivot = new Vector2(0.5f, 1f);
+		accentRect.sizeDelta = new Vector2(0f, 2f);
+		accentRect.anchoredPosition = Vector2.zero;
 
 		GameObject textGO = new GameObject("Text", typeof(RectTransform));
 		textGO.transform.SetParent(tooltipGO.transform, false);
 		Text text = textGO.AddComponent<Text>();
 		text.alignment = TextAnchor.MiddleCenter;
-		text.color = Color.white;
+		text.color = GoldTextColor;
 		text.font = GetUIFont();
-		text.fontSize = 22;
+		text.fontStyle = FontStyle.Bold;
+		text.fontSize = 14;
 		text.raycastTarget = false;
-		RectTransform textRect = textGO.GetComponent<RectTransform>();
-		textRect.anchorMin = Vector2.zero;
-		textRect.anchorMax = Vector2.one;
-		textRect.sizeDelta = Vector2.zero;
-		textRect.anchoredPosition = Vector2.zero;
 
 		tooltipRoot = rect;
 		tooltipText = text;
