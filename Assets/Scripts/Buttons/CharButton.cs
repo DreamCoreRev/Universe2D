@@ -96,7 +96,23 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         }
 
         Player.MyInstance.EquipGear(armor);
-    
+
+        // gearSocket (ci-dessus) est cable en dur dans la scene sur l'ancien
+        // personnage solo -- desormais desactive (voir Player.prefab) --
+        // donc n'a plus d'effet visuel reel. Le vrai socket vit sur le
+        // Player effectivement actif (reseau ou solo) : on l'applique la
+        // en plus, et on previent les autres joueurs via le reseau.
+        int socketIndex = Player.SocketIndexForArmorType((int)armoryType);
+        if (socketIndex >= 0 && MyEquippedArmor.MyAnimationClips != null)
+        {
+            GearSocket liveSocket = Player.MyInstance.GetGearSocket(socketIndex);
+            if (liveSocket != null)
+            {
+                liveSocket.Equip(MyEquippedArmor.MyAnimationClips);
+            }
+        }
+        Player.MyInstance.SyncEquippedArmor(socketIndex, MyEquippedArmor);
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -132,6 +148,20 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         {
             Player.MyInstance.DequipGear(MyEquippedArmor);
         }
+
+        // Meme remarque que dans EquipArmor() : gearSocket ci-dessus ne
+        // pointe plus vers un personnage actif, donc on applique en plus
+        // sur le vrai socket et on previent les autres joueurs.
+        int socketIndex = Player.SocketIndexForArmorType((int)armoryType);
+        if (socketIndex >= 0)
+        {
+            GearSocket liveSocket = Player.MyInstance.GetGearSocket(socketIndex);
+            if (liveSocket != null)
+            {
+                liveSocket.Dequip();
+            }
+        }
+        Player.MyInstance.SyncEquippedArmor(socketIndex, null);
 
         equippedArmor.MyCharButton = null;
         equippedArmor = null;

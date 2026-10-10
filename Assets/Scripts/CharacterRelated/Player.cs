@@ -27,6 +27,8 @@ public class Player : Character
 
     private NetworkIdentity netIdentity;
 
+    private PlayerEquipmentSync equipmentSync;
+
     /// <summary>
     /// Vrai si c'est NOUS qui controlons ce Player (clavier/joystick/UI) :
     /// - en solo (pas de session Mirror active, ex: Play direct sur Demo.unity
@@ -866,6 +868,79 @@ public class Player : Character
         strength -= armor.Strength;
         UpdateMaxStats();
         UIManager.MyInstance.UpdateStatsText(intellect, stamina, strength);
+    }
+
+    /// <summary>
+    /// Donne acces (en lecture) a un socket d'equipement visuel par index,
+    /// pour PlayerEquipmentSync (qui doit rester un NetworkBehaviour
+    /// separe -- voir ce script -- et n'a donc pas acces direct au champ
+    /// prive gearSockets).
+    /// </summary>
+    public GearSocket GetGearSocket(int index)
+    {
+        if (gearSockets == null || index < 0 || index >= gearSockets.Length)
+        {
+            return null;
+        }
+
+        return gearSockets[index];
+    }
+
+    /// <summary>
+    /// Convertit un ArmorType (voir Armor.cs : Head=0 Shoulders=1 Chest=2
+    /// Hands=3 Legs=4 Feet=5 MainHand=6 Offhand=7 TwoHand=8) vers l'index
+    /// du socket visuel correspondant dans gearSockets (voir
+    /// Player.prefab : 0=Tete 1=Torse 2=Epaules 3=Main/Arme 4=Jambes
+    /// 5=Pieds). Hands et Offhand n'ont pas de socket visuel dans le jeu
+    /// actuel (-1) ; TwoHand reutilise le socket d'arme principale.
+    /// </summary>
+    public static int SocketIndexForArmorType(int armorType)
+    {
+        switch (armorType)
+        {
+            case 0: return 0; // Head
+            case 1: return 2; // Shoulders
+            case 2: return 1; // Chest
+            case 4: return 4; // Legs
+            case 5: return 5; // Feet
+            case 6: return 3; // MainHand
+            case 8: return 3; // TwoHand
+            default: return -1; // Hands, Offhand
+        }
+    }
+
+    /// <summary>
+    /// Previent les autres joueurs (via le serveur) qu'on vient d'equiper
+    /// ou de retirer une piece d'equipement visuelle, pour que
+    /// GearSocket.Equip()/Dequip() s'applique aussi sur leurs clients. En
+    /// solo (pas de session Mirror active) ou si ce Player ne nous
+    /// appartient pas, ne fait rien -- CharButton applique deja le visuel
+    /// localement de son cote.
+    /// </summary>
+    public void SyncEquippedArmor(int socketIndex, Armor armor)
+    {
+        if (socketIndex < 0)
+        {
+            return;
+        }
+
+        if (equipmentSync == null)
+        {
+            equipmentSync = GetComponent<PlayerEquipmentSync>();
+        }
+
+        if (netIdentity == null)
+        {
+            netIdentity = GetComponent<NetworkIdentity>();
+        }
+
+        if (equipmentSync == null || netIdentity == null || !NetworkClient.active || !netIdentity.isLocalPlayer)
+        {
+            return;
+        }
+
+        int armorId = (armor != null && ArmorDatabase.MyInstance != null) ? ArmorDatabase.MyInstance.GetId(armor) : -1;
+        equipmentSync.CmdSetEquippedArmor(socketIndex, armorId);
     }
 
     private int IncreaseBaseStat()
