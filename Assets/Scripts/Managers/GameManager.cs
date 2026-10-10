@@ -120,6 +120,13 @@ public class GameManager : MonoBehaviour {
 
         if (leftPressed && !overUI)//If we click the left mouse button
         {
+            // Un clic gauche dans le monde ferme le menu contextuel "Inviter
+            // au groupe" s'il etait ouvert (voir GroupUIManager) -- comme
+            // dans la plupart des jeux, cliquer ailleurs l'annule. Sans
+            // incidence si rien n'est ouvert (HideContextMenu ne fait rien
+            // dans ce cas).
+            GroupUIManager.MyInstance?.HideContextMenu();
+
             //Makes a raycast from the pointer position into the game world
             Vector3 pointerPos = TouchInput.GetPointerPosition();
             Vector3 worldPos = mainCamera.ScreenToWorldPoint(pointerPos);
@@ -175,16 +182,37 @@ public class GameManager : MonoBehaviour {
             //Makes a raycast from the pointer position into the game world
             RaycastHit2D hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()), Vector2.zero, Mathf.Infinity, clickableLayer);
 
-            if (hit.collider != null)
+            if (hit.collider != null && hit.collider.tag == "PlayerClickable")
             {
+                // Collider dedie, separe du collider "Player" deja utilise par
+                // l'aggro des monstres (voir Range.cs) -- voir Player.prefab.
+                // Le script Player/Character vit sur le GameObject parent.
+                Player targetPlayer = hit.collider.GetComponentInParent<Player>();
+
+                if (targetPlayer != null && targetPlayer != Player.MyInstance)
+                {
+                    GroupUIManager.MyInstance?.ShowContextMenu(targetPlayer, TouchInput.GetPointerPosition());
+                }
+                else
+                {
+                    // Clic droit sur nous-memes : rien a proposer.
+                    GroupUIManager.MyInstance?.HideContextMenu();
+                }
+            }
+            else if (hit.collider != null)
+            {
+                GroupUIManager.MyInstance?.HideContextMenu();
+
                 IInteractable entity = hit.collider.gameObject.GetComponent<IInteractable>();
-                if (hit.collider != null && (hit.collider.tag == "Enemy" || hit.collider.tag == "Interactable") && Player.MyInstance.MyInteractables.Contains(entity))
+                if ((hit.collider.tag == "Enemy" || hit.collider.tag == "Interactable") && Player.MyInstance.MyInteractables.Contains(entity))
                 {
                     entity.Interact();
                 }
             }
             else
             {
+                GroupUIManager.MyInstance?.HideContextMenu();
+
                 hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()), Vector2.zero, Mathf.Infinity, groundLayer);
 
                 if (hit.collider != null)

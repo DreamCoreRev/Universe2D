@@ -33,6 +33,8 @@ public class Player : Character
 
     private PlayerChatSync chatSync;
 
+    private PlayerGroupSync groupSync;
+
     /// <summary>
     /// Vrai si c'est NOUS qui controlons ce Player (clavier/joystick/UI) :
     /// - en solo (pas de session Mirror active, ex: Play direct sur Demo.unity
@@ -786,6 +788,63 @@ public class Player : Character
         }
 
         chatSync.SendChatMessage(message);
+    }
+
+    /// <summary>
+    /// Appele par GroupUIManager quand on clique sur "Inviter au groupe"
+    /// dans le menu contextuel (clic droit sur un autre joueur). Meme
+    /// convention que SendChatMessage/BroadcastAOESpellCast : lazy-get du
+    /// composant Sync correspondant, puis delegation.
+    /// </summary>
+    public void InviteToGroup(Player target)
+    {
+        if (!IsLocallyControlled || target == null)
+        {
+            return;
+        }
+
+        if (groupSync == null)
+        {
+            groupSync = GetComponent<PlayerGroupSync>();
+        }
+
+        if (groupSync == null)
+        {
+            return;
+        }
+
+        NetworkIdentity targetIdentity = target.GetComponent<NetworkIdentity>();
+
+        if (targetIdentity == null)
+        {
+            return;
+        }
+
+        groupSync.SendInvite(targetIdentity);
+    }
+
+    /// <summary>
+    /// Appele par GroupUIManager quand on clique Accepter/Refuser sur la
+    /// popup d'invitation de groupe recue.
+    /// </summary>
+    public void RespondToGroupInvite(NetworkIdentity inviterIdentity, bool accepted)
+    {
+        if (!IsLocallyControlled)
+        {
+            return;
+        }
+
+        if (groupSync == null)
+        {
+            groupSync = GetComponent<PlayerGroupSync>();
+        }
+
+        if (groupSync == null)
+        {
+            return;
+        }
+
+        groupSync.RespondToInvite(inviterIdentity, accepted);
     }
 
     private IEnumerator Regen()

@@ -22,6 +22,12 @@ public class PlayerChatSync : NetworkBehaviour
     [SyncVar]
     private string playerName = "Joueur";
 
+    /// <summary>
+    /// Expose en lecture seule pour PlayerGroupSync (texte des invitations
+    /// de groupe) -- jamais modifie depuis l'exterieur, voir CmdSetPlayerName.
+    /// </summary>
+    public string PlayerName => playerName;
+
     public override void OnStartLocalPlayer()
     {
         base.OnStartLocalPlayer();
