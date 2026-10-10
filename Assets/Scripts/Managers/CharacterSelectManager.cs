@@ -31,6 +31,13 @@ public class CharacterSelectManager : MonoBehaviour
     private const string MageClass = "Mage";
     private const string WarriorClass = "Guerrier";
 
+    // Tete de portrait affichee sur les slots occupes par un personnage
+    // Mage (voir Demo.unity, Frame/Face, meme sprite). Reference assignee
+    // directement dans CharacterSelect.unity (ce script n'est pas sur un
+    // prefab, impossible de charger un sprite par guid hors de l'Editeur).
+    [SerializeField]
+    private Sprite magePortraitSprite;
+
     // Meme palette bronze/or que GroupUIManager, pour un theme coherent.
     private static readonly Color BorderColor = new Color(0.22f, 0.14f, 0.03f, 0.95f);
     private static readonly Color PanelColor = new Color(0.07f, 0.06f, 0.08f, 0.96f);
@@ -49,6 +56,7 @@ public class CharacterSelectManager : MonoBehaviour
     {
         public GameObject Root;
         public Image Background;
+        public Image Portrait;
         public Text NameText;
         public Text ClassText;
         public Text EmptyHintText;
@@ -206,11 +214,17 @@ public class CharacterSelectManager : MonoBehaviour
             ApplyButtonColors(button);
             button.onClick.AddListener(() => OnSlotClicked(capturedIndex));
 
+            Image portrait = CreateImage("Portrait", slotRect, Color.white);
+            portrait.preserveAspect = true;
+            portrait.raycastTarget = false;
+            portrait.enabled = false;
+            SetAnchoredRect(portrait.rectTransform, new Vector2(0.5f, 1f), new Vector2(0.5f, 1f), new Vector2(0, -42), new Vector2(70, 70));
+
             Text nameText = CreateText("NameText", slotRect, "", 15, GoldTextColor, FontStyle.Bold, TextAnchor.MiddleCenter);
-            SetAnchoredRect(nameText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0, -32), new Vector2(0, 28));
+            SetAnchoredRect(nameText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0, -92), new Vector2(0, 28));
 
             Text classText = CreateText("ClassText", slotRect, "", 12, new Color(0.8f, 0.8f, 0.8f, 1f), FontStyle.Normal, TextAnchor.MiddleCenter);
-            SetAnchoredRect(classText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0, -58), new Vector2(0, 22));
+            SetAnchoredRect(classText.rectTransform, new Vector2(0f, 1f), new Vector2(1f, 1f), new Vector2(0, -116), new Vector2(0, 22));
 
             Text emptyHint = CreateText("EmptyHint", slotRect, "+\n\nNouveau\npersonnage", 14, new Color(0.6f, 0.6f, 0.6f, 1f), FontStyle.Bold, TextAnchor.MiddleCenter);
             StretchFull(emptyHint.rectTransform);
@@ -219,6 +233,7 @@ public class CharacterSelectManager : MonoBehaviour
             {
                 Root = slotGO,
                 Background = bg,
+                Portrait = portrait,
                 NameText = nameText,
                 ClassText = classText,
                 EmptyHintText = emptyHint,
@@ -431,6 +446,14 @@ public class CharacterSelectManager : MonoBehaviour
             {
                 slot.NameText.text = character.name;
                 slot.ClassText.text = character.characterClass;
+
+                Sprite portraitSprite = character.characterClass == MageClass ? magePortraitSprite : null;
+                slot.Portrait.sprite = portraitSprite;
+                slot.Portrait.enabled = portraitSprite != null;
+            }
+            else
+            {
+                slot.Portrait.enabled = false;
             }
 
             if (i == selectedIndex)

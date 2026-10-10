@@ -310,3 +310,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63f52a1a5d648c29881a1b3343de4e9, type: 3}
   m_Name:
   m_EditorClassIdentifier:
+  magePortraitSprite: {fileID: 21300000, guid: 540a59b543fd2fc40ac681d61b328d55,
+    type: 3}

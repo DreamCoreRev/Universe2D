@@ -234,7 +234,13 @@ static async Task<T?> ReadBodyAsync<T>(HttpListenerContext context)
 
 static async Task WriteJsonAsync(HttpListenerContext context, int statusCode, object payload)
 {
-    byte[] bytes = JsonSerializer.SerializeToUtf8Bytes(payload);
+    // camelCase : le cote Unity utilise JsonUtility, qui exige des noms de
+    // champ exactement (casse incluse) comme dans le JSON -- "success"/
+    // "message" etaient deja en minuscule (champs anonymes ecrits comme
+    // ca), mais les enregistrements C# comme CharacterInfo (Id, Name,
+    // Class, SaveSlotIndex) seraient serialises en PascalCase sans ca.
+    var jsonOptions = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+    byte[] bytes = JsonSerializer.SerializeToUtf8Bytes(payload, jsonOptions);
     context.Response.StatusCode = statusCode;
     context.Response.ContentType = "application/json; charset=utf-8";
     context.Response.ContentLength64 = bytes.Length;
