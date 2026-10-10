@@ -215,16 +215,6 @@ public class SpellBook : MonoBehaviour
 
     public Spell GetSpell(string spellName)
     {
-        string titlesList = "";
-        if (spells != null)
-        {
-            for (int i = 0; i < spells.Length; i++)
-            {
-                titlesList += "'" + (spells[i] != null ? spells[i].MyTitle : "<null>") + "' ";
-            }
-        }
-        Debug.Log($"[DEBUG-SPELLBOOK] GetSpell('{spellName}') called on instance={gameObject.name} (id={GetInstanceID()}), spells.Length={(spells != null ? spells.Length : -1)}, titles=[{titlesList}]");
-
         Spell spell = Array.Find(spells, x => x.MyTitle == spellName);
 
         return spell;
