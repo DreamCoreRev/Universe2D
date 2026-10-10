@@ -10,37 +10,24 @@ NullGfxDevice:
     Renderer: Null Device
     Vendor:   Unity Technologies
 Begin MonoManager ReloadAssembly
-- Completed reload, in  0.165 seconds
+- Completed reload, in  0.102 seconds
 ERROR: Shader Sprites/Default shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
 Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
 ERROR: Shader Sprites/Mask shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
 ERROR: Shader GUI/Text Shader shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-UnloadTime: 0.685800 ms
+UnloadTime: 0.619400 ms
 ThreadLog initialized.
 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 The resource LegacyRuntime.ttf could not be loaded from the resource file!
-Server listening on port 7777
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-ERROR: Shader UI/Default shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-ERROR: Shader Legacy Shaders/VertexLit shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-WARNING: Shader Unsupported: 'Particles/Standard Unlit' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-ERROR: Shader Particles/Standard Unlit shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-WARNING: Shader Unsupported: 'Particles/Standard Unlit' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-ERROR: Shader TextMeshPro/Mobile/Distance Field shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-WARNING: Shader Unsupported: 'TextMeshPro/Distance Field' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-ERROR: Shader TextMeshPro/Distance Field shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-WARNING: Shader Unsupported: 'TextMeshPro/Distance Field' - All subshaders removed
-WARNING: Shader Did you use #pragma only_renderers and omit this platform?
-WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-UnloadTime: 3.273400 ms
-ERROR: Shader TextMeshPro/Sprite shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 11379.
-Total: 2.153900 ms (FindLiveObjects: 0.537800 ms CreateObjectMapping: 0.120300 ms MarkObjects: 1.479600 ms  DeleteObjects: 0.016000 ms)
+SocketException: Une seule utilisation de chaque adresse de socket (protocole/adresse réseau/port) est habituellement autorisée.
+  at System.Net.Sockets.Socket.Bind (System.Net.EndPoint localEP) [0x00043] in <26e428272c1d4dd18c67cb8f0ee16c2e>:0 
+  at kcp2k.KcpServer.CreateServerSocket (System.Boolean DualMode, System.UInt16 port) [0x0005a] in <5e3a44c6f20b4d9e91045fa65db669c6>:0 
+  at kcp2k.KcpServer.Start (System.UInt16 port) [0x00018] in <5e3a44c6f20b4d9e91045fa65db669c6>:0 
+  at kcp2k.KcpTransport.ServerStart () [0x0000c] in <4787bac82be349d0b344ad09bea9349a>:0 
+  at Mirror.NetworkServer.Listen (System.Int32 maxConns) [0x00012] in <8898a3d660a34b67bb46df8d17bd7b4a>:0 
+  at Mirror.NetworkManager.SetupServer () [0x00071] in <8898a3d660a34b67bb46df8d17bd7b4a>:0 
+  at Mirror.NetworkManager.StartServer () [0x00019] in <8898a3d660a34b67bb46df8d17bd7b4a>:0 
+  at Mirror.NetworkManager.Start () [0x00026] in <8898a3d660a34b67bb46df8d17bd7b4a>:0 
 
+ERROR: Shader UI/Default shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
