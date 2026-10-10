@@ -35,6 +35,21 @@ public abstract class AOESpell : MonoBehaviour
     [SerializeField]
     protected Color outOfRangeColor;
 
+    /// <summary>
+    /// Le joueur qui a lance ce sort (pour attribuer correctement les
+    /// degats/XP en reseau -- voir CombatNetworking). Null si non defini
+    /// (ex: copie VisualOnly sur les autres clients, qui n'inflige pas
+    /// de degats de toute facon).
+    /// </summary>
+    public Character Source { get; set; }
+
+    /// <summary>
+    /// Vrai pour la copie purement visuelle instanciee chez les autres
+    /// joueurs (voir PlayerCombatSync) : meme effet a l'ecran, mais sans
+    /// degats -- seul le lanceur d'origine inflige reellement les degats.
+    /// </summary>
+    public bool VisualOnly { get; set; }
+
     private void Awake()
     {
         main = particleSystem.main;

@@ -29,6 +29,8 @@ public class Player : Character
 
     private PlayerEquipmentSync equipmentSync;
 
+    private PlayerCombatSync combatSync;
+
     /// <summary>
     /// Vrai si c'est NOUS qui controlons ce Player (clavier/joystick/UI) :
     /// - en solo (pas de session Mirror active, ex: Play direct sur Demo.unity
@@ -390,11 +392,14 @@ public class Player : Character
                 if (Input.GetMouseButtonDown(0) && distance <= aoeSpell.MyRange)
                 {
                     AOESpell s = Instantiate(aoeSpell.MySpellPrefab, unusedSpell.transform.position, Quaternion.identity).GetComponent<AOESpell>();
+                    Vector3 castPosition = s.transform.position;
                     Destroy(unusedSpell);
                     unusedSpell = null;
+                    s.Source = this;
                     s.Initialize(aoeSpell.MyDamage, aoeSpell.MyDuration);
                     mana.MyCurrentValue -= aoeSpell.ManaCost;
                     StartCoroutine(SpellBook.MyInstance.CastCooldown(aoeSpell));
+                    BroadcastAOESpellCast(aoeSpell, castPosition);
                 }
             }
         }
@@ -537,6 +542,20 @@ public class Player : Character
     }
 
     /// <summary>
+    /// Expose un exitPoint (prive) pour PlayerCombatSync, qui a besoin de
+    /// rejouer le meme point de sortie que le lanceur chez les autres clients.
+    /// </summary>
+    public Transform GetExitPoint(int index)
+    {
+        if (exitPoints == null || index < 0 || index >= exitPoints.Length)
+        {
+            return null;
+        }
+
+        return exitPoints[index];
+    }
+
+    /// <summary>
     /// A co routine for attacking
     /// </summary>
     /// <returns></returns>
@@ -555,6 +574,8 @@ public class Player : Character
             s.Initialize(currentTarget, newSpell.MyDamage, this,newSpell.MyDebuff);
 
             mana.MyCurrentValue -= newSpell.ManaCost;
+
+            BroadcastTargetedSpellCast(newSpell, exitIndex);
         }
 
         StopAction(); //Ends the attack
@@ -645,6 +666,57 @@ public class Player : Character
         {
             MyInitRoutine = StartCoroutine(AttackRoutine(spell));
         }
+    }
+
+    /// <summary>
+    /// Diffuse aux autres clients connectes qu'on vient de lancer un sort
+    /// cible, pour qu'ils voient le projectile (voir PlayerCombatSync).
+    /// No-op en solo ou si on ne controle pas localement ce Player.
+    /// </summary>
+    private void BroadcastTargetedSpellCast(Spell spell, int usedExitIndex)
+    {
+        if (!IsLocallyControlled)
+        {
+            return;
+        }
+
+        if (combatSync == null)
+        {
+            combatSync = GetComponent<PlayerCombatSync>();
+        }
+
+        if (combatSync == null || MyTarget == null)
+        {
+            return;
+        }
+
+        NetworkIdentity targetIdentity = MyTarget.GetComponent<NetworkIdentity>();
+
+        combatSync.BroadcastTargetedSpell(spell.MyTitle, targetIdentity, usedExitIndex);
+    }
+
+    /// <summary>
+    /// Diffuse aux autres clients connectes qu'on vient de lancer un sort
+    /// de zone (AOE), pour qu'ils voient le nuage au sol (voir PlayerCombatSync).
+    /// </summary>
+    private void BroadcastAOESpellCast(Spell spell, Vector3 position)
+    {
+        if (!IsLocallyControlled)
+        {
+            return;
+        }
+
+        if (combatSync == null)
+        {
+            combatSync = GetComponent<PlayerCombatSync>();
+        }
+
+        if (combatSync == null)
+        {
+            return;
+        }
+
+        combatSync.BroadcastAOESpell(spell.MyTitle, position);
     }
 
     private IEnumerator Regen()

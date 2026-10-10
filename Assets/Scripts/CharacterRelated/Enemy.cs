@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
 public delegate void HealthChanged(float health);
@@ -11,6 +13,28 @@ public class Enemy : Character, IInteractable
     public event HealthChanged healthChanged;
 
     public event CharacterRemoved characterRemoved;
+
+    /// <summary>
+    /// Appele quand ce monstre meurt, avec le Character qui a porte le
+    /// coup fatal -- utilise par EnemyNetworkSync pour crediter l'XP au
+    /// bon joueur en reseau (voir aussi TakeDamage()).
+    /// </summary>
+    public event Action<Character> OnKilledBy;
+
+    /// <summary>
+    /// Vrai si CE processus doit faire tourner l'IA de ce monstre :
+    /// - en solo (pas de session Mirror active), comme avant, toujours vrai ;
+    /// - en reseau, seul le serveur dedie simule les monstres (partages
+    ///   entre tous les joueurs connectes) -- voir EnemyNetworkSync, qui
+    ///   synchronise aux clients ce qu'il faut pour l'affichage.
+    /// </summary>
+    public bool ShouldRunAI
+    {
+        get
+        {
+            return !NetworkClient.active || NetworkServer.active;
+        }
+    }
 
     /// <summary>
     /// A canvasgroup for the healthbar
@@ -113,7 +137,7 @@ public class Enemy : Character, IInteractable
 
     protected override void Update()
     {
-        if (IsAlive)
+        if (IsAlive && ShouldRunAI)
         {
 
             if (!IsAttacking)
@@ -123,7 +147,7 @@ public class Enemy : Character, IInteractable
 
             currentState.Update();
 
-            if (MyTarget != null && !Player.MyInstance.IsAlive)
+            if (MyTarget != null && !MyTarget.IsAlive)
             {
                 ChangeState(new EvadeState());
             }
@@ -179,7 +203,14 @@ public class Enemy : Character, IInteractable
                 if (!IsAlive)
                 {
                     source.RemoveAttacker(this);
-                    Player.MyInstance.GainXP(XPManager.CalculateXP((this as Enemy)));
+
+                    if (!NetworkClient.active && !NetworkServer.active)
+                    {
+                        // Solo (pas de session Mirror) : comportement d'origine, inchange.
+                        Player.MyInstance.GainXP(XPManager.CalculateXP((this as Enemy)));
+                    }
+
+                    OnKilledBy?.Invoke(source);
                 }
             }
 
@@ -191,7 +222,7 @@ public class Enemy : Character, IInteractable
     {
         if (canDoDamage)
         {
-            MyTarget.TakeDamage(damage, this);
+            CombatNetworking.DealDamage(MyTarget, damage, this);
             canDoDamage = false;
         }
       

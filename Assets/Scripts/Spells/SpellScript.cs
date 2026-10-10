@@ -23,6 +23,15 @@ public class SpellScript : MonoBehaviour {
 
     public Character Source { get; set; }
 
+    /// <summary>
+    /// Vrai pour la copie purement visuelle instanciee sur les clients qui
+    /// n'ont pas lance ce sort (voir PlayerCombatSync) : meme animation,
+    /// meme trajectoire, mais sans degats ni debuff -- seul le lanceur
+    /// d'origine resout reellement le coup (via CombatNetworking), pour
+    /// eviter d'infliger les degats plusieurs fois (une fois par client).
+    /// </summary>
+    public bool VisualOnly { get; set; }
+
     protected float damage;
 
     private Debuff debuff;
@@ -75,12 +84,16 @@ public class SpellScript : MonoBehaviour {
         {
             Character c = collision.GetComponentInParent<Character>();
             speed = 0;
-            c.TakeDamage(damage, Source);
 
-            if (debuff != null)
+            if (!VisualOnly)
             {
-                Debuff clone = debuff.Clone();
-                clone.Apply(c);
+                CombatNetworking.DealDamage(c, damage, Source);
+
+                if (debuff != null)
+                {
+                    Debuff clone = debuff.Clone();
+                    clone.Apply(c);
+                }
             }
 
             GetComponent<Animator>().SetTrigger("impact");

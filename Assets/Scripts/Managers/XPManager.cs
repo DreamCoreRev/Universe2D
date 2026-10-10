@@ -7,22 +7,32 @@ static class XPManager
 {
     public static int CalculateXP(Enemy e)
     {
-        //  XP = (Char Level * 5) +45, where Char Level = Mob Level, for mobs in Azeroth 
-        int baseXP = (Player.MyInstance.MyLevel * 5) + 45;
+        return CalculateXP(e, Player.MyInstance.MyLevel);
+    }
 
-        int grayLevel = CalculateGrayLevel();
+    /// <summary>
+    /// Variante prenant explicitement le niveau du joueur qui a porte le
+    /// coup fatal, au lieu de supposer que c'est toujours Player.MyInstance
+    /// (faux en reseau cote serveur, voir EnemyNetworkSync.HandleKilledBy).
+    /// </summary>
+    public static int CalculateXP(Enemy e, int killerLevel)
+    {
+        //  XP = (Char Level * 5) +45, where Char Level = Mob Level, for mobs in Azeroth 
+        int baseXP = (killerLevel * 5) + 45;
+
+        int grayLevel = CalculateGrayLevel(killerLevel);
 
         int totalXP = 0;
 
         //XP = (Base XP) *(1 + 0.05 * (Mob Level - Char Level) ), where Mob Level > Char Level
 
-        if (e.MyLevel >= Player.MyInstance.MyLevel)
+        if (e.MyLevel >= killerLevel)
         {
-            totalXP = (int)(baseXP * (1 + 0.05 * (e.MyLevel - Player.MyInstance.MyLevel)));
+            totalXP = (int)(baseXP * (1 + 0.05 * (e.MyLevel - killerLevel)));
         }
         else if (e.MyLevel > grayLevel)
         {
-            totalXP = (baseXP) * (1 - (Player.MyInstance.MyLevel - e.MyLevel) / ZeroDifference());
+            totalXP = (baseXP) * (1 - (killerLevel - e.MyLevel) / ZeroDifference(killerLevel));
         }
 
         return totalXP;
@@ -60,47 +70,52 @@ static class XPManager
 
     private static int ZeroDifference()
     {
-        if (Player.MyInstance.MyLevel <= 7)
+        return ZeroDifference(Player.MyInstance.MyLevel);
+    }
+
+    private static int ZeroDifference(int level)
+    {
+        if (level <= 7)
         {
             return 5;
         }
-        if (Player.MyInstance.MyLevel >= 8 && Player.MyInstance.MyLevel <= 9)
+        if (level >= 8 && level <= 9)
         {
             return 6;
         }
-        if (Player.MyInstance.MyLevel >= 10 && Player.MyInstance.MyLevel <= 11)
+        if (level >= 10 && level <= 11)
         {
             return 7;
         }
-        if (Player.MyInstance.MyLevel >= 12 && Player.MyInstance.MyLevel <= 15)
+        if (level >= 12 && level <= 15)
         {
             return 8;
         }
-        if (Player.MyInstance.MyLevel >= 16 && Player.MyInstance.MyLevel <= 19)
+        if (level >= 16 && level <= 19)
         {
             return 9;
         }
-        if (Player.MyInstance.MyLevel >= 20 && Player.MyInstance.MyLevel <= 29)
+        if (level >= 20 && level <= 29)
         {
             return 11;
         }
-        if (Player.MyInstance.MyLevel >= 30 && Player.MyInstance.MyLevel <= 39)
+        if (level >= 30 && level <= 39)
         {
             return 12;
         }
-        if (Player.MyInstance.MyLevel >= 40 && Player.MyInstance.MyLevel <= 44)
+        if (level >= 40 && level <= 44)
         {
             return 13;
         }
-        if (Player.MyInstance.MyLevel >= 45 && Player.MyInstance.MyLevel <= 49)
+        if (level >= 45 && level <= 49)
         {
             return 14;
         }
-        if (Player.MyInstance.MyLevel >= 50 && Player.MyInstance.MyLevel <= 54)
+        if (level >= 50 && level <= 54)
         {
             return 15;
         }
-        if (Player.MyInstance.MyLevel >= 55 && Player.MyInstance.MyLevel <= 59)
+        if (level >= 55 && level <= 59)
         {
             return 16;
         }
@@ -111,23 +126,28 @@ static class XPManager
 
     public static int CalculateGrayLevel()
     {
-        if (Player.MyInstance.MyLevel <= 5)
+        return CalculateGrayLevel(Player.MyInstance.MyLevel);
+    }
+
+    public static int CalculateGrayLevel(int level)
+    {
+        if (level <= 5)
         {
             return 0;
         }
-        else if (Player.MyInstance.MyLevel >= 6 && Player.MyInstance.MyLevel <= 49)
+        else if (level >= 6 && level <= 49)
         {
-            return Player.MyInstance.MyLevel - (Player.MyInstance.MyLevel / 10) - 5; 
+            return level - (level / 10) - 5; 
         }
-        else if (Player.MyInstance.MyLevel == 50)
+        else if (level == 50)
         {
-            return Player.MyInstance.MyLevel - 10;
+            return level - 10;
         }
-        else if (Player.MyInstance.MyLevel >= 51 && Player.MyInstance.MyLevel <= 59)
+        else if (level >= 51 && level <= 59)
         {
-            return Player.MyInstance.MyLevel - (Player.MyInstance.MyLevel / 5) - 1;
+            return level - (level / 5) - 1;
         }
 
-        return Player.MyInstance.MyLevel - 9;
+        return level - 9;
     }
 }

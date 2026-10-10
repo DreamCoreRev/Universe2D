@@ -22,7 +22,11 @@ public class PathState : IState
 
         this.transform = parent.transform.parent;
 
-        targetPos = Player.MyInstance.MyCurrentTile.position;
+        // MyTarget est le Character (potentiellement n'importe quel joueur
+        // connecte, pas forcement Player.MyInstance) qui est entre dans la
+        // Range du monstre -- voir Range.cs/Enemy.SetTarget. En reseau,
+        // seul le serveur execute cet etat (voir Enemy.ShouldRunAI).
+        targetPos = parent.MyTarget.MyCurrentTile.position;
 
         if (targetPos != parent.MyCurrentTile.position)
         {
@@ -90,7 +94,7 @@ public class PathState : IState
             {
                 parent.ChangeState(new AttackState());
             }
-            else if (Player.MyInstance.MyCurrentTile.position == parent.MyCurrentTile.position)
+            else if (parent.MyTarget.MyCurrentTile.position == parent.MyCurrentTile.position)
             {
                 parent.ChangeState(new FollowState());
             }
@@ -102,7 +106,7 @@ public class PathState : IState
                     current = destination;
                     destination = parent.MyPath.Pop();
 
-                    if (targetPos != Player.MyInstance.MyCurrentTile.position) //Then the player has moved
+                    if (targetPos != parent.MyTarget.MyCurrentTile.position) //Then the player has moved
                     {
                         parent.ChangeState(new PathState());
                     }

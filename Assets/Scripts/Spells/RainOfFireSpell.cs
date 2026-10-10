@@ -12,9 +12,14 @@ public class RainOfFireSpell : AOESpell
 
         if (tickElapsed >= 1)
         {
-            for (int i = 0; i < enemies.Count; i++)
+            if (!VisualOnly)
             {
-                enemies[i].TakeDamage(damage / duration, Player.MyInstance);
+                Character source = Source != null ? Source : Player.MyInstance;
+
+                for (int i = 0; i < enemies.Count; i++)
+                {
+                    CombatNetworking.DealDamage(enemies[i], damage / duration, source);
+                }
             }
 
             tickElapsed = 0;
