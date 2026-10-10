@@ -11,139 +11,21 @@ Direct3D:
     VRAM:     8150 MB
     Driver:   32.0.31041.1004
 Begin MonoManager ReloadAssembly
-- Completed reload, in  0.105 seconds
+- Completed reload, in  0.106 seconds
 <RI> Initializing input.
-<RI> Input initialized.
 D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.816000 ms
+UnloadTime: 0.724400 ms
 ThreadLog initialized.
 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 The resource LegacyRuntime.ttf could not be loaded from the resource file!
-Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 3.249800 ms
-Unloading 3 unused Assets to reduce memory usage. Loaded Objects now: 10996.
-Total: 2.366100 ms (FindLiveObjects: 0.654100 ms CreateObjectMapping: 0.136400 ms MarkObjects: 1.554200 ms  DeleteObjects: 0.021300 ms)
-
-NullReferenceException
-  at (wrapper managed-to-native) UnityEngine.CanvasGroup.set_alpha(UnityEngine.CanvasGroup,single)
-  at Enemy.Select () [0x00000] in <7b0eece2ff674ed5bb41132dad27c303>:0 
-  at GameManager.SelectTarget (Enemy enemy) [0x0000c] in <7b0eece2ff674ed5bb41132dad27c303>:0 
-  at GameManager.NextTarget () [0x00051] in <7b0eece2ff674ed5bb41132dad27c303>:0 
-  at GameManager.Update () [0x00000] in <7b0eece2ff674ed5bb41132dad27c303>:0 
-
-Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 12.417800 ms
-Multiple NetworkManagers detected in the scene. Only one NetworkManager can exist at a time. The duplicate NetworkManager will be destroyed.
-Unloading 1000 unused Assets to reduce memory usage. Loaded Objects now: 3265.
-Total: 3.160400 ms (FindLiveObjects: 0.202500 ms CreateObjectMapping: 0.068500 ms MarkObjects: 2.001100 ms  DeleteObjects: 0.888200 ms)
-
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 3. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 3. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 3. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 3. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 4. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
-Did not find target for sync message for 2. Were all prefabs added to the NetworkManager's spawnable list?
-Note: this can be completely normal because UDP messages may arrive out of order, so this message might have arrived after a Destroy message.
 Memory Statistics:
 [ALLOC_TEMP_TLS] TLS Allocator
   StackAllocators : 
     [ALLOC_TEMP_MAIN]
-      Peak usage frame count: [0-1.0 KB]: 2476 frames, [1.0 KB-2.0 KB]: 4 frames, [2.0 KB-4.0 KB]: 1 frames, [4.0 KB-8.0 KB]: 17 frames, [8.0 KB-16.0 KB]: 2103 frames, [16.0 KB-32.0 KB]: 795 frames, [32.0 KB-64.0 KB]: 10536 frames, [64.0 KB-128.0 KB]: 4213 frames, [256.0 KB-0.5 MB]: 1 frames, [0.5 MB-1.0 MB]: 1 frames, [1.0 MB-2.0 MB]: 1 frames, [4.0 MB-8.0 MB]: 1 frames
+      Peak usage frame count: [0-1.0 KB]: 243 frames, [4.0 KB-8.0 KB]: 1 frames, [4.0 MB-8.0 MB]: 1 frames
       Initial Block Size 4.0 MB
       Current Block Size 6.6 MB
       Peak Allocated Bytes 6.6 MB
@@ -155,9 +37,9 @@ Memory Statistics:
       Overflow Count 0
     [ALLOC_TEMP_Loading.PreloadManager]
       Initial Block Size 256.0 KB
-      Current Block Size 504.0 KB
-      Peak Allocated Bytes 434.6 KB
-      Overflow Count 40
+      Current Block Size 256.0 KB
+      Peak Allocated Bytes 139.6 KB
+      Overflow Count 4
     [ALLOC_TEMP_Background Job.Worker 8]
       Initial Block Size 32.0 KB
       Current Block Size 32.0 KB
@@ -166,12 +48,12 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 6]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.6 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 0]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.5 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 10]
       Initial Block Size 32.0 KB
@@ -186,7 +68,7 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 5]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.6 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 14]
       Initial Block Size 32.0 KB
@@ -201,22 +83,22 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 4]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.5 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 14]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.6 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 3]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.5 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 13]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 24.1 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 12]
       Initial Block Size 32.0 KB
@@ -251,7 +133,7 @@ Memory Statistics:
     [ALLOC_TEMP_UnityGfxDeviceWorker]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 6.0 KB
+      Peak Allocated Bytes 2.5 KB
       Overflow Count 0
     [ALLOC_TEMP_AssetGarbageCollectorHelper] x 15
       Initial Block Size 64.0 KB
@@ -266,7 +148,7 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 9]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.5 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 13]
       Initial Block Size 32.0 KB
@@ -276,22 +158,22 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 8]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.6 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 7]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.6 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 1]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 24.1 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 2]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.7 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 3]
       Initial Block Size 32.0 KB
@@ -301,12 +183,12 @@ Memory Statistics:
     [ALLOC_TEMP_Background Job.Worker 11]
       Initial Block Size 32.0 KB
       Current Block Size 32.0 KB
-      Peak Allocated Bytes 65 B
+      Peak Allocated Bytes 54 B
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 10]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.5 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 0]
       Initial Block Size 32.0 KB
@@ -316,17 +198,17 @@ Memory Statistics:
     [ALLOC_TEMP_Job.Worker 11]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 23.6 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Job.Worker 12]
       Initial Block Size 256.0 KB
       Current Block Size 256.0 KB
-      Peak Allocated Bytes 24.1 KB
+      Peak Allocated Bytes 4.9 KB
       Overflow Count 0
     [ALLOC_TEMP_Background Job.Worker 4]
       Initial Block Size 32.0 KB
       Current Block Size 32.0 KB
-      Peak Allocated Bytes 54 B
+      Peak Allocated Bytes 65 B
       Overflow Count 0
     [ALLOC_TEMP_BatchDeleteObjects]
       Initial Block Size 64.0 KB
@@ -334,22 +216,22 @@ Memory Statistics:
       Peak Allocated Bytes 54 B
       Overflow Count 0
 [ALLOC_DEFAULT] Dual Thread Allocator
-  Peak main deferred allocation count 835
+  Peak main deferred allocation count 104
     [ALLOC_BUCKET]
       Large Block size 4.0 MB
       Used Block count 1
-      Peak Allocated bytes 3.1 MB
+      Peak Allocated bytes 1.0 MB
     [ALLOC_DEFAULT_MAIN]
-      Peak usage frame count: [8.0 MB-16.0 MB]: 2483 frames, [16.0 MB-32.0 MB]: 17666 frames
+      Peak usage frame count: [8.0 MB-16.0 MB]: 244 frames, [16.0 MB-32.0 MB]: 1 frames
       Requested Block Size 16.0 MB
       Peak Block count 2
       Peak Allocated memory 20.7 MB
       Peak Large allocation bytes 0 B
     [ALLOC_DEFAULT_THREAD]
-      Peak usage frame count: [4.0 MB-8.0 MB]: 2417 frames, [8.0 MB-16.0 MB]: 17732 frames
+      Peak usage frame count: [4.0 MB-8.0 MB]: 245 frames
       Requested Block Size 16.0 MB
       Peak Block count 1
-      Peak Allocated memory 8.8 MB
+      Peak Allocated memory 5.2 MB
       Peak Large allocation bytes 0 B
 [ALLOC_TEMP_JOB_1_FRAME]
   Initial Block Size 2.0 MB
@@ -363,12 +245,12 @@ Memory Statistics:
   Overflow Count (full) 0
 [ALLOC_TEMP_JOB_4_FRAMES (JobTemp)]
   Initial Block Size 2.0 MB
-  Used Block Count 3
+  Used Block Count 2
   Overflow Count (too large) 0
   Overflow Count (full) 0
 [ALLOC_TEMP_JOB_ASYNC (Background)]
   Initial Block Size 1.0 MB
-  Used Block Count 5
+  Used Block Count 3
   Overflow Count (too large) 0
   Overflow Count (full) 0
 [ALLOC_GFX] Dual Thread Allocator
@@ -376,52 +258,52 @@ Memory Statistics:
     [ALLOC_BUCKET]
       Large Block size 4.0 MB
       Used Block count 1
-      Peak Allocated bytes 3.1 MB
+      Peak Allocated bytes 1.0 MB
     [ALLOC_GFX_MAIN]
-      Peak usage frame count: [64.0 KB-128.0 KB]: 2482 frames, [128.0 KB-256.0 KB]: 1 frames, [0.5 MB-1.0 MB]: 13167 frames, [1.0 MB-2.0 MB]: 4498 frames, [2.0 MB-4.0 MB]: 1 frames
+      Peak usage frame count: [64.0 KB-128.0 KB]: 244 frames, [2.0 MB-4.0 MB]: 1 frames
       Requested Block Size 16.0 MB
       Peak Block count 1
       Peak Allocated memory 2.7 MB
       Peak Large allocation bytes 0 B
     [ALLOC_GFX_THREAD]
-      Peak usage frame count: [32.0 KB-64.0 KB]: 2273 frames, [1.0 MB-2.0 MB]: 89 frames, [2.0 MB-4.0 MB]: 17787 frames
+      Peak usage frame count: [32.0 KB-64.0 KB]: 245 frames
       Requested Block Size 16.0 MB
       Peak Block count 1
-      Peak Allocated memory 2.8 MB
+      Peak Allocated memory 44.9 KB
       Peak Large allocation bytes 0 B
 [ALLOC_CACHEOBJECTS] Dual Thread Allocator
-  Peak main deferred allocation count 22
+  Peak main deferred allocation count 3
     [ALLOC_BUCKET]
       Large Block size 4.0 MB
       Used Block count 1
-      Peak Allocated bytes 3.1 MB
+      Peak Allocated bytes 1.0 MB
     [ALLOC_CACHEOBJECTS_MAIN]
-      Peak usage frame count: [0.5 MB-1.0 MB]: 119 frames, [1.0 MB-2.0 MB]: 20030 frames
+      Peak usage frame count: [1.0 MB-2.0 MB]: 245 frames
       Requested Block Size 4.0 MB
       Peak Block count 1
-      Peak Allocated memory 1.6 MB
+      Peak Allocated memory 1.1 MB
       Peak Large allocation bytes 0 B
     [ALLOC_CACHEOBJECTS_THREAD]
-      Peak usage frame count: [256.0 KB-0.5 MB]: 2271 frames, [0.5 MB-1.0 MB]: 2 frames, [1.0 MB-2.0 MB]: 89 frames, [2.0 MB-4.0 MB]: 17666 frames, [4.0 MB-8.0 MB]: 121 frames
+      Peak usage frame count: [256.0 KB-0.5 MB]: 244 frames, [0.5 MB-1.0 MB]: 1 frames
       Requested Block Size 4.0 MB
-      Peak Block count 2
-      Peak Allocated memory 4.8 MB
+      Peak Block count 1
+      Peak Allocated memory 0.6 MB
       Peak Large allocation bytes 0 B
 [ALLOC_TYPETREE] Dual Thread Allocator
   Peak main deferred allocation count 0
     [ALLOC_BUCKET]
       Large Block size 4.0 MB
       Used Block count 1
-      Peak Allocated bytes 3.1 MB
+      Peak Allocated bytes 1.0 MB
     [ALLOC_TYPETREE_MAIN]
-      Peak usage frame count: [0-1.0 KB]: 2395 frames, [4.0 KB-8.0 KB]: 17754 frames
+      Peak usage frame count: [0-1.0 KB]: 245 frames
       Requested Block Size 2.0 MB
       Peak Block count 1
-      Peak Allocated memory 4.7 KB
+      Peak Allocated memory 1.1 KB
       Peak Large allocation bytes 0 B
     [ALLOC_TYPETREE_THREAD]
-      Peak usage frame count: [1.0 KB-2.0 KB]: 2273 frames, [4.0 KB-8.0 KB]: 2 frames, [8.0 KB-16.0 KB]: 17874 frames
+      Peak usage frame count: [1.0 KB-2.0 KB]: 245 frames
       Requested Block Size 2.0 MB
       Peak Block count 1
-      Peak Allocated memory 14.5 KB
+      Peak Allocated memory 2.0 KB
       Peak Large allocation bytes 0 B
