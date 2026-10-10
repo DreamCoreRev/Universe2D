@@ -12,22 +12,35 @@ Direct3D:
     Driver:   32.0.31041.1004
 Begin MonoManager ReloadAssembly
 - Completed reload, in  0.101 seconds
-<RI> Initializing input.
 D3D11 device created for Microsoft Media Foundation video decoding.
+<RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 0.799600 ms
+UnloadTime: 0.937400 ms
 ThreadLog initialized.
 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 2.094600 ms
+UnloadTime: 1.990100 ms
 Unloading 10 unused Assets to reduce memory usage. Loaded Objects now: 2169.
-Total: 0.679400 ms (FindLiveObjects: 0.091800 ms CreateObjectMapping: 0.027600 ms MarkObjects: 0.541700 ms  DeleteObjects: 0.018200 ms)
+Total: 0.659000 ms (FindLiveObjects: 0.095100 ms CreateObjectMapping: 0.027600 ms MarkObjects: 0.517100 ms  DeleteObjects: 0.019100 ms)
 
 Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.680000 ms
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 11380.
-Total: 2.294800 ms (FindLiveObjects: 0.663600 ms CreateObjectMapping: 0.122900 ms MarkObjects: 1.489700 ms  DeleteObjects: 0.018300 ms)
+UnloadTime: 0.628300 ms
+Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 11376.
+Total: 2.380100 ms (FindLiveObjects: 0.685200 ms CreateObjectMapping: 0.177300 ms MarkObjects: 1.496800 ms  DeleteObjects: 0.020700 ms)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Range.OnTriggerEnter2D (UnityEngine.Collider2D collision) [0x0001e] in <1d5fab582e8546db8edb4df2771a65b9>:0 
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 10.348200 ms
+Unloading 973 unused Assets to reduce memory usage. Loaded Objects now: 3749.
+Total: 3.000900 ms (FindLiveObjects: 0.207600 ms CreateObjectMapping: 0.073300 ms MarkObjects: 1.881500 ms  DeleteObjects: 0.838400 ms)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.625700 ms
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 11385.
+Total: 2.361800 ms (FindLiveObjects: 0.598000 ms CreateObjectMapping: 0.172000 ms MarkObjects: 1.562600 ms  DeleteObjects: 0.028800 ms)
 
