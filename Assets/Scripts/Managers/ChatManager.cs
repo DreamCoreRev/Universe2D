@@ -292,6 +292,8 @@ public class ChatManager : MonoBehaviour
     /// </summary>
     public void AddMessage(string senderName, string message)
     {
+        Debug.Log($"[DEBUG-CHAT] AddMessage recu: senderName='{senderName}' message='{message}'");
+
         if (messagePrefab == null || content == null)
         {
             return;
