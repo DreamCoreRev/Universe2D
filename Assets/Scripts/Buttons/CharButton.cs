@@ -102,11 +102,9 @@ public class CharButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
         Player.MyInstance.EquipGear(armor);
         int socketIndex = Player.SocketIndexForArmorType((int)armoryType);
-        Debug.Log("[CharButton] EquipArmor armoryType=" + armoryType + " socketIndex=" + socketIndex + " animClips=" + (MyEquippedArmor.MyAnimationClips == null ? "NULL" : MyEquippedArmor.MyAnimationClips.Length.ToString()));
         if (socketIndex >= 0 && MyEquippedArmor.MyAnimationClips != null)
         {
             GearSocket liveSocket = Player.MyInstance.GetGearSocket(socketIndex);
-            Debug.Log("[CharButton] liveSocket=" + (liveSocket == null ? "NULL" : liveSocket.gameObject.name));
             if (liveSocket != null)
             {
                 liveSocket.Equip(MyEquippedArmor.MyAnimationClips);

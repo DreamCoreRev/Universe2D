@@ -39,9 +39,16 @@ public class ArmorDatabase : ScriptableObject
             return -1;
         }
 
+        // Comparaison par reference (armors[i] == armor) ne marche pas : le
+        // jeu clone les Armor via Instantiate() des qu'ils entrent dans
+        // l'inventaire (voir InventoryScript.GiveEquipment, SaveManager...),
+        // donc l'armor equipe n'est jamais le MEME objet que celui
+        // reference ici. MyTitle est deja la convention utilisee ailleurs
+        // dans le projet (SaveManager) pour reidentifier un item apres
+        // clonage -- on fait pareil.
         for (int i = 0; i < armors.Length; i++)
         {
-            if (armors[i] == armor)
+            if (armors[i] != null && armors[i].MyTitle == armor.MyTitle)
             {
                 return i;
             }
