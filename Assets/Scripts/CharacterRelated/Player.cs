@@ -322,6 +322,19 @@ public class Player : Character
             astar = FindObjectOfType<AStar>();
         }
 
+        // On cree D'ABORD notre propre icone (enfant de nous-memes, donc
+        // fiable et toujours presente) plutot que de dependre de l'ancien
+        // GameObject.Find("MinimapIcon") : ce Find() ciblait l'UNIQUE icone
+        // placee a la main dans Demo.unity, partagee par tous les joueurs
+        // connectes -- des que cet objet disparait/se desactive pour une
+        // raison ou une autre dans la session en cours, plus personne n'a de
+        // curseur. Le Find() ne reste qu'en tout dernier recours, si jamais
+        // minimapIconSprite n'etait pas branche sur ce prefab.
+        if (minimapIcon == null)
+        {
+            minimapIcon = CreateMinimapIcon();
+        }
+
         if (minimapIcon == null)
         {
             GameObject icon = GameObject.Find("MinimapIcon");
@@ -329,19 +342,6 @@ public class Player : Character
             {
                 minimapIcon = icon.transform;
             }
-        }
-
-        // Ce Find() ne retrouve RIEN si l'unique "MinimapIcon" place a la
-        // main dans Demo.unity n'existe plus/n'est plus actif pour cette
-        // session (et GameObject.Find ne voit jamais un objet desactive) --
-        // c'est ce qui faisait disparaitre le curseur de minimap de tout le
-        // monde d'un coup, puisque TOUS les joueurs dependaient du meme
-        // objet unique. A la place, chacun cree maintenant sa propre icone
-        // s'il n'en a trouve aucune : plus robuste, et chaque joueur a enfin
-        // la sienne plutot que de se disputer un seul curseur partage.
-        if (minimapIcon == null)
-        {
-            minimapIcon = CreateMinimapIcon();
         }
 
         if (levelText == null)
