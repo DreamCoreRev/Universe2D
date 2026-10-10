@@ -292,14 +292,6 @@ public class GroupUIManager : MonoBehaviour
         clone.name = name;
         clone.transform.SetParent(parent, false);
 
-        // La barre d'XP n'a de sens que pour nous-memes (comme sur WoW, ni
-        // la cible ni les membres du groupe n'affichent leur XP).
-        Transform xpBackground = clone.transform.Find("XPBackground");
-        if (xpBackground != null)
-        {
-            Destroy(xpBackground.gameObject);
-        }
-
         return clone;
     }
 
@@ -316,46 +308,58 @@ public class GroupUIManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Petite etiquette avec un nom de joueur, au-dessus d'un cadre clone
-    /// (le HUD d'origine n'affiche jamais notre propre nom, il n'a donc pas
-    /// cet element -- on l'ajoute nous-memes). Reutilise par
-    /// BuildPlayerTargetFrame et BuildPartyFrames.
+    /// Le nom du joueur n'a pas sa place dans le HUD d'origine (on n'a
+    /// jamais besoin d'afficher notre propre nom), donc rien dans le clone
+    /// ne s'en charge nativement -- mais la barre d'XP, elle, n'a pas de
+    /// sens pour une cible ou un membre du groupe (comme sur WoW). On
+    /// reutilise donc directement cet emplacement (deja positionne pile en
+    /// dessous de la barre de mana, deja a la bonne taille -- voir
+    /// "XPBackground" dans Demo.unity : {109.14, 13.94}, exactement comme
+    /// Health/ManaBackground) au lieu d'ajouter une etiquette a part avec
+    /// son propre style : on retire juste le Stat qui pilote le
+    /// remplissage (la barre garde son fillAmount a 1 par defaut, donc
+    /// reste pleine comme un simple fond uni) et la grille decorative de
+    /// progression, puis on ecrit le nom du joueur a la place du texte
+    /// "actuel/max". Resultat : exactement le meme theme visuel, exactement
+    /// la meme taille que les barres de vie/mana, a l'endroit demande.
     /// </summary>
-    private static Text BuildNameLabel(Transform parent, Vector2 anchoredPosition)
+    private static Text RepurposeXpBarAsNameLabel(GameObject frame)
     {
-        GameObject nameGO = new GameObject("NameLabel", typeof(RectTransform));
-        nameGO.transform.SetParent(parent, false);
-        RectTransform nameRect = nameGO.GetComponent<RectTransform>();
-        nameRect.anchorMin = new Vector2(0.5f, 1f);
-        nameRect.anchorMax = new Vector2(0.5f, 1f);
-        nameRect.pivot = new Vector2(0.5f, 0f);
-        nameRect.sizeDelta = new Vector2(170f, 20f);
-        nameRect.anchoredPosition = anchoredPosition;
+        Transform xpBackground = frame.transform.Find("XPBackground");
 
-        Image nameBg = nameGO.AddComponent<Image>();
-        nameBg.color = new Color(0f, 0f, 0f, 0.75f);
-        // m_RaycastTarget reste a true (valeur par defaut d'Image) : c'est ce
-        // qui fait que survoler ce portrait compte comme "sur de l'UI" pour
-        // TouchInput.IsPointerOverUI(), empechant GameManager de traiter en
-        // plus un clic droit ici comme un clic droit sur la map.
+        if (xpBackground == null)
+        {
+            return null;
+        }
 
-        GameObject nameTextGO = new GameObject("Text", typeof(RectTransform));
-        nameTextGO.transform.SetParent(nameGO.transform, false);
-        RectTransform nameTextRect = nameTextGO.GetComponent<RectTransform>();
-        nameTextRect.anchorMin = Vector2.zero;
-        nameTextRect.anchorMax = Vector2.one;
-        nameTextRect.offsetMin = new Vector2(4f, 1f);
-        nameTextRect.offsetMax = new Vector2(-4f, -1f);
+        xpBackground.gameObject.name = "NameBackground";
 
-        Text nameText = nameTextGO.AddComponent<Text>();
-        nameText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        nameText.fontSize = 13;
-        nameText.color = Color.white;
-        nameText.alignment = TextAnchor.MiddleCenter;
-        nameText.horizontalOverflow = HorizontalWrapMode.Overflow;
-        nameText.verticalOverflow = VerticalWrapMode.Overflow;
-        nameText.raycastTarget = false;
-        nameText.text = "";
+        Transform xpFill = xpBackground.Find("XP");
+
+        if (xpFill == null)
+        {
+            return null;
+        }
+
+        Stat xpStat = xpFill.GetComponent<Stat>();
+        if (xpStat != null)
+        {
+            Destroy(xpStat);
+        }
+
+        Transform xpGrid = xpFill.Find("XPGrid");
+        if (xpGrid != null)
+        {
+            Destroy(xpGrid.gameObject);
+        }
+
+        Transform valueText = xpFill.Find("ValueText");
+        Text nameText = valueText != null ? valueText.GetComponent<Text>() : null;
+
+        if (nameText != null)
+        {
+            nameText.text = "";
+        }
 
         return nameText;
     }
@@ -391,10 +395,7 @@ public class GroupUIManager : MonoBehaviour
         playerTargetManaStat = FindBarStat(playerTargetFrameGO, "ManaBackground");
         playerTargetLevelText = FindLevelText(playerTargetFrameGO);
 
-        // 55.5 ~ centre visuel du cadre + barres (le portrait est a gauche,
-        // les barres s'etendent vers la droite -- voir HealthBackground/
-        // ManaBackground dans Demo.unity), 4 ~ petit espace au-dessus.
-        playerTargetNameText = BuildNameLabel(playerTargetFrameGO.transform, new Vector2(55.5f, 4f));
+        playerTargetNameText = RepurposeXpBarAsNameLabel(playerTargetFrameGO);
 
         playerTargetFrameGO.SetActive(false);
     }
@@ -434,7 +435,7 @@ public class GroupUIManager : MonoBehaviour
                 HealthStat = FindBarStat(slotGO, "HealthBackground"),
                 ManaStat = FindBarStat(slotGO, "ManaBackground"),
                 LevelText = FindLevelText(slotGO),
-                NameText = BuildNameLabel(slotGO.transform, new Vector2(55.5f, 4f)),
+                NameText = RepurposeXpBarAsNameLabel(slotGO),
                 BoundNetId = 0
             };
 
