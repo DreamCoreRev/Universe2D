@@ -31,6 +31,8 @@ public class Player : Character
 
     private PlayerCombatSync combatSync;
 
+    private float debugWrapperLogTimer;
+
     /// <summary>
     /// Vrai si c'est NOUS qui controlons ce Player (clavier/joystick/UI) :
     /// - en solo (pas de session Mirror active, ex: Play direct sur Demo.unity
@@ -48,9 +50,25 @@ public class Player : Character
                 netIdentity = GetComponent<NetworkIdentity>();
             }
 
-            if (netIdentity == null || !NetworkClient.active)
+            // Solo veritable (aucune session Mirror, ni client ni serveur) :
+            // comportement d'origine, inchange.
+            if (netIdentity == null || (!NetworkClient.active && !NetworkServer.active))
             {
                 return true;
+            }
+
+            // Serveur dedie (RPG.exe -batchmode -nographics) : NetworkServer.active
+            // est vrai mais NetworkClient.active est faux puisqu'il ne pilote
+            // lui-meme aucun personnage. L'ancienne condition (!NetworkClient.active)
+            // le faisait pourtant traiter CHAQUE joueur connecte comme "le notre" --
+            // lecture clavier/souris pour rien (inoffensif), mais surtout
+            // Player.instance ecrase au hasard et le PlayerParent (voir
+            // EnsurePlayerParent/Update) jamais garde a jour pour personne,
+            // ce qui empechait les monstres de jamais estimer correctement
+            // leur distance a un joueur et donc de jamais attaquer.
+            if (!NetworkClient.active)
+            {
+                return false;
             }
 
             return netIdentity.isLocalPlayer;
@@ -402,6 +420,31 @@ public class Player : Character
                     BroadcastAOESpellCast(aoeSpell, castPosition);
                 }
             }
+        }
+        else
+        {
+            debugWrapperLogTimer += Time.deltaTime;
+            if (debugWrapperLogTimer >= 2f)
+            {
+                debugWrapperLogTimer = 0f;
+                Debug.Log($"[DEBUG-PLAYERPARENT] {name} hasParent={transform.parent != null} pos={transform.position} parentPos={(transform.parent != null ? transform.parent.position.ToString() : "N/A")}");
+            }
+        }
+
+        if (!IsLocallyControlled && transform.parent != null)
+        {
+            // Ce Player n'est pas le notre (voir IsLocallyControlled) : rien
+            // ne fait donc jamais avancer son PlayerParent (voir
+            // EnsurePlayerParent), qui reste fige a sa position de spawn.
+            // Son propre transform, lui, est a jour (synchronise par
+            // NetworkTransform). Resultat concret sans ce correctif : les
+            // monstres, qui mesurent toutes leurs distances via
+            // transform.parent.position (voir FollowState/PathState/
+            // AttackState -- meme convention que pour eux-memes, voir
+            // Enemy/EnemyParent), ne voyaient jamais ce joueur se rapprocher
+            // et n'atteignaient donc jamais leur portee d'attaque. On garde
+            // le wrapper colle a la vraie position a chaque frame.
+            transform.parent.position = transform.position;
         }
 
         base.Update();
