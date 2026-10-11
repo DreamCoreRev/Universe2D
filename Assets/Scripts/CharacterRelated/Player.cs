@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Debuffs;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
@@ -262,6 +263,19 @@ public class Player : Character
             if (Session.SelectedCharacterClass == "Guerrier" && SpellBook.MyInstance != null)
             {
                 SpellBook.MyInstance.LearnSpell("Frappe Enflammee");
+
+                // Deuxieme competence active du Guerrier : ralentit la
+                // cible en plus des degats (voir ShieldBashDebuff), meme
+                // principe qu'IgniteTalent pour le Mage (associer un debuff
+                // a un sort via Spell.MyDebuff).
+                SpellBook.MyInstance.LearnSpell("Coup de Bouclier");
+                Spell shieldBash = SpellBook.MyInstance.GetSpell("Coup de Bouclier");
+                if (shieldBash != null)
+                {
+                    ShieldBashDebuff slowDebuff = new ShieldBashDebuff(SpellBook.MyInstance.MyShieldBashIcon);
+                    slowDebuff.MySpeedReduction = 40;
+                    shieldBash.MyDebuff = slowDebuff;
+                }
 
                 // Les sorts du Mage (Fireball/Frostbolt/Thunderbolt) n'ont
                 // aucun sens pour un Guerrier et il ne les apprendra

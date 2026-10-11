@@ -80,6 +80,17 @@ public class SpellBook : MonoBehaviour
     private GameObject[] defaultMageSpells;
 
     /// <summary>
+    /// Icone (bouclier) utilisee pour l'affichage du debuff "Etourdissement"
+    /// de Coup de Bouclier dans le cadre de la cible (voir
+    /// ShieldBashDebuff/TargetDebuff.Initialize, qui lit MyIcon.sprite) --
+    /// meme icone que celle du sort dans le grimoire.
+    /// </summary>
+    [SerializeField]
+    private Image shieldBashIcon;
+
+    public Image MyShieldBashIcon => shieldBashIcon;
+
+    /// <summary>
     /// Cache les sorts du Mage listes ci-dessus dans le grimoire. Appelee
     /// une seule fois au spawn d'un Guerrier (voir Player.cs) -- pas
     /// l'inverse pour le Mage, ces sorts etant deja actifs par defaut dans
@@ -242,6 +253,9 @@ public class SpellBook : MonoBehaviour
                 break;
             case "frappe enflammee":
                 obtainableSpells[3].SetActive(true);
+                break;
+            case "coup de bouclier":
+                obtainableSpells[4].SetActive(true);
                 break;
 
         }
