@@ -262,6 +262,11 @@ public class Player : Character
             if (Session.SelectedCharacterClass == "Guerrier" && SpellBook.MyInstance != null)
             {
                 SpellBook.MyInstance.LearnSpell("Frappe Enflammee");
+
+                // Les sorts du Mage (Fireball/Frostbolt/Thunderbolt) n'ont
+                // aucun sens pour un Guerrier et il ne les apprendra
+                // jamais -- on les retire donc de son grimoire.
+                SpellBook.MyInstance.HideDefaultMageSpells();
             }
 
             // En reseau, SaveManager.Start() s'est deja execute avant que ce

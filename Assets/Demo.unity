@@ -4006,6 +4006,10 @@ MonoBehaviour:
   - {fileID: 227849622}
   - {fileID: 999555633}
   - {fileID: 3892489947529}
+  defaultMageSpells:
+  - {fileID: 1922358037}
+  - {fileID: 1930685857}
+  - {fileID: 1576151767}
 --- !u!224 &225467289
 RectTransform:
   m_ObjectHideFlags: 0

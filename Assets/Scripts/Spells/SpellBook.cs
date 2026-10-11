@@ -70,6 +70,37 @@ public class SpellBook : MonoBehaviour
     [SerializeField]
     private GameObject[] obtainableSpells;
 
+    /// <summary>
+    /// Les sorts du Mage toujours actifs par defaut dans le grimoire
+    /// (Fireball/Frostbolt/Thunderbolt -- voir Page dans Demo.unity), a
+    /// cacher pour un Guerrier (voir Player.cs) puisqu'ils n'ont aucun sens
+    /// pour lui et qu'il ne les apprendra jamais.
+    /// </summary>
+    [SerializeField]
+    private GameObject[] defaultMageSpells;
+
+    /// <summary>
+    /// Cache les sorts du Mage listes ci-dessus dans le grimoire. Appelee
+    /// une seule fois au spawn d'un Guerrier (voir Player.cs) -- pas
+    /// l'inverse pour le Mage, ces sorts etant deja actifs par defaut dans
+    /// la scene.
+    /// </summary>
+    public void HideDefaultMageSpells()
+    {
+        if (defaultMageSpells == null)
+        {
+            return;
+        }
+
+        foreach (GameObject spellIcon in defaultMageSpells)
+        {
+            if (spellIcon != null)
+            {
+                spellIcon.SetActive(false);
+            }
+        }
+    }
+
 
     /// <summary>
     /// Cast a spell at an enemy
