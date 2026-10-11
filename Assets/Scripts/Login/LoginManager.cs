@@ -14,7 +14,7 @@ using UnityEngine.UI;
 public class LoginManager : MonoBehaviour
 {
     [SerializeField]
-    private string serverUrl = "http://127.0.0.1:8080";
+    private string serverUrl = "http://141.11.237.60:8080";
 
     [SerializeField]
     private InputField usernameInput;
