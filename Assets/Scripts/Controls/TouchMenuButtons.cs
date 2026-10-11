@@ -43,7 +43,10 @@ public class TouchMenuButtons : MonoBehaviour
 
 	// Les index correspondent à UIManager.menus[] -- voir UIManager.Update()
 	// pour la correspondance avec les raccourcis clavier (Echap=0,
-	// SpellBook=1, CharacterPanel=2, Questlog=3, Profession=6, TalentTree=7).
+	// SpellBook=1, CharacterPanel=2, Questlog=3, Profession=6,
+	// TalentTree Mage=7, TalentTree Guerrier=8 -- voir le bouton "TAL"
+	// ci-dessous, qui choisit le bon index selon
+	// Session.SelectedCharacterClass, comme la touche N dans UIManager).
 	// Les raccourcis de debug (POT/OR+/ÉQU/XP) ont été retirés de cette
 	// barre -- il ne reste que les 6 panneaux. "skin" peut être null si
 	// jamais l'asset Resources/TouchMenuButtonSkin manque : chaque bouton
@@ -56,7 +59,7 @@ public class TouchMenuButtons : MonoBehaviour
 			new ButtonDef("SOR", "Sorts", skin != null ? skin.spellsIcon : null, () => UIManager.MyInstance.ToggleMenu(1)),
 			new ButtonDef("MÉT", "Métiers", skin != null ? skin.professionIcon : null, () => UIManager.MyInstance.ToggleMenu(6)),
 			new ButtonDef("QUÊ", "Quêtes", skin != null ? skin.questIcon : null, () => UIManager.MyInstance.ToggleMenu(3)),
-			new ButtonDef("TAL", "Talents", skin != null ? skin.talentIcon : null, () => UIManager.MyInstance.ToggleMenu(7)),
+			new ButtonDef("TAL", "Talents", skin != null ? skin.talentIcon : null, () => UIManager.MyInstance.ToggleMenu(Session.SelectedCharacterClass == "Guerrier" ? 8 : 7)),
 			new ButtonDef("MEN", "Menu", null, () => UIManager.MyInstance.ToggleMenu(0)),
 		};
 	}
