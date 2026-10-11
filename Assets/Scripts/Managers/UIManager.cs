@@ -129,7 +129,14 @@ public class UIManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            OpenClose(menus[7]);
+            // L'arbre de talents (menus[7]) ne contient pour l'instant que
+            // les talents du Mage (Feu/Glace/Foudre) -- le Guerrier n'a pas
+            // encore les siens (voir Session.SelectedCharacterClass), donc
+            // on ne lui montre pas un panneau qui ne le concerne pas.
+            if (Session.SelectedCharacterClass != "Guerrier")
+            {
+                OpenClose(menus[7]);
+            }
         }
 
 
