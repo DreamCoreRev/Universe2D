@@ -17,7 +17,7 @@ public static class Session
     /// (champ serverUrl de l'Inspector) puis reutilisee par
     /// CharacterSelectManager. Evite d'avoir deux IP differentes en dur.
     /// </summary>
-    public static string ServerUrl { get; set; } = "http://172.18.183.114:8080";
+    public static string ServerUrl { get; set; } = "http://127.0.0.1:8080";
 
     public static string Username { get; set; }
 
