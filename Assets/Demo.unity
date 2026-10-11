@@ -4039,7 +4039,7 @@ MonoBehaviour:
     cooldown: 10
     spellPrefab: {fileID: 3799332801278, guid: a69fa7b467014490a05d3f4e03f39951,
       type: 3}
-    description: Frappe une cible au corps a corps avec une violente explosion de flammes
+    description: Frappe une cible avec une violente explosion de flammes
     barColor: {r: 1, g: 0.3, b: 0, a: 1}
     needsTarget: 1
     manaCost: 25
@@ -64875,7 +64875,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Frappe une cible au corps a corps avec une violente explosion de flammes
+  m_Text: Frappe une cible avec une violente explosion de flammes
 --- !u!222 &7662773039266
 CanvasRenderer:
   m_ObjectHideFlags: 0
