@@ -711,11 +711,11 @@ PlayerSettings:
   m_MobileRenderingPath: 1
   metroPackageName: RPG
   metroPackageVersion: 
-  metroCertificatePath: 
+  metroCertificatePath: C:\Servers\Sources\Universe2D\Assets\WSATestCertificate.pfx
   metroCertificatePassword: 
-  metroCertificateSubject: 
-  metroCertificateIssuer: 
-  metroCertificateNotAfter: 0000000000000000
+  metroCertificateSubject: DefaultCompany
+  metroCertificateIssuer: DefaultCompany
+  metroCertificateNotAfter: 8095a1b02b78de01
   metroApplicationDescription: RPG
   wsaImages: {}
   metroTileShortName: 

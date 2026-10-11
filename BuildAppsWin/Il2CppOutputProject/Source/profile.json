@@ -1,0 +1,19 @@
+{
+"instructions_readme": "1) Open Chrome, 2) go to chrome://tracing, 3) click Load, 4) navigate to this file.",
+
+"traceEvents":[
+{ "pid": "il2cpp_outer", "ph":"M", "name": "process_name", "args": {"name": "il2cpp_outer"} },
+{ "pid": "il2cpp_outer", "ph":"M", "name": "process_sort_index", "args": {"sort_index": -1} },
+{ "pid": "il2cpp_outer", "tid": 1, "ph":"M", "name": "thread_name", "args": {"name": "Main thread"} },
+{ "pid": "il2cpp_outer", "tid": 1,"ts": 1791718793821241,"dur": 719902, "ph":"X", "name": "il2cpp.exe"},
+{ "pid": "il2cpp_outer", "tid": 1,"ts": 1791718794320537,"dur": 15180, "ph":"X", "name": "Write Analytics"},
+{}
+
+],
+"meta_datetime": "10/11/2026 13:39:54",
+"meta_command_line": "C:\\Servers\\Sources\\Universe2D\\BuildAppsWin\\Il2CppOutputProject\\IL2CPP\\build\\deploy\\il2cpp.dll --libil2cpp-static --compile-cpp -architecture=ARMv7 -configuration=Release -platform=winrt -outputpath=C:\\Servers\\Sources\\Universe2D\\BuildAppsWin\\\\build\\bin\\ARM\\Release\\GameAssembly.dll --data-folder=C:\\Servers\\Sources\\Universe2D\\BuildAppsWin\\\\build\\bin\\ARM\\Release\\ -cachedirectory=C:\\Servers\\Sources\\Universe2D\\BuildAppsWin\\\\build\\obj\\il2cppOutputProject\\ARM\\Release\\ -generatedcppdir=C:\\Servers\\Sources\\Universe2D\\BuildAppsWin\\Il2CppOutputProject\\\\Source \"--baselib-directory=C:\\Program Files\\Unity\\Hub\\Editor\\2021.3.45f2\\Editor\\Data\\PlaybackEngines\\MetroSupport\\Players\\UAP\\il2cpp\\\\Release\" --avoid-dynamic-library-copy --dont-deploy-baselib --profiler-report --additional-defines=WINDOWS_UWP --additional-defines=UNITY_UWP --additional-defines=UNITY_WSA_10_0 --additional-defines=UNITY_WSA --additional-defines=UNITY_WINRT --additional-defines=PLATFORM_WINRT -dotnetprofile=unityaot-win32 -verbose --relative-data-path=Data/il2cpp_data",
+"meta_command_line_args": "C:\\Servers\\Sources\\Universe2D\\BuildAppsWin\\Il2CppOutputProject\\IL2CPP\\build\\deploy\\il2cpp.dll --libil2cpp-static --compile-cpp -architecture=ARMv7 -configuration=Release -platform=winrt -outputpath=C:\\Servers\\Sources\\Universe2D\\BuildAppsWin\\\\build\\bin\\ARM\\Release\\GameAssembly.dll --data-folder=C:\\Servers\\Sources\\Universe2D\\BuildAppsWin\\\\build\\bin\\ARM\\Release\\ -cachedirectory=C:\\Servers\\Sources\\Universe2D\\BuildAppsWin\\\\build\\obj\\il2cppOutputProject\\ARM\\Release\\ -generatedcppdir=C:\\Servers\\Sources\\Universe2D\\BuildAppsWin\\Il2CppOutputProject\\\\Source --baselib-directory=C:\\Program Files\\Unity\\Hub\\Editor\\2021.3.45f2\\Editor\\Data\\PlaybackEngines\\MetroSupport\\Players\\UAP\\il2cpp\\\\Release --avoid-dynamic-library-copy --dont-deploy-baselib --profiler-report --additional-defines=WINDOWS_UWP --additional-defines=UNITY_UWP --additional-defines=UNITY_WSA_10_0 --additional-defines=UNITY_WSA --additional-defines=UNITY_WINRT --additional-defines=PLATFORM_WINRT -dotnetprofile=unityaot-win32 -verbose --relative-data-path=Data/il2cpp_data",
+"meta_user_name": "Aurora",
+"meta_os_version": "Microsoft Windows NT 10.0.26300.0",
+"meta_cpu_count": "16"
+}
