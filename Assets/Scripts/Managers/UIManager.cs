@@ -129,14 +129,12 @@ public class UIManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.N))
         {
-            // L'arbre de talents (menus[7]) ne contient pour l'instant que
-            // les talents du Mage (Feu/Glace/Foudre) -- le Guerrier n'a pas
-            // encore les siens (voir Session.SelectedCharacterClass), donc
-            // on ne lui montre pas un panneau qui ne le concerne pas.
-            if (Session.SelectedCharacterClass != "Guerrier")
-            {
-                OpenClose(menus[7]);
-            }
+            // Chaque classe a son propre arbre de talents (voir
+            // Session.SelectedCharacterClass) : menus[7] pour le Mage
+            // (Feu/Glace/Foudre), menus[8] pour le Guerrier (Frappe
+            // Enflammee/Coup de Bouclier/Laceration, voir
+            // TalentTreeGuerrier dans Demo.unity).
+            OpenClose(Session.SelectedCharacterClass == "Guerrier" ? menus[8] : menus[7]);
         }
 
 

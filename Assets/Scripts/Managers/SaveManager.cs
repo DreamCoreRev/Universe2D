@@ -16,8 +16,13 @@ public class SaveManager : MonoBehaviour
 
     private CharButton[] equipment;
 
-    // Panneau des talents (Demo.unity/TalentTree) -- un seul par joueur, pas
-    // besoin d'un champ serialise, voir SaveTalents/LoadTalents.
+    // Panneau des talents du joueur (Demo.unity/TalentTree pour le Mage,
+    // TalentTreeGuerrier pour le Guerrier) -- pas besoin d'un champ
+    // serialise, voir SaveTalents/LoadTalents. Les deux arbres existent
+    // dans la scene en meme temps (un par classe), donc Awake() choisit
+    // celui qui correspond a Session.SelectedCharacterClass plutot que de
+    // prendre le premier trouve au hasard (voir FindObjectOfType<T>, qui
+    // ne garantit pas lequel des deux il renvoie s'il y en a plusieurs).
     private TalentTree talentTree;
 
     [SerializeField]
@@ -53,7 +58,14 @@ public class SaveManager : MonoBehaviour
     {
         chests = FindObjectsOfType<Chest>();
         equipment = FindObjectsOfType<CharButton>();
-        talentTree = FindObjectOfType<TalentTree>(true);
+
+        TalentTree[] talentTrees = FindObjectsOfType<TalentTree>(true);
+        string expectedTreeName = Session.SelectedCharacterClass == "Guerrier" ? "TalentTreeGuerrier" : "TalentTree";
+        talentTree = Array.Find(talentTrees, t => t.gameObject.name == expectedTreeName);
+        if (talentTree == null && talentTrees.Length > 0)
+        {
+            talentTree = talentTrees[0];
+        }
 
         foreach (SavedGame saved in saveSlots)
         {

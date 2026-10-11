@@ -255,27 +255,19 @@ public class Player : Character
             ApplyClassVisuals(Session.SelectedCharacterClass);
             SyncCharacterClass();
 
-            // Premiere competence active du Guerrier (voir SpellBook.LearnSpell) :
-            // donnee d'office pour l'instant, le temps de construire son
-            // arbre de talents complet -- uniquement pour NOUS (jamais pour
+            // Les 3 competences de base du Guerrier (voir SpellBook.LearnSpell)
+            // sont toujours actives, exactement comme Fireball/Frostbolt/
+            // Thunderbolt pour le Mage -- uniquement pour NOUS (jamais pour
             // l'avatar d'un autre joueur, cf. SpellBook.MyInstance qui est
-            // par Player local).
+            // par Player local). Leurs debuffs (Etourdissement/Saignement/
+            // Brulure) et les 3 sorts suivants (Brasier/Bouclier Vengeur/
+            // Execution) viennent maintenant de son propre arbre de talents
+            // (voir TalentTreeGuerrier dans Demo.unity).
             if (Session.SelectedCharacterClass == "Guerrier" && SpellBook.MyInstance != null)
             {
                 SpellBook.MyInstance.LearnSpell("Frappe Enflammee");
-
-                // Deuxieme competence active du Guerrier : ralentit la
-                // cible en plus des degats (voir ShieldBashDebuff), meme
-                // principe qu'IgniteTalent pour le Mage (associer un debuff
-                // a un sort via Spell.MyDebuff).
                 SpellBook.MyInstance.LearnSpell("Coup de Bouclier");
-                Spell shieldBash = SpellBook.MyInstance.GetSpell("Coup de Bouclier");
-                if (shieldBash != null)
-                {
-                    ShieldBashDebuff slowDebuff = new ShieldBashDebuff(SpellBook.MyInstance.MyShieldBashIcon);
-                    slowDebuff.MySpeedReduction = 40;
-                    shieldBash.MyDebuff = slowDebuff;
-                }
+                SpellBook.MyInstance.LearnSpell("Laceration");
 
                 // Les sorts du Mage (Fireball/Frostbolt/Thunderbolt) n'ont
                 // aucun sens pour un Guerrier et il ne les apprendra
