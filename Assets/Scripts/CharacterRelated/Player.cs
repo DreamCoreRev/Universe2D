@@ -254,6 +254,16 @@ public class Player : Character
             ApplyClassVisuals(Session.SelectedCharacterClass);
             SyncCharacterClass();
 
+            // Premiere competence active du Guerrier (voir SpellBook.LearnSpell) :
+            // donnee d'office pour l'instant, le temps de construire son
+            // arbre de talents complet -- uniquement pour NOUS (jamais pour
+            // l'avatar d'un autre joueur, cf. SpellBook.MyInstance qui est
+            // par Player local).
+            if (Session.SelectedCharacterClass == "Guerrier" && SpellBook.MyInstance != null)
+            {
+                SpellBook.MyInstance.LearnSpell("Frappe Enflammee");
+            }
+
             // En reseau, SaveManager.Start() s'est deja execute avant que ce
             // Player existe (voir SaveManager.cs) -- on le rappelle ici pour
             // qu'il initialise nos stats maintenant qu'on existe vraiment.

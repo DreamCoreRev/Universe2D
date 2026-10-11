@@ -209,6 +209,9 @@ public class SpellBook : MonoBehaviour
             case "chainlightning":
                 obtainableSpells[2].SetActive(true);
                 break;
+            case "frappe enflammee":
+                obtainableSpells[3].SetActive(true);
+                break;
 
         }
     }
