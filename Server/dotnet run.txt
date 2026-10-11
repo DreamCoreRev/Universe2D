@@ -1,0 +1,24 @@
+CMD Admin
+
+netsh http add urlacl url=http://+:8080/ user=Everyone
+netsh advfirewall firewall add rule name="Universe2D AuthServer" dir=in action=allow protocol=TCP localport=8080
+
+cd C:\Servers\Sources\Universe2D\BuildPC
+RPG.exe -batchmode -nographics
+
+Refresh Cache puis Rebuild en APK :
+
+cd C:\Servers\Sources\Universe2D\BuildPC>
+RPG.exe -batchmode -nographics -logFile C:\Servers\Sources\Universe2D\server.log
+RPG.exe -logFile C:\Servers\Sources\Universe2D\client.log
+
+Start Server :
+
+cd C:\Servers\Sources\Universe2D\Server\AuthServer
+dotnet run
+
+Arreter le serveur correctement :
+
+cd C:\Windows\System32
+taskkill /F /IM RPG.exe
+tasklist | findstr RPG.exe
