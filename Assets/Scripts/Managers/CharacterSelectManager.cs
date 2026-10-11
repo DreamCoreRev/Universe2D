@@ -21,7 +21,8 @@ using UnityEngine.UI;
 /// </summary>
 public class CharacterSelectManager : MonoBehaviour
 {
-    private const string ServerUrl = "http://192.168.42.90:8080";
+    // Meme adresse que celle utilisee par LoginManager (voir Session.ServerUrl).
+    private static string ServerUrl => Session.ServerUrl;
     private const int MaxCharacters = 5;
 
     // Classes jouables aujourd'hui cote client.
@@ -636,7 +637,7 @@ public class CharacterSelectManager : MonoBehaviour
 
         if (req.result == UnityWebRequest.Result.ConnectionError || req.result == UnityWebRequest.Result.ProtocolError)
         {
-            return "Impossible de contacter le serveur. Verifie qu'il est lance (dotnet run dans Server/AuthServer).";
+            return "Impossible de contacter le serveur (" + req.error + ") a l'adresse " + ServerUrl;
         }
 
         return "Reponse invalide du serveur.";

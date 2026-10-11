@@ -10,12 +10,12 @@ NullGfxDevice:
     Renderer: Null Device
     Vendor:   Unity Technologies
 Begin MonoManager ReloadAssembly
-- Completed reload, in  0.112 seconds
+- Completed reload, in  0.210 seconds
 ERROR: Shader Sprites/Default shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
 Microsoft Media Foundation video decoding to texture disabled: graphics device is Null, only Direct3D 11 and Direct3D 12 (only on desktop) are supported for hardware-accelerated video decoding.
 ERROR: Shader Sprites/Mask shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
 ERROR: Shader GUI/Text Shader shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-UnloadTime: 0.561000 ms
+UnloadTime: 0.549000 ms
 ThreadLog initialized.
 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
@@ -39,8 +39,8 @@ ERROR: Shader TextMeshPro/Distance Field shader is not supported on this GPU (no
 WARNING: Shader Unsupported: 'TextMeshPro/Distance Field' - All subshaders removed
 WARNING: Shader Did you use #pragma only_renderers and omit this platform?
 WARNING: Shader If subshaders removal was intentional, you may have forgotten turning Fallback off?
-UnloadTime: 2.165900 ms
+UnloadTime: 2.412300 ms
 ERROR: Shader TextMeshPro/Sprite shader is not supported on this GPU (none of subshaders/fallbacks are suitable)
-Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 11972.
-Total: 2.314000 ms (FindLiveObjects: 0.605400 ms CreateObjectMapping: 0.251000 ms MarkObjects: 1.433200 ms  DeleteObjects: 0.024000 ms)
+Unloading 4 unused Assets to reduce memory usage. Loaded Objects now: 11993.
+Total: 2.334800 ms (FindLiveObjects: 0.621100 ms CreateObjectMapping: 0.251500 ms MarkObjects: 1.442100 ms  DeleteObjects: 0.019900 ms)
 
