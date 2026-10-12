@@ -81,6 +81,7 @@ public class Enemy : Character, IInteractable
     /// Moment (Time.time) ou on a constate la mort ; -1 = vivant.
     /// </summary>
     private float deathTime = -1f;
+    private float nextDeadLogTime;
 
 
     /// <summary>
@@ -203,11 +204,18 @@ public class Enemy : Character, IInteractable
             else if (deathTime < 0f)
             {
                 deathTime = Time.time;
+                nextDeadLogTime = Time.time;
                 Debug.Log("[Enemy] " + name + " est mort, respawn dans " + respawnDelay + "s");
             }
             else if (Time.time - deathTime >= respawnDelay)
             {
+                Debug.Log("[Enemy] " + name + " : delai ecoule, appel de Respawn()");
                 Respawn();
+            }
+            else if (Time.time - nextDeadLogTime >= 10f)
+            {
+                nextDeadLogTime = Time.time;
+                Debug.Log("[Enemy] " + name + " : toujours mort (" + (Time.time - deathTime).ToString("F0") + "s / " + respawnDelay + "s)");
             }
         }
 
@@ -387,6 +395,7 @@ public class Enemy : Character, IInteractable
     {
         if (IsAlive || !ShouldRunAI)
         {
+            Debug.Log("[Enemy] " + name + " : Respawn() ignore (vivant=" + IsAlive + ", ShouldRunAI=" + ShouldRunAI + ")");
             return;
         }
 
@@ -402,6 +411,19 @@ public class Enemy : Character, IInteractable
         catch (Exception e)
         {
             Debug.LogError("[Enemy] " + name + " : erreur pendant ApplyRespawnVisuals : " + e);
+        }
+
+        // Le NetworkTransform (cible = wrapper) interpolerait sinon le
+        // monstre depuis son cadavre jusqu'au point de depart : on force
+        // un teleport sur tous les clients, sans interpolation.
+        if (NetworkServer.active)
+        {
+            NetworkTransformBase netTransform = GetComponent<NetworkTransformBase>();
+
+            if (netTransform != null && netTransform.target != null)
+            {
+                netTransform.ServerTeleport(netTransform.target.position, netTransform.target.rotation);
+            }
         }
 
         // IdleState.Enter() appelle Reset() : PV au max, plus de cible.

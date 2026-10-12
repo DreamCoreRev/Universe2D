@@ -1,4 +1,4 @@
-using Mirror;
+﻿using Mirror;
 using UnityEngine;
 
 /// <summary>
@@ -227,6 +227,7 @@ public class EnemyNetworkSync : NetworkBehaviour
         {
             // Le serveur vient de faire respawn ce monstre : on le remet
             // a sa position de depart et on sort de l'animation de mort.
+            Debug.Log("[Enemy] client : respawn recu pour " + enemy.name);
             enemy.ApplyRespawnVisuals();
         }
 
