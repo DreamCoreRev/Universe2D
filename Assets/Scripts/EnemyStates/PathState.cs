@@ -99,16 +99,24 @@ public class PathState : IState
 
         if (parent.MyPath != null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, destination, parent.CurrentSpeed * Time.deltaTime);
+            // IMPORTANT : dans Demo.unity, l'enfant "Enemy" est tres decale
+            // de son wrapper (transform.parent, qui porte le Rigidbody2D).
+            // Les cases A* sont en coordonnees MONDE de l'enfant : il faut
+            // donc avancer l'enfant vers la destination, et deplacer le
+            // wrapper de la meme quantite -- sinon le monstre est
+            // teleporte de l'ecart wrapper/enfant et part au loin.
+            Vector3 childPos = parent.transform.position;
+            Vector2 newChildPos = Vector2.MoveTowards(childPos, destination, parent.CurrentSpeed * Time.deltaTime);
+            transform.position += new Vector3(newChildPos.x - childPos.x, newChildPos.y - childPos.y, 0f);
 
             parent.ActivateLayer("WalkLayer");
            
             Vector3Int dest = parent.MyAstar.MyTilemap.WorldToCell(destination);
             Vector3Int cur = parent.MyAstar.MyTilemap.WorldToCell(current);
 
-            float distance = Vector2.Distance(destination, transform.position);
+            float distance = Vector2.Distance(destination, parent.transform.position);
 
-            float totalDistance = Vector2.Distance(parent.MyTarget.transform.parent.position, transform.position);
+            float totalDistance = Vector2.Distance(parent.MyTarget.transform.position, parent.transform.position);
 
             if (cur.y > dest.y)
             {
@@ -138,7 +146,7 @@ public class PathState : IState
                 parent.ChangeState(new FollowState());
             }
 
-            if (distance <= 0f)
+            if (distance <= 0.02f)
             {
                 if (parent.MyPath.Count > 0)
                 {

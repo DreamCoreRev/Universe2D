@@ -45,7 +45,7 @@ class FollowState : IState
             // here let the two states disagree on whether we were actually
             // in range, which could make an enemy flicker between
             // Follow/Attack right at the edge of its attack range.
-            float distance = Vector2.Distance(parent.MyTarget.transform.parent.position, parent.transform.parent.position);
+            float distance = Vector2.Distance(parent.MyTarget.transform.position, parent.transform.position);
 
             string animName = parent.MySpriteRenderer.sprite.name;
 
