@@ -71,6 +71,14 @@ public class Enemy : Character, IInteractable
     [SerializeField]
     private float minAttackRange = 1.5f;
 
+    /// <summary>
+    /// Delai (en secondes) entre la mort du monstre et son respawn.
+    /// </summary>
+    [SerializeField]
+    private float respawnDelay = 30f;
+
+    private Coroutine respawnRoutine;
+
 
     /// <summary>
     /// How much time has passed since the last attack
@@ -238,6 +246,19 @@ public class Enemy : Character, IInteractable
                     }
 
                     OnKilledBy?.Invoke(source);
+
+                    // Seul celui qui fait tourner l'IA (solo ou serveur
+                    // dedie) planifie le respawn ; les clients le recoivent
+                    // via la synchro des PV (voir EnemyNetworkSync).
+                    if (ShouldRunAI)
+                    {
+                        if (respawnRoutine != null)
+                        {
+                            StopCoroutine(respawnRoutine);
+                        }
+
+                        respawnRoutine = StartCoroutine(RespawnAfterDelay());
+                    }
                 }
             }
 
@@ -344,6 +365,76 @@ public class Enemy : Character, IInteractable
                     + " aggro=" + MyAggroRange.ToString("F2"));
             }
             target.AddAttacker(this);
+        }
+    }
+
+    private IEnumerator RespawnAfterDelay()
+    {
+        yield return new WaitForSeconds(respawnDelay);
+
+        respawnRoutine = null;
+        Respawn();
+    }
+
+    /// <summary>
+    /// Ressuscite le monstre a sa position de depart (solo ou serveur
+    /// uniquement). Les clients sont prevenus par la synchro des PV : voir
+    /// EnemyNetworkSync.OnHealthChanged, qui appelle ApplyRespawnVisuals().
+    /// </summary>
+    public void Respawn()
+    {
+        if (IsAlive || !ShouldRunAI)
+        {
+            return;
+        }
+
+        ApplyRespawnVisuals();
+
+        // IdleState.Enter() appelle Reset() : PV au max, plus de cible.
+        ChangeState(new IdleState());
+
+        Debug.Log("[Enemy] " + name + " a respawn en " + MyStartPosition);
+    }
+
+    /// <summary>
+    /// Remet l'apparence/la position du monstre a zero pour qu'il reparte
+    /// de sa case de depart : appele par Respawn() (solo/serveur) et par
+    /// les clients quand les PV synchronises repassent au-dessus de 0.
+    /// </summary>
+    public void ApplyRespawnVisuals()
+    {
+        // L'enfant "Enemy" est decale de son wrapper (voir PathState) :
+        // on deplace le wrapper de l'ecart pour que l'ENFANT revienne au depart.
+        Vector3 delta = MyStartPosition - transform.position;
+
+        if (transform.parent != null)
+        {
+            transform.parent.position += new Vector3(delta.x, delta.y, 0f);
+        }
+        else
+        {
+            transform.position = MyStartPosition;
+        }
+
+        if (MyRigidbody != null)
+        {
+            MyRigidbody.velocity = Vector2.zero;
+        }
+
+        Direction = Vector2.zero;
+        MyPath = null;
+        IsAttacking = false;
+        MyAttackTime = 0;
+        canDoDamage = true;
+        Attackers.Clear();
+        MyDebuffs.Clear();
+
+        if (MyAnimator != null)
+        {
+            // Sort du clip de mort et revient a l'etat par defaut.
+            MyAnimator.Rebind();
+            MyAnimator.Update(0f);
+            MyAnimator.SetFloat("y", -1);
         }
     }
 

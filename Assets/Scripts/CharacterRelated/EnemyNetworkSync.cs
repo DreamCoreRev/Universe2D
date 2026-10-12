@@ -67,6 +67,13 @@ public class EnemyNetworkSync : NetworkBehaviour
             return;
         }
 
+        // Diffuse aussi les soins/respawns decides par le serveur (Evade,
+        // Respawn...) : avant, syncedHealth ne changeait qu'aux degats.
+        if (enemy.MyHealth != null && syncedHealth != enemy.MyHealth.MyCurrentValue)
+        {
+            syncedHealth = enemy.MyHealth.MyCurrentValue;
+        }
+
         if (syncedDirection != enemy.Direction)
         {
             syncedDirection = enemy.Direction;
@@ -215,6 +222,13 @@ public class EnemyNetworkSync : NetworkBehaviour
 
         enemy.MyHealth.MyCurrentValue = newValue;
         enemy.OnHealthChanged(newValue);
+
+        if (!wasAlive && newValue > 0)
+        {
+            // Le serveur vient de faire respawn ce monstre : on le remet
+            // a sa position de depart et on sort de l'animation de mort.
+            enemy.ApplyRespawnVisuals();
+        }
 
         if (wasAlive && newValue <= 0)
         {
