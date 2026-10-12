@@ -77,7 +77,10 @@ public class Enemy : Character, IInteractable
     [SerializeField]
     private float respawnDelay = 30f;
 
-    private Coroutine respawnRoutine;
+    /// <summary>
+    /// Moment (Time.time) ou on a constate la mort ; -1 = vivant.
+    /// </summary>
+    private float deathTime = -1f;
 
 
     /// <summary>
@@ -188,6 +191,26 @@ public class Enemy : Character, IInteractable
             }
         }
 
+        // Respawn : detecte directement ici que le monstre est mort (au lieu
+        // de dependre de la chaine TakeDamage -> evenements, qu'une
+        // exception pouvait interrompre avant le demarrage du minuteur).
+        if (ShouldRunAI)
+        {
+            if (IsAlive)
+            {
+                deathTime = -1f;
+            }
+            else if (deathTime < 0f)
+            {
+                deathTime = Time.time;
+                Debug.Log("[Enemy] " + name + " est mort, respawn dans " + respawnDelay + "s");
+            }
+            else if (Time.time - deathTime >= respawnDelay)
+            {
+                Respawn();
+            }
+        }
+
         base.Update();
 
     }
@@ -246,19 +269,6 @@ public class Enemy : Character, IInteractable
                     }
 
                     OnKilledBy?.Invoke(source);
-
-                    // Seul celui qui fait tourner l'IA (solo ou serveur
-                    // dedie) planifie le respawn ; les clients le recoivent
-                    // via la synchro des PV (voir EnemyNetworkSync).
-                    if (ShouldRunAI)
-                    {
-                        if (respawnRoutine != null)
-                        {
-                            StopCoroutine(respawnRoutine);
-                        }
-
-                        respawnRoutine = StartCoroutine(RespawnAfterDelay());
-                    }
                 }
             }
 
@@ -368,14 +378,6 @@ public class Enemy : Character, IInteractable
         }
     }
 
-    private IEnumerator RespawnAfterDelay()
-    {
-        yield return new WaitForSeconds(respawnDelay);
-
-        respawnRoutine = null;
-        Respawn();
-    }
-
     /// <summary>
     /// Ressuscite le monstre a sa position de depart (solo ou serveur
     /// uniquement). Les clients sont prevenus par la synchro des PV : voir
@@ -388,7 +390,19 @@ public class Enemy : Character, IInteractable
             return;
         }
 
-        ApplyRespawnVisuals();
+        deathTime = -1f;
+
+        // PV d'abord : meme si la suite echoue, le monstre n'est plus mort.
+        MyHealth.MyCurrentValue = MyHealth.MyMaxValue;
+
+        try
+        {
+            ApplyRespawnVisuals();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("[Enemy] " + name + " : erreur pendant ApplyRespawnVisuals : " + e);
+        }
 
         // IdleState.Enter() appelle Reset() : PV au max, plus de cible.
         ChangeState(new IdleState());
