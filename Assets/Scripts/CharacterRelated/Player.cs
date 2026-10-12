@@ -168,19 +168,6 @@ public class Player : Character
 
     private List<IInteractable> interactables = new List<IInteractable>();
 
-    #region PATHFINDING
-
-    private Vector3 destination;
-
-    private Vector3 current;
-
-    private Vector3 goal;
-
-    [SerializeField]
-    private AStar astar;
-
-    #endregion
-
     private Vector3 min, max;
 
     [SerializeField]
@@ -302,7 +289,7 @@ public class Player : Character
     }
 
     /// <summary>
-    /// ClickToMove/SetDefaultValues/Respawn deplacent transform.parent, pas
+    /// SetDefaultValues/Respawn deplacent transform.parent, pas
     /// ce transform directement -- en solo ce parent ("PlayerParent") existe
     /// deja dans la scene. Un Player cree dynamiquement par Mirror n'a pas
     /// de parent du tout : on s'en recree un identique ici (meme config que
@@ -339,7 +326,7 @@ public class Player : Character
     }
 
     /// <summary>
-    /// mainCam/astar/minimapIcon/levelText/ding/profession sont branches a
+    /// mainCam/minimapIcon/levelText/ding/profession sont branches a
     /// la main dans Demo.unity sur l'UNIQUE Player de la scene -- un Player
     /// cree dynamiquement par Mirror (nous y compris, une fois connecte en
     /// reseau) n'a aucune de ces references. On les retrouve nous-memes ici.
@@ -351,11 +338,6 @@ public class Player : Character
         if (mainCam == null)
         {
             mainCam = Camera.main;
-        }
-
-        if (astar == null)
-        {
-            astar = FindObjectOfType<AStar>();
         }
 
         // On cree D'ABORD notre propre icone (enfant de nous-memes, donc
@@ -473,7 +455,6 @@ public class Player : Character
         {
             //Executes the GetInput function
             GetInput();
-            ClickToMove();
 
             //Clamps the player inside the tilemap
             transform.position = new Vector3(Mathf.Clamp(transform.position.x, min.x, max.x),
@@ -1326,47 +1307,6 @@ public class Player : Character
         }
     }
 
-    public void GetPath(Vector3 goal)
-    {
-        // astar n'existe que pour le joueur qu'on controle (voir
-        // ResolveLocalReferences) -- sans lui, pas de clic-pour-se-deplacer,
-        // mais le reste (clavier/joystick) continue de marcher normalement.
-        if (astar == null)
-        {
-            return;
-        }
-
-        // ClickToMove() drives movement through transform.parent (see
-        // initPos/destination below), not through this script's own
-        // transform -- so the search has to start from transform.parent
-        // too, or it can plan a path from the wrong tile whenever the two
-        // have drifted apart (see the velocity reset right below for why
-        // that happens).
-        MyPath = astar.Algorithm(transform.parent.position, goal);
-
-        // Algorithm() returns null when no path exists (e.g. clicking a
-        // blocked/out-of-bounds tile), and returns a single-node path when
-        // the goal is the tile we're already standing on. Either way there
-        // is nothing to Pop() twice, so bail out instead of crashing.
-        if (MyPath == null || MyPath.Count < 2)
-        {
-            MyPath = null;
-            return;
-        }
-
-        // Move() only drives MyRigidbody while MyPath is null (regular
-        // WASD movement) and never clears it again, so any velocity still
-        // left over from walking with the keyboard kept being applied by
-        // the physics engine on top of ClickToMove's own positioning --
-        // compounding into the character accelerating with every click,
-        // and eventually drifting into a wall/off the path entirely.
-        MyRigidbody.velocity = Vector2.zero;
-
-        current = MyPath.Pop();
-        destination = MyPath.Pop();
-        this.goal = goal;
-    }
-
     public IEnumerator Respawn()
     {
         MySpriteRenderer.enabled = false;
@@ -1380,53 +1320,6 @@ public class Player : Character
         {
             spriteRenderer.enabled = true;
         }
-    }
-
-    public void ClickToMove()
-    {
-        if (MyPath != null)
-        {
-            //Moves the enemy towards the target
-            transform.parent.position = Vector2.MoveTowards(transform.parent.position, destination, 2 * Time.deltaTime);
-
-            Vector3Int dest = astar.MyTilemap.WorldToCell(destination);
-            Vector3Int cur = astar.MyTilemap.WorldToCell(current);
-
-            float distance = Vector2.Distance(destination, transform.parent.position);
-
-            if (cur.y > dest.y)
-            {
-                Direction = Vector2.down;
-            }
-            else if (cur.y < dest.y)
-            {
-                Direction = Vector2.up;
-            }
-            if (cur.y == dest.y)
-            {
-                if (cur.x > dest.x)
-                {
-                    Direction = Vector2.left;
-                }
-                else if (cur.x < dest.x)
-                {
-                    Direction = Vector2.right;
-                }
-            }
-            if (distance <= 0f)
-            {
-                if (MyPath.Count > 0)
-                {
-                    current = destination;
-                    destination = MyPath.Pop();
-                }
-                else
-                {
-                    MyPath = null;
-                }
-            }
-        }
-
     }
 
     public void HideGear()

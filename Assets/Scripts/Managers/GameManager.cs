@@ -216,8 +216,8 @@ public class GameManager : MonoBehaviour {
             // clic droit sur le PORTRAIT du joueur cible (voir GroupUIManager,
             // affiche par un clic GAUCHE sur le joueur -- comme sur WoW). Un
             // clic droit sur le collider "PlayerClickable" est donc traite
-            // exactement comme un clic droit sur le sol : ça deplace le
-            // personnage vers ce point, comme n'importe quel autre terrain.
+            // exactement comme un clic droit sur le sol (il ne fait rien :
+            // le deplacement au clic a ete retire).
             if (hit.collider != null && hit.collider.tag != "PlayerClickable")
             {
                 GroupUIManager.MyInstance?.HideContextMenu();
@@ -231,13 +231,6 @@ public class GameManager : MonoBehaviour {
             else
             {
                 GroupUIManager.MyInstance?.HideContextMenu();
-
-                hit = Physics2D.Raycast(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()), Vector2.zero, Mathf.Infinity, groundLayer);
-
-                if (hit.collider != null)
-                {
-                    Player.MyInstance.GetPath(mainCamera.ScreenToWorldPoint(TouchInput.GetPointerPosition()));
-                }
             }
         }
    
