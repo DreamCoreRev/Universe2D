@@ -70,7 +70,12 @@ public class PathState : IState
 
         if (parent.MyPath == null)
         {
-            parent.Evade("PathState : aucun chemin vers la cible");
+            // Pas de chemin A* (cible sur une case bloquee / hors tilemap,
+            // etc.) : au lieu de fuir des le debut du combat, on fonce droit
+            // sur la cible. FollowState gere deja la sortie en Evade si la
+            // cible quitte vraiment la portee d'aggro.
+            Debug.Log("[Enemy] " + parent.name + " : aucun chemin A*, poursuite directe");
+            parent.ChangeState(new FollowState());
             return;
         }
 

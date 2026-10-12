@@ -64,7 +64,13 @@ public class Enemy : Character, IInteractable
     /// </summary>
     [SerializeField]
     private float attackRange;
-  
+
+    /// <summary>
+    /// Portee d'attaque minimale appliquee meme si attackRange vaut 0 dans l'Inspector.
+    /// </summary>
+    [SerializeField]
+    private float minAttackRange = 1.5f;
+
 
     /// <summary>
     /// How much time has passed since the last attack
@@ -119,7 +125,12 @@ public class Enemy : Character, IInteractable
     {
         get
         {
-            return attackRange;
+            // Plusieurs monstres de melee ont attackRange = 0 dans Demo.unity :
+            // Follow/Path/AttackState testent "distance <= MyAttackRange", ce
+            // qui n'est alors JAMAIS vrai -> le monstre colle le joueur sans
+            // jamais attaquer, puis part en Evade des qu'il le perd. On
+            // impose donc une portee minimale.
+            return Mathf.Max(attackRange, minAttackRange);
         }
 
         set
