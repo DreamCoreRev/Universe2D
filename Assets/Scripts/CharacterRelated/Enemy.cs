@@ -142,6 +142,12 @@ public class Enemy : Character, IInteractable
     protected override void Start()
     {
         base.Start();
+
+        if (ShouldRunAI)
+        {
+            Debug.Log("[Enemy] IA active (log v2) : " + name);
+        }
+
         MyAnimator.SetFloat("y", -1);
     }
 
@@ -159,7 +165,7 @@ public class Enemy : Character, IInteractable
 
             if (MyTarget != null && !MyTarget.IsAlive)
             {
-                ChangeState(new EvadeState());
+                Evade("la cible est morte");
             }
         }
 
@@ -264,6 +270,13 @@ public class Enemy : Character, IInteractable
     {
         if (currentState != null) //Makes sure we have a state before we call exit
         {
+            if (ShouldRunAI)
+            {
+                Debug.Log("[Enemy] " + name + " : " + currentState.GetType().Name + " -> "
+                    + newState.GetType().Name + " (cible : "
+                    + (MyTarget != null ? MyTarget.name : "aucune") + ")");
+            }
+
             currentState.Exit();
         }
 
@@ -274,6 +287,34 @@ public class Enemy : Character, IInteractable
         currentState.Enter(this);
     }
 
+    /// <summary>
+    /// Passe en fuite (retour a la position de depart). Passer par cette
+    /// methode plutot que ChangeState(new EvadeState()) : elle ecrit la
+    /// RAISON dans le log (server.log pour le serveur dedie), et evite de
+    /// relancer EvadeState en boucle (EvadeState.Exit() soigne le monstre
+    /// et lui retire sa cible a chaque sortie).
+    /// </summary>
+    public void Evade(string reason)
+    {
+        if (currentState is EvadeState)
+        {
+            return;
+        }
+
+        string details = "";
+        if (MyTarget != null)
+        {
+            details = " | monstre=" + transform.position
+                + " cible=" + MyTarget.transform.position
+                + " parentCible=" + (MyTarget.transform.parent != null ? MyTarget.transform.parent.position.ToString() : "aucun")
+                + " distance=" + Vector2.Distance(transform.position, MyTarget.transform.position).ToString("F2")
+                + " aggro=" + MyAggroRange.ToString("F2");
+        }
+
+        Debug.Log("[Enemy] " + name + " prend la fuite : " + reason + details);
+        ChangeState(new EvadeState());
+    }
+
     public void SetTarget(Character target)
     {
         if (MyTarget == null && !(currentState is EvadeState))
@@ -282,6 +323,15 @@ public class Enemy : Character, IInteractable
             MyAggroRange = initAggroRange;
             MyAggroRange += distance;
             MyTarget = target;
+
+            if (ShouldRunAI)
+            {
+                Debug.Log("[Enemy] " + name + " prend pour cible " + target.name
+                    + " | monstre=" + transform.position
+                    + " cible=" + target.transform.position
+                    + " distance=" + distance.ToString("F2")
+                    + " aggro=" + MyAggroRange.ToString("F2"));
+            }
             target.AddAttacker(this);
         }
     }

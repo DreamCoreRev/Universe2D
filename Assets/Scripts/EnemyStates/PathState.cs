@@ -14,7 +14,19 @@ public class PathState : IState
 
     private Enemy parent;
 
-    private Vector3 targetPos;
+    private Vector3Int targetCell;
+
+    /// <summary>
+    /// Case de la tilemap qui contient cette position du monde. Remplace
+    /// MyCurrentTile (rempli seulement au contact physique d'une tuile) :
+    /// sur le serveur, ce champ pouvait designer une tuile lointaine ou
+    /// perimee, et le monstre partait alors en courant vers elle au lieu de
+    /// vers le joueur.
+    /// </summary>
+    private Vector3Int CellOf(Vector3 worldPosition)
+    {
+        return parent.MyAstar.MyTilemap.WorldToCell(worldPosition);
+    }
 
     public void Enter(Enemy parent)
     {
@@ -31,35 +43,40 @@ public class PathState : IState
         // tuile (voir CurrentTileScript) : un joueur tout juste connecte/
         // spawn (ou le monstre lui-meme) peut donc encore valoir null ici,
         // le temps d'un ou deux FixedUpdate. On evite plutot que de planter.
-        if (parent.MyTarget == null || parent.MyTarget.MyCurrentTile == null || parent.MyCurrentTile == null)
+        if (parent.MyTarget == null)
         {
-            parent.ChangeState(new EvadeState());
+            parent.Evade("PathState : plus de cible");
             return;
         }
 
-        targetPos = parent.MyTarget.MyCurrentTile.position;
-
-        if (targetPos != parent.MyCurrentTile.position)
-        {
-            parent.MyPath = parent.MyAstar.Algorithm(parent.MyCurrentTile.position, targetPos);
-        }
-        if (parent.MyPath != null)
-        {
-            current = parent.MyPath.Pop();
-            destination = parent.MyPath.Pop();
-            this.goal = parent.MyCurrentTile.position;
-        }
-        else
-        {
-            parent.ChangeState(new EvadeState());
-        }
         if (!parent.InRange)
         {
-            parent.ChangeState(new EvadeState());
+            parent.Evade("PathState : cible hors de portee d'aggro");
+            return;
         }
 
+        Vector3Int startCell = CellOf(parent.transform.position);
+        targetCell = CellOf(parent.MyTarget.transform.position);
 
+        // Meme case que la cible : pas de chemin a calculer, on la suit
+        // directement (avant, MyPath restait null et le monstre fuyait).
+        if (startCell == targetCell)
+        {
+            parent.ChangeState(new FollowState());
+            return;
+        }
 
+        parent.MyPath = parent.MyAstar.Algorithm(parent.transform.position, parent.MyTarget.transform.position);
+
+        if (parent.MyPath == null)
+        {
+            parent.Evade("PathState : aucun chemin vers la cible");
+            return;
+        }
+
+        current = parent.MyPath.Pop();
+        destination = parent.MyPath.Count > 0 ? parent.MyPath.Pop() : current;
+        this.goal = parent.transform.position;
     }
 
     public void Exit()
@@ -69,6 +86,12 @@ public class PathState : IState
 
     public void Update()
     {
+        if (parent.MyTarget == null)
+        {
+            parent.Evade("PathState : la cible a disparu");
+            return;
+        }
+
         if (parent.MyPath != null)
         {
             transform.position = Vector2.MoveTowards(transform.position, destination, parent.CurrentSpeed * Time.deltaTime);
@@ -105,7 +128,7 @@ public class PathState : IState
             {
                 parent.ChangeState(new AttackState());
             }
-            else if (parent.MyTarget.MyCurrentTile.position == parent.MyCurrentTile.position)
+            else if (CellOf(parent.MyTarget.transform.position) == CellOf(parent.transform.position))
             {
                 parent.ChangeState(new FollowState());
             }
@@ -117,7 +140,7 @@ public class PathState : IState
                     current = destination;
                     destination = parent.MyPath.Pop();
 
-                    if (targetPos != parent.MyTarget.MyCurrentTile.position) //Then the player has moved
+                    if (targetCell != CellOf(parent.MyTarget.transform.position)) //Then the player has moved
                     {
                         parent.ChangeState(new PathState());
                     }

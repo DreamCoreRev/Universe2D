@@ -74,7 +74,7 @@ class FollowState : IState
         }
         if (!parent.InRange)
         {
-            parent.ChangeState(new EvadeState());
+            parent.Evade("FollowState : cible hors de portee d'aggro");
         } //if we don't have a target, then we need to go back to idle.
        
     }
