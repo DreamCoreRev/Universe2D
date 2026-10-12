@@ -6214,7 +6214,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 14
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6514,7 +6514,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 17
+      m_TileSpriteIndex: 14
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -6544,7 +6544,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 9
+      m_TileSpriteIndex: 17
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -29395,6 +29395,7 @@ MonoBehaviour:
   astar: {fileID: 856380599}
   damage: 5
   attackRange: 0
+  minAttackRange: 1.5
   portrait: {fileID: 21300000, guid: 018b6b592454fb846b82d6972144a29d, type: 3}
   initAggroRange: 3
 --- !u!61 &856380596
@@ -38045,6 +38046,7 @@ MonoBehaviour:
   astar: {fileID: 1279560536}
   damage: 5
   attackRange: 5
+  minAttackRange: 1.5
   portrait: {fileID: 21300000, guid: 018b6b592454fb846b82d6972144a29d, type: 3}
   initAggroRange: 3
   arrowPrefab: {fileID: 1478980718226232, guid: ec65d81b7b3ece443a4a4ed10f7727f8,
@@ -43055,6 +43057,7 @@ MonoBehaviour:
   astar: {fileID: 1514809096}
   damage: 5
   attackRange: 5
+  minAttackRange: 1.5
   portrait: {fileID: 21300000, guid: 018b6b592454fb846b82d6972144a29d, type: 3}
   initAggroRange: 3
   arrowPrefab: {fileID: 1478980718226232, guid: ec65d81b7b3ece443a4a4ed10f7727f8,
@@ -45463,6 +45466,7 @@ MonoBehaviour:
   astar: {fileID: 1593604590}
   damage: 5
   attackRange: 5
+  minAttackRange: 1.5
   portrait: {fileID: 21300000, guid: 018b6b592454fb846b82d6972144a29d, type: 3}
   initAggroRange: 3
   arrowPrefab: {fileID: 1478980718226232, guid: ec65d81b7b3ece443a4a4ed10f7727f8,
@@ -47740,6 +47744,7 @@ MonoBehaviour:
   astar: {fileID: 1661679030}
   damage: 5
   attackRange: 5
+  minAttackRange: 1.5
   portrait: {fileID: 21300000, guid: 018b6b592454fb846b82d6972144a29d, type: 3}
   initAggroRange: 3
   arrowPrefab: {fileID: 1478980718226232, guid: ec65d81b7b3ece443a4a4ed10f7727f8,
@@ -68074,6 +68079,7 @@ MonoBehaviour:
   astar: {fileID: 455810210069673134}
   damage: 5
   attackRange: 0
+  minAttackRange: 1.5
   portrait: {fileID: 21300000, guid: 018b6b592454fb846b82d6972144a29d, type: 3}
   initAggroRange: 3
 --- !u!224 &432532830657391049
@@ -68363,6 +68369,7 @@ MonoBehaviour:
   astar: {fileID: 732297646336199311}
   damage: 5
   attackRange: 0
+  minAttackRange: 1.5
   portrait: {fileID: 21300000, guid: 018b6b592454fb846b82d6972144a29d, type: 3}
   initAggroRange: 3
 --- !u!212 &482360362331723227
@@ -68725,6 +68732,7 @@ MonoBehaviour:
   astar: {fileID: 322674964749475465}
   damage: 5
   attackRange: 0
+  minAttackRange: 1.5
   portrait: {fileID: 21300000, guid: 018b6b592454fb846b82d6972144a29d, type: 3}
   initAggroRange: 3
 --- !u!224 &551398038529178027
@@ -69072,6 +69080,7 @@ MonoBehaviour:
   astar: {fileID: 111263884233454678}
   damage: 5
   attackRange: 0
+  minAttackRange: 1.5
   portrait: {fileID: 21300000, guid: 018b6b592454fb846b82d6972144a29d, type: 3}
   initAggroRange: 3
 --- !u!114 &600031913033316884
@@ -70373,6 +70382,7 @@ MonoBehaviour:
   astar: {fileID: 394775459991086481}
   damage: 5
   attackRange: 0
+  minAttackRange: 1.5
   portrait: {fileID: 21300000, guid: 018b6b592454fb846b82d6972144a29d, type: 3}
   initAggroRange: 3
 --- !u!224 &877630357993896353
