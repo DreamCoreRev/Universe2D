@@ -220,6 +220,8 @@ public class EnemyNetworkSync : NetworkBehaviour
 
         bool wasAlive = enemy.MyHealth.MyCurrentValue > 0;
 
+        Debug.Log("[Enemy] client : PV synchronises de " + enemy.name + " : " + oldValue + " -> " + newValue + " (vivant avant=" + wasAlive + ")");
+
         enemy.MyHealth.MyCurrentValue = newValue;
         enemy.OnHealthChanged(newValue);
 

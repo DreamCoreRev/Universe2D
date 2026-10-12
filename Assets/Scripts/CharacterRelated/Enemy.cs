@@ -206,6 +206,7 @@ public class Enemy : Character, IInteractable
                 deathTime = Time.time;
                 nextDeadLogTime = Time.time;
                 Debug.Log("[Enemy] " + name + " est mort, respawn dans " + respawnDelay + "s");
+                EnemyRespawnManager.Schedule(this, respawnDelay);
             }
             else if (Time.time - deathTime >= respawnDelay)
             {
@@ -274,6 +275,11 @@ public class Enemy : Character, IInteractable
                     {
                         // Solo (pas de session Mirror) : comportement d'origine, inchange.
                         Player.MyInstance.GainXP(XPManager.CalculateXP((this as Enemy)));
+                    }
+
+                    if (ShouldRunAI)
+                    {
+                        EnemyRespawnManager.Schedule(this, respawnDelay);
                     }
 
                     OnKilledBy?.Invoke(source);
