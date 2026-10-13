@@ -112,9 +112,9 @@ h2{font:400 clamp(32px,5vw,48px)/1.05 var(--display);margin:0 0 28px;letter-spac
 .shots figure{margin:0}
 .shots .frame{
   aspect-ratio:16/10;border-radius:var(--r);overflow:hidden;border:3px solid #0d1020;box-shadow:0 6px 0 #0d1020;
-  background:linear-gradient(135deg,var(--ink-2),#2f3756);display:grid;place-items:center;color:var(--muted);font-weight:800;text-align:center;padding:12px
+  position:relative;background:linear-gradient(135deg,var(--ink-2),#2f3756);display:grid;place-items:center;color:var(--muted);font-weight:800;text-align:center;padding:12px
 }
-.shots img{width:100%;height:100%;object-fit:cover;display:block}
+.shots img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .shots figcaption{margin-top:12px;color:var(--muted);font-size:15px}
 
 .cta{margin:96px 0 0;padding:64px 0;background:var(--ink-2);border-block:3px solid #0d1020}
