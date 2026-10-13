@@ -1,5 +1,5 @@
 @echo off
-title Arret du serveur - RPG.exe
+title Arret du serveur - Eleona.exe
 
 :: Vérifie si le script est lancé en administrateur
 net session >nul 2>&1
@@ -11,16 +11,16 @@ if %errorlevel% neq 0 (
 
 cd /d C:\Windows\System32
 
-echo Arret de RPG.exe...
-taskkill /F /IM RPG.exe
+echo Arret de Eleona.exe...
+taskkill /F /IM Eleona.exe
 
 echo.
 echo Verification des processus restants :
-tasklist | findstr /I RPG.exe
+tasklist | findstr /I Eleona.exe
 if %errorlevel% neq 0 (
-    echo Aucun processus RPG.exe en cours. Serveur arrete.
+    echo Aucun processus Eleona.exe en cours. Serveur arrete.
 ) else (
-    echo ATTENTION : RPG.exe tourne encore.
+    echo ATTENTION : Eleona.exe tourne encore.
 )
 
 echo.

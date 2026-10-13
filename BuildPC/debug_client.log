@@ -1,7 +1,12 @@
-=== demarrage 2026-10-13 03:17:37 (pid 24984) ===
-03:17:37.279 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
+=== demarrage 2026-10-13 04:02:46 (pid 18352) ===
+04:02:46.391 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 
-03:17:37.283 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
+04:02:46.395 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 
-03:17:37.297 The resource LegacyRuntime.ttf could not be loaded from the resource file!
+04:02:46.404 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 
+04:02:57.032 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+04:02:57.033 [Enemy] client : PV synchronises de Enemy : 0 -> 5000 (vivant avant=True)
+04:02:57.034 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+04:02:57.034 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+04:02:57.035 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)

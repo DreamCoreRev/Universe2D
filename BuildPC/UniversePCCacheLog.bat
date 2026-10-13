@@ -12,10 +12,10 @@ if %errorlevel% neq 0 (
 cd /d C:\Servers\Sources\Universe2D\BuildPC
 
 echo [1/2] Lancement en batchmode...
-start "" RPG.exe -batchmode -nographics -logFile C:\Servers\Sources\Universe2D\server.log
+start "" Eleona.exe -batchmode -nographics -logFile C:\Servers\Sources\Universe2D\server.log
 
 echo [2/2] Lancement du client...
-start "" RPG.exe -logFile C:\Servers\Sources\Universe2D\client.log
+start "" Eleona.exe -logFile C:\Servers\Sources\Universe2D\client.log
 
 echo.
 echo Termine.
