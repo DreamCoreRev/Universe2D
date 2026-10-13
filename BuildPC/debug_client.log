@@ -1,52 +1,39 @@
-=== demarrage 2026-10-13 00:57:27 (pid 20168) ===
-00:57:27.108 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
+=== demarrage 2026-10-13 01:13:01 (pid 20124) ===
+01:13:01.835 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 
-00:57:27.112 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
+01:13:01.837 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 
-00:57:27.121 The resource LegacyRuntime.ttf could not be loaded from the resource file!
+01:13:01.847 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 
-00:57:36.333 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-00:57:36.334 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-00:57:36.334 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
-00:57:36.335 [Enemy] client : PV synchronises de Enemy : 0 -> 5000 (vivant avant=True)
-00:57:36.380 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-00:57:36.380 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
-00:57:36.381 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-00:57:36.381 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-00:57:36.381 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-00:57:36.382 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
-00:57:48.331 [Enemy] client : PV synchronises de Enemy : 200 -> 141 (vivant avant=True)
-00:57:49.201 [Enemy] Enemy prend la fuite : PathState : plus de cible
-00:57:52.639 ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+01:13:11.537 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+01:13:11.538 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+01:13:11.539 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+01:13:11.540 [Enemy] client : PV synchronises de Enemy : 0 -> 5000 (vivant avant=True)
+01:13:11.540 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+01:13:11.540 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+01:13:11.541 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+01:13:11.541 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+01:13:11.542 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+01:13:11.542 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+01:13:16.136 [Enemy] client : PV synchronises de Enemy : 200 -> 141 (vivant avant=True)
+01:13:17.005 [Enemy] Enemy prend la fuite : PathState : plus de cible
+01:13:17.470 [Enemy] client : PV synchronises de Enemy : 141 -> 82 (vivant avant=True)
+01:13:18.270 [Enemy] Enemy prend la fuite : PathState : plus de cible
+01:13:19.203 [Enemy] client : PV synchronises de Enemy : 82 -> 32 (vivant avant=True)
+01:13:22.387 [Enemy] client : PV synchronises de Enemy : 32 -> 0 (vivant avant=True)
+01:13:52.277 ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
 Parameter name: index
 System.Collections.Generic.List`1[T].get_Item (System.Int32 index) (at <34c8028f8a3946349d8f0d77e409a1ae>:0)
-ChainLightning.PickTarget (UnityEngine.Collider2D collision) (at <2ee52b8391e1465badd57f32c627d03d>:0)
-ChainLightning.OnTriggerEnter2D (UnityEngine.Collider2D collision) (at <2ee52b8391e1465badd57f32c627d03d>:0)
+ChainLightning.PickTarget (UnityEngine.Collider2D collision) (at <06b6797f25ff4e72bb57e1958b97652a>:0)
+ChainLightning.OnTriggerEnter2D (UnityEngine.Collider2D collision) (at <06b6797f25ff4e72bb57e1958b97652a>:0)
 
-00:57:52.865 [Enemy] client : PV synchronises de Enemy : 141 -> 91 (vivant avant=True)
-00:57:55.916 [Enemy] client : PV synchronises de Enemy : 91 -> 41 (vivant avant=True)
-00:57:58.666 [Enemy] client : PV synchronises de Enemy : 41 -> 0 (vivant avant=True)
-00:58:24.033 [Enemy] client : PV synchronises de Enemy : 50 -> 0 (vivant avant=True)
-00:58:24.950 [Enemy] Enemy prend la fuite : PathState : plus de cible
-00:58:32.033 [Enemy] client : PV synchronises de Enemy : 200 -> 141 (vivant avant=True)
-00:58:32.584 [Enemy] Enemy prend la fuite : PathState : plus de cible
-00:58:32.900 [Enemy] client : PV synchronises de Enemy : 141 -> 82 (vivant avant=True)
-00:58:33.783 [Enemy] client : PV synchronises de Enemy : 82 -> 23 (vivant avant=True)
-00:58:34.665 [Enemy] client : PV synchronises de Enemy : 23 -> 0 (vivant avant=True)
-00:58:35.600 [Enemy] Enemy prend la fuite : PathState : plus de cible
-00:59:13.902 InvalidOperationException: Stack empty.
-System.Collections.Generic.Stack`1[T].Pop () (at <34c8028f8a3946349d8f0d77e409a1ae>:0)
-ObservableStack`1[T].Pop () (at <2ee52b8391e1465badd57f32c627d03d>:0)
-SlotScript.MergeItems (SlotScript from) (at <2ee52b8391e1465badd57f32c627d03d>:0)
-SlotScript.OnPointerClick (UnityEngine.EventSystems.PointerEventData eventData) (at <2ee52b8391e1465badd57f32c627d03d>:0)
-UnityEngine.EventSystems.ExecuteEvents.Execute (UnityEngine.EventSystems.IPointerClickHandler handler, UnityEngine.EventSystems.BaseEventData eventData) (at <7526fdfe30f749ed88bdd1dad8002d60>:0)
-UnityEngine.EventSystems.ExecuteEvents.Execute[T] (UnityEngine.GameObject target, UnityEngine.EventSystems.BaseEventData eventData, UnityEngine.EventSystems.ExecuteEvents+EventFunction`1[T1] functor) (at <7526fdfe30f749ed88bdd1dad8002d60>:0)
-UnityEngine.EventSystems.EventSystem:Update()
-
-00:59:32.551 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-00:59:32.551 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
-00:59:32.552 [Enemy] client : PV synchronises de Enemy : 0 -> 5000 (vivant avant=True)
-00:59:32.552 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-00:59:32.552 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-00:59:32.553 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-00:59:32.553 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+01:13:52.370 [Enemy] client : PV synchronises de Enemy : 200 -> 150 (vivant avant=True)
+01:13:54.036 [Enemy] client : PV synchronises de Enemy : 150 -> 91 (vivant avant=True)
+01:13:56.070 [Enemy] client : PV synchronises de Enemy : 91 -> 41 (vivant avant=True)
+01:13:58.603 [Enemy] client : PV synchronises de Enemy : 41 -> 0 (vivant avant=True)
+01:14:12.119 [Enemy] client : PV synchronises de Enemy : 200 -> 141 (vivant avant=True)
+01:14:12.888 [Enemy] Enemy prend la fuite : PathState : plus de cible
+01:14:13.037 [Enemy] client : PV synchronises de Enemy : 141 -> 82 (vivant avant=True)
+01:14:14.020 [Enemy] client : PV synchronises de Enemy : 82 -> 23 (vivant avant=True)
+01:14:14.836 [Enemy] client : PV synchronises de Enemy : 23 -> 0 (vivant avant=True)
+01:14:15.671 [Enemy] Enemy prend la fuite : PathState : plus de cible
