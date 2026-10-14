@@ -2,10 +2,10 @@ using UnityEngine;
 
 /// <summary>
 /// Teleporte le joueur local vers une position cible des qu'il entre dans ce
-/// trigger. Utilise pour la porte de la Capitale : on place ce composant sur
-/// un collider trigger juste devant la porte (cote exterieur), avec
-/// targetPosition pointant juste a l'interieur des remparts -- ca donne
-/// l'impression que la porte "s'ouvre" et fait entrer le joueur.
+/// trigger. Utilise pour la porte de la Capitale : un trigger cote exterieur
+/// envoie le joueur juste a l'interieur des remparts, et un second trigger
+/// cote interieur le renvoie juste a l'exterieur -- ca donne l'impression que
+/// la porte "s'ouvre" et fait passer le joueur.
 ///
 /// La position du joueur est entierement geree par NetworkTransform (voir le
 /// clamp de carte dans Player.Update(), qui fait deja directement
@@ -13,6 +13,16 @@ using UnityEngine;
 /// [Command] ici, on fait pareil : seul le client qui possede ce joueur
 /// (IsLocallyControlled) deplace son propre transform, et NetworkTransform se
 /// charge de repercuter le changement aux autres clients.
+///
+/// IMPORTANT : lastTeleportTime est STATIC, partage par TOUS les
+/// TeleportTrigger de la scene (pas un champ par instance). Avec une paire
+/// entree/sortie proche l'une de l'autre (porte de la Capitale), un cooldown
+/// par instance ne protege que contre le re-declenchement du MEME trigger --
+/// si le joueur retraverse tout de suite le trigger OPPOSE (celui qui
+/// ramenait d'ou il vient), rien ne l'empechait de faire l'aller-retour en
+/// boucle. Un cooldown partage bloque toute teleportation (quel que soit le
+/// trigger) pendant un court delai apres chacune, le temps que le joueur
+/// s'eloigne de la zone d'arrivee.
 /// </summary>
 public class TeleportTrigger : MonoBehaviour
 {
@@ -20,11 +30,11 @@ public class TeleportTrigger : MonoBehaviour
     [SerializeField]
     private Vector3 targetPosition;
 
-    [Tooltip("Delai minimum (secondes) entre deux teleportations du meme joueur, pour eviter un aller-retour en boucle si la destination est proche du trigger.")]
+    [Tooltip("Delai minimum (secondes) entre deux teleportations, tous teleporteurs confondus, pour eviter un aller-retour en boucle entre deux triggers proches.")]
     [SerializeField]
-    private float cooldown = 1f;
+    private float cooldown = 1.5f;
 
-    private float lastTeleportTime = -999f;
+    private static float lastTeleportTime = -999f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
