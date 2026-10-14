@@ -1,20 +1,32 @@
-=== demarrage 2026-10-13 03:15:02 (pid 9500) ===
-03:15:02.435 Failed to find UI/Skin/Knob.psd
-03:15:02.438 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
+=== demarrage 2026-10-14 20:38:41 (pid 5284) ===
+20:38:41.848 Failed to find UI/Skin/Knob.psd
+20:38:41.851 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 UnityEngine.Resources:GetBuiltinResource<UnityEngine.Sprite> (string)
 TouchJoystick:GetKnobSprite () (at Assets/Scripts/Controls/TouchJoystick.cs:168)
 TouchJoystick:Install () (at Assets/Scripts/Controls/TouchJoystick.cs:125)
 
-03:15:02.438 Failed to find UI/Skin/UISprite.psd
-03:15:02.439 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
+20:38:41.852 Failed to find UI/Skin/UISprite.psd
+20:38:41.852 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 UnityEngine.Resources:GetBuiltinResource<UnityEngine.Sprite> (string)
 TouchJoystick:GetKnobSprite () (at Assets/Scripts/Controls/TouchJoystick.cs:172)
 TouchJoystick:Install () (at Assets/Scripts/Controls/TouchJoystick.cs:125)
 
-03:15:02.445 Failed to find LegacyRuntime.ttf
-03:15:02.445 The resource LegacyRuntime.ttf could not be loaded from the resource file!
+20:38:41.857 Failed to find LegacyRuntime.ttf
+20:38:41.857 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 UnityEngine.Resources:GetBuiltinResource<UnityEngine.Font> (string)
 TouchMenuButtons:GetUIFont () (at Assets/Scripts/Controls/TouchMenuButtons.cs:115)
 TouchMenuButtons:CreateTooltip (UnityEngine.Transform) (at Assets/Scripts/Controls/TouchMenuButtons.cs:273)
 TouchMenuButtons:Install () (at Assets/Scripts/Controls/TouchMenuButtons.cs:184)
 
+20:38:44.322 NullReferenceException: Object reference not set to an instance of an object
+GameManager.ClickTarget () (at Assets/Scripts/Managers/GameManager.cs:203)
+GameManager.LateUpdate () (at Assets/Scripts/Managers/GameManager.cs:92)
+
+20:38:55.789 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+20:38:55.792 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+20:38:55.793 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+20:38:55.794 [Enemy] client : PV synchronises de Enemy : 0 -> 5000 (vivant avant=True)
+20:38:55.794 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+20:38:55.795 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+20:38:55.796 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+20:38:55.797 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
