@@ -244,7 +244,24 @@ static async Task WriteJsonAsync(HttpListenerContext context, int statusCode, ob
     context.Response.StatusCode = statusCode;
     context.Response.ContentType = "application/json; charset=utf-8";
     context.Response.ContentLength64 = bytes.Length;
-    await context.Response.OutputStream.WriteAsync(bytes);
+
+    // Une requete HEAD ne doit jamais avoir de corps (RFC 7231). Sous Windows,
+    // HttpListener applique deja cette regle en interne : pour une requete
+    // HEAD, le nombre d'octets de corps autorises en ecriture est force a 0
+    // QUEL QUE SOIT ContentLength64 (qui reste correctement envoye dans
+    // l'en-tete, lui, pour informer le client de la taille qu'aurait eu le
+    // corps). Si on essaie quand meme d'ecrire le JSON, HttpListener compare
+    // la taille qu'on tente d'ecrire a ce budget de 0 et leve
+    // ProtocolViolationException ("Bytes to be written to the stream exceed
+    // the Content-Length..."), meme si bytes.Length correspond exactement a
+    // ContentLength64. C'est ce qui provoquait le crash observe : n'importe
+    // quelle requete HEAD (health check, sonde, navigateur, etc.) tombe dans
+    // la branche "methode non supportee" plus haut, qui essayait d'ecrire un
+    // corps JSON non vide.
+    if (!string.Equals(context.Request.HttpMethod, "HEAD", StringComparison.OrdinalIgnoreCase))
+    {
+        await context.Response.OutputStream.WriteAsync(bytes);
+    }
     context.Response.OutputStream.Close();
 }
 
