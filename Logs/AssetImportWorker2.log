@@ -1,0 +1,931 @@
+Using pre-set license
+Built from '2021.3/respin/2021.3.45f2-0da89fac8e' branch; Version is '2021.3.45f2 (88f88f591b2e) revision 8976527'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.26300) 64bit Professional' Language: 'fr' Physical Memory: 32635 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2021.3.45f2\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker2
+-projectPath
+C:/Servers/Sources/Universe2D
+-logFile
+Logs/AssetImportWorker2.log
+-srvPort
+56986
+Successfully changed project path to: C:/Servers/Sources/Universe2D
+C:/Servers/Sources/Universe2D
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [8776] Host "[IP] 10.93.238.61 [Port] 0 [Flags] 2 [Guid] 890506738 [EditorId] 890506738 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-R30U5VV) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [8776] Host "[IP] 10.93.238.61 [Port] 0 [Flags] 2 [Guid] 890506738 [EditorId] 890506738 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-R30U5VV) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with {0} workers.
+Refreshing native plugins compatible for Editor in 141.17 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2021.3.45f2 (88f88f591b2e)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Servers/Sources/Universe2D/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: AMD Radeon RX 7600 (ID=0x7480)
+    Vendor:   ATI
+    VRAM:     8150 MB
+    Driver:   32.0.31041.1004
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56516
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2021.3.45f2/Editor/Data/PlaybackEngines/MetroSupport/UnityEditor.UWP.Extensions.dll
+Registered in 0.008910 seconds.
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Android Extension - Scanning For ADB Devices 264 ms
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 103.82 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.898 seconds
+Domain Reload Profiling:
+	ReloadAssembly (899ms)
+		BeginReloadAssembly (93ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (718ms)
+			LoadAssemblies (92ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (89ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (23ms)
+			SetupLoadedEditorAssemblies (567ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (343ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (104ms)
+				BeforeProcessingInitializeOnLoad (1ms)
+				ProcessInitializeOnLoadAttributes (82ms)
+				ProcessInitializeOnLoadMethodAttributes (36ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.012367 seconds.
+Begin MonoManager ReloadAssembly
+Symbol file LoadedFromMemory is not a mono symbol file
+Native extension for UWP target not found
+Native extension for WindowsStandalone target not found
+Native extension for Android target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 104.48 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Package Manager log level set to [2]
+[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
+[Package Manager] Cannot connect to Unity Package Manager local server
+Mirror | mirror-networking.com | discord.gg/N9QVxbM
+Mono: successfully reloaded assembly
+- Completed reload, in  1.683 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1684ms)
+		BeginReloadAssembly (120ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (1466ms)
+			LoadAssemblies (129ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (247ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (60ms)
+			SetupLoadedEditorAssemblies (992ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (15ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (105ms)
+				BeforeProcessingInitializeOnLoad (83ms)
+				ProcessInitializeOnLoadAttributes (665ms)
+				ProcessInitializeOnLoadMethodAttributes (116ms)
+				AfterProcessingInitializeOnLoad (8ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 2.03 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 5470 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 76 unused Assets / (48.4 KB). Loaded Objects now: 5903.
+Memory consumption went from 198.9 MB to 198.9 MB.
+Total: 6.964000 ms (FindLiveObjects: 0.413100 ms CreateObjectMapping: 0.172100 ms MarkObjects: 6.250300 ms  DeleteObjects: 0.127600 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:CustomObjectIndexerAttribute: bc11b3a6c3213fcdd17b65e7da85e133 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 108367.936723 seconds.
+  path: Assets/Skyden_Games/Cozy Farm/Scenes
+  artifactKey: Guid(c62e87904a03ef143bbeaa6999e03959) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Skyden_Games/Cozy Farm/Scenes using Guid(c62e87904a03ef143bbeaa6999e03959) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a2db028319627665c5be36375e1ea74') in 0.017253 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.916237 seconds.
+  path: Assets/Skyden_Games/Cozy Farm/Textures
+  artifactKey: Guid(53368bd805ceb1f408dd7b69b5ff3b85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Skyden_Games/Cozy Farm/Textures using Guid(53368bd805ceb1f408dd7b69b5ff3b85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3d8ab900a7728daefa67730837833e02') in 0.008374 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.063359 seconds.
+  path: Assets/Skyden_Games/Cozy Farm/Textures/Fence Tiles.png
+  artifactKey: Guid(c61fb5aceb550704db9e3c38e8a35533) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Skyden_Games/Cozy Farm/Textures/Fence Tiles.png using Guid(c61fb5aceb550704db9e3c38e8a35533) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '778f1a9c935ec22cd79cd840e0ecf4a6') in 0.164289 seconds 
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Skyden_Games/Cozy Farm/Textures/Water Tiles.png
+  artifactKey: Guid(c6cb8dd627765894a90115443ea1b579) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Skyden_Games/Cozy Farm/Textures/Water Tiles.png using Guid(c6cb8dd627765894a90115443ea1b579) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd022101a9b1e357c002c09384d35398c') in 0.086951 seconds 
+Number of asset objects unloaded after import = 16
+========================================================================
+Received Import Request.
+  Time since last request: 5.397668 seconds.
+  path: Assets/Skyden_Games/Cozy Farm/Tile Palettes
+  artifactKey: Guid(a8c76f4b542e9734ab45f326b8b488d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Skyden_Games/Cozy Farm/Tile Palettes using Guid(a8c76f4b542e9734ab45f326b8b488d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '498022c63e641ada198cf204e6b68cb9') in 0.008043 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.098936 seconds.
+  path: Assets/Skyden_Games/Cozy Farm/Tile Palettes/Fence Tile Palette.prefab
+  artifactKey: Guid(6b149daaab659f64a9744a10dcd866b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Skyden_Games/Cozy Farm/Tile Palettes/Fence Tile Palette.prefab using Guid(6b149daaab659f64a9744a10dcd866b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '232602a9b8d2d2acc5e575f74e03f6b7') in 0.052993 seconds 
+Number of asset objects unloaded after import = 35
+========================================================================
+Received Import Request.
+  Time since last request: 2.626164 seconds.
+  path: Assets/Skyden_Games/Cozy Farm/Tile Palettes/Fence Tile Palette
+  artifactKey: Guid(97103e0aaed74ee43882cf3a07de1213) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Skyden_Games/Cozy Farm/Tile Palettes/Fence Tile Palette using Guid(97103e0aaed74ee43882cf3a07de1213) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '499f0f116103d0b8ef7022dd8dc673fd') in 0.002768 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.104166 seconds.
+  path: Assets/Skyden_Games/Cozy Farm/Tile Palettes/Fence Tile Palette/Fence Tiles_0.asset
+  artifactKey: Guid(eb1ba442b3eac14438a11e7621e49382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Skyden_Games/Cozy Farm/Tile Palettes/Fence Tile Palette/Fence Tiles_0.asset using Guid(eb1ba442b3eac14438a11e7621e49382) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c7fb8023a10d51711c31b8c12320ff3') in 0.048752 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/Skyden_Games/Cozy Farm/Tile Palettes/Fence Tile Palette/Fence Tiles_5.asset
+  artifactKey: Guid(01f14911dd7aa3448a9cab9795dd9bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Skyden_Games/Cozy Farm/Tile Palettes/Fence Tile Palette/Fence Tiles_5.asset using Guid(01f14911dd7aa3448a9cab9795dd9bab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fae285e41e428e8fae96de4afebdbaad') in 0.026482 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000084 seconds.
+  path: Assets/Skyden_Games/Cozy Farm/Tile Palettes/Fence Tile Palette/Fence Tiles_8.asset
+  artifactKey: Guid(2b1bbe79b43c11747a8e63986dee15fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/Skyden_Games/Cozy Farm/Tile Palettes/Fence Tile Palette/Fence Tiles_8.asset using Guid(2b1bbe79b43c11747a8e63986dee15fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e237ebcb3fb70782720614d8fb30758') in 0.022290 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 6.555751 seconds.
+  path: Assets/TextMesh Pro
+  artifactKey: Guid(f54d1bd14bd3ca042bd867b519fee8cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/TextMesh Pro using Guid(f54d1bd14bd3ca042bd867b519fee8cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efa9b2a4d20909f4f95da91f9d55bd26') in 0.008235 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 5.613591 seconds.
+  path: Assets/RafaelMatos
+  artifactKey: Guid(e8fc0e742124bb941b52875533df92ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos using Guid(e8fc0e742124bb941b52875533df92ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6cfeb7849de99ce2a265bbeac797067c') in 0.008546 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.580233 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)
+  artifactKey: Guid(50810b7d09d2ce5419eba8dc51b472c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors) using Guid(50810b7d09d2ce5419eba8dc51b472c0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6e57cf34030114a71a3df29ff021543') in 0.008241 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 1.301836 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets
+  artifactKey: Guid(a60ed14d543aae24298c684f848fd603) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets using Guid(a60ed14d543aae24298c684f848fd603) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c367ca892a5e72e94269e0b6e3e2812') in 0.008391 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.335792 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props.png
+  artifactKey: Guid(57384e3e200e7894ab6388c334a13241) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props.png using Guid(57384e3e200e7894ab6388c334a13241) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bda93e1a6af55af2ee603fde0aaec5ef') in 1.636095 seconds 
+Number of asset objects unloaded after import = 1372
+========================================================================
+Received Import Request.
+  Time since last request: 0.362614 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/breakable-pots-anim-1-V1-11frames.png
+  artifactKey: Guid(e6739a6afa5ef684faca2ff230df2b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/breakable-pots-anim-1-V1-11frames.png using Guid(e6739a6afa5ef684faca2ff230df2b27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b3be86c96a4ca85c8520010767cada7') in 0.035713 seconds 
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/breakable-pots-anim-6-V1-11frames.png
+  artifactKey: Guid(ea5d6dc89bf6a804aa926acb50b2feec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/breakable-pots-anim-6-V1-11frames.png using Guid(ea5d6dc89bf6a804aa926acb50b2feec) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af28fc6371c4c1241d9cab854b79544e') in 0.039401 seconds 
+Number of asset objects unloaded after import = 13
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/chests-chest3-opening.png
+  artifactKey: Guid(cd5623f79a28ed5418b8757fdd963f30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/chests-chest3-opening.png using Guid(cd5623f79a28ed5418b8757fdd963f30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '851b4e5b3fa2483e735cf2a240618bce') in 0.046310 seconds 
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 0.000042 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/doors-d2-opening-h.png
+  artifactKey: Guid(637275a4f72470f409b825fb0284163a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/doors-d2-opening-h.png using Guid(637275a4f72470f409b825fb0284163a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '05d88b6d0ebf409ab57b544421e06d36') in 0.045026 seconds 
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/chests-chest1-closing.png
+  artifactKey: Guid(3bcc35603bda32447bc5f4b4b6ac902f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/chests-chest1-closing.png using Guid(3bcc35603bda32447bc5f4b4b6ac902f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '227a111ae02a579b9ec1abf038286b8e') in 0.040596 seconds 
+Number of asset objects unloaded after import = 9
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/candle_and_torch-candle_smoke.png
+  artifactKey: Guid(3c9701b4da4e43441895bc792f8a90ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/candle_and_torch-candle_smoke.png using Guid(3c9701b4da4e43441895bc792f8a90ca) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21e0e2a541521d5e4fa7301a58d4420d') in 0.054766 seconds 
+Number of asset objects unloaded after import = 20
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/breakable-pots-first-frame.png
+  artifactKey: Guid(e3c9b1cc8bae8224e9e7377630d63def) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/breakable-pots-first-frame.png using Guid(e3c9b1cc8bae8224e9e7377630d63def) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de3c912e04f12a493fc2e08d53b9811b') in 0.097656 seconds 
+Number of asset objects unloaded after import = 38
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/chests-chest4-opening.png
+  artifactKey: Guid(55ef505aa1ee8244694573e196144cc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/chests-chest4-opening.png using Guid(55ef505aa1ee8244694573e196144cc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fa0695a6d502f3b5eced3e5dd0c1ea8f') in 0.048574 seconds 
+Number of asset objects unloaded after import = 11
+========================================================================
+Received Import Request.
+  Time since last request: 0.000041 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/breakable-pots-anim-6-V3-10frames.png
+  artifactKey: Guid(a09a34ef94614a64aac5687083dd7bb7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/breakable-pots-anim-6-V3-10frames.png using Guid(a09a34ef94614a64aac5687083dd7bb7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91ae0cf760412d657c494fc3b2fa3420') in 0.030079 seconds 
+Number of asset objects unloaded after import = 12
+========================================================================
+Received Import Request.
+  Time since last request: 0.916994 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/anim
+  artifactKey: Guid(c423b0812f61e8e43b3290ac7563ef6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/animations/anim using Guid(c423b0812f61e8e43b3290ac7563ef6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37a9bd2110eeade3f2169e95be26db9e') in 0.009942 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 2.603448 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites
+  artifactKey: Guid(1306440a758362e4fa71839b6d5b94c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites using Guid(1306440a758362e4fa71839b6d5b94c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81041ab80c936e42ba72447f8d9f1346') in 0.008951 seconds 
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.111847 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/banner_0.png
+  artifactKey: Guid(30d7d5dec19ff684abad1a85450b1668) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/banner_0.png using Guid(30d7d5dec19ff684abad1a85450b1668) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '618b9a3165d826a8fc312f1282dbd6ae') in 0.016058 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/bed_5.png
+  artifactKey: Guid(511b6e57500acf3448e02dc12841cfa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/bed_5.png using Guid(511b6e57500acf3448e02dc12841cfa8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1d434e35d47249072003a3b0366c2450') in 0.026559 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/bed_9.png
+  artifactKey: Guid(927a62cf9f3d25a41b6a28ae6b9a90d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/bed_9.png using Guid(927a62cf9f3d25a41b6a28ae6b9a90d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23ac49468fd77b172d912749d790bed5') in 0.018309 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/big_rect_table_1.png
+  artifactKey: Guid(3827b940ab6beba45b466703dc0fb3c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/big_rect_table_1.png using Guid(3827b940ab6beba45b466703dc0fb3c7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2b04af37e3f1051d819baac27fd06e44') in 0.018924 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/banner_7.png
+  artifactKey: Guid(bead02c143da19044a8d599803bdbd62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/banner_7.png using Guid(bead02c143da19044a8d599803bdbd62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2385ac59a13caca8d2fc1c52624996a9') in 0.018492 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/big_rect_table_2.png
+  artifactKey: Guid(6569d612c3a0c754d8245e22b29d084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/big_rect_table_2.png using Guid(6569d612c3a0c754d8245e22b29d084a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51a034430e87cb024f87344a59adda90') in 0.016841 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_9.png
+  artifactKey: Guid(cf971903600ab29489f2c34629891b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_9.png using Guid(cf971903600ab29489f2c34629891b37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'faa74c8dfef749688c41dcf2e538701b') in 0.018519 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/barrels3_0.png
+  artifactKey: Guid(aebffbda339ac2e49a2faac9b60a36a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/barrels3_0.png using Guid(aebffbda339ac2e49a2faac9b60a36a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ae48e6e29275d2ea2b57974634b482d0') in 0.017429 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/big_round_table_chairs_0.png
+  artifactKey: Guid(18c23220aa961764d9c5af514a60df27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/big_round_table_chairs_0.png using Guid(18c23220aa961764d9c5af514a60df27) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '888f6036adbaf39786e0fb1bbd55047d') in 0.018040 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_11.png
+  artifactKey: Guid(7c60a0575601b9e44bf597049d20ff01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_11.png using Guid(7c60a0575601b9e44bf597049d20ff01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9e92e75e0cbee911be38ab8e64fb2535') in 0.018988 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000038 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/barrels_2.png
+  artifactKey: Guid(a17cd47bf1975b74f95098d28b3b6ba7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/barrels_2.png using Guid(a17cd47bf1975b74f95098d28b3b6ba7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'beb954543ca9940fc16513b2441a348d') in 0.017040 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/barrels3_2.png
+  artifactKey: Guid(121f489d0dc428d4eb3a3df676da05ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/barrels3_2.png using Guid(121f489d0dc428d4eb3a3df676da05ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c87d98eacc25d733759a164cfef16ef') in 0.017749 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/bed_4.png
+  artifactKey: Guid(12f4e371e8bc35341b6183a5c5256ff1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/bed_4.png using Guid(12f4e371e8bc35341b6183a5c5256ff1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee045dc414e72cea1f3790c12b6cc0b8') in 0.017316 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_15.png
+  artifactKey: Guid(f5161a2be139f7c4ab3d9b7122c6539b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_15.png using Guid(f5161a2be139f7c4ab3d9b7122c6539b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4766a0590f8df6761cde5756528e0a19') in 0.017359 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_7.png
+  artifactKey: Guid(280c72ee7fabd2842a2f7fdeb0945535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_7.png using Guid(280c72ee7fabd2842a2f7fdeb0945535) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '353d46dd7dcdcb31aab859c22d68bb9e') in 0.019708 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/barrels_6.png
+  artifactKey: Guid(046d7f6063a669541a983d3071e97edc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/barrels_6.png using Guid(046d7f6063a669541a983d3071e97edc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fe3cd38bba26eb4e072d86c207ef93a8') in 0.019284 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_2.png
+  artifactKey: Guid(24d053c84feb9ab48a7e442c80cc925a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_2.png using Guid(24d053c84feb9ab48a7e442c80cc925a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '022d133adfd4c70431e999ecd49df0df') in 0.020103 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000022 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/barrels3_7.png
+  artifactKey: Guid(a061b5f760ac6214e9f238f3c37a5bd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/barrels3_7.png using Guid(a061b5f760ac6214e9f238f3c37a5bd3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '61fcff008f369a36fc4e0a674c663390') in 0.018339 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/big_round_table_3.png
+  artifactKey: Guid(8e67c561732b2b04794877bb6cf8806c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/big_round_table_3.png using Guid(8e67c561732b2b04794877bb6cf8806c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cbcfbe62a3e123438d755f2f4463bf8b') in 0.018257 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/big_round_table_0.png
+  artifactKey: Guid(dcbccb57b9631b3468b6a12caddb697c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/big_round_table_0.png using Guid(dcbccb57b9631b3468b6a12caddb697c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b5a1fbd92ccdf281de0e55dc2568cf6f') in 0.020921 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.820088 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_22.png
+  artifactKey: Guid(1f8d9f24d6d47df4f9219395dd539778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_22.png using Guid(1f8d9f24d6d47df4f9219395dd539778) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b3a219dad23acb102ceedc39286398e') in 0.023328 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_11.png
+  artifactKey: Guid(97b29e98242313748b233f1ad4c98f5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_11.png using Guid(97b29e98242313748b233f1ad4c98f5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91281ddce3229c7be9d4c6ad58ff29ce') in 0.018338 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_26.png
+  artifactKey: Guid(191ef2d65299e3047b7375ed4a584b6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/cabinet_26.png using Guid(191ef2d65299e3047b7375ed4a584b6e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0343645448088d21a5183b14e4c7c252') in 0.016046 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_6.png
+  artifactKey: Guid(0a54b4e0561d7474c9125aeb93988fe3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_6.png using Guid(0a54b4e0561d7474c9125aeb93988fe3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38eb8fded71933fb8cf43274e56c4152') in 0.016814 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000030 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_15.png
+  artifactKey: Guid(6071f8d1dfd4fa94284e2e23e3054e28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_15.png using Guid(6071f8d1dfd4fa94284e2e23e3054e28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8c92063b57ddab722a07f2bd664a7843') in 0.018926 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_17.png
+  artifactKey: Guid(47f29509d9e2e764fbb269d88f0f8e84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_17.png using Guid(47f29509d9e2e764fbb269d88f0f8e84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a32c6294727ae4d3bd13915b935f3391') in 0.018368 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_24.png
+  artifactKey: Guid(fdd58afe57fd245468e37c6f8ab9a37c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_24.png using Guid(fdd58afe57fd245468e37c6f8ab9a37c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56166ae6e4d95a43097e349ec69555f3') in 0.020633 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_18.png
+  artifactKey: Guid(965c41b3168127a468528f914ecb5d1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlesticks_18.png using Guid(965c41b3168127a468528f914ecb5d1c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1b6a0cb1a2d0defad33507cc74997963') in 0.018593 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.210193 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlestickss_1.png
+  artifactKey: Guid(6d69617313dc0294790000a39bcfde89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/candlestickss_1.png using Guid(6d69617313dc0294790000a39bcfde89) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '938e553f26bbaa9c60273185bb4fc1b2') in 0.019808 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/chandelier.png
+  artifactKey: Guid(e458c38e3f2d7b94085ea9541cdae468) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/chandelier.png using Guid(e458c38e3f2d7b94085ea9541cdae468) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '74429a4d44ea780535438bfd389a82bc') in 0.020873 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_16.png
+  artifactKey: Guid(23e3ed59c7b37104cad6ad8bf01c9f87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_16.png using Guid(23e3ed59c7b37104cad6ad8bf01c9f87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95c0c9486f4442d248fba8a43e4ff0a1') in 0.019321 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_9.png
+  artifactKey: Guid(4182e5e5d9113574786e301b30605876) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_9.png using Guid(4182e5e5d9113574786e301b30605876) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53c113b5c42937973612753d24d80ed7') in 0.017693 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000033 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_4.png
+  artifactKey: Guid(d952341f7d3235b4298e8a4e03f9b7e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_4.png using Guid(d952341f7d3235b4298e8a4e03f9b7e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efb5d4ecfa5f20e9b408dbfd9584e900') in 0.016896 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_8.png
+  artifactKey: Guid(3edd49d5bfd81e9409f03c06a0bec403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_8.png using Guid(3edd49d5bfd81e9409f03c06a0bec403) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9ca6367fc4c4e9ecd68c4ed5e4d248c6') in 0.017704 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_6.png
+  artifactKey: Guid(3c40cfabd9f432e45ba0e80e653ec690) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_6.png using Guid(3c40cfabd9f432e45ba0e80e653ec690) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '86d9ba5ca2ab834aeda97b2de2633b44') in 0.015835 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/chests_5.png
+  artifactKey: Guid(f196d38c3442d224db1d47b98546b558) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/chests_5.png using Guid(f196d38c3442d224db1d47b98546b558) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40a419617e5ac30553218da838a46016') in 0.018215 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_11.png
+  artifactKey: Guid(7766d149ccace5a458370fb8e53c68f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_11.png using Guid(7766d149ccace5a458370fb8e53c68f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e40327dfaf199e3a479efde2eedcd391') in 0.018127 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_1.png
+  artifactKey: Guid(d348c8ab355d10148aa292b5c8536397) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_1.png using Guid(d348c8ab355d10148aa292b5c8536397) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8de7ad0e0c51f64ee13eda539e02c76d') in 0.019803 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_15.png
+  artifactKey: Guid(30d33a9864729de42bbb9fb65d0b2339) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_15.png using Guid(30d33a9864729de42bbb9fb65d0b2339) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfa7d19e2493369f36213a8742fefaeb') in 0.018922 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_0.png
+  artifactKey: Guid(b9f4848aca7cf644b802fe4dffee010a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_0.png using Guid(b9f4848aca7cf644b802fe4dffee010a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c1ebb252a213d6a795950815ae4f058') in 0.018880 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.161454 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_14.png
+  artifactKey: Guid(0b98f2e85f499194081aff95c9c3121e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_14.png using Guid(0b98f2e85f499194081aff95c9c3121e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f084dc3cf2db8a44f433adc027c79a6a') in 0.014324 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decor_shields_2.png
+  artifactKey: Guid(b8fdef2d527f23041b94071da0d94b12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decor_shields_2.png using Guid(b8fdef2d527f23041b94071da0d94b12) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc9577352e4ca0b4af4c027b4eb3ba1c') in 0.017989 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_19.png
+  artifactKey: Guid(4fd5a87c7243d2a48ac405a4938f0ba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/crates_supply_19.png using Guid(4fd5a87c7243d2a48ac405a4938f0ba6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ed4b68470810f1de45ee2a0a8eeff54') in 0.018400 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_armor_3.png
+  artifactKey: Guid(4207c5659e903d346ae9b16d281c55ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_armor_3.png using Guid(4207c5659e903d346ae9b16d281c55ea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e7b599acc0e58df30bb3ef886671ff20') in 0.016852 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_armor_2.png
+  artifactKey: Guid(241c1a74db0cf2f49a9cefd01aa1ddb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_armor_2.png using Guid(241c1a74db0cf2f49a9cefd01aa1ddb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '768a2400c304bc0b5989495c143040dd') in 0.020447 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decor_shields_7.png
+  artifactKey: Guid(0008f19664034a240afaf58aad3988aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decor_shields_7.png using Guid(0008f19664034a240afaf58aad3988aa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '16f20bf0ea4190f2581773c6a2031e11') in 0.017077 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000040 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decor_shields_0.png
+  artifactKey: Guid(7b0a5682004a66e4b8d78d4297f7d93d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decor_shields_0.png using Guid(7b0a5682004a66e4b8d78d4297f7d93d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'efc704be167ed269bb3172d957773822') in 0.018960 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_books_0.png
+  artifactKey: Guid(c4c998c8c3ed40e4681a42a3d5fa097f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_books_0.png using Guid(c4c998c8c3ed40e4681a42a3d5fa097f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '308eec437f634647de0a3db1eac9d6a6') in 0.019915 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.339150 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_books_2.png
+  artifactKey: Guid(452a823745b273f4e9af9f7490613524) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_books_2.png using Guid(452a823745b273f4e9af9f7490613524) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1936a484c3cacb313cb95b348e21b182') in 0.018279 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000031 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_books_14.png
+  artifactKey: Guid(6af25acae06036d4385b7b207088c9f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_books_14.png using Guid(6af25acae06036d4385b7b207088c9f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfdb8217fcdf20014b640e9983d89801') in 0.017075 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_paper1.png
+  artifactKey: Guid(ba078f90e1385f84990159a6cee5d592) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_paper1.png using Guid(ba078f90e1385f84990159a6cee5d592) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f273693c9c890fa6b75ae4e7ee877561') in 0.017896 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000036 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_paper3.png
+  artifactKey: Guid(b921b1501cb672b41bad79de34641682) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_paper3.png using Guid(b921b1501cb672b41bad79de34641682) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd99e8d566525af079522409c4792f0f2') in 0.021348 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon2_1.png
+  artifactKey: Guid(12c96d428124ede439cc51f7861f8f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon2_1.png using Guid(12c96d428124ede439cc51f7861f8f04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8a0d2a8f51a7dae1026afaae60b6ef4') in 0.020582 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_paintings_7.png
+  artifactKey: Guid(31589ce2e43e1b142b191c72ae7186c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_paintings_7.png using Guid(31589ce2e43e1b142b191c72ae7186c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8eca2d5b10aff411b26f634bbaf02387') in 0.018898 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_paintings_5.png
+  artifactKey: Guid(bb59fa7a2078faa498e3880c7505422a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_paintings_5.png using Guid(bb59fa7a2078faa498e3880c7505422a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03ed6553add2b558dc849ba8c72d27c4') in 0.019594 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_paintings_3.png
+  artifactKey: Guid(a1bf54351fc653949a30a0dce29e80c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_paintings_3.png using Guid(a1bf54351fc653949a30a0dce29e80c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75e6f5cecfefa663e965c26b87b06e81') in 0.017837 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.409975 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon2_2.png
+  artifactKey: Guid(49d4234b8e40aa8468f1586b47519117) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon2_2.png using Guid(49d4234b8e40aa8468f1586b47519117) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '47aa41c8b551e31b2ad2c16a5590f93f') in 0.016228 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon_2.png
+  artifactKey: Guid(3c43b2a7fd3100a4da99b202608625c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon_2.png using Guid(3c43b2a7fd3100a4da99b202608625c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4888ac74753239bed4ac8d7cf0448711') in 0.017014 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000023 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon2_9.png
+  artifactKey: Guid(5c1aad2aa96537c4d90ad4d986286a83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon2_9.png using Guid(5c1aad2aa96537c4d90ad4d986286a83) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07f937ab548721f5de0bc07b7be5124a') in 0.017220 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon_5.png
+  artifactKey: Guid(18fa1a4851ea71f4280a0f4bef71ec3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon_5.png using Guid(18fa1a4851ea71f4280a0f4bef71ec3b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4abb26877ff5209297a5e00cb48c4f8b') in 0.017458 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.578984 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon_9.png
+  artifactKey: Guid(4807e30c690c6204f9ad93455ff5b024) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/decors_weapon_9.png using Guid(4807e30c690c6204f9ad93455ff5b024) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3bb9611618dd3d6c99db623f56d4a4bd') in 0.019466 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/furniture_and_props.aseprite
+  artifactKey: Guid(8e2d4048fd2fbff40b4d1b8f1d2ac6ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/furniture_and_props.aseprite using Guid(8e2d4048fd2fbff40b4d1b8f1d2ac6ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f9d50e06e17f2a53687202732e594829') in 0.117178 seconds 
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 0.000026 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/headboard_5.png
+  artifactKey: Guid(e4f57e6e855997a45a0a55eb8880fa1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/headboard_5.png using Guid(e4f57e6e855997a45a0a55eb8880fa1d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f63dc15b763f66c2352c0922de296e1e') in 0.017545 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000043 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/glass_container_6.png
+  artifactKey: Guid(9f52ef878fd88fb4c9526dace904a63c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/glass_container_6.png using Guid(9f52ef878fd88fb4c9526dace904a63c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '14257a3952e64c393af34c89e99535f6') in 0.018174 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.887487 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/kitchen_props2_1.png
+  artifactKey: Guid(1bf812c3111e41c40a1bf8a06282e62c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/kitchen_props2_1.png using Guid(1bf812c3111e41c40a1bf8a06282e62c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81dd88eacfff38e6cbf65432107d700d') in 0.015098 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000020 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/kitchen_props2_10.png
+  artifactKey: Guid(021cf086be681f44dbaa16d31ab20bdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/kitchen_props2_10.png using Guid(021cf086be681f44dbaa16d31ab20bdd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '71688e73ca945ea394740cd043469d29') in 0.015900 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/kitchen_props2_5.png
+  artifactKey: Guid(9a1e1f0888130c64fb2538c071fc27bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/kitchen_props2_5.png using Guid(9a1e1f0888130c64fb2538c071fc27bf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '001e15f786aafb259824f7da69d52abc') in 0.017999 seconds 
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/kitchen_props2_8.png
+  artifactKey: Guid(8b890a2eb5f2a6c419e4a9e76d3cd4bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Number of updated assets reloaded before import = 0
+Start importing Assets/RafaelMatos/ERW - Village(interiors)/assets/furniture_and_props_sprites/kitchen_props2_8.png using Guid(8b890a2eb5f2a6c419e4a9e76d3cd4bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4303cda987c9a74a2ad6a3f9793fac2c') in 0.015818 seconds 
+Number of asset objects unloaded after import = 3

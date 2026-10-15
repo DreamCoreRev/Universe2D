@@ -205,3 +205,60 @@ The following packages were added:
   com.unity.nuget.newtonsoft-json@3.2.1
 The following packages were updated:
   com.unity.ugui from version 1.0.0 to 2.0.0
+
+=== Fri Oct 16 00:58:27 2026
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.2d.animation from version 7.0.11 to 7.1.1
+  com.unity.2d.aseprite from version 1.0.1 to 1.1.6
+  com.unity.2d.common from version 6.0.6 to 6.0.7
+  com.unity.2d.psdimporter from version 6.0.7 to 6.0.9
+  com.unity.2d.tilemap.extras from version 2.2.6 to 2.2.7
+  com.unity.burst from version 1.6.6 to 1.8.18
+  com.unity.collab-proxy from version 2.1.0 to 2.5.2
+  com.unity.feature.2d from version 2.0.0 to 2.0.1
+  com.unity.ide.rider from version 3.0.25 to 3.0.31
+  com.unity.ide.visualstudio from version 2.0.21 to 2.0.22
+  com.unity.visualscripting from version 1.9.1 to 1.9.4
+
+=== Fri Oct 16 00:58:27 2026
+
+Packages were changed.
+Update Mode: mergeDefaultDependencies
+
+The following packages were added:
+  com.unity.2d.animation@7.1.1
+  com.unity.2d.aseprite@1.1.6
+  com.unity.2d.common@6.0.7
+  com.unity.2d.path@5.0.2
+  com.unity.2d.pixel-perfect@5.0.3
+  com.unity.2d.psdimporter@6.0.9
+  com.unity.2d.spriteshape@7.0.7
+  com.unity.2d.tilemap.extras@2.2.7
+  com.unity.burst@1.8.18
+  com.unity.feature.2d@2.0.1
+  com.unity.mathematics@1.2.6
+  com.unity.visualscripting@1.9.4
+  com.unity.modules.subsystems@1.0.0
+  com.unity.modules.uielementsnative@1.0.0
+
+=== Fri Oct 16 01:08:16 2026
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were updated:
+  com.unity.2d.animation from version 7.0.11 to 7.1.1
+  com.unity.2d.aseprite from version 1.0.1 to 1.1.6
+  com.unity.2d.common from version 6.0.6 to 6.0.7
+  com.unity.2d.psdimporter from version 6.0.7 to 6.0.9
+  com.unity.2d.tilemap.extras from version 2.2.6 to 2.2.7
+  com.unity.burst from version 1.6.6 to 1.8.18
+  com.unity.collab-proxy from version 2.1.0 to 2.5.2
+  com.unity.feature.2d from version 2.0.0 to 2.0.1
+  com.unity.ide.rider from version 3.0.25 to 3.0.31
+  com.unity.ide.visualstudio from version 2.0.21 to 2.0.22
+  com.unity.visualscripting from version 1.9.1 to 1.9.4
