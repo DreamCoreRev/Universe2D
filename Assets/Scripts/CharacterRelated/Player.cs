@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Debuffs;
+using Assets.Scripts.Debuffs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -463,10 +463,25 @@ public class Player : Character
 
             if (unusedSpell != null)
             {
-                Vector3 mouseScreenPostion = mainCam.ScreenToWorldPoint(Input.mousePosition);
-                unusedSpell.transform.position = new Vector3(mouseScreenPostion.x, mouseScreenPostion.y, 0);
+                // Vise avec le stick gauche de la manette des qu'on y touche
+                // (voir GamepadInput.cs -- pas de stick droit : son numero
+                // d'axe varie trop d'un pilote/systeme a l'autre pour le
+                // cabler sans manette sous la main pour tester). Sinon on
+                // garde la souris comme avant.
+                Vector2 gamepadAim = GamepadInput.MoveDirection;
+                Vector3 targetPosition;
+                if (gamepadAim != Vector2.zero)
+                {
+                    targetPosition = transform.position + (Vector3)(gamepadAim * aoeSpell.MyRange);
+                }
+                else
+                {
+                    Vector3 mouseScreenPostion = mainCam.ScreenToWorldPoint(Input.mousePosition);
+                    targetPosition = new Vector3(mouseScreenPostion.x, mouseScreenPostion.y, 0);
+                }
+                unusedSpell.transform.position = targetPosition;
 
-                float distance = Vector2.Distance(transform.position, mainCam.ScreenToWorldPoint(Input.mousePosition));
+                float distance = Vector2.Distance(transform.position, targetPosition);
 
                 if (distance >= aoeSpell.MyRange)
                 {
@@ -477,7 +492,9 @@ public class Player : Character
                     unusedSpell.GetComponent<AOESpell>().InRange();
                 }
 
-                if (Input.GetMouseButtonDown(0) && distance <= aoeSpell.MyRange)
+                // Clic gauche (souris) OU clic du stick droit de la manette
+                // (voir GamepadInput.ConfirmPressed) pour valider.
+                if ((Input.GetMouseButtonDown(0) || GamepadInput.ConfirmPressed) && distance <= aoeSpell.MyRange)
                 {
                     AOESpell s = Instantiate(aoeSpell.MySpellPrefab, unusedSpell.transform.position, Quaternion.identity).GetComponent<AOESpell>();
                     Vector3 castPosition = s.transform.position;
@@ -625,6 +642,11 @@ public class Player : Character
         // touché, donc ça ne change rien quand on n'y touche pas.
         Direction += TouchJoystick.Direction;
 
+        // Stick gauche de la manette (voir GamepadInput.cs) : meme
+        // principe que le joystick tactile juste au-dessus, s'ajoute sans
+        // remplacer le clavier.
+        Direction += GamepadInput.MoveDirection;
+
         if (IsMoving)
         {
             StopAction();
@@ -637,6 +659,23 @@ public class Player : Character
             {
                 UIManager.MyInstance.ClickActionButton(action);
 
+            }
+        }
+
+        // Manette (voir GamepadInput.cs) : A/B/X/Y + LB/RB declenchent
+        // ACT1 a ACT6, en plus des touches ci-dessus. Desactive pendant
+        // que le menu principal est ouvert (UIManager.IsMainMenuOpen) :
+        // A/B servent alors a valider/annuler dans ce menu (voir
+        // UIManager.UpdateMainMenuGamepadNavigation()), et les laisser
+        // aussi declencher ACT1/ACT2 lancerait un sort en meme temps.
+        if (!UIManager.MyInstance.IsMainMenuOpen)
+        {
+            for (int actionIndex = 0; actionIndex < 6; actionIndex++)
+            {
+                if (GamepadInput.GetActionButtonDown(actionIndex))
+                {
+                    UIManager.MyInstance.ClickActionButton("ACT" + (actionIndex + 1));
+                }
             }
         }
 

@@ -76,6 +76,10 @@ public class GameManager : MonoBehaviour {
         }
 
         NextTarget();
+
+        SelectNearestEnemyForGamepad();
+
+        LootNearestForGamepad();
 	}
 
     // En LateUpdate (pas Update) : l'EventSystem traite les nouveaux
@@ -262,6 +266,107 @@ public class GameManager : MonoBehaviour {
             }
         }
 
+    }
+
+    // Rayon (en unites monde, meme echelle que la taille de case de la
+    // Grid -- 1.3) dans lequel la manette cherche une creature a cibler :
+    // assez large pour choisir une creature "proche" sans viser au pixel
+    // pres (pas de souris), mais pas l'ecran entier non plus.
+    private const float GamepadTargetRange = 5f;
+
+    /// <summary>
+    /// Equivalent manette du clic gauche sur une creature (voir
+    /// ClickTarget() ci-dessus, qui fait un raycast sous le curseur) :
+    /// cible directement la creature VIVANTE la plus proche du joueur, dans
+    /// un rayon de GamepadTargetRange, sans avoir besoin d'une souris.
+    /// Reutilise SelectTarget()/DeSelectTarget() ci-dessous, donc l'UI
+    /// (cadre de cible, contour de selection) se comporte exactement pareil
+    /// qu'un ciblage a la souris.
+    /// </summary>
+    private void SelectNearestEnemyForGamepad()
+    {
+        if (!GamepadInput.TargetPressed)
+        {
+            return;
+        }
+
+        Collider2D[] hits = Physics2D.OverlapCircleAll(Player.MyInstance.transform.position, GamepadTargetRange, clickableLayer);
+
+        Enemy nearest = null;
+        float nearestDistanceSqr = float.MaxValue;
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.tag != "Enemy")
+            {
+                continue;
+            }
+
+            Enemy enemy = hit.GetComponent<Enemy>();
+            if (enemy == null || !enemy.IsAlive)
+            {
+                continue;
+            }
+
+            float distanceSqr = (enemy.transform.position - Player.MyInstance.transform.position).sqrMagnitude;
+            if (distanceSqr < nearestDistanceSqr)
+            {
+                nearestDistanceSqr = distanceSqr;
+                nearest = enemy;
+            }
+        }
+
+        DeSelectTarget();
+
+        if (nearest != null)
+        {
+            SelectTarget(nearest);
+        }
+        else
+        {
+            // Rien a portee : comme un clic gauche dans le vide, on efface
+            // la cible en cours plutot que de ne rien faire.
+            UIManager.MyInstance.HideTargetFrame();
+            currentTarget = null;
+            Player.MyInstance.MyTarget = null;
+        }
+    }
+
+    /// <summary>
+    /// Equivalent manette du clic gauche/droit sur une creature morte (voir
+    /// ClickTarget() plus haut) : loote directement n'importe quelle
+    /// creature morte a proximite (Player.MyInstance.MyInteractables,
+    /// rempli par Player.OnTriggerEnter2D/Exit2D des qu'on marche a cote
+    /// d'un cadavre), sans avoir besoin de viser avec une souris.
+    /// Enemy.Interact() regroupe de toute facon le butin de TOUTES les
+    /// creatures mortes a proximite en une seule fois (voir Enemy.cs), donc
+    /// peu importe laquelle des creatures mortes on appelle ici.
+    /// </summary>
+    private void LootNearestForGamepad()
+    {
+        if (!GamepadInput.LootPressed)
+        {
+            return;
+        }
+
+        if (LootWindow.MyInstance.IsOpen)
+        {
+            // La fenetre est deja ouverte (meme bouton presse une premiere
+            // fois juste avant, voir plus bas) : on prend tout d'un coup au
+            // lieu de cliquer un par un sur chaque objet, impossible sans
+            // souris -- voir LootWindow.TakeAll().
+            LootWindow.MyInstance.TakeAll();
+            return;
+        }
+
+        foreach (IInteractable interactable in Player.MyInstance.MyInteractables)
+        {
+            if (interactable is Enemy && !(interactable as Enemy).IsAlive)
+            {
+                interactable.Interact();
+                return;
+            }
+        }
     }
 
     private void DeSelectTarget()

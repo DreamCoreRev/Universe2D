@@ -1,9 +1,10 @@
-﻿using Assets.Scripts.Debuffs;
+using Assets.Scripts.Debuffs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -33,6 +34,22 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private CanvasGroup[] menus;
 
+    // Boutons visibles du menu principal (menus[0]), decouverts a
+    // l'ouverture via GetComponentsInChildren -- pas de wiring dans la
+    // scene : ca reste a jour meme si les boutons actifs changent (voir
+    // UpdateMainMenuGamepadNavigation()). mainMenuSelectedIndex est
+    // l'index (dans ce tableau) actuellement mis en surbrillance par la
+    // manette.
+    private Button[] mainMenuButtons;
+    private int mainMenuSelectedIndex;
+
+    /// <summary>
+    /// Vrai pendant que le menu principal (Echap / Start manette) est
+    /// ouvert -- utilise par Player.GetInput() pour desactiver la boucle
+    /// ACT1-6 de la manette (A/B servent alors a valider/annuler dans ce
+    /// menu, voir GamepadInput.MenuConfirmPressed/MenuCancelPressed).
+    /// </summary>
+    public bool IsMainMenuOpen => menus[0].alpha > 0;
 
     [SerializeField]
     private GameObject targetFrame;
@@ -103,10 +120,31 @@ public class UIManager : MonoBehaviour
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || GamepadInput.StartPressed)
         {
             OpenClose(menus[0]);
+
+            // Prepare/nettoie la navigation manette du menu principal a
+            // chaque ouverture/fermeture (voir
+            // UpdateMainMenuGamepadNavigation() plus bas) : les boutons
+            // actifs sont redecouverts a chaque ouverture (au cas ou
+            // SaveGame ou un autre bouton devienne actif/inactif), et la
+            // selection visuelle d'Unity est nettoyee a la fermeture.
+            if (IsMainMenuOpen)
+            {
+                mainMenuButtons = menus[0].GetComponentsInChildren<Button>(false);
+                mainMenuSelectedIndex = 0;
+                if (mainMenuButtons.Length > 0)
+                {
+                    EventSystem.current.SetSelectedGameObject(mainMenuButtons[0].gameObject);
+                }
+            }
+            else
+            {
+                EventSystem.current.SetSelectedGameObject(null);
+            }
         }
+        UpdateMainMenuGamepadNavigation();
         if (Input.GetKeyDown(KeyCode.I))
         {
             OpenClose(menus[1]);
@@ -258,6 +296,46 @@ public class UIManager : MonoBehaviour
     {
         canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
         canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
+    }
+
+    /// <summary>
+    /// Navigation manette dans le menu principal (menus[0]) : stick
+    /// gauche haut/bas pour deplacer la selection parmi mainMenuButtons
+    /// (decouverts a l'ouverture, voir plus haut dans Update()), A pour
+    /// valider le bouton selectionne, B pour fermer le menu sans valider.
+    /// La mise en surbrillance visuelle est entierement deleguee a
+    /// EventSystem.current.SetSelectedGameObject -- ca reutilise le
+    /// skin "selected" existant des boutons sans dupliquer son rendu
+    /// ici. Ne s'appuie pas sur la navigation manette integree d'Unity
+    /// (Submit/Cancel) : elle est bindee sur les memes boutons
+    /// manette (0/1) qu'ACT1/ACT2 et declencherait les deux a la fois.
+    /// </summary>
+    private void UpdateMainMenuGamepadNavigation()
+    {
+        if (!IsMainMenuOpen || mainMenuButtons == null || mainMenuButtons.Length == 0)
+        {
+            return;
+        }
+
+        if (GamepadInput.NavigateDownPressed)
+        {
+            mainMenuSelectedIndex = (mainMenuSelectedIndex + 1) % mainMenuButtons.Length;
+            EventSystem.current.SetSelectedGameObject(mainMenuButtons[mainMenuSelectedIndex].gameObject);
+        }
+        if (GamepadInput.NavigateUpPressed)
+        {
+            mainMenuSelectedIndex = (mainMenuSelectedIndex - 1 + mainMenuButtons.Length) % mainMenuButtons.Length;
+            EventSystem.current.SetSelectedGameObject(mainMenuButtons[mainMenuSelectedIndex].gameObject);
+        }
+        if (GamepadInput.MenuConfirmPressed)
+        {
+            mainMenuButtons[mainMenuSelectedIndex].onClick.Invoke();
+        }
+        if (GamepadInput.MenuCancelPressed)
+        {
+            OpenClose(menus[0]);
+            EventSystem.current.SetSelectedGameObject(null);
+        }
     }
 
     // Permet d'ouvrir/fermer un panneau de "menus" depuis un bouton (voir

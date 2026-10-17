@@ -172,6 +172,25 @@ public class LootWindow : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Prend tout le butin de toutes les pages d'un coup, puis ferme la
+    /// fenetre -- equivalent manette de cliquer un par un sur chaque objet
+    /// (TakeLoot(), appelee ci-dessous), qui suppose une souris. TakeLoot()
+    /// retire deja une page vide de pages des qu'on y prend le dernier
+    /// objet (voir plus haut), donc prendre systematiquement le premier
+    /// objet de la page courante jusqu'a ce qu'il n'y ait plus de page
+    /// suffit a tout vider, quel que soit le nombre de pages.
+    /// </summary>
+    public void TakeAll()
+    {
+        while (pages.Count > 0)
+        {
+            TakeLoot(pages[pageIndex][0].MyItem);
+        }
+
+        Close();
+    }
+
     public void Close()
     {
         pageIndex = 0;

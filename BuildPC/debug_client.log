@@ -1,16 +1,2466 @@
-=== demarrage 2026-10-16 02:01:56 (pid 19160) ===
-02:01:56.446 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
+=== demarrage 2026-10-17 03:26:13 (pid 20484) ===
+03:26:13.470 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 
-02:01:56.450 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
+03:26:13.473 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 
-02:01:56.477 The resource LegacyRuntime.ttf could not be loaded from the resource file!
+03:26:13.482 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 
-02:02:14.390 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-02:02:14.391 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-02:02:14.392 [Enemy] client : PV synchronises de Enemy : 0 -> 5000 (vivant avant=True)
-02:02:14.392 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-02:02:14.393 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
-02:02:14.393 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-02:02:14.394 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-02:02:14.394 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-02:02:14.394 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+03:26:23.607 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+03:26:23.608 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+03:26:23.608 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+03:26:23.609 [Enemy] client : PV synchronises de Enemy : 0 -> 5000 (vivant avant=True)
+03:26:23.609 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+03:26:23.610 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+03:26:23.610 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+03:26:23.611 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+03:26:23.611 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+03:26:23.612 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+03:26:30.232 [Enemy] client : PV synchronises de Enemy : 200 -> 150 (vivant avant=True)
+03:26:32.366 [Enemy] client : PV synchronises de Enemy : 150 -> 100 (vivant avant=True)
+03:26:32.406 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.417 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.434 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.451 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.468 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.484 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.501 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.518 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.535 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.551 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.568 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.585 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.600 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.617 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.635 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.651 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.667 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.685 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.700 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.717 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.734 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.751 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.768 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.784 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.800 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.818 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.835 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.850 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.868 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.884 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.900 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.918 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.934 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.950 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.968 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:32.984 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.000 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.018 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.034 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.051 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.068 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.084 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.101 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.118 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.134 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.151 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.168 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.184 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.200 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.218 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.235 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.251 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.268 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.285 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.301 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.317 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.335 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.351 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.368 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.384 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.400 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.418 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.435 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.451 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.468 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.484 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.500 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.518 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.534 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.550 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.567 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.584 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.600 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.617 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.634 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.650 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.668 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.685 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.700 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.717 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.735 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.751 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.768 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.784 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.800 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.818 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.835 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.851 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.868 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.884 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.901 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.918 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.932 [Enemy] client : PV synchronises de Enemy : 100 -> 50 (vivant avant=True)
+03:26:33.934 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.951 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.968 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:33.984 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.000 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.018 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.034 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.051 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.068 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.084 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.101 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.118 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.135 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.151 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.168 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.185 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.201 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.218 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.235 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.251 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.268 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.285 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.301 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.318 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.334 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.351 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.367 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.384 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.400 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.418 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.434 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.451 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.467 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.484 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.501 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.518 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.534 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.550 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.567 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.584 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.601 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.618 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.634 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.651 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.667 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.684 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.700 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.717 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.735 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.751 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.767 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.784 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.801 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.817 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.834 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.851 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.868 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.885 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.902 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.917 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.935 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.951 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.968 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:34.984 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.001 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.018 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.034 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.051 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.068 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.084 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.101 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.117 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.134 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.150 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.168 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.185 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.201 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.218 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.234 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.251 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.267 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.285 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.301 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.317 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.334 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.352 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.367 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.384 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.401 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.418 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.434 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:26:35.450 [Enemy] client : PV synchronises de Enemy : 50 -> 0 (vivant avant=True)
+03:26:59.333 [Enemy] client : PV synchronises de Enemy : 50 -> 0 (vivant avant=True)
+03:27:15.699 [Enemy] client : PV synchronises de Enemy : 200 -> 150 (vivant avant=True)
+03:27:17.833 [Enemy] client : PV synchronises de Enemy : 150 -> 100 (vivant avant=True)
+03:27:20.000 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.017 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.034 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.050 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.067 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.084 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.100 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.117 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.134 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.151 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.167 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.184 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.202 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.217 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.234 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.251 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.267 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.284 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.300 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.317 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.334 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.351 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.367 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.384 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.400 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.417 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.434 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.450 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.467 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.484 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.499 [Enemy] client : PV synchronises de Enemy : 100 -> 50 (vivant avant=True)
+03:27:20.501 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.518 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.534 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.551 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.567 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.584 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.600 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.618 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.634 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.651 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.667 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.684 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.700 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.717 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.734 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.751 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.767 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.784 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.800 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.817 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.834 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.851 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.867 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.884 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.900 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.917 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.934 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.951 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.967 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:20.984 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.000 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.018 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.034 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.051 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.067 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.084 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.100 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.117 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.134 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.151 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.168 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.184 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.200 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.218 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.234 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.251 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.268 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.284 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.300 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.318 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.334 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.351 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.368 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.385 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.400 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.418 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.434 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.451 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.467 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.484 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.500 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.517 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.534 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.551 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.567 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.584 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.601 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.618 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.634 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.651 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.667 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.684 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.700 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.717 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.734 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.751 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.767 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.784 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.801 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.818 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.834 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.851 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.868 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.884 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.900 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.917 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.934 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.951 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.967 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:21.984 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:22.001 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:22.017 NullReferenceException: Object reference not set to an instance of an object
+Enemy.SetTarget (Character target) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.TakeDamage (System.Single damage, Character source) (at <17edcaa25a264893bb31fd8efca150da>:0)
+Assets.Scripts.Debuffs.IgniteDebuff.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.HandleDebuffs () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Character.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+Enemy.Update () (at <17edcaa25a264893bb31fd8efca150da>:0)
+
+03:27:22.033 [Enemy] client : PV synchronises de Enemy : 50 -> 0 (vivant avant=True)
