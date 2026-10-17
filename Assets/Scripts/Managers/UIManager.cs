@@ -101,6 +101,16 @@ public class UIManager : MonoBehaviour
     /// </summary>
     private GameObject[] keybindButtons;
 
+    /// <summary>
+    /// Les 6 Text affichant le bouton manette actuellement assigne a
+    /// chaque sort (ACT1 a ACT6), dans le nouveau panneau "GamePad" du
+    /// menu Keybinds -- construit au runtime, voir
+    /// BuildGamepadKeybindSection(). Separe de keybindButtons ci-dessus
+    /// (clavier) : keybindButtons est rempli une seule fois dans Awake(),
+    /// avant que ces boutons manette n'existent.
+    /// </summary>
+    private readonly Text[] gamepadBindTexts = new Text[6];
+
     private void Awake()
     {
         keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
@@ -117,6 +127,269 @@ public class UIManager : MonoBehaviour
         // (voir ToggleTouchControls) des l'ouverture du menu, meme si on n'a
         // encore jamais touche au bouton cette session-ci.
         UpdateTouchControlsButtonText(TouchJoystick.IsEnabled);
+
+        BuildGamepadKeybindSection();
+    }
+
+    private void OnDestroy()
+    {
+        if (KeybindManager.MyInstance != null)
+        {
+            KeybindManager.MyInstance.OnGamepadBindChanged -= UpdateGamepadKeyText;
+        }
+    }
+
+    /// <summary>
+    /// Construit au runtime, par CLONAGE de la section "Actions" existante
+    /// du panneau Keybinds (voir Demo.unity, GameObject "TitleActions"),
+    /// une nouvelle section "GamePad" juste en dessous, avec 6 lignes
+    /// ACTION 1 a ACTION 6 permettant d'assigner le bouton de la manette
+    /// qui declenche chaque sort -- exactement comme la section "Actions"
+    /// le fait deja pour le clavier (KeybindManager.ActionBinds), mais
+    /// pour KeybindManager.GamepadActionBinds.
+    ///
+    /// Construit par CODE plutot que par edition de la scene : cloner
+    /// "TitleActions" recupere gratuitement tout son skin deja en place
+    /// (police, sprite de bouton vert, ombre, mise en page
+    /// Horizontal/VerticalLayoutGroup) sans avoir a le reconstruire a la
+    /// main ni toucher Demo.unity -- seul le parent (Area, le Content du
+    /// ScrollRect) a recu un ContentSizeFitter dans la scene pour que la
+    /// zone de defilement s'agrandisse et englobe les nouvelles sections
+    /// (ca corrige au passage le fait qu'ACTION 4 a 6, au clavier,
+    /// existaient deja dans la scene mais etaient hors de la zone de
+    /// defilement, donc invisibles).
+    ///
+    /// IMPORTANT : "TitleActions" sert a la fois de titre "Actions" ET de
+    /// conteneur (VerticalLayoutGroup) pour ses 6 lignes, sur UNE SEULE
+    /// RectTransform (374.76 x 30, pivot centre) -- ses lignes debordent
+    /// simplement visuellement en dessous de cette petite boite (Unity ne
+    /// les decoupe pas), ce qui est justement ce qui garde son titre bien
+    /// centre en haut de la section. Agrandir cette RectTransform pour
+    /// qu'elle "contienne" vraiment ses 6 lignes (ce qu'on a essaye avec
+    /// un ContentSizeFitter dessus) la recentre AUTOUR de son pivot et
+    /// deplace donc le titre au milieu de la section -- exactement le bug
+    /// remonte par Aurora ("Actions"/"GamePad" affiches derriere ACTION
+    /// 3). On NE touche donc PAS a la taille de TitleActions/TitleGamePad
+    /// : a la place, on mesure la vraie hauteur de son contenu (en lisant
+    /// la position reelle de sa derniere ligne apres un rebuild de mise
+    /// en page force) et on insere un espaceur invisible, juste assez
+    /// grand pour compenser l'ecart, avant la section suivante -- Area
+    /// (le parent commun, voir plus haut) la positionne alors
+    /// correctement tout seul, comme n'importe quel autre sibling.
+    /// </summary>
+    private void BuildGamepadKeybindSection()
+    {
+        GameObject actionsHeader = GameObject.Find("TitleActions");
+        if (actionsHeader == null || !(actionsHeader.transform.parent is RectTransform area))
+        {
+            // Securite : si ce panneau n'existe pas dans cette scene (ex.
+            // scene de test), on ne construit rien plutot que de planter.
+            return;
+        }
+
+        RectTransform actionsRect = actionsHeader.GetComponent<RectTransform>();
+
+        // Force le recalcul immediat de la mise en page -- a partir
+        // d'Area (le PARENT), pas seulement de TitleActions : sinon
+        // TitleActions lui-meme (sa position DANS Area, via le
+        // VerticalLayoutGroup d'Area) peut encore avoir sa position
+        // "brute" telle que sauvegardee dans la scene -- generalement
+        // {0,0} -- au lieu de sa position reelle, le rebuild ne
+        // s'executant normalement qu'en fin de frame. Rebuilder depuis
+        // Area recalcule toute la hierarchie en cascade (Area -> ses
+        // enfants -> leurs propres enfants), donc TitleActions ET ses 6
+        // lignes se retrouvent tous les deux a une position fiable.
+        LayoutRebuilder.ForceRebuildLayoutImmediate(area);
+
+        float declaredHeight = actionsRect.rect.height;
+        Transform lastActionsRow = actionsHeader.transform.GetChild(actionsHeader.transform.childCount - 1);
+        RectTransform lastActionsRowRect = lastActionsRow.GetComponent<RectTransform>();
+
+        // Distance entre le PIVOT (centre) de TitleActions et le bas
+        // reel de sa derniere ligne -- la vraie hauteur de son contenu,
+        // par opposition a sa hauteur DECLAREE (declaredHeight, restee
+        // petite expres, voir plus haut).
+        float realContentHeight = declaredHeight / 2f - (lastActionsRowRect.anchoredPosition.y - lastActionsRowRect.rect.height / 2f);
+
+        // Position Y (dans le repere local d'Area) du bas REEL du contenu
+        // de "Actions", c-a-d juste sous la ligne ACTION 6.
+        float actionsContentBottomY = actionsRect.anchoredPosition.y + (lastActionsRowRect.anchoredPosition.y - lastActionsRowRect.rect.height / 2f);
+
+        VerticalLayoutGroup areaLayout = area.GetComponent<VerticalLayoutGroup>();
+        float areaSpacing = areaLayout != null ? areaLayout.spacing : 0f;
+
+        // Espaceur invisible APRES TitleActions, pour qu'Area (via son
+        // ContentSizeFitter) compte bien la vraie hauteur de la section
+        // Actions dans sa propre hauteur totale (sinon elle ne compterait
+        // que les 30px DECLARES de TitleActions, et la zone de defilement
+        // s'arreterait bien avant la fin reelle des lignes ACTION 1-6).
+        // Ce n'est plus cet espaceur qui fixe l'ecart visuel avant
+        // "GamePad" (voir plus bas, positionnement manuel) : il sert
+        // uniquement au calcul de taille.
+        float spacerHeight = Mathf.Max(0f, (realContentHeight - declaredHeight) - areaSpacing);
+
+        GameObject spacerGO = new GameObject("GamePadSectionSpacer", typeof(RectTransform));
+        RectTransform spacerRect = spacerGO.GetComponent<RectTransform>();
+        spacerRect.SetParent(area, false);
+        spacerRect.anchorMin = new Vector2(0.5f, 0.5f);
+        spacerRect.anchorMax = new Vector2(0.5f, 0.5f);
+        spacerRect.pivot = new Vector2(0.5f, 0.5f);
+        spacerRect.sizeDelta = new Vector2(actionsRect.sizeDelta.x, spacerHeight);
+        spacerRect.SetSiblingIndex(actionsRect.GetSiblingIndex() + 1);
+
+        GameObject gamepadHeader = Instantiate(actionsHeader, area);
+        gamepadHeader.name = "TitleGamePad";
+        gamepadHeader.transform.SetAsLastSibling();
+
+        // CAUSE RACINE DE TOUTE CETTE SECTION (confirmee par plusieurs
+        // allers-retours avec Aurora, diagnostic a l'ecran a l'appui) :
+        // Area positionne ses enfants en cumulant leur hauteur DECLAREE +
+        // son "spacing" (areaSpacing, 250 dans cette scene) -- deux fois
+        // de suite de part et d'autre d'un espaceur intercale, ca donne un
+        // plancher de 2*areaSpacing qui ne descend jamais en dessous d'un
+        // certain ecart, meme en reduisant la hauteur de l'espaceur a 0.
+        // Resultat : impossible d'obtenir un petit ecart "juste" entre
+        // Actions et GamePad en jouant uniquement sur la hauteur d'un
+        // espaceur soumis a la mise en page automatique d'Area.
+        //
+        // Solution : on sort TitleGamePad de la mise en page automatique
+        // d'Area (LayoutElement.ignoreLayout = true) et on calcule sa
+        // position directement, en pixels, a partir du vrai bas du
+        // contenu "Actions" (actionsContentBottomY, mesure plus haut) --
+        // ce qui decouple entierement l'ecart visuel voulu
+        // (gamepadSectionGap) de la valeur d'espacement d'Area.
+        RectTransform gamepadHeaderRect = gamepadHeader.GetComponent<RectTransform>();
+        LayoutElement gamepadLayoutElement = gamepadHeader.GetComponent<LayoutElement>();
+        if (gamepadLayoutElement == null)
+        {
+            gamepadLayoutElement = gamepadHeader.AddComponent<LayoutElement>();
+        }
+        gamepadLayoutElement.ignoreLayout = true;
+
+        const float gamepadSectionGap = 20f;
+        float gamepadDeclaredHeight = gamepadHeaderRect.rect.height;
+        float gamepadTopY = actionsContentBottomY - gamepadSectionGap;
+        gamepadHeaderRect.anchoredPosition = new Vector2(gamepadHeaderRect.anchoredPosition.x, gamepadTopY - gamepadDeclaredHeight / 2f);
+
+        Text headerText = gamepadHeader.GetComponent<Text>();
+        if (headerText != null)
+        {
+            headerText.text = "GamePad";
+        }
+
+        // Le clone a exactement les memes 6 enfants que "TitleActions"
+        // (ACTION 1 a ACTION 6, clones avec) : on reutilise ces lignes
+        // telles quelles, on change juste le bouton de chacune pour
+        // qu'il assigne un bouton manette au lieu d'une touche clavier.
+        for (int i = 0; i < gamepadBindTexts.Length && i < gamepadHeader.transform.childCount; i++)
+        {
+            string actKey = "ACT" + (i + 1);
+            Transform row = gamepadHeader.transform.GetChild(i);
+
+            Button button = row.GetComponentInChildren<Button>();
+            if (button == null)
+            {
+                continue;
+            }
+
+            button.gameObject.name = "GP" + (i + 1);
+
+            // RemoveAllListeners() NE retire PAS les listeners persistants
+            // (ceux configures dans l'Inspecteur, ici l'appel a
+            // KeyBindOnClick("ACT4") etc. copie depuis "TitleActions" lors
+            // du clonage) -- un piege Unity bien connu. Remplacer
+            // l'UnityEvent entier par un neuf est le seul moyen fiable de
+            // s'en debarrasser : sinon cliquer ce bouton declencherait a
+            // la fois la capture clavier (ancien listener) ET la capture
+            // manette (nouveau), les deux ecoutant simultanement la
+            // prochaine entree.
+            button.onClick = new Button.ButtonClickedEvent();
+            button.onClick.AddListener(() => KeybindManager.MyInstance.GamepadKeyBindOnClick(actKey));
+
+            gamepadBindTexts[i] = button.GetComponentInChildren<Text>();
+        }
+
+        if (KeybindManager.MyInstance != null)
+        {
+            KeybindManager.MyInstance.OnGamepadBindChanged += UpdateGamepadKeyText;
+
+            foreach (KeyValuePair<string, KeyCode> bind in KeybindManager.MyInstance.GamepadActionBinds)
+            {
+                UpdateGamepadKeyText(bind.Key, bind.Value);
+            }
+        }
+
+        // TitleGamePad etant maintenant en dehors de la mise en page
+        // automatique d'Area (ignoreLayout), il ne contribue plus DU TOUT
+        // a la hauteur totale qu'Area calcule pour elle-meme -- ni son
+        // propre espacement normal (areaSpacing, qui se serait applique
+        // juste avant lui), ni son contenu reel (ses lignes GP1-6, qui
+        // debordent sous sa petite boite declaree) -- sans quoi la zone
+        // de defilement s'arreterait net au niveau du titre "GamePad".
+        // L'espaceur final doit donc, a lui seul, remplacer EXACTEMENT ce
+        // que TitleGamePad aurait automatiquement apporte : un espacement
+        // normal + toute sa hauteur de contenu reelle.
+        LayoutRebuilder.ForceRebuildLayoutImmediate(area);
+
+        float gamepadRealContentHeight = gamepadDeclaredHeight;
+        if (gamepadHeader.transform.childCount > 0)
+        {
+            Transform lastGamepadRow = gamepadHeader.transform.GetChild(gamepadHeader.transform.childCount - 1);
+            RectTransform lastGamepadRowRect = lastGamepadRow.GetComponent<RectTransform>();
+            gamepadRealContentHeight = gamepadDeclaredHeight / 2f - (lastGamepadRowRect.anchoredPosition.y - lastGamepadRowRect.rect.height / 2f);
+        }
+
+        // Premiere valeur (areaSpacing + gamepadRealContentHeight, calquee
+        // sur l'ancien total qui marchait avec TitleGamePad en layout
+        // normal) laissait encore un peu de vide visible au gout d'Aurora.
+        // On revient ici a une logique directe en pixels (comme pour
+        // gamepadSectionGap plus haut) : juste assez pour couvrir le
+        // debordement reel sous la boite declaree de TitleGamePad
+        // (gamepadRealContentHeight - gamepadDeclaredHeight), plus une
+        // petite marge de confort.
+        const float gamepadTrailingMargin = 20f;
+        float trailingSpacerHeight = Mathf.Max(0f, (gamepadRealContentHeight - gamepadDeclaredHeight) + gamepadTrailingMargin);
+
+        GameObject trailingSpacerGO = new GameObject("GamePadSectionTrailingSpacer", typeof(RectTransform));
+        RectTransform trailingSpacerRect = trailingSpacerGO.GetComponent<RectTransform>();
+        trailingSpacerRect.SetParent(area, false);
+        trailingSpacerRect.anchorMin = new Vector2(0.5f, 0.5f);
+        trailingSpacerRect.anchorMax = new Vector2(0.5f, 0.5f);
+        trailingSpacerRect.pivot = new Vector2(0.5f, 0.5f);
+        trailingSpacerRect.sizeDelta = new Vector2(actionsRect.sizeDelta.x, trailingSpacerHeight);
+        trailingSpacerRect.SetSiblingIndex(gamepadHeaderRect.GetSiblingIndex() + 1);
+
+        // Force un dernier recalcul pour que la mise en page finale soit
+        // bien a jour avant que le panneau ne s'affiche.
+        LayoutRebuilder.ForceRebuildLayoutImmediate(area);
+    }
+
+
+    /// <summary>
+    /// Met a jour le texte affichant le bouton manette assigne a
+    /// l'emplacement de sort key ("ACT1".."ACT6") -- appelee a la
+    /// construction du panneau "GamePad" (voir ci-dessus) et a chaque
+    /// reassignation (voir KeybindManager.OnGamepadBindChanged).
+    /// </summary>
+    private void UpdateGamepadKeyText(string key, KeyCode bind)
+    {
+        if (string.IsNullOrEmpty(key) || !key.StartsWith("ACT"))
+        {
+            return;
+        }
+
+        if (!int.TryParse(key.Substring(3), out int number))
+        {
+            return;
+        }
+
+        int index = number - 1;
+        if (index < 0 || index >= gamepadBindTexts.Length || gamepadBindTexts[index] == null)
+        {
+            return;
+        }
+
+        gamepadBindTexts[index].text = GamepadInput.GetFriendlyButtonName(bind);
     }
 
     // Update is called once per frame

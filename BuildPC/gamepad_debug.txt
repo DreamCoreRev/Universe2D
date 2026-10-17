@@ -1,0 +1,1 @@
+declaredHeight=30 lastActionsRow.anchoredY=-370,55 lastActionsRow.height=51,1 realContentHeight=411,1 areaSpacing=250 spacerHeight=131,1 actionsRect.anchoredY=-293 area.sizeDelta=(375.60, 969.10) gamepadRect.anchoredY=-954,1 gamepadRect.height=30

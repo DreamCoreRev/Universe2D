@@ -54,6 +54,18 @@ public class CharacterSelectManager : MonoBehaviour
     private static readonly Color DarkTextColor = new Color(0.20f, 0.11f, 0.02f, 1f);
     private static readonly Color ErrorTextColor = new Color(0.85f, 0.3f, 0.25f, 1f);
 
+    // Surbrillance du curseur manette (voir UpdateGamepadNavigation() plus
+    // bas) : separee de SlotSelectedColor, qui marque le personnage
+    // REELLEMENT selectionne (celui sur lequel JOUER/SUPPRIMER vont agir).
+    // Le curseur manette peut survoler un slot sans le selectionner (pour
+    // ne pas ouvrir le panneau de creation juste en passant sur un slot
+    // vide) -- meme logique couleur+agrandissement que pour le Main Menu
+    // et la fenetre de loot, mais appliquee au contour (Outline) plutot
+    // qu'au fond, pour ne pas se melanger avec SlotSelectedColor/
+    // SlotFilledColor/SlotEmptyColor qui restent geres par
+    // UpdateSlotVisuals().
+    private static readonly Color GamepadCursorColor = new Color(1f, 0.85f, 0.25f, 1f);
+
     private sealed class CharacterSlotUI
     {
         public GameObject Root;
@@ -63,6 +75,7 @@ public class CharacterSelectManager : MonoBehaviour
         public Text ClassText;
         public Text EmptyHintText;
         public Button Button;
+        public Outline Outline;
     }
 
     [Serializable]
@@ -124,6 +137,12 @@ public class CharacterSelectManager : MonoBehaviour
 
     private int selectedIndex = -1;
 
+    // Slot actuellement survole par le curseur manette (voir
+    // UpdateGamepadNavigation() plus bas) -- independant de selectedIndex
+    // ci-dessus : deplacer le curseur ne selectionne pas un slot, A le
+    // fait (meme effet qu'un clic souris sur ce slot, voir OnSlotClicked).
+    private int gamepadCursorIndex;
+
     private Text statusText;
     private Button playButton;
     private Button deleteButton;
@@ -150,6 +169,11 @@ public class CharacterSelectManager : MonoBehaviour
     private void Start()
     {
         RefreshCharacterList();
+    }
+
+    private void Update()
+    {
+        UpdateGamepadNavigation();
     }
 
     // ------------------------------------------------------------------
@@ -241,7 +265,8 @@ public class CharacterSelectManager : MonoBehaviour
                 NameText = nameText,
                 ClassText = classText,
                 EmptyHintText = emptyHint,
-                Button = button
+                Button = button,
+                Outline = outline
             };
         }
     }
@@ -355,6 +380,65 @@ public class CharacterSelectManager : MonoBehaviour
         UpdateSlotVisuals();
         playButton.interactable = true;
         deleteButton.interactable = true;
+    }
+
+    /// <summary>
+    /// Navigation manette de l'ecran de selection de personnage : stick
+    /// gauche gauche/droite deplace le curseur (gamepadCursorIndex) parmi
+    /// les 5 emplacements, A selectionne l'emplacement survole (meme
+    /// effet qu'un clic souris dessus -- voir OnSlotClicked ci-dessus :
+    /// ouvre le panneau de creation si vide, sinon selectionne le
+    /// personnage et active JOUER/SUPPRIMER), et Start lance la partie
+    /// avec le personnage actuellement selectionne (equivalent manette du
+    /// bouton JOUER). Suspendue pendant qu'un panneau de creation ou de
+    /// confirmation de suppression est ouvert : ces panneaux se pilotent
+    /// encore a la souris/clavier (saisie du nom), et on ne veut pas que
+    /// le curseur continue a bouger sur les slots caches derriere.
+    /// </summary>
+    private void UpdateGamepadNavigation()
+    {
+        if (busy || createPanelGO.activeSelf || deleteConfirmGO.activeSelf)
+        {
+            return;
+        }
+
+        if (GamepadInput.NavigateRightPressed)
+        {
+            gamepadCursorIndex = (gamepadCursorIndex + 1) % MaxCharacters;
+        }
+        if (GamepadInput.NavigateLeftPressed)
+        {
+            gamepadCursorIndex = (gamepadCursorIndex - 1 + MaxCharacters) % MaxCharacters;
+        }
+
+        HighlightGamepadCursor(gamepadCursorIndex);
+
+        if (GamepadInput.MenuConfirmPressed)
+        {
+            OnSlotClicked(gamepadCursorIndex);
+        }
+        if (GamepadInput.StartPressed)
+        {
+            OnPlayClicked();
+        }
+    }
+
+    /// <summary>
+    /// Met en valeur (contour dore + leger agrandissement) le slot
+    /// survole par le curseur manette, independamment de la couleur de
+    /// fond geree par UpdateSlotVisuals() (vide/occupe/selectionne) --
+    /// voir GamepadCursorColor plus haut.
+    /// </summary>
+    private void HighlightGamepadCursor(int cursorIndex)
+    {
+        for (int i = 0; i < MaxCharacters; i++)
+        {
+            bool isCursor = i == cursorIndex;
+            CharacterSlotUI slot = slots[i];
+            slot.Outline.effectColor = isCursor ? GamepadCursorColor : BorderColor;
+            slot.Outline.effectDistance = isCursor ? new Vector2(4, -4) : new Vector2(2, -2);
+            slot.Root.transform.localScale = isCursor ? Vector3.one * 1.08f : Vector3.one;
+        }
     }
 
     private void OpenCreatePanel()

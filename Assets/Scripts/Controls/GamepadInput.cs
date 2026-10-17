@@ -43,30 +43,63 @@ public static class GamepadInput
         }
     }
 
-    // ACT1 a ACT6 de la barre de sorts (voir KeybindManager.ActionBinds) :
-    // A, B, X, Y, puis les deux gachettes d'epaule LB/RB.
-    private static readonly KeyCode[] ActionButtons =
-    {
-        KeyCode.JoystickButton0, // A  -> ACT1
-        KeyCode.JoystickButton1, // B  -> ACT2
-        KeyCode.JoystickButton2, // X  -> ACT3
-        KeyCode.JoystickButton3, // Y  -> ACT4
-        KeyCode.JoystickButton4, // LB -> ACT5
-        KeyCode.JoystickButton5, // RB -> ACT6
-    };
+    // ACT1 a ACT6 de la barre de sorts : le bouton manette de chacun
+    // n'est plus fixe ici -- il vient de KeybindManager.GamepadActionBinds
+    // (A, B, X, Y, LB, RB par defaut, voir KeybindManager.Awake()), qu'on
+    // peut desormais reassigner depuis le nouveau panneau "GamePad" du
+    // menu Keybinds (voir UIManager.BuildGamepadKeybindSection()).
+    private const int ActionCount = 6;
 
     /// <summary>
-    /// Vrai une seule frame quand le bouton correspondant a l'emplacement de
-    /// sort actionIndex (0 a 5, pour ACT1 a ACT6) vient d'etre presse.
+    /// Vrai une seule frame quand le bouton manette assigne a
+    /// l'emplacement de sort actionIndex (0 a 5, pour ACT1 a ACT6) vient
+    /// d'etre presse. Renvoie false si l'emplacement n'a aucun bouton
+    /// assigne (KeyCode.None) ou si KeybindManager n'existe pas encore
+    /// (ex. tout premier frame de la scene).
     /// </summary>
     public static bool GetActionButtonDown(int actionIndex)
     {
-        if (actionIndex < 0 || actionIndex >= ActionButtons.Length)
+        if (actionIndex < 0 || actionIndex >= ActionCount || KeybindManager.MyInstance == null)
         {
             return false;
         }
 
-        return Input.GetKeyDown(ActionButtons[actionIndex]);
+        string key = "ACT" + (actionIndex + 1);
+
+        if (!KeybindManager.MyInstance.GamepadActionBinds.TryGetValue(key, out KeyCode bind) || bind == KeyCode.None)
+        {
+            return false;
+        }
+
+        return Input.GetKeyDown(bind);
+    }
+
+    /// <summary>
+    /// Convertit un KeyCode.JoystickButtonN en un nom lisible (A, B, X, Y,
+    /// LB, RB, Back/View, Start, L3, R3 -- voir le mapping documente en
+    /// tete de ce fichier) pour l'affichage dans le panneau "GamePad" du
+    /// menu Keybinds (voir UIManager.BuildGamepadKeybindSection()). Les
+    /// boutons au-dela de 9 (pas utilises ailleurs dans ce projet, trop
+    /// peu standard d'un pilote/systeme a l'autre) restent affiches sous
+    /// leur nom KeyCode brut plutot que de deviner un nom.
+    /// </summary>
+    public static string GetFriendlyButtonName(KeyCode code)
+    {
+        switch (code)
+        {
+            case KeyCode.JoystickButton0: return "A";
+            case KeyCode.JoystickButton1: return "B";
+            case KeyCode.JoystickButton2: return "X";
+            case KeyCode.JoystickButton3: return "Y";
+            case KeyCode.JoystickButton4: return "LB";
+            case KeyCode.JoystickButton5: return "RB";
+            case KeyCode.JoystickButton6: return "Back";
+            case KeyCode.JoystickButton7: return "Start";
+            case KeyCode.JoystickButton8: return "L3";
+            case KeyCode.JoystickButton9: return "R3";
+            case KeyCode.None: return "--";
+            default: return code.ToString();
+        }
     }
 
     /// <summary>
@@ -138,6 +171,8 @@ public static class GamepadInput
     private const float NAV_THRESHOLD = 0.5f;
     private static bool navUpHeld;
     private static bool navDownHeld;
+    private static bool navLeftHeld;
+    private static bool navRightHeld;
 
     /// <summary>
     /// Vrai une seule frame quand le stick gauche vient d'etre pousse vers
@@ -169,6 +204,39 @@ public static class GamepadInput
             bool held = Input.GetAxis("Vertical") <= -NAV_THRESHOLD;
             bool justPressed = held && !navDownHeld;
             navDownHeld = held;
+            return justPressed;
+        }
+    }
+
+    /// <summary>
+    /// Equivalent horizontal de NavigateUpPressed/NavigateDownPressed
+    /// (axe "Horizontal" au lieu de "Vertical") -- sert a deplacer le
+    /// curseur de gauche a droite dans l'ecran de selection de personnage
+    /// (voir CharacterSelectManager.UpdateGamepadNavigation()), dont les
+    /// 5 emplacements sont alignes horizontalement plutot qu'en colonne
+    /// comme le Main Menu ou la fenetre de loot.
+    /// </summary>
+    public static bool NavigateLeftPressed
+    {
+        get
+        {
+            bool held = Input.GetAxis("Horizontal") <= -NAV_THRESHOLD;
+            bool justPressed = held && !navLeftHeld;
+            navLeftHeld = held;
+            return justPressed;
+        }
+    }
+
+    /// <summary>
+    /// Equivalent de NavigateLeftPressed pour la droite.
+    /// </summary>
+    public static bool NavigateRightPressed
+    {
+        get
+        {
+            bool held = Input.GetAxis("Horizontal") >= NAV_THRESHOLD;
+            bool justPressed = held && !navRightHeld;
+            navRightHeld = held;
             return justPressed;
         }
     }
