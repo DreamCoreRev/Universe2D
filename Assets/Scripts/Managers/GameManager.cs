@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -352,10 +352,10 @@ public class GameManager : MonoBehaviour {
         if (LootWindow.MyInstance.IsOpen)
         {
             // La fenetre est deja ouverte (meme bouton presse une premiere
-            // fois juste avant, voir plus bas) : on prend tout d'un coup au
-            // lieu de cliquer un par un sur chaque objet, impossible sans
-            // souris -- voir LootWindow.TakeAll().
-            LootWindow.MyInstance.TakeAll();
+            // fois juste avant) : Back/View ne fait plus rien ici -- une
+            // fois ouverte, la fenetre se pilote avec le stick gauche
+            // (deplacer la selection), A (prendre l'objet selectionne) et
+            // B (fermer), voir LootWindow.UpdateGamepadNavigation().
             return;
         }
 

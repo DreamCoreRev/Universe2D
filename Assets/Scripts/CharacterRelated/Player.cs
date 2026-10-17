@@ -664,11 +664,13 @@ public class Player : Character
 
         // Manette (voir GamepadInput.cs) : A/B/X/Y + LB/RB declenchent
         // ACT1 a ACT6, en plus des touches ci-dessus. Desactive pendant
-        // que le menu principal est ouvert (UIManager.IsMainMenuOpen) :
-        // A/B servent alors a valider/annuler dans ce menu (voir
-        // UIManager.UpdateMainMenuGamepadNavigation()), et les laisser
-        // aussi declencher ACT1/ACT2 lancerait un sort en meme temps.
-        if (!UIManager.MyInstance.IsMainMenuOpen)
+        // que le menu principal OU la fenetre de loot est ouvert(e)
+        // (UIManager.IsMainMenuOpen / LootWindow.IsOpen) : A/B servent
+        // alors a valider/annuler dans ce menu ou prendre/fermer dans
+        // cette fenetre (voir UIManager.UpdateMainMenuGamepadNavigation()
+        // et LootWindow.UpdateGamepadNavigation()), et les laisser aussi
+        // declencher ACT1/ACT2 lancerait un sort en meme temps.
+        if (!UIManager.MyInstance.IsMainMenuOpen && !LootWindow.MyInstance.IsOpen)
         {
             for (int actionIndex = 0; actionIndex < 6; actionIndex++)
             {

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,6 +31,20 @@ public class LootWindow : MonoBehaviour
 
     private int pageIndex = 0;
 
+    // Index (dans pages[pageIndex], donc parmi les objets REELLEMENT
+    // affiches sur la page courante) du bouton actuellement mis en
+    // surbrillance par la manette -- voir UpdateGamepadNavigation() et
+    // HighlightLootButton() plus bas. Meme principe de surbrillance
+    // manuelle (couleur + agrandissement) que UIManager pour le Main
+    // Menu : le skin "Selected" natif d'Unity est trop discret.
+    private int selectedLootIndex;
+
+    [SerializeField]
+    private Color highlightColor = new Color(1f, 0.82f, 0.15f);
+
+    [SerializeField]
+    private float highlightScale = 1.15f;
+
     [SerializeField]
     private Text pageNumber;
 
@@ -56,6 +70,11 @@ public class LootWindow : MonoBehaviour
         canvasGroup.alpha = 0;
     }
 
+    private void Update()
+    {
+        UpdateGamepadNavigation();
+    }
+
     public void CreatePages(List<Drop> items)
     {
         if (!IsOpen)
@@ -63,6 +82,8 @@ public class LootWindow : MonoBehaviour
             List<Drop> page = new List<Drop>();
 
             droppedLoot = items;
+
+            selectedLootIndex = 0;
 
             for (int i = 0; i < items.Count; i++)
             {
@@ -133,6 +154,7 @@ public class LootWindow : MonoBehaviour
         if (pageIndex < pages.Count - 1)
         {
             pageIndex++;
+            selectedLootIndex = 0;
             ClearButtons();
             AddLoot();
         }
@@ -144,6 +166,7 @@ public class LootWindow : MonoBehaviour
         if (pageIndex > 0)
         {
             pageIndex--;
+            selectedLootIndex = 0;
             ClearButtons();
             AddLoot();
         }
@@ -173,31 +196,120 @@ public class LootWindow : MonoBehaviour
     }
 
     /// <summary>
-    /// Prend tout le butin de toutes les pages d'un coup, puis ferme la
-    /// fenetre -- equivalent manette de cliquer un par un sur chaque objet
-    /// (TakeLoot(), appelee ci-dessous), qui suppose une souris. TakeLoot()
-    /// retire deja une page vide de pages des qu'on y prend le dernier
-    /// objet (voir plus haut), donc prendre systematiquement le premier
-    /// objet de la page courante jusqu'a ce qu'il n'y ait plus de page
-    /// suffit a tout vider, quel que soit le nombre de pages.
+    /// Navigation manette dans la fenetre de loot (meme principe que
+    /// UIManager.UpdateMainMenuGamepadNavigation() pour le Main Menu) :
+    /// stick gauche haut/bas pour deplacer la selection parmi les objets
+    /// de la page courante, A pour prendre l'objet selectionne, B pour
+    /// fermer la fenetre sans prendre le reste. Remplace l'ancien
+    /// "ramasser tout" (TakeAll) qui ne faisait que retirer les objets de
+    /// la table de butin (Drop.Remove()) SANS jamais les ajouter aux sacs
+    /// -- contrairement au clic souris (voir LootButton.OnPointerClick),
+    /// qui appelle InventoryScript.AddItem() avant de retirer le Drop.
+    /// TakeSelectedLoot() ci-dessous fait maintenant la meme chose.
     /// </summary>
-    public void TakeAll()
+    private void UpdateGamepadNavigation()
     {
-        while (pages.Count > 0)
+        if (!IsOpen || pages.Count == 0)
         {
-            TakeLoot(pages[pageIndex][0].MyItem);
+            return;
         }
 
-        Close();
+        int activeCount = pages[pageIndex].Count;
+        if (activeCount == 0)
+        {
+            return;
+        }
+
+        if (selectedLootIndex >= activeCount)
+        {
+            selectedLootIndex = 0;
+        }
+
+        if (GamepadInput.NavigateDownPressed)
+        {
+            selectedLootIndex = (selectedLootIndex + 1) % activeCount;
+        }
+        if (GamepadInput.NavigateUpPressed)
+        {
+            selectedLootIndex = (selectedLootIndex - 1 + activeCount) % activeCount;
+        }
+
+        HighlightLootButton(selectedLootIndex, activeCount);
+
+        if (GamepadInput.MenuConfirmPressed)
+        {
+            TakeSelectedLoot();
+        }
+        if (GamepadInput.MenuCancelPressed)
+        {
+            Close();
+        }
+    }
+
+    /// <summary>
+    /// Met en surbrillance (couleur + agrandissement, voir
+    /// highlightColor/highlightScale) le bouton de loot a l'index
+    /// selectedIndex parmi les activeCount premiers boutons (ceux
+    /// reellement visibles sur la page courante -- voir AddLoot()), et
+    /// remet tous les autres a leur apparence normale.
+    /// </summary>
+    private void HighlightLootButton(int selectedIndex, int activeCount)
+    {
+        for (int i = 0; i < lootButtons.Length; i++)
+        {
+            bool isSelected = i == selectedIndex && i < activeCount;
+            Image background = lootButtons[i].GetComponent<Image>();
+            if (background != null)
+            {
+                background.color = isSelected ? highlightColor : Color.white;
+            }
+            lootButtons[i].transform.localScale = isSelected ? Vector3.one * highlightScale : Vector3.one;
+        }
+    }
+
+    /// <summary>
+    /// Prend l'objet actuellement selectionne a la manette (voir
+    /// UpdateGamepadNavigation() ci-dessus) : ajoute d'abord l'objet aux
+    /// sacs (InventoryScript.AddItem(), comme LootButton.OnPointerClick a
+    /// la souris), et ne le retire de la fenetre (TakeLoot()) que si
+    /// l'ajout a reussi -- si les sacs sont pleins, l'objet reste dans la
+    /// fenetre, meme comportement qu'a la souris.
+    /// </summary>
+    private void TakeSelectedLoot()
+    {
+        if (pages.Count == 0 || selectedLootIndex >= pages[pageIndex].Count)
+        {
+            return;
+        }
+
+        Item loot = pages[pageIndex][selectedLootIndex].MyItem;
+
+        if (!InventoryScript.MyInstance.AddItem(loot))
+        {
+            return;
+        }
+
+        TakeLoot(loot);
+
+        if (pages.Count == 0)
+        {
+            Close();
+        }
+        else if (selectedLootIndex >= pages[pageIndex].Count)
+        {
+            selectedLootIndex = pages[pageIndex].Count - 1;
+        }
     }
 
     public void Close()
     {
         pageIndex = 0;
+        selectedLootIndex = 0;
         pages.Clear();
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
         ClearButtons();
+        HighlightLootButton(-1, 0);
 
         if (MyInteractable != null)
         {

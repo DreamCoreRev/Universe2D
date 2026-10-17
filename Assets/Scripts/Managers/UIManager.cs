@@ -43,6 +43,18 @@ public class UIManager : MonoBehaviour
     private Button[] mainMenuButtons;
     private int mainMenuSelectedIndex;
 
+    // Mise en surbrillance du bouton selectionne a la manette : le skin
+    // "Selected" des boutons (gere par Unity via
+    // EventSystem.SetSelectedGameObject) est trop discret pour qu'on le
+    // distingue bien en jeu -- voir HighlightMainMenuButton() plus bas,
+    // qui applique en plus une couleur et un agrandissement bien visibles,
+    // reglables ici dans l'Inspecteur si besoin.
+    [SerializeField]
+    private Color mainMenuHighlightColor = new Color(1f, 0.82f, 0.15f);
+
+    [SerializeField]
+    private float mainMenuHighlightScale = 1.15f;
+
     /// <summary>
     /// Vrai pendant que le menu principal (Echap / Start manette) est
     /// ouvert -- utilise par Player.GetInput() pour desactiver la boucle
@@ -142,6 +154,7 @@ public class UIManager : MonoBehaviour
             else
             {
                 EventSystem.current.SetSelectedGameObject(null);
+                ResetMainMenuHighlight();
             }
         }
         UpdateMainMenuGamepadNavigation();
@@ -335,7 +348,52 @@ public class UIManager : MonoBehaviour
         {
             OpenClose(menus[0]);
             EventSystem.current.SetSelectedGameObject(null);
+            ResetMainMenuHighlight();
+            return;
         }
+
+        // Reapplique la surbrillance a chaque frame (et pas seulement
+        // quand la selection change) : ca evite qu'elle disparaisse si le
+        // skin "Selected" du bouton (gere par Unity, voir plus haut) se
+        // redessine par-dessus notre couleur/echelle.
+        HighlightMainMenuButton(mainMenuSelectedIndex);
+    }
+
+    /// <summary>
+    /// Applique une surbrillance bien visible (couleur + agrandissement,
+    /// voir mainMenuHighlightColor/mainMenuHighlightScale) au bouton du
+    /// menu principal a l'index selectedIndex, et remet tous les autres a
+    /// leur apparence normale.
+    /// </summary>
+    private void HighlightMainMenuButton(int selectedIndex)
+    {
+        if (mainMenuButtons == null)
+        {
+            return;
+        }
+
+        for (int i = 0; i < mainMenuButtons.Length; i++)
+        {
+            bool isSelected = i == selectedIndex;
+            Image image = mainMenuButtons[i].GetComponent<Image>();
+            if (image != null)
+            {
+                image.color = isSelected ? mainMenuHighlightColor : Color.white;
+            }
+            mainMenuButtons[i].transform.localScale = isSelected
+                ? Vector3.one * mainMenuHighlightScale
+                : Vector3.one;
+        }
+    }
+
+    /// <summary>
+    /// Remet tous les boutons du menu principal a leur apparence normale
+    /// (voir HighlightMainMenuButton ci-dessus) -- a appeler a la
+    /// fermeture du menu pour ne pas laisser un bouton agrandi/colore.
+    /// </summary>
+    private void ResetMainMenuHighlight()
+    {
+        HighlightMainMenuButton(-1);
     }
 
     // Permet d'ouvrir/fermer un panneau de "menus" depuis un bouton (voir
