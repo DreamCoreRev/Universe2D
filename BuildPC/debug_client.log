@@ -1,19 +1,16 @@
-=== demarrage 2026-10-14 22:17:33 (pid 8332) ===
-22:17:33.308 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
+=== demarrage 2026-10-16 02:01:56 (pid 19160) ===
+02:01:56.446 The resource UI/Skin/Knob.psd could not be loaded from the resource file!
 
-22:17:33.311 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
+02:01:56.450 The resource UI/Skin/UISprite.psd could not be loaded from the resource file!
 
-22:17:33.320 The resource LegacyRuntime.ttf could not be loaded from the resource file!
+02:01:56.477 The resource LegacyRuntime.ttf could not be loaded from the resource file!
 
-22:17:43.503 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-22:17:43.504 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-22:17:43.504 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
-22:17:43.505 [Enemy] client : PV synchronises de Enemy : 0 -> 5000 (vivant avant=True)
-22:17:43.506 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-22:17:43.506 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
-22:17:43.506 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-22:17:43.508 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-22:17:43.508 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
-22:17:43.509 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
-22:17:56.381 [Enemy] client : PV synchronises de Enemy : 50 -> 0 (vivant avant=True)
-22:17:57.265 [Enemy] Enemy prend la fuite : PathState : plus de cible
+02:02:14.390 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+02:02:14.391 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+02:02:14.392 [Enemy] client : PV synchronises de Enemy : 0 -> 5000 (vivant avant=True)
+02:02:14.392 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+02:02:14.393 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
+02:02:14.393 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+02:02:14.394 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+02:02:14.394 [Enemy] client : PV synchronises de Enemy : 0 -> 200 (vivant avant=True)
+02:02:14.394 [Enemy] client : PV synchronises de Enemy : 0 -> 50 (vivant avant=True)
