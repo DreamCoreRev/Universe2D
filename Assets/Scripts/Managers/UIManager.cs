@@ -347,7 +347,7 @@ public class UIManager : MonoBehaviour
         // debordement reel sous la boite declaree de TitleGamePad
         // (gamepadRealContentHeight - gamepadDeclaredHeight), plus une
         // petite marge de confort.
-        const float gamepadTrailingMargin = 20f;
+        const float gamepadTrailingMargin = -150f;
         float trailingSpacerHeight = Mathf.Max(0f, (gamepadRealContentHeight - gamepadDeclaredHeight) + gamepadTrailingMargin);
 
         GameObject trailingSpacerGO = new GameObject("GamePadSectionTrailingSpacer", typeof(RectTransform));
